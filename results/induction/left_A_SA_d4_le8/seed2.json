@@ -1,0 +1,6573 @@
+{
+ "seed": 2,
+ "train_time_s": 1482.087911605835,
+ "final": {
+  "round": 24,
+  "L_M": 21173.02527949307,
+  "L_D": 59241.48262087273,
+  "total": 80414.5079003658,
+  "parsed": 1477,
+  "n_sent": 1481,
+  "n_categories": 308,
+  "n_entries": 1580,
+  "avg_cats_per_word": 2.1525885558583107,
+  "Q_mean": 8.788719012250406,
+  "Q_max": 62,
+  "b_mean": 0.213873775814909,
+  "em_ll": -40577.09040083737,
+  "em_iters": 3
+ },
+ "history": [
+  {
+   "round": 0,
+   "L_M": 39607.652038349624,
+   "L_D": 12724.47236991548,
+   "total": 52332.1244082651,
+   "parsed": 6,
+   "n_sent": 196,
+   "n_categories": 192,
+   "n_entries": 2936,
+   "avg_cats_per_word": 4.0,
+   "Q_mean": 2.231292517006804,
+   "Q_max": 5,
+   "b_mean": 0.24600491982507305,
+   "em_ll": -18.919893684032218,
+   "em_iters": 3,
+   "n_prune": 2200,
+   "n_split": 1,
+   "n_fail_add": 41,
+   "n_merge": 0,
+   "n_rename": 0
+  },
+  {
+   "round": 1,
+   "L_M": 10630.277004712141,
+   "L_D": 10134.569766093808,
+   "total": 20764.846770805947,
+   "parsed": 57,
+   "n_sent": 196,
+   "n_categories": 140,
+   "n_entries": 778,
+   "avg_cats_per_word": 1.0599455040871935,
+   "Q_mean": 1.664115646258503,
+   "Q_max": 5,
+   "b_mean": 0.43731958649592145,
+   "em_ll": -306.04575788889343,
+   "em_iters": 3,
+   "n_prune": 26,
+   "n_split": 0,
+   "n_fail_add": 43,
+   "n_merge": 1,
+   "n_rename": 0
+  },
+  {
+   "round": 2,
+   "L_M": 10841.110821010489,
+   "L_D": 6623.84508080931,
+   "total": 17464.955901819798,
+   "parsed": 118,
+   "n_sent": 196,
+   "n_categories": 144,
+   "n_entries": 795,
+   "avg_cats_per_word": 1.0831062670299727,
+   "Q_mean": 1.7959183673469388,
+   "Q_max": 6,
+   "b_mean": 0.46053558171607983,
+   "em_ll": -784.5778904694307,
+   "em_iters": 3,
+   "n_prune": 31,
+   "n_split": 1,
+   "n_fail_add": 35,
+   "n_merge": 3,
+   "n_rename": 0
+  },
+  {
+   "round": 3,
+   "L_M": 10853.709002274709,
+   "L_D": 4282.450018631379,
+   "total": 15136.159020906089,
+   "parsed": 160,
+   "n_sent": 196,
+   "n_categories": 146,
+   "n_entries": 800,
+   "avg_cats_per_word": 1.0899182561307903,
+   "Q_mean": 2.2355442176870746,
+   "Q_max": 7,
+   "b_mean": 0.4165805436493967,
+   "em_ll": -1211.4838332658628,
+   "em_iters": 3,
+   "n_prune": 18,
+   "n_split": 1,
+   "n_fail_add": 18,
+   "n_merge": 3,
+   "n_rename": 0
+  },
+  {
+   "round": 4,
+   "L_M": 10780.228638527555,
+   "L_D": 3434.8626347003838,
+   "total": 14215.09127322794,
+   "parsed": 176,
+   "n_sent": 196,
+   "n_categories": 149,
+   "n_entries": 801,
+   "avg_cats_per_word": 1.0912806539509536,
+   "Q_mean": 2.3282312925170063,
+   "Q_max": 6,
+   "b_mean": 0.41386652846667754,
+   "em_ll": -1404.7829748151983,
+   "em_iters": 3,
+   "n_prune": 14,
+   "n_split": 0,
+   "n_fail_add": 17,
+   "n_merge": 0,
+   "n_rename": 0
+  },
+  {
+   "round": 5,
+   "L_M": 10949.0624548259,
+   "L_D": 2467.5100099643773,
+   "total": 13416.572464790277,
+   "parsed": 196,
+   "n_sent": 196,
+   "n_categories": 147,
+   "n_entries": 818,
+   "avg_cats_per_word": 1.1144414168937329,
+   "Q_mean": 2.535714285714284,
+   "Q_max": 7,
+   "b_mean": 0.42630844065888424,
+   "em_ll": -1710.3477619051293,
+   "em_iters": 3
+  },
+  {
+   "round": 5,
+   "L_M": 10949.0624548259,
+   "L_D": 52136.49372114609,
+   "total": 63085.55617597199,
+   "parsed": 210,
+   "n_sent": 673,
+   "n_categories": 147,
+   "n_entries": 818,
+   "avg_cats_per_word": 1.1144414168937329,
+   "Q_mean": 1.930485388806339,
+   "Q_max": 7,
+   "b_mean": 0.3925317483117032,
+   "em_ll": -1894.0386751788615,
+   "em_iters": 3,
+   "n_prune": 22,
+   "n_split": 9,
+   "n_fail_add": 179,
+   "n_merge": 2,
+   "n_rename": 0
+  },
+  {
+   "round": 6,
+   "L_M": 13261.322072798019,
+   "L_D": 35505.590797822275,
+   "total": 48766.91287062029,
+   "parsed": 425,
+   "n_sent": 673,
+   "n_categories": 199,
+   "n_entries": 984,
+   "avg_cats_per_word": 1.340599455040872,
+   "Q_mean": 3.5074541852402183,
+   "Q_max": 16,
+   "b_mean": 0.3289287718542075,
+   "em_ll": -5708.676520431222,
+   "em_iters": 4,
+   "n_prune": 90,
+   "n_split": 7,
+   "n_fail_add": 133,
+   "n_merge": 5,
+   "n_rename": 0
+  },
+  {
+   "round": 7,
+   "L_M": 13959.30388544022,
+   "L_D": 24802.647855754727,
+   "total": 38761.95174119495,
+   "parsed": 561,
+   "n_sent": 673,
+   "n_categories": 220,
+   "n_entries": 1034,
+   "avg_cats_per_word": 1.4087193460490464,
+   "Q_mean": 4.1630510153541325,
+   "Q_max": 16,
+   "b_mean": 0.30737081358237006,
+   "em_ll": -8587.05741598337,
+   "em_iters": 4,
+   "n_prune": 81,
+   "n_split": 6,
+   "n_fail_add": 20,
+   "n_merge": 5,
+   "n_rename": 0
+  },
+  {
+   "round": 8,
+   "L_M": 13158.723891533795,
+   "L_D": 23113.281883221884,
+   "total": 36272.00577475568,
+   "parsed": 584,
+   "n_sent": 673,
+   "n_categories": 207,
+   "n_entries": 979,
+   "avg_cats_per_word": 1.3337874659400546,
+   "Q_mean": 4.0825408618127765,
+   "Q_max": 13,
+   "b_mean": 0.3051761967573831,
+   "em_ll": -9107.67935824655,
+   "em_iters": 3,
+   "n_prune": 16,
+   "n_split": 0,
+   "n_fail_add": 5,
+   "n_merge": 0,
+   "n_rename": 0
+  },
+  {
+   "round": 9,
+   "L_M": 12999.00789275251,
+   "L_D": 22705.347915272367,
+   "total": 35704.35580802488,
+   "parsed": 589,
+   "n_sent": 673,
+   "n_categories": 207,
+   "n_entries": 968,
+   "avg_cats_per_word": 1.318801089918256,
+   "Q_mean": 4.077092620108964,
+   "Q_max": 13,
+   "b_mean": 0.30389902894620713,
+   "em_ll": -9231.403211758283,
+   "em_iters": 3,
+   "n_prune": 4,
+   "n_split": 0,
+   "n_fail_add": 74,
+   "n_merge": 3,
+   "n_rename": 0
+  },
+  {
+   "round": 10,
+   "L_M": 14873.31587690921,
+   "L_D": 16949.83326939066,
+   "total": 31823.149146299867,
+   "parsed": 667,
+   "n_sent": 673,
+   "n_categories": 235,
+   "n_entries": 1111,
+   "avg_cats_per_word": 1.513623978201635,
+   "Q_mean": 4.807578008915305,
+   "Q_max": 21,
+   "b_mean": 0.28559424534122146,
+   "em_ll": -11278.863430155232,
+   "em_iters": 3
+  },
+  {
+   "round": 10,
+   "L_M": 14873.31587690921,
+   "L_D": 94254.9286779082,
+   "total": 109128.24455481741,
+   "parsed": 712,
+   "n_sent": 1210,
+   "n_categories": 235,
+   "n_entries": 1111,
+   "avg_cats_per_word": 1.513623978201635,
+   "Q_mean": 4.281745375836286,
+   "Q_max": 21,
+   "b_mean": 0.27883495880038117,
+   "em_ll": -12526.564938731768,
+   "em_iters": 3,
+   "n_prune": 65,
+   "n_split": 43,
+   "n_fail_add": 272,
+   "n_merge": 7,
+   "n_rename": 0
+  },
+  {
+   "round": 11,
+   "L_M": 18173.224940120224,
+   "L_D": 63101.777732951094,
+   "total": 81275.00267307131,
+   "parsed": 1005,
+   "n_sent": 1210,
+   "n_categories": 276,
+   "n_entries": 1361,
+   "avg_cats_per_word": 1.8542234332425067,
+   "Q_mean": 6.514736324281782,
+   "Q_max": 44,
+   "b_mean": 0.23921207237713238,
+   "em_ll": -21819.098363849193,
+   "em_iters": 4,
+   "n_prune": 157,
+   "n_split": 25,
+   "n_fail_add": 81,
+   "n_merge": 11,
+   "n_rename": 0
+  },
+  {
+   "round": 12,
+   "L_M": 17508.203854972333,
+   "L_D": 53975.39714313559,
+   "total": 71483.60099810793,
+   "parsed": 1093,
+   "n_sent": 1210,
+   "n_categories": 269,
+   "n_entries": 1309,
+   "avg_cats_per_word": 1.7833787465940054,
+   "Q_mean": 6.4988075560802825,
+   "Q_max": 42,
+   "b_mean": 0.24307694867428942,
+   "em_ll": -24955.39667907006,
+   "em_iters": 3,
+   "n_prune": 58,
+   "n_split": 14,
+   "n_fail_add": 17,
+   "n_merge": 1,
+   "n_rename": 0
+  },
+  {
+   "round": 13,
+   "L_M": 17146.173676145543,
+   "L_D": 52052.96998293274,
+   "total": 69199.14365907828,
+   "parsed": 1112,
+   "n_sent": 1210,
+   "n_categories": 265,
+   "n_entries": 1282,
+   "avg_cats_per_word": 1.7465940054495912,
+   "Q_mean": 6.531129476584031,
+   "Q_max": 39,
+   "b_mean": 0.24718599477968775,
+   "em_ll": -25605.966395192387,
+   "em_iters": 3,
+   "n_prune": 19,
+   "n_split": 6,
+   "n_fail_add": 85,
+   "n_merge": 4,
+   "n_rename": 0
+  },
+  {
+   "round": 14,
+   "L_M": 19236.717295336373,
+   "L_D": 43452.99531010081,
+   "total": 62689.71260543718,
+   "parsed": 1200,
+   "n_sent": 1210,
+   "n_categories": 287,
+   "n_entries": 1437,
+   "avg_cats_per_word": 1.957765667574932,
+   "Q_mean": 7.41313459268005,
+   "Q_max": 41,
+   "b_mean": 0.22859793883613477,
+   "em_ll": -29031.296920579254,
+   "em_iters": 4,
+   "n_prune": 55,
+   "n_split": 5,
+   "n_fail_add": 2,
+   "n_merge": 5,
+   "n_rename": 0
+  },
+  {
+   "round": 15,
+   "L_M": 18590.294391452702,
+   "L_D": 43285.275902763446,
+   "total": 61875.570294216144,
+   "parsed": 1202,
+   "n_sent": 1210,
+   "n_categories": 281,
+   "n_entries": 1390,
+   "avg_cats_per_word": 1.893732970027248,
+   "Q_mean": 7.305104289649748,
+   "Q_max": 40,
+   "b_mean": 0.2294956568888347,
+   "em_ll": -29143.14185988656,
+   "em_iters": 3
+  },
+  {
+   "round": 15,
+   "L_M": 18590.294391452702,
+   "L_D": 86633.34841930991,
+   "total": 105223.64281076261,
+   "parsed": 1258,
+   "n_sent": 1481,
+   "n_categories": 281,
+   "n_entries": 1390,
+   "avg_cats_per_word": 1.893732970027248,
+   "Q_mean": 6.985305938715793,
+   "Q_max": 40,
+   "b_mean": 0.2273891877184522,
+   "em_ll": -31207.125756708065,
+   "em_iters": 3,
+   "n_prune": 8,
+   "n_split": 54,
+   "n_fail_add": 136,
+   "n_merge": 3,
+   "n_rename": 0
+  },
+  {
+   "round": 16,
+   "L_M": 21114.348553217482,
+   "L_D": 66803.0530453218,
+   "total": 87917.40159853928,
+   "parsed": 1413,
+   "n_sent": 1481,
+   "n_categories": 316,
+   "n_entries": 1571,
+   "avg_cats_per_word": 2.1403269754768393,
+   "Q_mean": 8.878183177389797,
+   "Q_max": 66,
+   "b_mean": 0.21071773382424794,
+   "em_ll": -37640.57433674833,
+   "em_iters": 4,
+   "n_prune": 81,
+   "n_split": 18,
+   "n_fail_add": 13,
+   "n_merge": 2,
+   "n_rename": 0
+  },
+  {
+   "round": 17,
+   "L_M": 20400.366740575275,
+   "L_D": 65257.887392141376,
+   "total": 85658.25413271665,
+   "parsed": 1425,
+   "n_sent": 1481,
+   "n_categories": 293,
+   "n_entries": 1521,
+   "avg_cats_per_word": 2.0722070844686646,
+   "Q_mean": 8.42330873605349,
+   "Q_max": 57,
+   "b_mean": 0.21627000505437668,
+   "em_ll": -38162.39695569048,
+   "em_iters": 3,
+   "n_prune": 26,
+   "n_split": 16,
+   "n_fail_add": 49,
+   "n_merge": 3,
+   "n_rename": 0
+  },
+  {
+   "round": 18,
+   "L_M": 21530.016185814176,
+   "L_D": 59488.5978484472,
+   "total": 81018.61403426138,
+   "parsed": 1475,
+   "n_sent": 1481,
+   "n_categories": 313,
+   "n_entries": 1605,
+   "avg_cats_per_word": 2.1866485013623977,
+   "Q_mean": 8.728406642873221,
+   "Q_max": 57,
+   "b_mean": 0.21258003597859076,
+   "em_ll": -40491.59277931744,
+   "em_iters": 3,
+   "n_prune": 33,
+   "n_split": 13,
+   "n_fail_add": 2,
+   "n_merge": 1,
+   "n_rename": 0
+  },
+  {
+   "round": 19,
+   "L_M": 21275.182369515824,
+   "L_D": 59252.03474607561,
+   "total": 80527.21711559143,
+   "parsed": 1477,
+   "n_sent": 1481,
+   "n_categories": 308,
+   "n_entries": 1588,
+   "avg_cats_per_word": 2.1634877384196187,
+   "Q_mean": 8.760352561010897,
+   "Q_max": 57,
+   "b_mean": 0.21302913929632694,
+   "em_ll": -40585.65156642632,
+   "em_iters": 3,
+   "n_prune": 17,
+   "n_split": 13,
+   "n_fail_add": 0,
+   "n_merge": 0,
+   "n_rename": 0
+  },
+  {
+   "round": 20,
+   "L_M": 21219.103824504447,
+   "L_D": 59234.517255422994,
+   "total": 80453.62107992744,
+   "parsed": 1477,
+   "n_sent": 1481,
+   "n_categories": 308,
+   "n_entries": 1584,
+   "avg_cats_per_word": 2.1580381471389645,
+   "Q_mean": 8.797083695058035,
+   "Q_max": 62,
+   "b_mean": 0.21384671767464086,
+   "em_ll": -40573.337261866116,
+   "em_iters": 3,
+   "n_prune": 12,
+   "n_split": 9,
+   "n_fail_add": 0,
+   "n_merge": 0,
+   "n_rename": 0
+  },
+  {
+   "round": 21,
+   "L_M": 21185.544915745915,
+   "L_D": 59237.36086747208,
+   "total": 80422.905783218,
+   "parsed": 1477,
+   "n_sent": 1481,
+   "n_categories": 308,
+   "n_entries": 1581,
+   "avg_cats_per_word": 2.153950953678474,
+   "Q_mean": 8.789625735506892,
+   "Q_max": 62,
+   "b_mean": 0.21387595619365657,
+   "em_ll": -40574.33993720511,
+   "em_iters": 3,
+   "n_prune": 10,
+   "n_split": 10,
+   "n_fail_add": 0,
+   "n_merge": 0,
+   "n_rename": 0
+  },
+  {
+   "round": 22,
+   "L_M": 21185.544915745915,
+   "L_D": 59237.22582281074,
+   "total": 80422.77073855666,
+   "parsed": 1477,
+   "n_sent": 1481,
+   "n_categories": 308,
+   "n_entries": 1581,
+   "avg_cats_per_word": 2.153950953678474,
+   "Q_mean": 8.78952927558599,
+   "Q_max": 62,
+   "b_mean": 0.213876963805706,
+   "em_ll": -40574.24351362204,
+   "em_iters": 3,
+   "n_prune": 10,
+   "n_split": 9,
+   "n_fail_add": 0,
+   "n_merge": 0,
+   "n_rename": 0
+  },
+  {
+   "round": 23,
+   "L_M": 21173.02527949307,
+   "L_D": 59241.49227161777,
+   "total": 80414.51755111084,
+   "parsed": 1477,
+   "n_sent": 1481,
+   "n_categories": 308,
+   "n_entries": 1580,
+   "avg_cats_per_word": 2.1525885558583107,
+   "Q_mean": 8.78952927558599,
+   "Q_max": 62,
+   "b_mean": 0.2138796998957809,
+   "em_ll": -40577.073767907335,
+   "em_iters": 3,
+   "n_prune": 10,
+   "n_split": 10,
+   "n_fail_add": 0,
+   "n_merge": 0,
+   "n_rename": 0
+  },
+  {
+   "round": 24,
+   "L_M": 21173.02527949307,
+   "L_D": 59241.48262087273,
+   "total": 80414.5079003658,
+   "parsed": 1477,
+   "n_sent": 1481,
+   "n_categories": 308,
+   "n_entries": 1580,
+   "avg_cats_per_word": 2.1525885558583107,
+   "Q_mean": 8.788719012250406,
+   "Q_max": 62,
+   "b_mean": 0.213873775814909,
+   "em_ll": -40577.09040083737,
+   "em_iters": 3
+  }
+ ],
+ "dev": {
+  "n_sent": 289,
+  "coverage": 0.15916955017301038,
+  "uas_all": 0.030911901081916538,
+  "uas_covered": 0.273972602739726,
+  "ppl_per_word": 131.57083169942666,
+  "n_oov_sent": 203,
+  "coverage_in_lex": 0.5348837209302325,
+  "uas_all_in_lex": 0.12684989429175475,
+  "n_in_lex": 86,
+  "sa_applied": 17,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 9.211198781838318,
+  "lat_Q_unpruned_max": 16.511627906976745,
+  "lat_Q_live_mean": 4.679761904761905,
+  "lat_b_mean": 0.21403366838383464,
+  "lat_n_edges": 24.651162790697676,
+  "bracket_f1": 0.03973509933774834,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06800618238021638,
+    "uas_covered_subset": 0.0593607305936073
+   },
+   "right_branching": {
+    "uas_all": 0.36269963936115407,
+    "uas_covered_subset": 0.4200913242009132
+   },
+   "random_tree": {
+    "uas_all": 0.15352910870685216,
+    "uas_all_std": 0.012377633690217622,
+    "uas_covered_subset": 0.22100456621004566,
+    "uas_covered_subset_std": 0.02896575621397937
+   }
+  }
+ },
+ "dev_le8": {
+  "n_sent": 214,
+  "coverage": 0.21495327102803738,
+  "uas_all": 0.048859934853420196,
+  "uas_covered": 0.273972602739726,
+  "ppl_per_word": 131.57083169942666,
+  "n_oov_sent": 134,
+  "coverage_in_lex": 0.575,
+  "uas_all_in_lex": 0.14457831325301204,
+  "n_in_lex": 80,
+  "sa_applied": 17,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 9.399955357142861,
+  "lat_Q_unpruned_max": 16.45,
+  "lat_Q_live_mean": 4.435431547619048,
+  "lat_b_mean": 0.21741076146677907,
+  "lat_n_edges": 22.5125,
+  "bracket_f1": 0.03973509933774834,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06921824104234528,
+    "uas_covered_subset": 0.0593607305936073
+   },
+   "right_branching": {
+    "uas_all": 0.3802931596091205,
+    "uas_covered_subset": 0.4200913242009132
+   },
+   "random_tree": {
+    "uas_all": 0.1723127035830619,
+    "uas_all_std": 0.01101728633569235,
+    "uas_covered_subset": 0.20913242009132418,
+    "uas_covered_subset_std": 0.030206092070394937
+   }
+  }
+ },
+ "dev_failure_clusters": {
+  "by_word": [
+   [
+    "<END>",
+    11
+   ],
+   [
+    "again",
+    3
+   ],
+   [
+    "home",
+    2
+   ],
+   [
+    "n't",
+    2
+   ],
+   [
+    "get",
+    1
+   ],
+   [
+    "phone",
+    1
+   ],
+   [
+    "ago",
+    1
+   ],
+   [
+    "any",
+    1
+   ],
+   [
+    "something",
+    1
+   ],
+   [
+    "while",
+    1
+   ],
+   [
+    "thing",
+    1
+   ],
+   [
+    "anything",
+    1
+   ],
+   [
+    "little",
+    1
+   ],
+   [
+    "right",
+    1
+   ],
+   [
+    "tired",
+    1
+   ],
+   [
+    "his",
+    1
+   ],
+   [
+    "high",
+    1
+   ],
+   [
+    "pounds",
+    1
+   ],
+   [
+    "pretty",
+    1
+   ],
+   [
+    "end",
+    1
+   ],
+   [
+    "drank",
+    1
+   ],
+   [
+    "game",
+    1
+   ],
+   [
+    "hear",
+    1
+   ],
+   [
+    "fun",
+    1
+   ],
+   [
+    "three",
+    1
+   ],
+   [
+    "back",
+    1
+   ]
+  ],
+  "by_upos_deprel": [
+   [
+    "END/END",
+    11
+   ],
+   [
+    "ADV/advmod",
+    7
+   ],
+   [
+    "VERB/root",
+    3
+   ],
+   [
+    "NOUN/root",
+    3
+   ],
+   [
+    "PART/advmod",
+    2
+   ],
+   [
+    "NOUN/compound",
+    1
+   ],
+   [
+    "ADV/root",
+    1
+   ],
+   [
+    "DET/det",
+    1
+   ],
+   [
+    "PRON/obl",
+    1
+   ],
+   [
+    "NOUN/obl",
+    1
+   ],
+   [
+    "PRON/obj",
+    1
+   ],
+   [
+    "ADJ/parataxis",
+    1
+   ],
+   [
+    "ADV/reparandum",
+    1
+   ],
+   [
+    "ADJ/root",
+    1
+   ],
+   [
+    "PRON/nmod",
+    1
+   ],
+   [
+    "ADJ/amod",
+    1
+   ],
+   [
+    "NOUN/obj",
+    1
+   ],
+   [
+    "ADJ/conj",
+    1
+   ],
+   [
+    "NUM/obj",
+    1
+   ]
+  ],
+  "by_position": [
+   [
+    2,
+    1
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    4,
+    3
+   ],
+   [
+    5,
+    15
+   ],
+   [
+    6,
+    6
+   ],
+   [
+    7,
+    7
+   ],
+   [
+    8,
+    2
+   ],
+   [
+    9,
+    1
+   ]
+  ]
+ },
+ "n_dev_failures": 40,
+ "train_failures": [
+  {
+   "sentence": "both of these events are <C4> on camera",
+   "fail_pos": 4,
+   "sigma_prev": [
+    "S\\S"
+   ],
+   "n_sigma_prev": 1,
+   "word": "events",
+   "word_cats": [
+    "NP/N"
+   ]
+  },
+  {
+   "sentence": "other <C1> will survive for another day",
+   "fail_pos": 2,
+   "sigma_prev": [
+    "NP",
+    "(S/NP)/((N/NP)/S)"
+   ],
+   "n_sigma_prev": 2,
+   "word": "<C1>",
+   "word_cats": [
+    "N",
+    "NP",
+    "S",
+    "N/NP",
+    "NP/N",
+    "NP/NP",
+    "NP/S",
+    "S/N",
+    "S/NP",
+    "S/S",
+    "S\\S",
+    "(S\\S)/NP",
+    "(S\\S)/S",
+    "N\\(S\\N)",
+    "S\\(N/NP)",
+    "S\\(NP/NP)",
+    "S\\(S\\S)",
+    "((S\\S)/S)/S",
+    "(N\\S)/(S\\S)",
+    "(S\\(NP/N))/NP",
+    "S\\((S/S)/N)"
+   ]
+  },
+  {
+   "sentence": "hey ginny betty said into the phone",
+   "fail_pos": 2,
+   "sigma_prev": [
+    "S\\N"
+   ],
+   "n_sigma_prev": 1,
+   "word": "ginny",
+   "word_cats": [
+    "S/NP"
+   ]
+  },
+  {
+   "sentence": "there 's a show called my strange addiction",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "S/N"
+   ],
+   "n_sigma_prev": 1,
+   "word": "called",
+   "word_cats": [
+    "N\\NP",
+    "S\\S"
+   ]
+  }
+ ],
+ "top_categories": [
+  {
+   "category": "S\\S",
+   "count": 1313.3,
+   "words": [
+    "<C1>",
+    "<C5>",
+    "it",
+    "<C9>",
+    "me",
+    "<C3>",
+    "in",
+    "<C2>",
+    "on",
+    "here",
+    "that",
+    "of",
+    "to",
+    "right",
+    "one",
+    "not",
+    "at",
+    "good",
+    "now",
+    "them"
+   ]
+  },
+  {
+   "category": "S/S",
+   "count": 669.3,
+   "words": [
+    "and",
+    "<C1>",
+    "so",
+    "yeah",
+    "oh",
+    "the",
+    "my",
+    "like",
+    "but",
+    "no",
+    "that",
+    "you",
+    "well",
+    "i",
+    "he",
+    "<C5>",
+    "then",
+    "she",
+    "also",
+    "a"
+   ]
+  },
+  {
+   "category": "NP",
+   "count": 618.3,
+   "words": [
+    "<C1>",
+    "said",
+    "do",
+    "have",
+    "was",
+    "did",
+    "be",
+    "of",
+    "know",
+    "think",
+    "are",
+    "just",
+    "in",
+    "out",
+    "the",
+    "does",
+    "'m",
+    "am",
+    "say",
+    "'s"
+   ]
+  },
+  {
+   "category": "S",
+   "count": 614.5,
+   "words": [
+    "<C5>",
+    "<C1>",
+    "a",
+    "this",
+    "her",
+    "was",
+    "to",
+    "that",
+    "been",
+    "there",
+    "you",
+    "our",
+    "two",
+    "today",
+    "first",
+    "n't",
+    "will",
+    "him",
+    "’s",
+    "has"
+   ]
+  },
+  {
+   "category": "S/NP",
+   "count": 534.1,
+   "words": [
+    "i",
+    "<C14>",
+    "we",
+    "he",
+    "there",
+    "it",
+    "she",
+    "this",
+    "<C5>",
+    "you",
+    "they",
+    "the",
+    "<C1>",
+    "are",
+    "'s",
+    "one",
+    "or",
+    "to",
+    "my",
+    "his"
+   ]
+  },
+  {
+   "category": "N",
+   "count": 454.1,
+   "words": [
+    "i",
+    "the",
+    "you",
+    "they",
+    "it",
+    "she",
+    "<C1>",
+    "that",
+    "he",
+    "go",
+    "<C5>",
+    "we",
+    "want",
+    "and",
+    "little",
+    "this",
+    "game",
+    "need",
+    "<C0>",
+    "once"
+   ]
+  },
+  {
+   "category": "S\\N",
+   "count": 372.0,
+   "words": [
+    "<C19>",
+    "is",
+    "was",
+    "will",
+    "<C5>",
+    "<C4>",
+    "see",
+    "mean",
+    "get",
+    "have",
+    "work",
+    "look",
+    "are",
+    "same",
+    "want",
+    "'ll",
+    "and",
+    "trump",
+    "started",
+    "way"
+   ]
+  },
+  {
+   "category": "(S\\S)\\N",
+   "count": 265.6,
+   "words": [
+    "'s",
+    "do",
+    "’s",
+    "is",
+    "'m",
+    "hope",
+    "can",
+    "felt",
+    "<C11>",
+    "earth",
+    "try",
+    "like",
+    "santa",
+    "ways",
+    "who",
+    "together",
+    "most",
+    "luther",
+    "follow",
+    "collapse"
+   ]
+  },
+  {
+   "category": "NP/S",
+   "count": 238.2,
+   "words": [
+    "<C1>",
+    "'s",
+    "<C5>",
+    "we",
+    "i",
+    "they",
+    "doing",
+    "is",
+    "of",
+    "know",
+    "think",
+    "thought",
+    "not",
+    "now",
+    "that",
+    "'ll",
+    "you",
+    "have",
+    "for",
+    "to"
+   ]
+  },
+  {
+   "category": "NP/N",
+   "count": 200.1,
+   "words": [
+    "you",
+    "<C1>",
+    "we",
+    "i",
+    "says",
+    "they",
+    "a",
+    "sorry",
+    "zero",
+    "'s",
+    "up",
+    "<C19>",
+    "died",
+    "floor",
+    "talking",
+    "definitely",
+    "those",
+    "my",
+    "with",
+    "'ll"
+   ]
+  },
+  {
+   "category": "NP/NP",
+   "count": 197.1,
+   "words": [
+    "it",
+    "<C1>",
+    "yes",
+    "i",
+    "the",
+    "'ll",
+    "’s",
+    "<C10>",
+    "was",
+    "'s",
+    "<C5>",
+    "too",
+    "are",
+    "for",
+    "just",
+    "'d",
+    "point",
+    "to",
+    "he",
+    "so"
+   ]
+  },
+  {
+   "category": "N\\S",
+   "count": 179.2,
+   "words": [
+    "the",
+    "n't",
+    "more",
+    "can",
+    "your",
+    "his",
+    "is",
+    "<C6>",
+    "in",
+    "at",
+    "culture",
+    "not",
+    "21",
+    "ta",
+    "head",
+    "kidding",
+    "anything",
+    "door",
+    "thought",
+    "popularity"
+   ]
+  },
+  {
+   "category": "S/((S\\S)\\N)",
+   "count": 167.5,
+   "words": [
+    "that",
+    "it",
+    "there",
+    "here",
+    "goes",
+    "mrs."
+   ]
+  },
+  {
+   "category": "(S\\S)/NP",
+   "count": 150.2,
+   "words": [
+    "<C0>",
+    "<C1>",
+    "it",
+    "to",
+    "all",
+    "he",
+    "a",
+    "she",
+    "n't",
+    "their",
+    "nice",
+    "want",
+    "’s",
+    "in",
+    "both",
+    "pete",
+    "q",
+    "hear",
+    "would",
+    "remember"
+   ]
+  },
+  {
+   "category": "(S\\S)/S",
+   "count": 138.0,
+   "words": [
+    "what",
+    "<C1>",
+    "like",
+    "so",
+    "never",
+    "how",
+    "at",
+    "you",
+    "make",
+    "up",
+    "really",
+    "guys",
+    "for",
+    "going",
+    "an",
+    "right",
+    "guy",
+    "getting",
+    "down",
+    "another"
+   ]
+  },
+  {
+   "category": "N/NP",
+   "count": 105.8,
+   "words": [
+    "i",
+    "and",
+    "she",
+    "they",
+    "his",
+    "but",
+    "so",
+    "first",
+    "one",
+    "wait",
+    "least",
+    "what",
+    "same",
+    "shirts",
+    "course",
+    "ninety-nine",
+    "trouble",
+    "<C1>",
+    "heard",
+    "country"
+   ]
+  },
+  {
+   "category": "S\\(S\\S)",
+   "count": 87.6,
+   "words": [
+    "<C1>",
+    "not",
+    "like",
+    "you",
+    "<C5>",
+    "to",
+    "so",
+    "that",
+    "three",
+    "trying",
+    "find",
+    "nice",
+    "sports",
+    "carry",
+    "lipstick",
+    "comes",
+    "thought",
+    "renata",
+    "collapse",
+    "friend"
+   ]
+  },
+  {
+   "category": "N/N",
+   "count": 86.7,
+   "words": [
+    "<C7>",
+    "we",
+    "in",
+    "the",
+    "oh",
+    "had",
+    "yes",
+    "makes",
+    "face",
+    "only",
+    "he",
+    "goes",
+    "2012",
+    "almost",
+    "because"
+   ]
+  },
+  {
+   "category": "S/((N\\N)\\N)",
+   "count": 83.5,
+   "words": [
+    "this",
+    "<C6>",
+    "it"
+   ]
+  },
+  {
+   "category": "(S\\S)/(S/NP)",
+   "count": 79.0,
+   "words": [
+    "a",
+    "the",
+    "over",
+    "mexico"
+   ]
+  },
+  {
+   "category": "S\\(NP/N)",
+   "count": 63.5,
+   "words": [
+    "know",
+    "are",
+    "'re",
+    "4",
+    "small",
+    "sister",
+    "nephew"
+   ]
+  },
+  {
+   "category": "(N\\N)\\N",
+   "count": 62.2,
+   "words": [
+    "is",
+    "looks",
+    "vlog",
+    "starts",
+    "rained"
+   ]
+  },
+  {
+   "category": "N\\(S/S)",
+   "count": 56.6,
+   "words": [
+    "i",
+    "it",
+    "they",
+    "he"
+   ]
+  },
+  {
+   "category": "(S\\S)/N",
+   "count": 55.2,
+   "words": [
+    "a",
+    "to",
+    "my",
+    "is",
+    "has",
+    "big",
+    "beautiful",
+    "ended",
+    "color",
+    "yours",
+    "show",
+    "changed",
+    "study",
+    "nonna"
+   ]
+  },
+  {
+   "category": "S\\NP",
+   "count": 52.6,
+   "words": [
+    "into",
+    "you",
+    "old",
+    "uh",
+    "<C21>",
+    "while",
+    "blue",
+    "month",
+    "study",
+    "22",
+    "letter",
+    "millions",
+    "hotel",
+    "cultural",
+    "are",
+    "service",
+    "’re",
+    "could",
+    "he",
+    "seems"
+   ]
+  },
+  {
+   "category": "S/N",
+   "count": 47.0,
+   "words": [
+    "<C1>",
+    "the",
+    "was",
+    "of",
+    "a",
+    "to",
+    "<C5>",
+    "you",
+    "real",
+    "whatsoever"
+   ]
+  },
+  {
+   "category": "S\\(NP/NP)",
+   "count": 40.6,
+   "words": [
+    "of",
+    "<C1>",
+    "he",
+    "long"
+   ]
+  },
+  {
+   "category": "(NP\\S)/NP",
+   "count": 38.4,
+   "words": [
+    "<C20>",
+    "kind",
+    "as",
+    "okay",
+    "him",
+    "part"
+   ]
+  },
+  {
+   "category": "(S/S)/S",
+   "count": 35.4,
+   "words": [
+    "it",
+    "source",
+    "bird",
+    "simply"
+   ]
+  },
+  {
+   "category": "S/(NP/N)",
+   "count": 31.8,
+   "words": [
+    "he",
+    "mother",
+    "not",
+    "god",
+    "the",
+    "power",
+    "below",
+    "what",
+    "players"
+   ]
+  },
+  {
+   "category": "((S\\S)/S)/S",
+   "count": 30.2,
+   "words": [
+    "<C1>",
+    "is",
+    "two",
+    "wo"
+   ]
+  },
+  {
+   "category": "(S\\S)/(N/N)",
+   "count": 30.1,
+   "words": [
+    "in"
+   ]
+  },
+  {
+   "category": "NP/((N\\NP)/S)",
+   "count": 28.0,
+   "words": [
+    "and"
+   ]
+  },
+  {
+   "category": "(N\\NP)/S",
+   "count": 27.7,
+   "words": [
+    "<C17>",
+    "words"
+   ]
+  },
+  {
+   "category": "N/S",
+   "count": 27.0,
+   "words": [
+    "<C19>",
+    "have",
+    "many",
+    "pretty",
+    "my",
+    "a",
+    "spot",
+    "grizzly",
+    "different"
+   ]
+  },
+  {
+   "category": "(S\\N)/NP",
+   "count": 26.0,
+   "words": [
+    "<C19>",
+    "always",
+    "is",
+    "stood",
+    "might",
+    "key",
+    "have",
+    "still"
+   ]
+  },
+  {
+   "category": "N\\NP",
+   "count": 21.4,
+   "words": [
+    "<C12>",
+    "low",
+    "process",
+    "n’t",
+    "said",
+    "headset",
+    "time",
+    "white",
+    "called"
+   ]
+  },
+  {
+   "category": "(S\\(NP/N))/NP",
+   "count": 21.2,
+   "words": [
+    "<C1>",
+    "'re",
+    "i"
+   ]
+  },
+  {
+   "category": "(S\\N)/(NP/N)",
+   "count": 20.2,
+   "words": [
+    "'m",
+    "mom",
+    "chalmers"
+   ]
+  },
+  {
+   "category": "(S\\N)/(NP/S)",
+   "count": 20.1,
+   "words": [
+    "'re",
+    "mother"
+   ]
+  },
+  {
+   "category": "(NP\\(S\\S))/N",
+   "count": 19.7,
+   "words": [
+    "n't",
+    "gram"
+   ]
+  },
+  {
+   "category": "S\\(N/NP)",
+   "count": 18.2,
+   "words": [
+    "<C1>",
+    "reasons"
+   ]
+  },
+  {
+   "category": "(S\\S)/(NP/N)",
+   "count": 17.8,
+   "words": [
+    "was",
+    "<C16>",
+    "to",
+    "us",
+    "from"
+   ]
+  },
+  {
+   "category": "((N\\N)\\N)/S",
+   "count": 17.6,
+   "words": [
+    "is"
+   ]
+  },
+  {
+   "category": "S\\(S\\N)",
+   "count": 16.9,
+   "words": [
+    "writes",
+    "lot",
+    "not",
+    "okay",
+    "fine",
+    "did",
+    "know",
+    "’s",
+    "asked"
+   ]
+  },
+  {
+   "category": "(S/NP)/N",
+   "count": 16.7,
+   "words": [
+    "no",
+    "football",
+    "plan"
+   ]
+  },
+  {
+   "category": "(NP\\S)/N",
+   "count": 15.0,
+   "words": [
+    "sense",
+    "his",
+    "2014",
+    "remarks",
+    "too",
+    "interest",
+    "dillard"
+   ]
+  },
+  {
+   "category": "(NP/N)/S",
+   "count": 14.6,
+   "words": [
+    "<C5>"
+   ]
+  },
+  {
+   "category": "S\\(NP/S)",
+   "count": 14.4,
+   "words": [
+    "got",
+    "fair",
+    "visited",
+    "before"
+   ]
+  },
+  {
+   "category": "(N\\N)/S",
+   "count": 14.1,
+   "words": [
+    "for",
+    "own",
+    "was",
+    "but",
+    "hate",
+    "blue"
+   ]
+  }
+ ],
+ "lexicon_size": {
+  "keys": 734,
+  "entries": 1580,
+  "categories": 308
+ },
+ "dev_per_sent": [
+  {
+   "sid": "GUM_bio_byron-7",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_bio_emperor-25",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_bio_emperor-30",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-4",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-5",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-7",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-10",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-11",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-16",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-17",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-20",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-23",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-25",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-26",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-30",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-35",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-36",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-37",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-38",
+   "n": 5,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 5,
+   "logprob": -21.610536323412155,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    4,
+    2,
+    2
+   ],
+   "cats": [
+    "NP/N",
+    "S\\(NP/N)",
+    "(S\\S)/S",
+    "S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "SA",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    3,
+    2
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-40",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-42",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-45",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-49",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 4,
+   "logprob": -18.540033625392702,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    4,
+    0
+   ],
+   "cats": [
+    "N",
+    "S\\N",
+    "(S\\S)/(S/NP)",
+    "S/NP"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "SA",
+    "FA"
+   ],
+   "br": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-50",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 4,
+   "logprob": -18.540033625392702,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    4,
+    0
+   ],
+   "cats": [
+    "N",
+    "S\\N",
+    "(S\\S)/(S/NP)",
+    "S/NP"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "SA",
+    "FA"
+   ],
+   "br": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-52",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 6,
+   "logprob": -27.81143639625488,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    3,
+    4,
+    0,
+    6,
+    0
+   ],
+   "cats": [
+    "S/S",
+    "S/S",
+    "N\\(S/S)",
+    "S\\N",
+    "(S\\S)/(S/NP)",
+    "S/NP"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "BA",
+    "BA",
+    "SA",
+    "FA"
+   ],
+   "br": [
+    0,
+    4,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-55",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-57",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 3,
+   "logprob": -13.95673182643816,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    3,
+    0
+   ],
+   "cats": [
+    "S/S",
+    "N\\(S/S)",
+    "S\\N"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-58",
+   "n": 7,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": -25.230450617313743,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    3,
+    3,
+    0,
+    5,
+    0,
+    7,
+    5
+   ],
+   "cats": [
+    "S/S",
+    "S/((S\\S)\\N)",
+    "(S\\S)\\N",
+    "(S\\S)/S",
+    "S/((N\\N)\\N)",
+    "((N\\N)\\N)/S",
+    "S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "FA",
+    "SA",
+    "B>",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    5,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-61",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-65",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-66",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-67",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-71",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-74",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-79",
+   "n": 5,
+   "covered": true,
+   "uas_correct": 1,
+   "uas_total": 5,
+   "logprob": -26.631184916031486,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    0,
+    3,
+    1,
+    1,
+    1
+   ],
+   "cats": [
+    "S/NP",
+    "NP/S",
+    "S",
+    "S\\S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "FA",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    3,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-81",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 1,
+   "uas_total": 6,
+   "logprob": -35.32007678318912,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2,
+    5,
+    0,
+    5
+   ],
+   "cats": [
+    "S/S",
+    "S",
+    "S\\S",
+    "(S\\S)/S",
+    "S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA",
+    "SA",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    1,
+    4,
+    2
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-89",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-90",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-91",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-92",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -11.056314942143286,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2
+   ],
+   "cats": [
+    "S/((S\\S)\\N)",
+    "(S\\S)\\N",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-93",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-95",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-96",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-97",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-100",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-102",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-103",
+   "n": 2,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 2,
+   "logprob": -8.013393082962338,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0
+   ],
+   "cats": [
+    "NP/N",
+    "S\\(NP/N)"
+   ],
+   "rules": [
+    "LEX",
+    "BA"
+   ],
+   "br": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-105",
+   "n": 2,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 2,
+   "logprob": -8.013393082962338,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0
+   ],
+   "cats": [
+    "NP/N",
+    "S\\(NP/N)"
+   ],
+   "rules": [
+    "LEX",
+    "BA"
+   ],
+   "br": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-107",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 4,
+   "logprob": -18.479654007842356,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2,
+    3
+   ],
+   "cats": [
+    "NP/N",
+    "S\\(NP/N)",
+    "(S\\S)/NP",
+    "NP"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "SA",
+    "FA"
+   ],
+   "br": [
+    0,
+    2,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-110",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 1,
+   "uas_total": 6,
+   "logprob": -29.797542461820484,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    6,
+    1,
+    4,
+    2,
+    6,
+    0
+   ],
+   "cats": [
+    "N/NP",
+    "NP/S",
+    "S/S",
+    "S",
+    "(S\\N)/(NP/S)",
+    "NP/S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "FA",
+    "SA",
+    "FA"
+   ],
+   "br": [
+    0,
+    4,
+    2
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-112",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-114",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-116",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": -19.296046193294018,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    3,
+    0,
+    3
+   ],
+   "cats": [
+    "S/S",
+    "N\\(S/S)",
+    "S\\N",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-118",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-120",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-121",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": -20.39765262546057,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2,
+    2
+   ],
+   "cats": [
+    "NP/N",
+    "S\\(NP/N)",
+    "S\\S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-127",
+   "n": 8,
+   "covered": true,
+   "uas_correct": 1,
+   "uas_total": 8,
+   "logprob": -34.567455052066805,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    3,
+    4,
+    0,
+    6,
+    4,
+    4,
+    7
+   ],
+   "cats": [
+    "N",
+    "(S\\S)\\N",
+    "(NP\\(S\\S))/N",
+    "(S\\(NP/N))/NP",
+    "NP/NP",
+    "NP",
+    "(S\\S)/NP",
+    "NP"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "SA",
+    "SA",
+    "B>",
+    "FA",
+    "SA",
+    "FA"
+   ],
+   "br": [
+    1,
+    6,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-128",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-146",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": -17.87866600145249,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    3,
+    3,
+    0,
+    3
+   ],
+   "cats": [
+    "S/S",
+    "S/S",
+    "S/NP",
+    "NP"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_grounded-147",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-148",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_grounded-149",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-151",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_grounded-159",
+   "n": 7,
+   "covered": true,
+   "uas_correct": 7,
+   "uas_total": 7,
+   "logprob": -39.29482786324693,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    4,
+    4,
+    4,
+    0,
+    4,
+    7,
+    4
+   ],
+   "cats": [
+    "S/S",
+    "S/S",
+    "S/S",
+    "S",
+    "S\\S",
+    "(S\\S)/NP",
+    "NP"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "FA",
+    "BA",
+    "SA",
+    "FA"
+   ],
+   "br": [
+    0,
+    5,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-1",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 1,
+   "uas_total": 3,
+   "logprob": -17.706982384758465,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    3,
+    0
+   ],
+   "cats": [
+    "N/N",
+    "N",
+    "S\\N"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-5",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-11",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_risk-25",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -9.916727739652746,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2
+   ],
+   "cats": [
+    "S/((S\\S)\\N)",
+    "(S\\S)\\N",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-26",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_risk-33",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_risk-42",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -9.527658207751003,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2
+   ],
+   "cats": [
+    "S/((S\\S)\\N)",
+    "(S\\S)\\N",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-44",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-45",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-55",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 6,
+   "uas_total": 6,
+   "logprob": -36.907682467083646,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    0
+   ],
+   "cats": [
+    "S/S",
+    "S/NP",
+    "NP/S",
+    "S/S",
+    "S/S",
+    "S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "B>",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    4,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-56",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-57",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_risk-58",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_risk-59",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-79",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_risk-80",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_conversation_risk-88",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-89",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-91",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 4,
+   "logprob": -12.702361475907859,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    3,
+    4,
+    0
+   ],
+   "cats": [
+    "N",
+    "(S\\S)\\N",
+    "(NP\\(S\\S))/N",
+    "S\\(NP/N)"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "SA",
+    "BA"
+   ],
+   "br": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-93",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-94",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-96",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-108",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-118",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -17.15906786141417,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2
+   ],
+   "cats": [
+    "NP/N",
+    "S\\(NP/N)",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-125",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-130",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-131",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-136",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": -31.689759594311433,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2,
+    2,
+    2,
+    2
+   ],
+   "cats": [
+    "N",
+    "S\\N",
+    "S\\S",
+    "S\\S",
+    "S\\S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "BA",
+    "BA",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    4,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-137",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 6,
+   "logprob": -26.076254681904377,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    0,
+    1,
+    2,
+    5,
+    3,
+    5
+   ],
+   "cats": [
+    "S/NP",
+    "NP/S",
+    "S/NP",
+    "NP/NP",
+    "NP/S",
+    "S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "B>",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    4,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-139",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-141",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": -20.82992039919542,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    4,
+    2
+   ],
+   "cats": [
+    "N",
+    "(S\\N)/N",
+    "N/S",
+    "S"
+   ],
+   "rules": [
+    "LEX",
+    "SA",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-143",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-145",
+   "n": 5,
+   "covered": true,
+   "uas_correct": 3,
+   "uas_total": 5,
+   "logprob": -23.029839307302023,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    3,
+    4,
+    0,
+    4
+   ],
+   "cats": [
+    "N",
+    "(S\\S)\\N",
+    "N\\S",
+    "S\\N",
+    "S\\(S\\S)"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "B<",
+    "B<",
+    "BA"
+   ],
+   "br": [
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_conversation_risk-146",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_conversation_risk-169",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_court_loan-17",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_loan-19",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_loan-20",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_loan-39",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_loan-40",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -9.916727739652746,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2
+   ],
+   "cats": [
+    "S/((S\\S)\\N)",
+    "(S\\S)\\N",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_court_loan-43",
+   "n": 7,
+   "covered": true,
+   "uas_correct": 1,
+   "uas_total": 7,
+   "logprob": -31.786378047710738,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2,
+    2,
+    2,
+    7,
+    2
+   ],
+   "cats": [
+    "S/S",
+    "S/NP",
+    "NP",
+    "S\\S",
+    "S\\S",
+    "(S\\S)/N",
+    "N"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "FA",
+    "BA",
+    "BA",
+    "SA",
+    "FA"
+   ],
+   "br": [
+    0,
+    5,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_court_loan-44",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_negligence-23",
+   "n": 7,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 7,
+   "logprob": -36.69978556215883,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    3,
+    3,
+    0,
+    3,
+    6,
+    7,
+    0
+   ],
+   "cats": [
+    "S/S",
+    "S/S",
+    "S/NP",
+    "NP",
+    "((S\\S)/S)/S",
+    "S",
+    "S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "FA",
+    "SA",
+    "FA",
+    "FA"
+   ],
+   "br": [
+    0,
+    5,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_court_negligence-26",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_negligence-27",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_negligence-28",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_negligence-33",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_negligence-37",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_negligence-42",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_court_negligence-45",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_evolved-15",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_evolved-20",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_evolved-24",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_evolved-26",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_evolved-27",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_essay_evolved-52",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_evolved-55",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-4",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-8",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-15",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": -33.75505876290133,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    0,
+    3,
+    1,
+    5,
+    3,
+    1
+   ],
+   "cats": [
+    "S/NP",
+    "NP/NP",
+    "NP/S",
+    "S/S",
+    "S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "B>",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    4,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_essay_tools-18",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_essay_tools-25",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-28",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-29",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-30",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-31",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-32",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-35",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-37",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-42",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-44",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-45",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-46",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-47",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-51",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-55",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-58",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-59",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-63",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_essay_tools-68",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-2",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-13",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-19",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-23",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-27",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-28",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-31",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-32",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-40",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-41",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_fiction_beast-44",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-45",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-47",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-49",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_beast-53",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_fiction_beast-55",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_fiction_lunre-11",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_cyclone-1",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_cyclone-8",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_cyclone-12",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_cyclone-21",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_cyclone-23",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_cyclone-32",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_cyclone-47",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_gaming-5",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_gaming-11",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_interview_gaming-17",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -10.92266454642602,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2
+   ],
+   "cats": [
+    "S/((S\\S)\\N)",
+    "(S\\S)\\N",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_interview_gaming-19",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_gaming-20",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_gaming-21",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_interview_gaming-31",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_letter_arendt-26",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_letter_arendt-27",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_letter_arendt-30",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_letter_arendt-32",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_letter_arendt-33",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_letter_arendt-38",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_letter_wiki-17",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_letter_wiki-31",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_news_homeopathic-12",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_news_iodine-1",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_news_iodine-31",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-6",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-7",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-8",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-31",
+   "n": 8,
+   "covered": true,
+   "uas_correct": 3,
+   "uas_total": 8,
+   "logprob": -42.23071490396497,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    3,
+    1,
+    4,
+    0,
+    4,
+    4,
+    4,
+    4
+   ],
+   "cats": [
+    "S/NP",
+    "NP",
+    "N\\S",
+    "S\\N",
+    "S\\S",
+    "S\\S",
+    "S\\S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA",
+    "BA",
+    "BA",
+    "BA",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    6,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-34",
+   "n": 3,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-35",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-37",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-40",
+   "n": 7,
+   "covered": true,
+   "uas_correct": 2,
+   "uas_total": 7,
+   "logprob": -38.75395612864212,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    3,
+    3,
+    0,
+    3,
+    3,
+    3,
+    3
+   ],
+   "cats": [
+    "S/S",
+    "S/NP",
+    "NP/((N/NP)/N)",
+    "(N/NP)/N",
+    "S\\S",
+    "S\\S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "FA",
+    "BA",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    5,
+    2
+   ]
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-41",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-42",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-45",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-47",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-54",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_bangladesh-56",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-3",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 3,
+   "uas_total": 4,
+   "logprob": -15.914288422452637,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    3,
+    1,
+    0,
+    3
+   ],
+   "cats": [
+    "(S/(S/S))/N",
+    "N",
+    "S/S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_podcast_wrestling-4",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-16",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-17",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": -40.30379609133399,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    6,
+    1,
+    2,
+    5,
+    3,
+    0
+   ],
+   "cats": [
+    "N/NP",
+    "NP/(N\\S)",
+    "(N\\S)/(S\\S)",
+    "(S\\S)/S",
+    "S",
+    "S\\N"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "B>",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    4,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_podcast_wrestling-19",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_podcast_wrestling-26",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-32",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-35",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-48",
+   "n": 5,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": -29.555735967453778,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    5,
+    3,
+    0,
+    5,
+    0
+   ],
+   "cats": [
+    "(S/S)/S",
+    "S/S",
+    "S",
+    "S/S",
+    "S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "FA",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_podcast_wrestling-60",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-61",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_podcast_wrestling-69",
+   "n": 2,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 2,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_podcast_wrestling-70",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-71",
+   "n": 6,
+   "covered": true,
+   "uas_correct": 3,
+   "uas_total": 6,
+   "logprob": -34.151481315096895,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2,
+    6,
+    6,
+    3
+   ],
+   "cats": [
+    "S/S",
+    "S/NP",
+    "NP/S",
+    "S/S",
+    "S/S",
+    "S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "B>",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    4,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_podcast_wrestling-72",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-73",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_podcast_wrestling-74",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -12.934004157826573,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2
+   ],
+   "cats": [
+    "S/S",
+    "S/NP",
+    "NP"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_podcast_wrestling-79",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_podcast_wrestling-82",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-2",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-16",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 3,
+   "uas_total": 4,
+   "logprob": -17.02250752849324,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2,
+    2
+   ],
+   "cats": [
+    "N/NP",
+    "S\\(N/NP)",
+    "S\\S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "BA",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    0,
+    2,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_speech_impeachment-18",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-19",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-22",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-28",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-29",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-31",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -19.89302816191499,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    0,
+    1,
+    2
+   ],
+   "cats": [
+    "S/NP",
+    "NP/N",
+    "N"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_speech_impeachment-38",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-41",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-48",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_impeachment-49",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_inauguration-7",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_speech_inauguration-29",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_textbook_governments-8",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_textbook_governments-23",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_textbook_governments-27",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_textbook_governments-36",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_textbook_governments-39",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_textbook_governments-40",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_textbook_labor-5",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_textbook_labor-11",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_textbook_labor-18",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_portland-5",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_vlog_portland-9",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_portland-12",
+   "n": 3,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 3,
+   "logprob": -14.395165429593076,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2
+   ],
+   "cats": [
+    "S/NP",
+    "NP",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    1,
+    0
+   ]
+  },
+  {
+   "sid": "GUM_vlog_portland-15",
+   "n": 4,
+   "covered": true,
+   "uas_correct": 1,
+   "uas_total": 4,
+   "logprob": -23.67394449303266,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    2,
+    2
+   ],
+   "cats": [
+    "S/NP",
+    "NP",
+    "S\\S",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "FA",
+    "BA",
+    "BA"
+   ],
+   "br": [
+    1,
+    2,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_vlog_portland-19",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_portland-20",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_portland-26",
+   "n": 8,
+   "covered": true,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": -31.24227260615218,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    0,
+    1,
+    4,
+    2,
+    7,
+    7,
+    0,
+    7
+   ],
+   "cats": [
+    "S/NP",
+    "NP/S",
+    "S/((S\\S)\\N)",
+    "(S\\S)\\N",
+    "(S\\S)/S",
+    "S/((S\\S)\\N)",
+    "(S\\S)\\N",
+    "S\\S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "FA",
+    "SA",
+    "B>",
+    "FA",
+    "BA"
+   ],
+   "br": [
+    0,
+    6,
+    2
+   ]
+  },
+  {
+   "sid": "GUM_vlog_portland-32",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_portland-33",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_portland-41",
+   "n": 5,
+   "covered": true,
+   "uas_correct": 1,
+   "uas_total": 5,
+   "logprob": -25.487238393249566,
+   "oov": false,
+   "in_lex": true,
+   "pred_heads": [
+    2,
+    0,
+    4,
+    2,
+    4
+   ],
+   "cats": [
+    "S/S",
+    "S/NP",
+    "NP/NP",
+    "NP/S",
+    "S"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "B>",
+    "FA"
+   ],
+   "br": [
+    0,
+    3,
+    1
+   ]
+  },
+  {
+   "sid": "GUM_vlog_portland-45",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-3",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-8",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-11",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_vlog_radiology-13",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-14",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-15",
+   "n": 4,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 4,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-16",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-20",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_vlog_radiology-21",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-25",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-26",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-34",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_vlog_radiology-35",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_vlog_radiology-39",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": false,
+   "in_lex": true
+  },
+  {
+   "sid": "GUM_voyage_athens-15",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_voyage_athens-26",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_voyage_coron-9",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_voyage_coron-19",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_voyage_coron-27",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_voyage_coron-29",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-7",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-16",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-25",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-31",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-35",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-39",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-40",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-42",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-52",
+   "n": 7,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 7,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_joke-55",
+   "n": 5,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 5,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_overalls-24",
+   "n": 6,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 6,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_overalls-25",
+   "n": 10,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 10,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_overalls-26",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_overalls-27",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_overalls-34",
+   "n": 9,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 9,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  },
+  {
+   "sid": "GUM_whow_overalls-35",
+   "n": 8,
+   "covered": false,
+   "uas_correct": 0,
+   "uas_total": 8,
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
+  }
+ ],
+ "dev_failures": [
+  {
+   "sentence": "you guys are always in trouble",
+   "fail_pos": 7,
+   "sigma_prev": [
+    "(S/(N/NP))/NP"
+   ],
+   "n_sigma_prev": 1,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "i came home last night and told you",
+   "fail_pos": 3,
+   "sigma_prev": [
+    "(S/NP)/NP",
+    "N/NP",
+    "NP/NP",
+    "S/NP",
+    "(S\\(NP/N))/NP",
+    "(S\\(NP/NP))/NP"
+   ],
+   "n_sigma_prev": 6,
+   "word": "home",
+   "word_cats": [
+    "S\\S"
+   ],
+   "upos": "ADV",
+   "deprel": "advmod",
+   "head_word": "came"
+  },
+  {
+   "sentence": "but her mom would n't let her",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "S/NP"
+   ],
+   "n_sigma_prev": 1,
+   "word": "n't",
+   "word_cats": [
+    "S",
+    "N\\S",
+    "S/S",
+    "S\\S",
+    "(S\\S)/NP",
+    "(NP\\(S\\S))/N",
+    "(S\\S)/(S/S)",
+    "S/((N\\S)\\NP)",
+    "((S\\S)/(N/NP))/N"
+   ],
+   "upos": "PART",
+   "deprel": "advmod",
+   "head_word": "let"
+  },
+  {
+   "sentence": "you 'll get a hold of her first",
+   "fail_pos": 3,
+   "sigma_prev": [
+    "S",
+    "NP",
+    "S/N",
+    "S/NP",
+    "S/S",
+    "(NP/N)/N",
+    "(NP/N)/NP",
+    "(NP/N)/S",
+    "(S/N)/N",
+    "(S/N)/NP",
+    "(S/N)/S"
+   ],
+   "n_sigma_prev": 11,
+   "word": "get",
+   "word_cats": [
+    "N\\N",
+    "S\\N",
+    "(S\\(S\\N))/N"
+   ],
+   "upos": "VERB",
+   "deprel": "root",
+   "head_word": "<root>"
+  },
+  {
+   "sentence": "i did n't want you to have her phone number",
+   "fail_pos": 9,
+   "sigma_prev": [
+    "S",
+    "S/S"
+   ],
+   "n_sigma_prev": 2,
+   "word": "phone",
+   "word_cats": [
+    "S\\NP"
+   ],
+   "upos": "NOUN",
+   "deprel": "compound",
+   "head_word": "number"
+  },
+  {
+   "sentence": "that was a long time ago",
+   "fail_pos": 6,
+   "sigma_prev": [
+    "S",
+    "N",
+    "NP\\N",
+    "S/S",
+    "(S/S)/S"
+   ],
+   "n_sigma_prev": 5,
+   "word": "ago",
+   "word_cats": [
+    "S\\(S\\NP)",
+    "((S\\NP)/S)/S"
+   ],
+   "upos": "ADV",
+   "deprel": "root",
+   "head_word": "<root>"
+  },
+  {
+   "sentence": "they 're not getting any people though",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "S/S"
+   ],
+   "n_sigma_prev": 1,
+   "word": "any",
+   "word_cats": [
+    "NP/NP",
+    "(S\\S)/(N\\S)"
+   ],
+   "upos": "DET",
+   "deprel": "det",
+   "head_word": "people"
+  },
+  {
+   "sentence": "they 're making it into something",
+   "fail_pos": 6,
+   "sigma_prev": [
+    "S"
+   ],
+   "n_sigma_prev": 1,
+   "word": "something",
+   "word_cats": [
+    "S"
+   ],
+   "upos": "PRON",
+   "deprel": "obl",
+   "head_word": "making"
+  },
+  {
+   "sentence": "you 're not going anywhere for a while",
+   "fail_pos": 8,
+   "sigma_prev": [
+    "S/N",
+    "S/NP",
+    "S/(S/NP)",
+    "S",
+    "S/S",
+    "(S/S)/N",
+    "(S/S)/NP",
+    "(S/S)/S",
+    "(S/S)/(S/NP)",
+    "S\\((S\\NP)/NP)",
+    "N",
+    "N/N",
+    "N/NP",
+    "N/S",
+    "N/(S/NP)"
+   ],
+   "n_sigma_prev": 15,
+   "word": "while",
+   "word_cats": [
+    "S\\NP"
+   ],
+   "upos": "NOUN",
+   "deprel": "obl",
+   "head_word": "going"
+  },
+  {
+   "sentence": "it 's for church",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "S/NP",
+    "NP/NP",
+    "(S/S)/NP",
+    "(S\\S)/NP"
+   ],
+   "n_sigma_prev": 4,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "i do n't care",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "S/NP"
+   ],
+   "n_sigma_prev": 1,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "yes it 's right here",
+   "fail_pos": 6,
+   "sigma_prev": [
+    "S\\S"
+   ],
+   "n_sigma_prev": 1,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "i mean that 's the thing i thought of too",
+   "fail_pos": 6,
+   "sigma_prev": [
+    "N",
+    "S/(S/NP)",
+    "N\\N",
+    "N\\(S/S)",
+    "N\\(S\\S)"
+   ],
+   "n_sigma_prev": 5,
+   "word": "thing",
+   "word_cats": [
+    "NP/S",
+    "S\\S"
+   ],
+   "upos": "NOUN",
+   "deprel": "root",
+   "head_word": "<root>"
+  },
+  {
+   "sentence": "i did n't even touch it",
+   "fail_pos": 7,
+   "sigma_prev": [
+    "S/(S/S)",
+    "(S/(S/S))/NP"
+   ],
+   "n_sigma_prev": 2,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "i did n't touch anything",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "(S/(S/S))/NP"
+   ],
+   "n_sigma_prev": 1,
+   "word": "anything",
+   "word_cats": [
+    "N\\S"
+   ],
+   "upos": "PRON",
+   "deprel": "obj",
+   "head_word": "touch"
+  },
+  {
+   "sentence": "see this is the little",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "N\\N",
+    "N"
+   ],
+   "n_sigma_prev": 2,
+   "word": "little",
+   "word_cats": [
+    "N",
+    "NP/(NP/S)",
+    "N/((S\\NP)/N)"
+   ],
+   "upos": "ADJ",
+   "deprel": "parataxis",
+   "head_word": "see"
+  },
+  {
+   "sentence": "there you go thinking again",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "N"
+   ],
+   "n_sigma_prev": 1,
+   "word": "again",
+   "word_cats": [
+    "S"
+   ],
+   "upos": "ADV",
+   "deprel": "advmod",
+   "head_word": "go"
+  },
+  {
+   "sentence": "they got north america",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "NP",
+    "S/NP",
+    "N/(NP\\S)"
+   ],
+   "n_sigma_prev": 3,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "there you go thinking again again",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "N"
+   ],
+   "n_sigma_prev": 1,
+   "word": "again",
+   "word_cats": [
+    "S"
+   ],
+   "upos": "ADV",
+   "deprel": "reparandum",
+   "head_word": "again"
+  },
+  {
+   "sentence": "there you go thinking again",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "N"
+   ],
+   "n_sigma_prev": 1,
+   "word": "again",
+   "word_cats": [
+    "S"
+   ],
+   "upos": "ADV",
+   "deprel": "advmod",
+   "head_word": "go"
+  },
+  {
+   "sentence": "that 's you up there too right there you know",
+   "fail_pos": 7,
+   "sigma_prev": [
+    "NP/N",
+    "S/S",
+    "S/NP"
+   ],
+   "n_sigma_prev": 3,
+   "word": "right",
+   "word_cats": [
+    "S\\S",
+    "(S\\S)/S",
+    "((S\\N)/N)/S"
+   ],
+   "upos": "ADV",
+   "deprel": "advmod",
+   "head_word": "there"
+  },
+  {
+   "sentence": "that 's me right there too",
+   "fail_pos": 7,
+   "sigma_prev": [
+    "NP/N",
+    "S/S",
+    "S/NP"
+   ],
+   "n_sigma_prev": 3,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "i 'm tired",
+   "fail_pos": 3,
+   "sigma_prev": [
+    "S\\S",
+    "S/(NP/N)",
+    "S\\N",
+    "N",
+    "N/(S/S)",
+    "NP",
+    "NP/(S/S)",
+    "S",
+    "S/(S/S)",
+    "(S\\S)\\(S/S)",
+    "(S\\S)\\(S\\S)",
+    "(NP/N)/(NP/N)",
+    "S\\(NP/N)",
+    "(S\\(NP/N))/(S/S)",
+    "S\\(NP/NP)",
+    "(S\\(NP/NP))/(S/S)"
+   ],
+   "n_sigma_prev": 16,
+   "word": "tired",
+   "word_cats": [
+    "S"
+   ],
+   "upos": "ADJ",
+   "deprel": "root",
+   "head_word": "<root>"
+  },
+  {
+   "sentence": "how we move",
+   "fail_pos": 4,
+   "sigma_prev": [
+    "S\\S",
+    "(S\\S)/N",
+    "(S\\S)/NP",
+    "(S\\S)/S"
+   ],
+   "n_sigma_prev": 4,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "now about 15 % of them do",
+   "fail_pos": 8,
+   "sigma_prev": [
+    "S\\N"
+   ],
+   "n_sigma_prev": 1,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "i wanted to go home",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "S/S",
+    "N"
+   ],
+   "n_sigma_prev": 2,
+   "word": "home",
+   "word_cats": [
+    "S\\S"
+   ],
+   "upos": "ADV",
+   "deprel": "advmod",
+   "head_word": "go"
+  },
+  {
+   "sentence": "i wished he would turn his head",
+   "fail_pos": 6,
+   "sigma_prev": [
+    "S/NP"
+   ],
+   "n_sigma_prev": 1,
+   "word": "his",
+   "word_cats": [
+    "S",
+    "N/NP",
+    "N\\S",
+    "S/NP",
+    "(NP\\S)/N",
+    "((S\\N)\\S)/(NP/N)"
+   ],
+   "upos": "PRON",
+   "deprel": "nmod",
+   "head_word": "head"
+  },
+  {
+   "sentence": "we met back in high school",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "S/(S/NP)"
+   ],
+   "n_sigma_prev": 1,
+   "word": "high",
+   "word_cats": [
+    "S"
+   ],
+   "upos": "ADJ",
+   "deprel": "amod",
+   "head_word": "school"
+  },
+  {
+   "sentence": "i lost twelve pounds",
+   "fail_pos": 4,
+   "sigma_prev": [
+    "N/((NP/S)/NP)",
+    "NP/((NP/S)/NP)",
+    "S/((NP/S)/NP)",
+    "(S\\(NP/N))/((NP/S)/NP)",
+    "(S\\(NP/NP))/((NP/S)/NP)"
+   ],
+   "n_sigma_prev": 5,
+   "word": "pounds",
+   "word_cats": [
+    "N",
+    "NP",
+    "S",
+    "NP/N",
+    "NP/NP",
+    "NP/S",
+    "S/N",
+    "S/NP",
+    "S/S",
+    "S\\N",
+    "S\\S",
+    "(NP/N)/S",
+    "N\\(S\\N)",
+    "S\\(S\\S)",
+    "(S/S)/(NP/N)",
+    "(S\\(S\\S))/S",
+    "(S\\S)/(S\\NP)",
+    "NP/((NP/NP)/S)"
+   ],
+   "upos": "NOUN",
+   "deprel": "obj",
+   "head_word": "lost"
+  },
+  {
+   "sentence": "and those are pretty interesting",
+   "fail_pos": 4,
+   "sigma_prev": [
+    "N/((NP/N)/N)"
+   ],
+   "n_sigma_prev": 1,
+   "word": "pretty",
+   "word_cats": [
+    "N/S",
+    "S\\S"
+   ],
+   "upos": "ADV",
+   "deprel": "advmod",
+   "head_word": "interesting"
+  },
+  {
+   "sentence": "it ’s not the end of the world",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "N\\S",
+    "N",
+    "S/(S/NP)",
+    "S",
+    "S/NP",
+    "S/(S\\S)",
+    "S/N",
+    "S/S",
+    "S/(NP/N)",
+    "S/((N\\S)\\NP)",
+    "N\\N",
+    "NP",
+    "NP/NP",
+    "NP/(S\\S)",
+    "NP/N",
+    "NP/S",
+    "NP/(NP/N)",
+    "NP/((N\\S)\\NP)",
+    "S\\S",
+    "(S\\S)/NP"
+   ],
+   "n_sigma_prev": 26,
+   "word": "end",
+   "word_cats": [
+    "(N/NP)/S"
+   ],
+   "upos": "NOUN",
+   "deprel": "root",
+   "head_word": "<root>"
+  },
+  {
+   "sentence": "we all drank a whole lot ta shit",
+   "fail_pos": 3,
+   "sigma_prev": [
+    "N/((S\\S)/N)",
+    "NP/((S\\S)/N)",
+    "S",
+    "S/S",
+    "S/(NP/S)",
+    "(S/(NP/S))/S",
+    "(S\\S)/(S\\S)",
+    "((S\\S)/(S\\S))/S"
+   ],
+   "n_sigma_prev": 8,
+   "word": "drank",
+   "word_cats": [
+    "N/(S\\S)"
+   ],
+   "upos": "VERB",
+   "deprel": "root",
+   "head_word": "<root>"
+  },
+  {
+   "sentence": "i forget",
+   "fail_pos": 3,
+   "sigma_prev": [
+    "N/N",
+    "N/NP",
+    "NP",
+    "NP/N",
+    "NP/NP",
+    "S/N",
+    "S/NP",
+    "(S\\(NP/N))/N",
+    "(S\\(NP/N))/NP",
+    "(S\\(NP/NP))/N",
+    "(S\\(NP/NP))/NP"
+   ],
+   "n_sigma_prev": 11,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "well they ’re already in the game so",
+   "fail_pos": 7,
+   "sigma_prev": [
+    "N",
+    "S/(S/NP)",
+    "S",
+    "S/(S\\N)"
+   ],
+   "n_sigma_prev": 4,
+   "word": "game",
+   "word_cats": [
+    "N"
+   ],
+   "upos": "NOUN",
+   "deprel": "root",
+   "head_word": "<root>"
+  },
+  {
+   "sentence": "we hear much of special interest groups",
+   "fail_pos": 2,
+   "sigma_prev": [
+    "N",
+    "NP",
+    "N/N",
+    "NP/N",
+    "NP/S",
+    "S/NP",
+    "S/S",
+    "(S/(NP/S))/NP",
+    "((S\\S)/(S\\S))/NP"
+   ],
+   "n_sigma_prev": 9,
+   "word": "hear",
+   "word_cats": [
+    "(S\\S)/NP"
+   ],
+   "upos": "VERB",
+   "deprel": "root",
+   "head_word": "<root>"
+  },
+  {
+   "sentence": "so that was really exciting and fun",
+   "fail_pos": 7,
+   "sigma_prev": [
+    "(N\\N)\\N"
+   ],
+   "n_sigma_prev": 1,
+   "word": "fun",
+   "word_cats": [
+    "S\\S",
+    "N/(S/S)"
+   ],
+   "upos": "ADJ",
+   "deprel": "conj",
+   "head_word": "exciting"
+  },
+  {
+   "sentence": "so i 've done three of those this morning",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "S"
+   ],
+   "n_sigma_prev": 1,
+   "word": "three",
+   "word_cats": [
+    "S",
+    "NP\\(S\\S)",
+    "S\\(S\\S)"
+   ],
+   "upos": "NUM",
+   "deprel": "obj",
+   "head_word": "done"
+  },
+  {
+   "sentence": "alright it is day two",
+   "fail_pos": 6,
+   "sigma_prev": [
+    "(S/S)/S",
+    "S/(NP/NP)"
+   ],
+   "n_sigma_prev": 2,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "now it 's time to get back to work",
+   "fail_pos": 7,
+   "sigma_prev": [
+    "S/N"
+   ],
+   "n_sigma_prev": 1,
+   "word": "back",
+   "word_cats": [
+    "S",
+    "((S\\N)/(S/NP))/NP"
+   ],
+   "upos": "ADV",
+   "deprel": "advmod",
+   "head_word": "get"
+  },
+  {
+   "sentence": "but you still do n't know where i 'm going",
+   "fail_pos": 5,
+   "sigma_prev": [
+    "N/NP",
+    "S/NP",
+    "(N\\N)/NP"
+   ],
+   "n_sigma_prev": 3,
+   "word": "n't",
+   "word_cats": [
+    "S",
+    "N\\S",
+    "S/S",
+    "S\\S",
+    "(S\\S)/NP",
+    "(NP\\(S\\S))/N",
+    "(S\\S)/(S/S)",
+    "S/((N\\S)\\NP)",
+    "((S\\S)/(N/NP))/N"
+   ],
+   "upos": "PART",
+   "deprel": "advmod",
+   "head_word": "know"
+  }
+ ]
+}
