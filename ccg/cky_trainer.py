@@ -60,7 +60,7 @@ class CKYTrainer(MDLTrainer):
         have = self.lex.support.get(key, set())
         score: Dict[C.Cat, float] = {}
         small = [c for c in self.pool if C.n_slashes(c) <= 2]
-        for (i, k) in occurrences[:3]:
+        for (i, k) in occurrences[:6]:
             words = self.sents[i]
             ch = Chart(words, supp, self.max_depth, self.goal) if not self.lats[i].accepted else self.lats[i]
             neigh_L = set(); neigh_R = set()
@@ -77,14 +77,19 @@ class CKYTrainer(MDLTrainer):
                 for c in small:
                     if combine_pair(c, R, False, self.max_depth):
                         cands.add(c)
+            if k == 0:
+                cands.update(c for c in self.pool if C.n_slashes(c) <= 3)
             cands = [c for c in cands if c not in have and c in self.pool_set]
             cands.sort(key=C.size)
-            for c in cands[:60]:
+            for c in cands[:150]:
                 supp2 = dict(supp); supp2[key] = supp.get(key, []) + [c]
                 if Chart(words, supp2, self.max_depth, self.goal).accepted:
                     score[c] = score.get(c, 0.0) + 1.0
         ranked = sorted(score.items(), key=lambda x: -(x[1] * 2.0 ** (-C.size(x[0]))))
         return [c for c, _ in ranked[:top]]
+
+    def pair_step(self, max_sents: int = 300) -> int:
+        return 0   # no failure position in CKY; neighbour-based oracle proposals only
 
     def failure_step(self) -> int:
         by_key: Dict[str, float] = {}
