@@ -390,8 +390,16 @@ class MDLTrainer:
                             continue
                         tried_pairs.add((key1, c1, key2, found))
                         new = self.model.copy()
-                        new.add_entry(key1, c1, mass=self.cfg.get('new_entry_mass', 0.2))
-                        new.add_entry(key2, found, mass=self.cfg.get('new_entry_mass', 0.2))
+                        if self.cfg.get('rigid', False):
+                            for kk, cc in ((key1, c1), (key2, found)):
+                                old = list(new.lex.support.get(kk, ()))
+                                new.add_entry(kk, cc, mass=1.0)
+                                for o in old:
+                                    if o != cc:
+                                        new.remove_entry(kk, o)
+                        else:
+                            new.add_entry(key1, c1, mass=self.cfg.get('new_entry_mass', 0.2))
+                            new.add_entry(key2, found, mass=self.cfg.get('new_entry_mass', 0.2))
                         idxs = sorted(set(self.index.get(key1, [])) | set(self.index.get(key2, [])))
                         d_model = new.lex.model_bits() - self.lex.model_bits()
                         d_data, new_lats = self.delta_data_bits(idxs, new, rebuild=True)
