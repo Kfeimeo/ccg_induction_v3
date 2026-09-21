@@ -23,18 +23,26 @@ learning:
   seeds: [1, 2, 3, 4, 5]
   em_iters: 20
   em_tol: 1.0e-3
-  init_support: 12                 # initial candidate categories per word (sampled by prior x cluster noise)
+  init_support: 4                  # initial candidate categories per word (sampled by prior x cluster noise); sparse: grown by proposals
+  init_max_slashes: 2
+  model: generative                # generative | conditional (see report)
+  em_mode: soft
   min_freq: 2                      # words below this share cluster-level parameters
   n_clusters: 24
   noise_scale: 1.0
   dirichlet_smooth: 0.01
 mdl:
-  max_outer_iters: 8
+  max_outer_iters: 20
   word_pair_bits: log2V            # word-category pairing cost per entry
   prune_min_count: 0.05            # candidate filter only (never triggers a change)
   split_entropy_min: 0.5           # candidate filter only
   merge_js_max: 0.3                # candidate filter only
-  max_candidates_per_op: 40
+  max_candidates_per_op: 300
+  proposals_per_word: 5
+  new_entry_mass: 0.2
+  failure_proposals: true          # failure-driven proposals (addition to §3.3, documented)
+  rename_moves: true               # global renaming merge move (documented)
+  prune_rel_frac: 0.5
 eval:
   dev_max_len: 10
   headmap: {flip_function_words: true, flip_modifiers: true, flip_cc: true}

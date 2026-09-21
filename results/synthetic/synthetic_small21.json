@@ -1,0 +1,200 @@
+{
+ "rows": [
+  {
+   "seed": 1,
+   "majority_acc": 0.75,
+   "exact_words": 0,
+   "extra_entries": 36,
+   "mapping": {
+    "N": "NP",
+    "NP": "N"
+   },
+   "parsed": 500,
+   "n_categories": 14,
+   "n_entries": 51,
+   "total_bits": 7038.253245321671,
+   "time_s": 38.013869524002075,
+   "lexicon": {
+    "a": [
+     "NP\\NP",
+     "N/NP"
+    ],
+    "and": [
+     "N/N",
+     "S/N",
+     "NP\\S"
+    ],
+    "big": [
+     "NP\\NP",
+     "NP/NP"
+    ],
+    "cat": [
+     "NP",
+     "S\\NP",
+     "NP/S"
+    ],
+    "cats": [
+     "N",
+     "N/S",
+     "S\\NP"
+    ],
+    "dog": [
+     "NP",
+     "S\\NP",
+     "NP/S"
+    ],
+    "dogs": [
+     "N",
+     "N/N",
+     "N/S",
+     "S\\NP"
+    ],
+    "in": [
+     "NP\\S"
+    ],
+    "john": [
+     "N",
+     "N/N",
+     "N/S",
+     "S\\NP"
+    ],
+    "likes": [
+     "S/N",
+     "NP\\N"
+    ],
+    "man": [
+     "NP",
+     "S\\NP",
+     "NP/S"
+    ],
+    "mary": [
+     "N",
+     "N/N",
+     "N/S",
+     "S\\NP"
+    ],
+    "old": [
+     "NP\\NP",
+     "NP/NP"
+    ],
+    "quickly": [
+     "N/N",
+     "S\\S"
+    ],
+    "runs": [
+     "S/N",
+     "S\\N"
+    ],
+    "sees": [
+     "S/N",
+     "NP\\N"
+    ],
+    "sleeps": [
+     "S/N",
+     "S\\S",
+     "S\\N"
+    ],
+    "the": [
+     "NP\\NP",
+     "N/NP"
+    ],
+    "today": [
+     "N/N",
+     "S/N",
+     "S\\S"
+    ],
+    "with": [
+     "NP\\S"
+    ]
+   },
+   "pred_majority": {
+    "a": "N/NP",
+    "and": "N/N",
+    "big": "NP/NP",
+    "cat": "NP",
+    "cats": "N",
+    "dog": "NP",
+    "dogs": "N",
+    "in": "NP\\S",
+    "john": "N",
+    "likes": "NP\\N",
+    "man": "NP",
+    "mary": "N",
+    "old": "NP/NP",
+    "quickly": "S\\S",
+    "runs": "S\\N",
+    "sees": "NP\\N",
+    "sleeps": "S\\N",
+    "the": "N/NP",
+    "today": "S\\S",
+    "with": "NP\\S"
+   }
+  }
+ ],
+ "gold": {
+  "john": [
+   "NP"
+  ],
+  "mary": [
+   "NP"
+  ],
+  "dogs": [
+   "NP"
+  ],
+  "cats": [
+   "NP"
+  ],
+  "the": [
+   "NP/N"
+  ],
+  "a": [
+   "NP/N"
+  ],
+  "dog": [
+   "N"
+  ],
+  "cat": [
+   "N"
+  ],
+  "man": [
+   "N"
+  ],
+  "sleeps": [
+   "S\\NP"
+  ],
+  "runs": [
+   "S\\NP"
+  ],
+  "sees": [
+   "(S\\NP)/NP"
+  ],
+  "likes": [
+   "(S\\NP)/NP"
+  ],
+  "big": [
+   "N/N"
+  ],
+  "old": [
+   "N/N"
+  ],
+  "quickly": [
+   "S\\S"
+  ],
+  "today": [
+   "S\\S"
+  ],
+  "with": [
+   "(S\\S)/NP",
+   "(NP\\NP)/NP"
+  ],
+  "in": [
+   "(S\\S)/NP"
+  ],
+  "and": [
+   "((S\\S)/(S\\NP))/NP"
+  ]
+ },
+ "majority_acc_mean": 0.75,
+ "majority_acc_sd": 0.0,
+ "history": []
+}

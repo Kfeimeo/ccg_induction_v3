@@ -121,36 +121,39 @@ def _diversity_beam(layer, beam):
     return {s: layer[s] for s in layer if s in keep}
 
 
-def forward_backward(lat: Lattice, theta: Dict[str, Dict[C.Cat, float]], goal: C.Cat = GOAL):
-    """Return (Z, expected counts {(k, cat): posterior}, edge posteriors list).
+def forward_backward(lat: Lattice, model, goal: C.Cat = GOAL):
+    """Return (Z, expected counts {(k, cat): posterior}, edge posteriors [(k, edge, post)]).
 
-    theta[w][c] = P(c|w).  Z = P(accept | words).
+    Edge weight = model.w(prev, cat, word) / n_app; the final state S carries model.final_weight().
+    Z = P(words) (generative) or P(accept | words) (conditional).
     """
     if not lat.accepted:
         return 0.0, {}, []
     n = lat.n
+    mw = model.w
     alpha: List[Dict[Optional[C.Cat], float]] = [{None: 1.0}]
     for k in range(n):
-        th = theta[lat.words[k]]
+        word = lat.words[k]
         a: Dict[C.Cat, float] = {}
         for st, edges in lat.states[k].items():
             tot = 0.0
             for e in edges:
                 ap = alpha[k].get(e.prev, 0.0)
                 if ap:
-                    tot += ap * th.get(e.cat, 0.0) * e.w
+                    tot += ap * mw(e.prev, e.cat, word) * e.w
             if tot:
                 a[st] = tot
         alpha.append(a)
-    Z = alpha[n].get(goal, 0.0)
+    fw = model.final_weight()
+    Z = alpha[n].get(goal, 0.0) * fw
     if Z <= 0.0:
         return 0.0, {}, []
     beta: List[Dict[Optional[C.Cat], float]] = [dict() for _ in range(n + 1)]
-    beta[n] = {goal: 1.0}
+    beta[n] = {goal: fw}
     counts: Dict[Tuple[int, C.Cat], float] = {}
     edge_post = []
     for k in range(n - 1, -1, -1):
-        th = theta[lat.words[k]]
+        word = lat.words[k]
         b: Dict[Optional[C.Cat], float] = {}
         for st, edges in lat.states[k].items():
             bn = beta[k + 1].get(st, 0.0)
@@ -160,7 +163,7 @@ def forward_backward(lat: Lattice, theta: Dict[str, Dict[C.Cat, float]], goal: C
                 ap = alpha[k].get(e.prev, 0.0)
                 if not ap:
                     continue
-                p = th.get(e.cat, 0.0) * e.w
+                p = mw(e.prev, e.cat, word) * e.w
                 if not p:
                     continue
                 b[e.prev] = b.get(e.prev, 0.0) + p * bn
@@ -171,14 +174,15 @@ def forward_backward(lat: Lattice, theta: Dict[str, Dict[C.Cat, float]], goal: C
     return Z, counts, edge_post
 
 
-def viterbi(lat: Lattice, theta: Dict[str, Dict[C.Cat, float]], goal: C.Cat = GOAL):
+def viterbi(lat: Lattice, model, goal: C.Cat = GOAL):
     """Best derivation: list of (prev_state, cat, next_state, rule) per position, and its prob."""
     if not lat.accepted:
         return None, 0.0
     n = lat.n
+    mw = model.w
     best: List[Dict[Optional[C.Cat], Tuple[float, Optional[Edge]]]] = [{None: (1.0, None)}]
     for k in range(n):
-        th = theta[lat.words[k]]
+        word = lat.words[k]
         layer: Dict[C.Cat, Tuple[float, Optional[Edge]]] = {}
         for st, edges in lat.states[k].items():
             bp, be = 0.0, None
@@ -186,7 +190,7 @@ def viterbi(lat: Lattice, theta: Dict[str, Dict[C.Cat, float]], goal: C.Cat = GO
                 pv = best[k].get(e.prev)
                 if pv is None:
                     continue
-                p = pv[0] * th.get(e.cat, 0.0) * e.w
+                p = pv[0] * mw(e.prev, e.cat, word) * e.w
                 if p > bp:
                     bp, be = p, e
             if be is not None:
@@ -202,7 +206,7 @@ def viterbi(lat: Lattice, theta: Dict[str, Dict[C.Cat, float]], goal: C.Cat = GO
         path.append((e.prev, e.cat, e.nxt, e.rule))
         cur = e.prev
     path.reverse()
-    return path, p
+    return path, p * model.final_weight()
 
 
 def failure_record(lat: Lattice, support: Dict[str, List[C.Cat]]) -> Optional[dict]:

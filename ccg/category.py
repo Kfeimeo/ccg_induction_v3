@@ -161,6 +161,15 @@ def rename_atoms(c: Cat, mapping: dict) -> Cat:
     return (rename_atoms(c[0], mapping), c[1], rename_atoms(c[2], mapping))
 
 
+def substitute(c: Cat, x: Cat, y: Cat) -> Cat:
+    """Replace every occurrence of sub-category x in c by y."""
+    if c == x:
+        return y
+    if is_atom(c):
+        return c
+    return (substitute(c[0], x, y), c[1], substitute(c[2], x, y))
+
+
 def enumerate_categories(atoms: List[str], max_arity: int = 3, max_depth: int = 3,
                          max_slashes: int = 5, max_complex_args: int = 2,
                          arg_max_arity: int = 2) -> List[Cat]:
@@ -210,3 +219,39 @@ def enumerate_categories(atoms: List[str], max_arity: int = 3, max_depth: int = 
 def prior_logprob2(c: Cat) -> float:
     """log2 P(c) with P(c) ∝ 2^-|c| (unnormalised)."""
     return -float(size(c))
+
+
+def is_type_raised(c: Cat) -> bool:
+    """X/(X\\Y) or X\\(X/Y) anywhere in the category."""
+    if is_atom(c):
+        return False
+    r, s, a = c
+    if not is_atom(a) and a[0] == r and a[1] != s:
+        return True
+    return is_type_raised(r) or is_type_raised(a)
+
+
+def has_standard_slots(c: Cat) -> bool:
+    """Standard English slot order: on every spine, all backward slots are inner to all
+    forward slots, i.e. (X\\Y)/Z shapes only (no (X/Z)\\Y).  Applied recursively to arguments."""
+    if is_atom(c):
+        return True
+    _, slots = spine(c)
+    seen_fwd = False
+    for sl, a in slots:
+        if sl == FWD:
+            seen_fwd = True
+        elif seen_fwd:
+            return False
+        if not has_standard_slots(a):
+            return False
+    return True
+
+
+def filter_pool(pool, forbid_tr: bool = True, standard_slots: bool = True):
+    out = pool
+    if forbid_tr:
+        out = [c for c in out if not is_type_raised(c)]
+    if standard_slots:
+        out = [c for c in out if has_standard_slots(c)]
+    return out

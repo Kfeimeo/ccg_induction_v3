@@ -12,15 +12,24 @@ from .baselines import left_branching, right_branching, random_tree
 from .data import Sentence
 
 
-def uniform_theta(support: Dict[str, List[C.Cat]]) -> Dict[str, Dict[C.Cat, float]]:
-    return {w: {c: 1.0 / len(cs) for c in cs} for w, cs in support.items()}
+class UniformModel:
+    """Conditional model with P(c|w) uniform over the support (hand-written lexicon evaluation)."""
+    kind = 'conditional'
+
+    def __init__(self, support):
+        self.theta = {w: {c: 1.0 / len(cs) for c in cs} for w, cs in support.items()}
+
+    def w(self, prev, c, word):
+        return self.theta.get(word, {}).get(c, 0.0)
+
+    def final_weight(self):
+        return 1.0
 
 
 def evaluate_lexicon(sents: List[Sentence], support: Dict[str, List[C.Cat]],
-                     theta: Optional[Dict[str, Dict[C.Cat, float]]] = None,
-                     max_depth: int = 4, headmap: HeadMap = DEFAULT_HEADMAP,
+                     model=None, max_depth: int = 4, headmap: HeadMap = DEFAULT_HEADMAP,
                      construction_specific: Optional[set] = None, goal='S') -> dict:
-    theta = theta or uniform_theta(support)
+    model = model or UniformModel(support)
     per_sent, failures, oov_sents = [], [], 0
     sa_applied = sa_ambig = 0
     stats_acc = collections.defaultdict(float)
@@ -52,8 +61,8 @@ def evaluate_lexicon(sents: List[Sentence], support: Dict[str, List[C.Cat]],
             failures.append(fr)
             per_sent.append(rec)
             continue
-        Z, _, _ = forward_backward(lat, theta, goal)
-        path, p = viterbi(lat, theta, goal)
+        Z, _, _ = forward_backward(lat, model, goal)
+        path, p = viterbi(lat, model, goal)
         import math
         rec['covered'] = True
         rec['logprob'] = math.log(Z) if Z > 0 else 0.0

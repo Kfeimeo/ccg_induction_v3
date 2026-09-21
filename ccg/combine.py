@@ -25,6 +25,13 @@ RULES = ('LEX', 'FA', 'BA', 'B>', 'B<', 'SA')
 
 # ambiguity statistics (SA slot not unique); reset via reset_stats()
 STATS = {'sa_ambiguous': 0, 'sa_applied': 0, 'combine_calls': 0}
+# rule switches (set once from the configuration; part of the cache key)
+RULES_ON = {'SA': True}
+
+
+def set_rules(sa: bool = True):
+    RULES_ON['SA'] = sa
+    _combine_cached.cache_clear()
 
 
 def reset_stats():
@@ -39,7 +46,7 @@ def sa_matches(sigma: C.Cat, c: C.Cat) -> List[int]:
 
 
 @lru_cache(maxsize=None)
-def _combine_cached(sigma: Optional[C.Cat], c: C.Cat, max_depth: int) -> Tuple[Tuple[C.Cat, str], ...]:
+def _combine_cached(sigma: Optional[C.Cat], c: C.Cat, max_depth: int, sa: bool = True) -> Tuple[Tuple[C.Cat, str], ...]:
     out: List[Tuple[C.Cat, str]] = []
     if sigma is None:
         out.append((c, 'LEX'))
@@ -69,7 +76,7 @@ def _combine_cached(sigma: Optional[C.Cat], c: C.Cat, max_depth: int) -> Tuple[T
             and c[1] == C.BWD and c[2] == sigma[0]):
         add((c[0], C.BWD, sigma[2]), 'B<')
     # SA (inner backward slots only)
-    if not C.is_atom(c):
+    if sa and not C.is_atom(c):
         target, slots = C.spine(c)
         matches = sa_matches(sigma, c)
         inner = [i for i in matches if i < len(slots) - 1]
@@ -83,7 +90,7 @@ def _combine_cached(sigma: Optional[C.Cat], c: C.Cat, max_depth: int) -> Tuple[T
 def combine(sigma: Optional[C.Cat], c: C.Cat, max_depth: int = 4) -> Tuple[Tuple[C.Cat, str], ...]:
     """All (result, rule) pairs, deduplicated by result category."""
     STATS['combine_calls'] += 1
-    return _combine_cached(sigma, c, max_depth)
+    return _combine_cached(sigma, c, max_depth, RULES_ON['SA'])
 
 
 def record_sa_stats(sigma: Optional[C.Cat], c: C.Cat, rule: str):
