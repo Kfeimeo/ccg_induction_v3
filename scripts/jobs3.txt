@@ -1,0 +1,10 @@
+--group D --seeds 1
+--group A --anchored --seeds 2
+--group A --max_depth 3 --seeds 2
+--group A --max_depth 5 --seeds 2
+--group C --seeds 2
+--group D --seeds 2
+--group A --train_max_len 8 --seeds 1
+--group A --train_max_len 8 --seeds 2
+--group A --system cky --train_max_len 8 --seeds 1
+--group A --system cky --train_max_len 8 --seeds 2
