@@ -3,7 +3,7 @@ import glob, json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ccg.evaluate import mean_std
 
-out = sys.argv[1]
+out = sys.argv[1].rstrip('/')
 rows = [json.load(open(p)) for p in sorted(glob.glob(os.path.join(out, 'seed*.json')))]
 rows = [r for r in rows if 'final' in r]
 if not rows:

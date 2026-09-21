@@ -28,15 +28,15 @@ print({k: (v['n_dev'], v['n_train'], v['n_constructed']) for k, v in sets.items(
 results = {}
 
 
-def make_parse_fn(support, model, key_of=None):
+def make_parse_fn(support, model, key_of=None, goal='S'):
     def parse(words):
         parse.last_in_lex = all(w in support for w in words)
         if not parse.last_in_lex:
             return False, None, None
-        lat = build_lattice(words, support, md)
+        lat = build_lattice(words, support, md, goal)
         if not lat.accepted:
             return False, None, None
-        path, p = viterbi(lat, model)
+        path, p = viterbi(lat, model, goal)
         if path is None or p <= 0:
             return False, None, None
         heads, _ = replay(words, path, hm)
@@ -60,21 +60,22 @@ for path in sorted(glob.glob(args.models)) if args.models else []:
     from ccg.data import Sentence
     supp = dev_support(model.lex, key_of, [Sentence('', allw, allw, [], [], [])])
     dm = DevModel(model, key_of)
+    goal = getattr(model, 'goal', 'S')
     # majority category per word over dev (for L4)
     maj = {}
     cnt = collections.defaultdict(collections.Counter)
     for s in dv:
         if all(w in supp for w in s.words):
-            lat = build_lattice(s.words, supp, obj['max_depth'])
+            lat = build_lattice(s.words, supp, obj['max_depth'], goal)
             if lat.accepted:
-                p, _ = viterbi(lat, dm)
+                p, _ = viterbi(lat, dm, goal)
                 if p:
                     for w, e in zip(s.words, p):
                         cnt[w][e[1]] += 1
     for w, c in cnt.items():
         maj[w] = c.most_common(1)[0][0]
     name = os.path.relpath(path, args.out if False else 'results').replace('/', '_').replace('_model.pkl', '')
-    results[name] = evaluate_sets(sets, make_parse_fn(supp, dm), maj, None)
+    results[name] = evaluate_sets(sets, make_parse_fn(supp, dm, goal=goal), maj, None)
 json.dump(results, open(os.path.join(args.out, 'phenomena_results.json'), 'w'), indent=1)
 for name, res in results.items():
     print(f'--- {name}')
