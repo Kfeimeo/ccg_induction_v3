@@ -52,6 +52,8 @@ atoms = cfg['atoms'][args.group]
 if args.group == 'C':
     cfg['category_space']['max_slashes'] = 3     # 7 atoms: bound the pool (documented)
 md = cfg['formal_system']['max_depth']
+goal = 'S' if 'S' in atoms else next(a for a in atoms if a.startswith('S'))   # group C: S[dcl]
+cfg['formal_system']['goal'] = goal
 name = f'{args.system}_{args.group}_{args.rules}{"_rigid" if args.rigid else ""}{"_anch" if args.anchored else ""}_d{md}_le{args.train_max_len}{args.tag}'
 out = os.path.join(args.out, name)
 os.makedirs(out, exist_ok=True)
@@ -94,14 +96,14 @@ for seed in [int(x) for x in args.seeds.split(',')]:
         support, theta0 = sample_initial_support(keys, cluster_key, init_pool, lc['init_support'], seed, lc['noise_scale'], atom_boost)
         lex = Lexicon(support, math.log2(len(keys)))
         key_counts = collections.Counter(k for s in keyseqs for k in s)
-        model = CKYModel(lex, dict(key_counts), lc.get('trans_beta', 1.0), lc.get('emit_gamma', 0.01))
+        model = CKYModel(lex, dict(key_counts), lc.get('trans_beta', 1.0), lc.get('emit_gamma', 0.01), goal)
         model.init_uniform(theta0)
         tcfg = dict(mc); tcfg.update({'em_iters': lc['em_iters'], 'em_tol': lc['em_tol'], 'rigid': args.rigid, 'anchors': {},
                                       'escape_bits_per_word': math.log2(len(pool)) + math.log2(len(keys)) + 1, 'rename_moves': False})
-        trainer = CKYTrainer(keyseqs, model, pool, tcfg, md, 'S', log)
+        trainer = CKYTrainer(keyseqs, model, pool, tcfg, md, goal, log)
         trainer.train(mc['max_outer_iters'], True)
     else:
-        trainer, key_of, cluster_of = induce(train_words, atoms, cfg, seed, log=log, max_depth=md, atom_boost=atom_boost)
+        trainer, key_of, cluster_of = induce(train_words, atoms, cfg, seed, log=log, max_depth=md, goal=goal, atom_boost=atom_boost)
     train_time = time.time() - t0
     # ---- dev evaluation
     supp = dev_support(trainer.lex, key_of, dv)
@@ -114,7 +116,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
             rec = {'sid': s.sid, 'n': s.n, 'covered': False, 'uas_correct': 0, 'uas_total': s.n, 'logprob': 0.0,
                    'in_lex': all(w in supp for w in s.words)}
             if rec['in_lex']:
-                ch = Chart([key_of.get(w, w) for w in s.words], trainer.lex.support_lists(), md)
+                ch = Chart([key_of.get(w, w) for w in s.words], trainer.lex.support_lists(), md, goal)
                 if ch.accepted:
                     Z, _, _ = inside_outside(ch, trainer.model)
                     p, t = viterbi_tree(ch, trainer.model)
@@ -129,11 +131,11 @@ for seed in [int(x) for x in args.seeds.split(',')]:
         summ['n_in_lex'] = len(inlex)
         res = {'summary': summ, 'failures': [], 'per_sent': per}
     else:
-        res = evaluate_lexicon(dv, supp, DevModel(trainer.model, key_of), md, hm)
+        res = evaluate_lexicon(dv, supp, DevModel(trainer.model, key_of), md, hm, goal=goal)
     res8 = None
     dv8 = [s for s in dv if s.n <= 8]
     if args.system == 'left':
-        res8 = evaluate_lexicon(dv8, supp, DevModel(trainer.model, key_of), md, hm)
+        res8 = evaluate_lexicon(dv8, supp, DevModel(trainer.model, key_of), md, hm, goal=goal)
     h = trainer.history[-1]
     # ---- top categories table
     n_cw = trainer.model.n_cw if args.system == 'left' else trainer.model.base.n_cw
