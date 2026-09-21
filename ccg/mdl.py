@@ -47,10 +47,24 @@ class MDLTrainer:
         self.escape = cfg.get('escape_bits_per_word', math.log2(len(pool)) + 1)
         self.lats: List[Lattice] = []
         self.history: List[dict] = []
-        self.index: Dict[str, List[int]] = {}
+        self.full_index: Dict[str, List[int]] = {}
         for i, s in enumerate(sents):
             for w in set(s):
-                self.index.setdefault(w, []).append(i)
+                self.full_index.setdefault(w, []).append(i)
+        self.active: List[int] = list(range(len(sents)))
+        self.index = self.full_index
+
+    def set_active(self, max_len: Optional[int]):
+        """Curriculum: restrict the training objective to sentences of length <= max_len."""
+        self.active = [i for i, s in enumerate(self.sents) if max_len is None or len(s) <= max_len]
+        act = set(self.active)
+        self.index = {w: [i for i in idxs if i in act] for w, idxs in self.full_index.items()}
+        supp = self.lex.support_lists()
+        if not self.lats:
+            self.lats = [None] * len(self.sents)
+        for i in self.active:
+            if self.lats[i] is None:
+                self.lats[i] = self.build(self.sents[i], supp)
 
     # ----------------------------------------------------------------- helpers
     @property
@@ -66,15 +80,22 @@ class MDLTrainer:
     def rebuild(self, idxs=None):
         supp = self.lex.support_lists()
         if idxs is None:
-            self.lats = [self.build(s, supp) for s in self.sents]
+            if not self.lats:
+                self.lats = [None] * len(self.sents)
+            for i in self.active:
+                self.lats[i] = self.build(self.sents[i], supp)
         else:
             for i in idxs:
                 self.lats[i] = self.build(self.sents[i], supp)
 
+    @property
+    def active_lats(self):
+        return [self.lats[i] for i in self.active]
+
     def objective(self) -> Tuple[float, float, int]:
         lm = self.lex.model_bits()
         ld, parsed = 0.0, 0
-        for lat in self.lats:
+        for lat in self.active_lats:
             Z = self.Z(lat, self.model)
             if Z > 0:
                 ld -= math.log2(Z); parsed += 1
@@ -103,7 +124,7 @@ class MDLTrainer:
 
     # ----------------------------------------------------------------- EM
     def run_em(self):
-        hist, stats = em(self.lats, self.model, self.cfg.get('em_iters', 20), self.cfg.get('em_tol', 1e-3),
+        hist, stats = em(self.active_lats, self.model, self.cfg.get('em_iters', 20), self.cfg.get('em_tol', 1e-3),
                          self.goal, log=None, mode=self.cfg.get('em_mode', 'soft'), anneal_max=self.cfg.get('anneal_max', 2.0))
         return hist, stats
 
@@ -159,7 +180,7 @@ class MDLTrainer:
         atoms = sorted({a for c in self.pool for a in C.atoms_of(c)})
         small = [c for c in self.pool if C.n_slashes(c) <= 2]
         if sigma is None:
-            out = set(small)
+            out = set(c for c in self.pool if C.n_slashes(c) <= 3)
         else:
             # FA: c = arg(sigma); BA: X\sigma; B>: arg(sigma)/Z; B<: X\res(sigma); SA: inner \sigma
             if not C.is_atom(sigma) and sigma[1] == C.FWD:
@@ -293,13 +314,17 @@ class MDLTrainer:
         """Failure-driven proposals (addition to §3.3, documented): for unparsed sentences,
         propose categories for the failing word that combine with σ_{k-1}; accept iff ΔMDL < 0."""
         by_key: Dict[str, Dict[C.Cat, float]] = {}
-        for lat in self.lats:
-            if lat.accepted or lat.fail_pos > lat.n:
+        back = self.cfg.get('failure_lookback', 2)
+        for lat in self.active_lats:
+            if lat.accepted:
                 continue
-            key = lat.words[lat.fail_pos - 1]
-            d = by_key.setdefault(key, {})
-            for s in lat.fail_states[:20]:
-                d[s] = d.get(s, 0.0) + 1.0 / max(1, len(lat.fail_states))
+            k = min(lat.fail_pos, lat.n)
+            # the failing word and the words before it (the missing category is often on an
+            # earlier word, e.g. a pre-subject adverb that must take the subject)
+            for j in range(max(1, k - back), k + 1):
+                key = lat.words[j - 1]
+                d = by_key.setdefault(key, {})
+                d['_'] = d.get('_', 0.0) + (1.0 if j == k else 0.5)
         cands = sorted(by_key.items(), key=lambda x: -sum(x[1].values()))[: self.cfg.get('max_candidates_per_op', 40)]
         top = self.cfg.get('proposals_per_word', 5)
         return self._try_additions([(key, self.oracle_proposals(key, self.occurrences_of(key, only_failed=True), top))
@@ -310,6 +335,7 @@ class MDLTrainer:
         rigid = self.cfg.get('rigid', False)
         anchors = self.cfg.get('anchors', {})
         for key, cats in proposals:
+            n_new = 0
             for c in cats:
                 if key not in self.lex.support or c in self.lex.support[key] or key in anchors:
                     continue
@@ -331,7 +357,9 @@ class MDLTrainer:
                     for i, lat in new_lats.items():
                         self.lats[i] = lat
                     accepted += 1
-                    break  # one new category per word per round
+                    n_new += 1
+                    if n_new >= self.cfg.get('max_new_per_word', 3):
+                        break
         return accepted
 
     def rename_step(self) -> int:
@@ -421,20 +449,39 @@ class MDLTrainer:
 
     # ----------------------------------------------------------------- main loop
     def train(self, max_outer: int = 8, use_failure_proposals: bool = True) -> List[dict]:
+        """Outer loop.  cfg['curriculum'] = [L1, L2, ...]: stages restricted to sentences of
+        length <= L (the last stage must cover all sentences); each stage runs until the lexicon
+        stops changing or cfg['rounds_per_stage'] rounds."""
         t0 = time.time()
-        self.rebuild()
-        for rnd in range(max_outer + 1):
+        stages = self.cfg.get('curriculum') or [None]
+        rps = self.cfg.get('rounds_per_stage', max_outer)
+        rnd = 0
+        for si, L in enumerate(stages):
+            self.set_active(L)
+            self.log(f'-- stage {si}: max_len={L} active={len(self.active)}/{len(self.sents)}')
+            last = (si == len(stages) - 1)
+            budget = max_outer - rnd if last else min(rps, max_outer - rnd)
+            for r in range(budget + 1):
+                stop = self._round(rnd, t0, final=(r == budget) or (last and rnd == max_outer), use_failure_proposals=use_failure_proposals)
+                if r < budget:
+                    rnd += 1
+                if stop:
+                    break
+        return self.history
+
+    def _round(self, rnd, t0, final, use_failure_proposals=True) -> bool:
+        if True:
             em_hist, stats = self.run_em()
             lm, ld, parsed = self.objective()
             counts = {(w, c): v for w, d in stats['theta_counts'].items() for c, v in d.items()}
             ctx_cat, ctx_key = stats['ctx_cat'], stats['ctx_key']
             rec = self.structure_record(rnd, lm, ld, parsed, em_hist)
             self.history.append(rec)
-            self.log(f'round {rnd}: L(M)={lm:.0f} L(D|M)={ld:.0f} total={lm+ld:.0f} parsed={parsed}/{len(self.sents)} '
+            self.log(f'round {rnd}: L(M)={lm:.0f} L(D|M)={ld:.0f} total={lm+ld:.0f} parsed={parsed}/{len(self.active)} '
                      f'cats={rec["n_categories"]} entries={rec["n_entries"]} avg/word={rec["avg_cats_per_word"]:.2f} '
                      f'|Q|={rec["Q_mean"]:.1f} b={rec["b_mean"]:.2f} t={time.time()-t0:.0f}s')
-            if rnd == max_outer:
-                break
+            if final:
+                return True
             n_prune = self.prune_step(counts) if not self.cfg.get('rigid', False) else 0
             n_split = self.split_step(ctx_key, counts)
             n_fail = self.failure_step() if use_failure_proposals else 0
@@ -443,16 +490,16 @@ class MDLTrainer:
             rec.update({'n_prune': n_prune, 'n_split': n_split, 'n_fail_add': n_fail, 'n_merge': n_merge, 'n_rename': n_ren})
             self.log(f'   ops: prune={n_prune} split={n_split} fail_add={n_fail} merge={n_merge} rename={n_ren}')
             if n_prune + n_split + n_fail + n_merge + n_ren == 0:
-                self.log('   lexicon unchanged: stop')
-                break
-        return self.history
+                self.log('   lexicon unchanged: stage done')
+                return True
+            return False
 
     def structure_record(self, rnd, lm, ld, parsed, em_hist) -> dict:
         from .lattice import lattice_stats
-        sts = [lattice_stats(l) for l in self.lats]
+        sts = [lattice_stats(l) for l in self.active_lats]
         n = len(sts)
         return {
-            'round': rnd, 'L_M': lm, 'L_D': ld, 'total': lm + ld, 'parsed': parsed, 'n_sent': len(self.sents),
+            'round': rnd, 'L_M': lm, 'L_D': ld, 'total': lm + ld, 'parsed': parsed, 'n_sent': len(self.active),
             'n_categories': len(self.lex.categories()), 'n_entries': self.lex.n_entries(),
             'avg_cats_per_word': self.lex.n_entries() / max(1, len(self.lex.support)),
             'Q_mean': sum(s['Q_unpruned_mean'] for s in sts) / n if n else 0,
@@ -464,7 +511,7 @@ class MDLTrainer:
     def failure_log(self) -> List[dict]:
         supp = self.lex.support_lists()
         out = []
-        for lat in self.lats:
+        for lat in self.active_lats:
             fr = failure_record(lat, supp)
             if fr:
                 out.append(fr)

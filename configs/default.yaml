@@ -32,13 +32,16 @@ learning:
   noise_scale: 1.0
   dirichlet_smooth: 0.01
 mdl:
-  max_outer_iters: 20
+  max_outer_iters: 24
+  curriculum: [3, 5, 7, 10]        # search schedule: sentence-length stages (documented)
+  rounds_per_stage: 5
   word_pair_bits: log2V            # word-category pairing cost per entry
   prune_min_count: 0.05            # candidate filter only (never triggers a change)
   split_entropy_min: 0.5           # candidate filter only
   merge_js_max: 0.3                # candidate filter only
-  max_candidates_per_op: 300
-  proposals_per_word: 5
+  max_candidates_per_op: 2000
+  proposals_per_word: 6
+  max_new_per_word: 3
   new_entry_mass: 0.2
   failure_proposals: true          # failure-driven proposals (addition to §3.3, documented)
   rename_moves: true               # global renaming merge move (documented)

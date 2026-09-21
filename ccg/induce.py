@@ -65,6 +65,8 @@ def induce(train_words: List[List[str]], atoms: List[str], cfg: dict, seed: int,
     tcfg['rigid'] = lc.get('rigid', False)
     tcfg['anchors'] = {w: [C.show(x) for x in xs] for w, xs in anchors.items()}
     tcfg['rename_moves'] = mc.get('rename_moves', True)
+    tcfg['curriculum'] = mc.get('curriculum')
+    tcfg['rounds_per_stage'] = mc.get('rounds_per_stage', 4)
     trainer = MDLTrainer(keyseqs, model, pool, tcfg, max_depth, goal, log)
     trainer.train(mc['max_outer_iters'], mc.get('failure_proposals', True))
     return trainer, key_of, cluster_of
@@ -102,6 +104,8 @@ def majority_categories(trainer: MDLTrainer) -> Dict[str, C.Cat]:
     from .lattice import viterbi
     cnt: Dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
     for lat in trainer.lats:
+        if lat is None:
+            continue
         path, p = viterbi(lat, trainer.model, trainer.goal)
         if path is None:
             continue

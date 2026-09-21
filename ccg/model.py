@@ -28,9 +28,30 @@ class Lexicon:
         self.support = {k: set(v) for k, v in support.items()}
         self.pair_bits = pair_bits
         self.param_bits = param_bits
+        self.index: Dict[C.Cat, Set[str]] = {}
+        for k, cs in self.support.items():
+            for c in cs:
+                self.index.setdefault(c, set()).add(k)
 
     def copy(self) -> 'Lexicon':
         return Lexicon(self.support, self.pair_bits, self.param_bits)
+
+    def add_entry(self, k, c):
+        self.support.setdefault(k, set()).add(c)
+        self.index.setdefault(c, set()).add(k)
+
+    def remove_entry(self, k, c):
+        cs = self.support.get(k)
+        if cs is None or c not in cs:
+            return
+        cs.discard(c)
+        if not cs:
+            del self.support[k]
+        ws = self.index.get(c)
+        if ws is not None:
+            ws.discard(k)
+            if not ws:
+                del self.index[c]
 
     def support_lists(self) -> Dict[str, List[C.Cat]]:
         return {k: sorted(v, key=lambda c: (C.size(c), C.show(c))) for k, v in self.support.items()}
@@ -45,10 +66,10 @@ class Lexicon:
         return sum(len(v) for v in self.support.values())
 
     def categories(self) -> Set[C.Cat]:
-        return set(c for cs in self.support.values() for c in cs)
+        return set(self.index)
 
     def words_with(self, c: C.Cat) -> List[str]:
-        return [k for k, cs in self.support.items() if c in cs]
+        return list(self.index.get(c, ()))
 
 
 class Model:
@@ -75,13 +96,18 @@ class Model:
         self.theta: Dict[str, Dict[C.Cat, float]] = {}               # P(c|w) (conditional params / derived)
 
     # ------------------------------------------------------------------ copy
-    def copy(self) -> 'Model':
+    def copy(self, light: bool = True) -> 'Model':
+        """light=True shares the transition statistics/parameters (unchanged by lexicon edits
+        except merges, which un-share and re-fit them)."""
         m = Model(self.lex.copy(), self.kind, self.word_counts, self.trans_beta, self.emit_gamma, self.cond_smooth, self.goal)
-        m.n_sc = {s: dict(d) for s, d in self.n_sc.items()}
+        m.n_sc = self.n_sc if light else {s: dict(d) for s, d in self.n_sc.items()}
         m.n_cw = {c: dict(d) for c, d in self.n_cw.items()}
         m.n_stop, m.n_cont_S = self.n_stop, self.n_cont_S
         m.theta = {w: dict(d) for w, d in self.theta.items()}
-        m.fit()
+        m.emit = {c: dict(d) for c, d in self.emit.items()}
+        m.bo = dict(self.bo)
+        m.trans, m.lam, m.stop_p = self.trans, self.lam, self.stop_p
+        m._fit_conditional()
         return m
 
     # ------------------------------------------------------------------ init
@@ -100,22 +126,33 @@ class Model:
         self.fit()
 
     # ------------------------------------------------------------------ parameters from counts
-    def fit(self):
+    def fit_emissions(self, cats=None):
         lex = self.lex
-        # emissions restricted to support
-        self.emit = {}
-        for c in lex.categories():
+        if cats is None:
+            self.emit = {}
+            cats = lex.categories()
+        for c in cats:
             ws = lex.words_with(c)
+            if not ws:
+                self.emit.pop(c, None)
+                continue
             d = self.n_cw.get(c, {})
             tot = sum(d.get(w, 0.0) for w in ws) + self.emit_gamma * len(ws)
             self.emit[c] = {w: (d.get(w, 0.0) + self.emit_gamma) / tot for w in ws}
-        # backoff category distribution: global counts + prior 2^-|c|
+
+    def fit_backoff(self):
+        lex = self.lex
         cats = lex.categories()
-        n_c = {c: sum(self.n_cw.get(c, {}).get(w, 0.0) for w in lex.words_with(c)) for c in cats}
         kappa = 1.0
+        n_c = {}
+        for c in cats:
+            d = self.n_cw.get(c, {})
+            n_c[c] = sum(d.get(w, 0.0) for w in lex.words_with(c))
         z = sum(n_c[c] + kappa * 2.0 ** (-C.size(c)) for c in cats)
         self.bo = {c: (n_c[c] + kappa * 2.0 ** (-C.size(c))) / z for c in cats}
-        # transitions
+
+    def fit_transitions(self):
+        cats = self.lex.categories()
         self.trans, self.lam = {}, {}
         for s, d in self.n_sc.items():
             d2 = {c: v for c, v in d.items() if c in cats}
@@ -125,6 +162,15 @@ class Model:
             self.trans[s] = {c: v / n for c, v in d2.items()}
             self.lam[s] = n / (n + self.trans_beta)
         self.stop_p = (self.n_stop + 0.5) / (self.n_stop + self.n_cont_S + 1.0)
+
+    def fit(self):
+        self.fit_emissions()
+        self.fit_backoff()
+        self.fit_transitions()
+        self._fit_conditional()
+
+    def _fit_conditional(self):
+        lex = self.lex
         if self.kind == 'conditional':
             for w, cs in lex.support.items():
                 th = self.theta.get(w, {})
@@ -169,9 +215,7 @@ class Model:
     def remove_entry(self, w: str, c: C.Cat):
         """Remove (w, c); the entry's expected mass is redistributed to w's remaining categories
         in proportion to their counts (approximates EM re-estimation after the removal)."""
-        self.lex.support[w].discard(c)
-        if not self.lex.support[w]:
-            del self.lex.support[w]
+        self.lex.remove_entry(w, c)
         m = self.n_cw.get(c, {}).pop(w, 0.0)
         rest = list(self.lex.support.get(w, ()))
         if rest and m > 0:
@@ -184,25 +228,34 @@ class Model:
             z = sum(th.values())
             for k in th:
                 th[k] = th[k] / z if z > 0 else 1.0 / len(th)
-        self.fit()
+        self.fit_emissions([c] + rest)
+        self.fit_backoff()
+        if c not in self.lex.index:
+            self.fit_transitions()
+        self._fit_conditional()
 
     def add_entry(self, w: str, c: C.Cat, mass: float = 0.2):
-        self.lex.support.setdefault(w, set()).add(c)
+        new_cat = c not in self.lex.index
+        self.lex.add_entry(w, c)
         cw = self.word_counts.get(w, 1.0)
         self.n_cw.setdefault(c, {})[w] = max(self.emit_gamma, mass * cw)
         th = self.theta.setdefault(w, {})
         for k in th:
             th[k] *= (1 - mass)
         th[c] = mass if th else 1.0
-        self.fit()
+        self.fit_emissions([c])
+        self.fit_backoff()
+        if new_cat:
+            self.fit_transitions()
+        self._fit_conditional()
 
     def merge_cats(self, c1: C.Cat, c2: C.Cat):
-        for w in list(self.lex.support):
-            if c1 in self.lex.support[w]:
-                self.lex.support[w].discard(c1)
-                self.lex.support[w].add(c2)
-                th = self.theta.get(w, {})
-                th[c2] = th.get(c2, 0.0) + th.pop(c1, 0.0)
+        self.n_sc = {s: dict(d) for s, d in self.n_sc.items()}   # un-share before editing
+        for w in list(self.lex.words_with(c1)):
+            self.lex.remove_entry(w, c1)
+            self.lex.add_entry(w, c2)
+            th = self.theta.get(w, {})
+            th[c2] = th.get(c2, 0.0) + th.pop(c1, 0.0)
         d1 = self.n_cw.pop(c1, {})
         d2 = self.n_cw.setdefault(c2, {})
         for w, v in d1.items():

@@ -35,7 +35,7 @@ class CKYTrainer(MDLTrainer):
         n_pe: Dict = {}; n_lex: Dict = {}; n_cw: Dict = {}; theta_counts: Dict = {}
         ctx_cat: Dict = {}; ctx_key: Dict = {}
         ll, parsed = 0.0, 0
-        for ch in self.lats:
+        for ch in self.active_lats:
             Z, ep, lp = inside_outside(ch, self.model)
             if Z <= 0:
                 continue
@@ -88,7 +88,7 @@ class CKYTrainer(MDLTrainer):
 
     def failure_step(self) -> int:
         by_key: Dict[str, float] = {}
-        for ch in self.lats:
+        for ch in self.active_lats:
             if ch.accepted:
                 continue
             for w in set(ch.words):
@@ -99,16 +99,16 @@ class CKYTrainer(MDLTrainer):
                                     for key, _ in cands])
 
     def structure_record(self, rnd, lm, ld, parsed, em_hist) -> dict:
-        n = len(self.lats)
-        cells = [len(d) for ch in self.lats for d in ch.cell.values()]
+        n = len(self.active_lats)
+        cells = [len(d) for ch in self.active_lats for d in ch.cell.values()]
         return {
             'round': rnd, 'L_M': lm, 'L_D': ld, 'total': lm + ld, 'parsed': parsed, 'n_sent': len(self.sents),
             'n_categories': len(self.lex.categories()), 'n_entries': self.lex.n_entries(),
             'avg_cats_per_word': self.lex.n_entries() / max(1, len(self.lex.support)),
             'Q_mean': sum(cells) / len(cells) if cells else 0, 'Q_max': max(cells) if cells else 0,
-            'b_mean': sum(ch.n_edges() for ch in self.lats) / max(1, sum(len(ch.cell) for ch in self.lats)),
+            'b_mean': sum(ch.n_edges() for ch in self.active_lats) / max(1, sum(len(ch.cell) for ch in self.active_lats)),
             'em_ll': em_hist[-1] if em_hist else None, 'em_iters': len(em_hist),
         }
 
     def failure_log(self):
-        return [{'sentence': ' '.join(ch.words), 'fail_pos': -1, 'word': '<CKY>', 'word_cats': []} for ch in self.lats if not ch.accepted]
+        return [{'sentence': ' '.join(ch.words), 'fail_pos': -1, 'word': '<CKY>', 'word_cats': []} for ch in self.active_lats if not ch.accepted]
