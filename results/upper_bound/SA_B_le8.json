@@ -1,44 +1,44 @@
 {
  "summary": {
   "n_sent": 214,
-  "coverage": 0.2616822429906542,
-  "uas_all": 0.20439739413680783,
-  "uas_covered": 0.9296296296296296,
-  "ppl_per_word": 2.7247625062672993,
-  "n_oov_sent": 131,
-  "coverage_in_lex": 0.6746987951807228,
-  "uas_all_in_lex": 0.5961995249406176,
-  "n_in_lex": 83,
-  "sa_applied": 50,
+  "coverage": 0.2570093457943925,
+  "uas_all": 0.20195439739413681,
+  "uas_covered": 0.9288389513108615,
+  "ppl_per_word": 2.7843883018460445,
+  "n_oov_sent": 133,
+  "coverage_in_lex": 0.6790123456790124,
+  "uas_all_in_lex": 0.6004842615012107,
+  "n_in_lex": 81,
+  "sa_applied": 49,
   "sa_ambiguous": 0,
   "sa_ambiguous_rate": 0.0,
-  "lat_Q_unpruned_mean": 2.8749282845668382,
-  "lat_Q_unpruned_max": 5.0120481927710845,
-  "lat_Q_live_mean": 1.7490390131956393,
-  "lat_b_mean": 0.3825394750990562,
-  "lat_n_edges": 7.36144578313253,
-  "bracket_f1": 0.021052631578947368,
+  "lat_Q_unpruned_mean": 2.9117577895355673,
+  "lat_Q_unpruned_max": 5.074074074074074,
+  "lat_Q_live_mean": 1.7479864785420338,
+  "lat_b_mean": 0.37832457692000726,
+  "lat_n_edges": 7.382716049382716,
+  "bracket_f1": 0.021164021164021166,
   "baselines": {
    "left_branching": {
     "uas_all": 0.06921824104234528,
-    "uas_covered_subset": 0.05925925925925926
+    "uas_covered_subset": 0.0599250936329588
    },
    "right_branching": {
     "uas_all": 0.3802931596091205,
-    "uas_covered_subset": 0.42592592592592593
+    "uas_covered_subset": 0.4232209737827715
    },
    "random_tree": {
     "uas_all": 0.1723127035830619,
     "uas_all_std": 0.01101728633569235,
-    "uas_covered_subset": 0.2088888888888889,
-    "uas_covered_subset_std": 0.02666666666666667
+    "uas_covered_subset": 0.20749063670411988,
+    "uas_covered_subset_std": 0.0276849717042342
    }
   },
   "variant": "SA",
   "atoms": "B",
   "max_len": 8,
   "lex_words": 500,
-  "lex_entries": 1790
+  "lex_entries": 1796
  },
  "failures": [
   {
@@ -77,20 +77,20 @@
   },
   {
    "sentence": "we 'll do this some other weekend",
-   "fail_pos": 4,
+   "fail_pos": 5,
    "sigma_prev": [
-    "S/(S\\NP)"
+    "S/N"
    ],
    "n_sigma_prev": 1,
-   "word": "this",
+   "word": "some",
    "word_cats": [
     "NP/N",
-    "(S\\S)/N",
-    "NP"
+    "NP/PP",
+    "(S\\S)/N"
    ],
-   "upos": "PRON",
-   "deprel": "obj",
-   "head_word": "do"
+   "upos": "DET",
+   "deprel": "det",
+   "head_word": "weekend"
   },
   {
    "sentence": "i 'll have melanie call you",
@@ -155,25 +155,6 @@
    "upos": "PRON",
    "deprel": "nsubj",
    "head_word": "is"
-  },
-  {
-   "sentence": "this is at six thirty",
-   "fail_pos": 5,
-   "sigma_prev": [
-    "S/PP",
-    "S"
-   ],
-   "n_sigma_prev": 2,
-   "word": "thirty",
-   "word_cats": [
-    "N/N",
-    "NP/PP",
-    "N",
-    "NP"
-   ],
-   "upos": "NUM",
-   "deprel": "compound",
-   "head_word": "six"
   },
   {
    "sentence": "i know she 's",
@@ -524,15 +505,11 @@
     1
    ],
    [
-    "this",
+    "some",
     1
    ],
    [
     "call",
-    1
-   ],
-   [
-    "thirty",
     1
    ],
    [
@@ -586,11 +563,7 @@
     1
    ],
    [
-    "PRON/obj",
-    1
-   ],
-   [
-    "NUM/compound",
+    "DET/det",
     1
    ],
    [
@@ -613,7 +586,7 @@
    ],
    [
     4,
-    10
+    9
    ],
    [
     5,
@@ -834,7 +807,7 @@
    "covered": true,
    "uas_correct": 8,
    "uas_total": 8,
-   "logprob": -8.1886891244442,
+   "logprob": -8.881836305004146,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1341,8 +1314,8 @@
    "uas_correct": 0,
    "uas_total": 5,
    "logprob": 0.0,
-   "oov": false,
-   "in_lex": true
+   "oov": true,
+   "in_lex": false
   },
   {
    "sid": "GUM_conversation_grounded-96",
@@ -1350,7 +1323,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -3.5553480614894135,
+   "logprob": -4.248495242049359,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1676,7 +1649,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 6,
-   "logprob": -5.3471075307174685,
+   "logprob": -6.040254711277414,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1716,7 +1689,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -3.4011973816621555,
+   "logprob": -4.0943445622221,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2073,7 +2046,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -2.995732273553991,
+   "logprob": -3.6888794541139363,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2372,7 +2345,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -3.5553480614894135,
+   "logprob": -4.248495242049359,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2758,33 +2731,12 @@
   {
    "sid": "GUM_fiction_beast-2",
    "n": 3,
-   "covered": true,
-   "uas_correct": 3,
+   "covered": false,
+   "uas_correct": 0,
    "uas_total": 3,
-   "logprob": -2.0794415416798357,
-   "oov": false,
-   "in_lex": true,
-   "pred_heads": [
-    3,
-    3,
-    0
-   ],
-   "cats": [
-    "NP",
-    "(S\\NP)/NP",
-    "NP"
-   ],
-   "rules": [
-    "LEX",
-    "SA",
-    "FA"
-   ],
-   "uses_cs": false,
-   "br": [
-    0,
-    1,
-    0
-   ]
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
   },
   {
    "sid": "GUM_fiction_beast-13",
@@ -3187,7 +3139,7 @@
    "covered": true,
    "uas_correct": 7,
    "uas_total": 8,
-   "logprob": -8.679312040892672,
+   "logprob": -9.372459221452617,
    "oov": false,
    "in_lex": true,
    "pred_heads": [

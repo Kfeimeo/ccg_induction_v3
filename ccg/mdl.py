@@ -267,7 +267,7 @@ class MDLTrainer:
         ranked = sorted(score.items(), key=lambda x: -(x[1] * 2.0 ** (-C.size(x[0]))))
         return [c for c, _ in ranked[:top]]
 
-    def occurrences_of(self, key: str, only_failed: bool = False, max_occ: int = 8) -> List[Tuple[int, int]]:
+    def occurrences_of(self, key: str, only_failed: bool = False, max_occ: int = 16) -> List[Tuple[int, int]]:
         occ = []
         for i in self.index.get(key, []):
             if only_failed and self.lats[i].accepted:
@@ -314,7 +314,7 @@ class MDLTrainer:
         """Failure-driven proposals (addition to §3.3, documented): for unparsed sentences,
         propose categories for the failing word that combine with σ_{k-1}; accept iff ΔMDL < 0."""
         by_key: Dict[str, Dict[C.Cat, float]] = {}
-        back = self.cfg.get('failure_lookback', 2)
+        back = self.cfg.get('failure_lookback', 3)
         for lat in self.active_lats:
             if lat.accepted:
                 continue
@@ -329,6 +329,83 @@ class MDLTrainer:
         top = self.cfg.get('proposals_per_word', 5)
         return self._try_additions([(key, self.oracle_proposals(key, self.occurrences_of(key, only_failed=True), top))
                                     for key, states in cands])
+
+    def pair_step(self, max_sents: int = 300) -> int:
+        """Two-word proposals for sentences that no single addition can parse: tentatively give a
+        word before the failure point one of its top single candidates, then run the oracle for the
+        remaining failure; the pair is added jointly iff ΔMDL < 0."""
+        supp0 = self.lex.support_lists()
+        failed = [i for i in self.active if not self.lats[i].accepted]
+        if len(failed) > max_sents:
+            step = len(failed) / max_sents
+            failed = [failed[int(j * step)] for j in range(max_sents)]
+        accepted = 0
+        tried_pairs: Set[Tuple[str, C.Cat, str, C.Cat]] = set()
+        for i in failed:
+            lat = self.lats[i]
+            if lat.accepted:
+                continue
+            words = self.sents[i]
+            k = min(lat.fail_pos, lat.n)
+            done = False
+            for j in range(max(1, k - 2), k + 1):
+                if done:
+                    break
+                key1 = words[j - 1]
+                F = self.forward_states(words, j - 1, supp0)
+                cands1: Dict[C.Cat, float] = {}
+                for sigma in F:
+                    for c in self._combinable(sigma):
+                        if c not in self.lex.support.get(key1, set()):
+                            cands1[c] = cands1.get(c, 0.0) + 1.0
+                cands1 = sorted(cands1, key=lambda c: C.size(c))[:12]
+                for c1 in cands1:
+                    supp1 = dict(supp0); supp1[key1] = supp0.get(key1, []) + [c1]
+                    lat1 = self.build(words, supp1)
+                    if lat1.accepted:
+                        continue  # single fix: handled by failure_step
+                    k2 = min(lat1.fail_pos, lat1.n)
+                    if k2 <= j:
+                        continue
+                    for j2 in range(max(j + 1, k2 - 1), k2 + 1):
+                        key2 = words[j2 - 1]
+                        F2 = self.forward_states(words, j2 - 1, supp1)
+                        found = None
+                        for sigma in F2:
+                            for c2 in self._combinable(sigma):
+                                if c2 in self.lex.support.get(key2, set()) and key2 != key1:
+                                    continue
+                                if (key1, c1, key2, c2) in tried_pairs:
+                                    continue
+                                starts = set()
+                                for s2 in F2:
+                                    for r, _ in combine(s2, c2, self.max_depth):
+                                        starts.add(r)
+                                if self.suffix_completes(words, starts, j2, supp1):
+                                    found = c2
+                                    break
+                            if found:
+                                break
+                        if not found:
+                            continue
+                        tried_pairs.add((key1, c1, key2, found))
+                        new = self.model.copy()
+                        new.add_entry(key1, c1, mass=self.cfg.get('new_entry_mass', 0.2))
+                        new.add_entry(key2, found, mass=self.cfg.get('new_entry_mass', 0.2))
+                        idxs = sorted(set(self.index.get(key1, [])) | set(self.index.get(key2, [])))
+                        d_model = new.lex.model_bits() - self.lex.model_bits()
+                        d_data, new_lats = self.delta_data_bits(idxs, new, rebuild=True)
+                        if d_model + d_data < 0:
+                            self.model = new
+                            for ii, l in new_lats.items():
+                                self.lats[ii] = l
+                            supp0 = self.lex.support_lists()
+                            accepted += 1
+                            done = True
+                        break
+                    if done:
+                        break
+        return accepted
 
     def _try_additions(self, proposals: List[Tuple[str, List[C.Cat]]]) -> int:
         accepted = 0
@@ -461,11 +538,19 @@ class MDLTrainer:
             self.log(f'-- stage {si}: max_len={L} active={len(self.active)}/{len(self.sents)}')
             last = (si == len(stages) - 1)
             budget = max_outer - rnd if last else min(rps, max_outer - rnd)
+            best, stale = float('inf'), 0
             for r in range(budget + 1):
                 stop = self._round(rnd, t0, final=(r == budget) or (last and rnd == max_outer), use_failure_proposals=use_failure_proposals)
+                tot = self.history[-1]['total']
+                if tot < best - 1.0:
+                    best, stale = tot, 0
+                else:
+                    stale += 1
                 if r < budget:
                     rnd += 1
-                if stop:
+                if stop or stale >= self.cfg.get('patience', 2):
+                    if not stop:
+                        self.log('   no objective improvement: stage done')
                     break
         return self.history
 
@@ -485,6 +570,8 @@ class MDLTrainer:
             n_prune = self.prune_step(counts) if not self.cfg.get('rigid', False) else 0
             n_split = self.split_step(ctx_key, counts)
             n_fail = self.failure_step() if use_failure_proposals else 0
+            n_pair = self.pair_step() if (use_failure_proposals and self.cfg.get('pair_proposals', True) and n_fail < 5) else 0
+            n_fail += n_pair
             n_merge = self.merge_step(ctx_cat, counts)
             n_ren = self.rename_step() if self.cfg.get('rename_moves', True) else 0
             rec.update({'n_prune': n_prune, 'n_split': n_split, 'n_fail_add': n_fail, 'n_merge': n_merge, 'n_rename': n_ren})

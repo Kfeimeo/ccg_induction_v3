@@ -22,9 +22,12 @@ if ub:
         b = r['baselines']
         out.append(f"| {r['variant']} | {r['atoms']} | ≤{r['max_len']} | {r['lex_words']} | {r['lex_entries']} | {f(r['coverage'])} | {f(r['coverage_in_lex'])} | {r['n_in_lex']} | {f(r['uas_all'])} | {f(r['uas_covered'])} | {f(r['uas_all_in_lex'])} | {r['sa_ambiguous']}/{r['sa_applied']} | {f(r['lat_Q_unpruned_mean'],1)} | {f(r['lat_b_mean'],2)} | {f(b['left_branching']['uas_all'])} | {f(b['right_branching']['uas_all'])} | {f(b['right_branching']['uas_covered_subset'])} | {f(b['random_tree']['uas_all'])} |")
 # ---- synthetic
+SYN_LABEL = {'synthetic_nocurr.json': 'S1 无课程（门槛实验）', 'synthetic_final.json': 'S2 真实数据调度', 'synthetic_conditional.json': '条件式目标（S1 调度）'}
 for p in sorted(glob.glob('results/synthetic/synthetic*.json')):
+    if os.path.basename(p) not in SYN_LABEL:
+        continue
     d = json.load(open(p))
-    out.append(f'\n## 人造数据 {os.path.basename(p)}\n')
+    out.append(f'\n## 人造数据 {SYN_LABEL[os.path.basename(p)]} ({os.path.basename(p)})\n')
     out.append('| seed | total bits | entries | cats | parsed | majority acc | derivation recovery |')
     out.append('|---|---|---|---|---|---|---|')
     for r in d['rows']:

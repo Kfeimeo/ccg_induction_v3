@@ -1,7 +1,0 @@
-config left_A_SA_d4_le10_smoke2: 2012 train sentences, 289 dev sentences, atoms=['S', 'N', 'NP'], rules={'SA': True, 'forbid_TR': True, 'standard_slots': True}
-seed 1: 2012 sentences, 1166 keys (23 cluster keys), pool=7914 init_pool=192 init entries=4664 model=generative (3.9s)
-round 0: L(M)=66860 L(D|M)=323163 total=390023 parsed=16/2012 cats=192 entries=4664 avg/word=4.00 |Q|=1.9 b=0.22 t=0s
-   ops: prune=1137 split=0 fail_add=77 merge=3 rename=0
-round 1: L(M)=51569 L(D|M)=316289 total=367858 parsed=106/2012 cats=216 entries=3602 avg/word=3.09 |Q|=1.9 b=0.29 t=68s
-   ops: prune=921 split=5 fail_add=71 merge=3 rename=0
-round 2: L(M)=39377 L(D|M)=308577 total=347954 parsed=206/2012 cats=235 entries=2753 avg/word=2.36 |Q|=1.9 b=0.32 t=136s

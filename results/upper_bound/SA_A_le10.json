@@ -1,27 +1,27 @@
 {
  "summary": {
   "n_sent": 289,
-  "coverage": 0.21453287197231835,
-  "uas_all": 0.14425553838227717,
-  "uas_covered": 0.8805031446540881,
-  "ppl_per_word": 2.6245969449798867,
-  "n_oov_sent": 197,
-  "coverage_in_lex": 0.6739130434782609,
-  "uas_all_in_lex": 0.5522682445759369,
-  "n_in_lex": 92,
-  "sa_applied": 55,
+  "coverage": 0.21107266435986158,
+  "uas_all": 0.145801133436373,
+  "uas_covered": 0.889937106918239,
+  "ppl_per_word": 2.69123985733292,
+  "n_oov_sent": 199,
+  "coverage_in_lex": 0.6777777777777778,
+  "uas_all_in_lex": 0.5671342685370742,
+  "n_in_lex": 90,
+  "sa_applied": 54,
   "sa_ambiguous": 0,
   "sa_ambiguous_rate": 0.0,
-  "lat_Q_unpruned_mean": 2.637478433402347,
-  "lat_Q_unpruned_max": 4.380434782608695,
-  "lat_Q_live_mean": 1.6881038647342996,
-  "lat_b_mean": 0.39881212214855194,
-  "lat_n_edges": 8.16304347826087,
-  "bracket_f1": 0.01702127659574468,
+  "lat_Q_unpruned_mean": 2.6722266313932987,
+  "lat_Q_unpruned_max": 4.444444444444445,
+  "lat_Q_live_mean": 1.6783950617283951,
+  "lat_b_mean": 0.394470932505702,
+  "lat_n_edges": 8.133333333333333,
+  "bracket_f1": 0.016736401673640166,
   "baselines": {
    "left_branching": {
     "uas_all": 0.06800618238021638,
-    "uas_covered_subset": 0.06918238993710692
+    "uas_covered_subset": 0.0660377358490566
    },
    "right_branching": {
     "uas_all": 0.36269963936115407,
@@ -30,15 +30,15 @@
    "random_tree": {
     "uas_all": 0.15352910870685216,
     "uas_all_std": 0.012377633690217622,
-    "uas_covered_subset": 0.20314465408805032,
-    "uas_covered_subset_std": 0.02255398877615234
+    "uas_covered_subset": 0.19937106918238992,
+    "uas_covered_subset_std": 0.022902064724569973
    }
   },
   "variant": "SA",
   "atoms": "A",
   "max_len": 10,
   "lex_words": 500,
-  "lex_entries": 1743
+  "lex_entries": 1749
  },
  "failures": [
   {
@@ -94,20 +94,20 @@
   },
   {
    "sentence": "we 'll do this some other weekend",
-   "fail_pos": 4,
+   "fail_pos": 5,
    "sigma_prev": [
-    "S/(S\\NP)"
+    "S/N"
    ],
    "n_sigma_prev": 1,
-   "word": "this",
+   "word": "some",
    "word_cats": [
     "NP/N",
-    "(S\\S)/N",
-    "NP"
+    "NP/NP",
+    "(S\\S)/N"
    ],
-   "upos": "PRON",
-   "deprel": "obj",
-   "head_word": "do"
+   "upos": "DET",
+   "deprel": "det",
+   "head_word": "weekend"
   },
   {
    "sentence": "i 'll have melanie call you",
@@ -475,22 +475,6 @@
    "deprel": "END"
   },
   {
-   "sentence": "but in practice they often do the opposite",
-   "fail_pos": 7,
-   "sigma_prev": [
-    "S/(S\\NP)"
-   ],
-   "n_sigma_prev": 1,
-   "word": "the",
-   "word_cats": [
-    "NP/N",
-    "(S\\S)/N"
-   ],
-   "upos": "DET",
-   "deprel": "det",
-   "head_word": "opposite"
-  },
-  {
    "sentence": "we met back in high school",
    "fail_pos": 5,
    "sigma_prev": [
@@ -573,7 +557,7 @@
     1
    ],
    [
-    "this",
+    "some",
     1
    ],
    [
@@ -590,10 +574,6 @@
    ],
    [
     "get",
-    1
-   ],
-   [
-    "the",
     1
    ],
    [
@@ -631,7 +611,7 @@
     1
    ],
    [
-    "PRON/obj",
+    "DET/det",
     1
    ],
    [
@@ -647,10 +627,6 @@
     1
    ],
    [
-    "DET/det",
-    1
-   ],
-   [
     "ADJ/amod",
     1
    ]
@@ -662,19 +638,15 @@
    ],
    [
     4,
-    9
+    8
    ],
    [
     5,
-    10
+    11
    ],
    [
     6,
     3
-   ],
-   [
-    7,
-    1
    ],
    [
     8,
@@ -955,7 +927,7 @@
    "covered": true,
    "uas_correct": 8,
    "uas_total": 8,
-   "logprob": -7.495541943884256,
+   "logprob": -8.1886891244442,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1001,7 +973,7 @@
    "covered": true,
    "uas_correct": 10,
    "uas_total": 10,
-   "logprob": -9.72913416539135,
+   "logprob": -10.422281345951296,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1520,39 +1492,12 @@
   {
    "sid": "GUM_conversation_grounded-95",
    "n": 5,
-   "covered": true,
+   "covered": false,
    "uas_correct": 0,
    "uas_total": 5,
-   "logprob": -6.579251212010101,
-   "oov": false,
-   "in_lex": true,
-   "pred_heads": [
-    5,
-    5,
-    5,
-    5,
-    0
-   ],
-   "cats": [
-    "NP",
-    "(S\\NP)/NP",
-    "NP/NP",
-    "NP/NP",
-    "NP"
-   ],
-   "rules": [
-    "LEX",
-    "SA",
-    "B>",
-    "B>",
-    "FA"
-   ],
-   "uses_cs": false,
-   "br": [
-    0,
-    3,
-    0
-   ]
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
   },
   {
    "sid": "GUM_conversation_grounded-96",
@@ -1560,7 +1505,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -3.332204510175204,
+   "logprob": -4.02535169073515,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1906,7 +1851,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 6,
-   "logprob": -5.123963979403259,
+   "logprob": -5.817111159963204,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1946,7 +1891,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -3.1780538303479458,
+   "logprob": -3.871201010907891,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2323,7 +2268,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -2.772588722239781,
+   "logprob": -3.4657359027997265,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2622,7 +2567,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -3.332204510175204,
+   "logprob": -4.02535169073515,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -3098,12 +3043,48 @@
   {
    "sid": "GUM_essay_tools-44",
    "n": 8,
-   "covered": false,
-   "uas_correct": 0,
+   "covered": true,
+   "uas_correct": 6,
    "uas_total": 8,
-   "logprob": 0.0,
+   "logprob": -10.106428396532818,
    "oov": false,
-   "in_lex": true
+   "in_lex": true,
+   "pred_heads": [
+    6,
+    4,
+    4,
+    6,
+    6,
+    0,
+    8,
+    6
+   ],
+   "cats": [
+    "(S/(S\\NP))/NP",
+    "NP/NP",
+    "NP/NP",
+    "NP",
+    "(S\\NP)/(S\\NP)",
+    "S\\NP",
+    "(S\\S)/N",
+    "N"
+   ],
+   "rules": [
+    "LEX",
+    "B>",
+    "B>",
+    "FA",
+    "B>",
+    "FA",
+    "SA",
+    "FA"
+   ],
+   "uses_cs": false,
+   "br": [
+    0,
+    6,
+    2
+   ]
   },
   {
    "sid": "GUM_essay_tools-45",
@@ -3198,33 +3179,12 @@
   {
    "sid": "GUM_fiction_beast-2",
    "n": 3,
-   "covered": true,
-   "uas_correct": 3,
+   "covered": false,
+   "uas_correct": 0,
    "uas_total": 3,
-   "logprob": -1.791759469228055,
-   "oov": false,
-   "in_lex": true,
-   "pred_heads": [
-    3,
-    3,
-    0
-   ],
-   "cats": [
-    "NP",
-    "(S\\NP)/NP",
-    "NP"
-   ],
-   "rules": [
-    "LEX",
-    "SA",
-    "FA"
-   ],
-   "uses_cs": false,
-   "br": [
-    0,
-    1,
-    0
-   ]
+   "logprob": 0.0,
+   "oov": true,
+   "in_lex": false
   },
   {
    "sid": "GUM_fiction_beast-13",
@@ -3777,7 +3737,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 8,
-   "logprob": -7.763021309018518,
+   "logprob": -8.456168489578463,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -5009,7 +4969,7 @@
    "covered": true,
    "uas_correct": 8,
    "uas_total": 10,
-   "logprob": -10.941075139366463,
+   "logprob": -11.634222319926408,
    "oov": false,
    "in_lex": true,
    "pred_heads": [

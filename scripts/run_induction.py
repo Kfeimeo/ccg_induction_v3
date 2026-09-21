@@ -24,9 +24,14 @@ ap.add_argument('--train_limit', type=int, default=0)
 ap.add_argument('--init_support', type=int, default=0)
 ap.add_argument('--outer', type=int, default=0)
 ap.add_argument('--tag', default='')
+ap.add_argument('--set', action='append', default=[], help='override config: section.key=value')
 ap.add_argument('--out', default='results/induction')
 args = ap.parse_args()
 cfg = yaml.safe_load(open(args.config))
+for kv in args.set:
+    k, v = kv.split('=', 1)
+    sec, key = k.split('.')
+    cfg[sec][key] = yaml.safe_load(v)
 d = cfg['data']
 tr = load_jsonl(os.path.join(d['processed_dir'], f'{d["corpus"]}_train_le{d["max_len"]}.jsonl'))
 dv = load_jsonl(os.path.join(d['processed_dir'], f'{d["corpus"]}_dev_le{d["max_len"]}.jsonl'))
@@ -44,6 +49,8 @@ cfg['rules'] = {'SA': args.rules == 'SA', 'forbid_TR': args.rules != 'TR', 'stan
 if args.anchored:
     cfg['anchors'] = {'the': ['NP/N']}
 atoms = cfg['atoms'][args.group]
+if args.group == 'C':
+    cfg['category_space']['max_slashes'] = 3     # 7 atoms: bound the pool (documented)
 md = cfg['formal_system']['max_depth']
 name = f'{args.system}_{args.group}_{args.rules}{"_rigid" if args.rigid else ""}{"_anch" if args.anchored else ""}_d{md}_le{args.train_max_len}{args.tag}'
 out = os.path.join(args.out, name)
@@ -58,7 +65,7 @@ if args.group == 'D':
     # cluster ids of group-D atoms are given by the coarse clustering (see induce: cluster_of)
     cfg['learning']['n_clusters'] = k_atoms
 rows = []
-log_f = open(os.path.join(out, 'log.txt'), 'w')
+log_f = open(os.path.join(out, f'log_seeds{args.seeds.replace(",", "-")}.txt'), 'w')
 
 
 def log(msg):
@@ -149,28 +156,5 @@ for seed in [int(x) for x in args.seeds.split(',')]:
         f'ppl={s_["ppl_per_word"]:.1f} ({train_time:.0f}s)')
 
 
-def agg(key_fn):
-    vals = [key_fn(r) for r in rows]
-    m, sd = mean_std(vals)
-    return {'mean': m, 'sd': sd, 'values': vals}
-
-
-summary = {
-    'name': name, 'atoms': atoms, 'rules': cfg['rules'], 'max_depth': md, 'seeds': [r['seed'] for r in rows],
-    'objective': agg(lambda r: r['final']['total']),
-    'train_parsed': agg(lambda r: r['final']['parsed'] / r['final']['n_sent']),
-    'n_categories': agg(lambda r: r['final']['n_categories']),
-    'avg_cats_per_word': agg(lambda r: r['final']['avg_cats_per_word']),
-    'Q_mean': agg(lambda r: r['final']['Q_mean']), 'b_mean': agg(lambda r: r['final']['b_mean']),
-    'dev_coverage': agg(lambda r: r['dev']['coverage']),
-    'dev_coverage_in_lex': agg(lambda r: r['dev']['coverage_in_lex']),
-    'dev_uas_all': agg(lambda r: r['dev']['uas_all']),
-    'dev_uas_covered': agg(lambda r: r['dev']['uas_covered']),
-    'dev_ppl': agg(lambda r: r['dev']['ppl_per_word']),
-    'dev8_coverage': agg(lambda r: r['dev_le8']['coverage']) if rows[0]['dev_le8'] else None,
-    'dev8_uas_all': agg(lambda r: r['dev_le8']['uas_all']) if rows[0]['dev_le8'] else None,
-    'mdl_selected_seed': min(rows, key=lambda r: r['final']['total'])['seed'],
-    'baselines': rows[0]['dev'].get('baselines'),
-}
-json.dump(summary, open(os.path.join(out, 'summary.json'), 'w'), indent=1)
-log(json.dumps({k: v for k, v in summary.items() if k not in ('baselines',)}, indent=None)[:2000])
+import subprocess
+subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'aggregate.py'), out])

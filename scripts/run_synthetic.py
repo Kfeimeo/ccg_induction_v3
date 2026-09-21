@@ -14,11 +14,16 @@ ap.add_argument('--n', type=int, default=500)
 ap.add_argument('--init_support', type=int, default=0)
 ap.add_argument('--model', default='')
 ap.add_argument('--tag', default='')
+ap.add_argument('--set', action='append', default=[], help='override config: section.key=value')
 ap.add_argument('--em_mode', default='')
 ap.add_argument('--outer', type=int, default=0)
 ap.add_argument('--init_max_slashes', type=int, default=0)
 args = ap.parse_args()
 cfg = yaml.safe_load(open(args.config))
+for kv in args.set:
+    k, v = kv.split('=', 1)
+    sec, key = k.split('.')
+    cfg[sec][key] = yaml.safe_load(v)
 cfg['learning']['min_freq'] = 1          # 20-word vocabulary: every word is its own key
 cfg['learning']['n_clusters'] = 6
 if args.init_support: cfg['learning']['init_support'] = args.init_support
