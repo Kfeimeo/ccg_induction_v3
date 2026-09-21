@@ -1,0 +1,330 @@
+[
+ {
+  "n_sent": 289,
+  "coverage": 0.20761245674740483,
+  "uas_all": 0.14734672849046884,
+  "uas_covered": 0.9285714285714286,
+  "ppl_per_word": 2.7652952372107467,
+  "n_oov_sent": 197,
+  "coverage_in_lex": 0.6521739130434783,
+  "uas_all_in_lex": 0.5641025641025641,
+  "n_in_lex": 92,
+  "sa_applied": 55,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 2.847964113181504,
+  "lat_Q_unpruned_max": 5.108695652173913,
+  "lat_Q_live_mean": 1.787780365769496,
+  "lat_b_mean": 0.37356382420510337,
+  "lat_n_edges": 8.021739130434783,
+  "bracket_f1": 0.017467248908296942,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06800618238021638,
+    "uas_covered_subset": 0.06493506493506493
+   },
+   "right_branching": {
+    "uas_all": 0.36269963936115407,
+    "uas_covered_subset": 0.4090909090909091
+   },
+   "random_tree": {
+    "uas_all": 0.15352910870685216,
+    "uas_all_std": 0.012377633690217622,
+    "uas_covered_subset": 0.2051948051948052,
+    "uas_covered_subset_std": 0.024069809081624205
+   }
+  },
+  "variant": "SA",
+  "atoms": "B",
+  "max_len": 10,
+  "lex_words": 500,
+  "lex_entries": 1790
+ },
+ {
+  "n_sent": 214,
+  "coverage": 0.2616822429906542,
+  "uas_all": 0.20439739413680783,
+  "uas_covered": 0.9296296296296296,
+  "ppl_per_word": 2.7247625062672993,
+  "n_oov_sent": 131,
+  "coverage_in_lex": 0.6746987951807228,
+  "uas_all_in_lex": 0.5961995249406176,
+  "n_in_lex": 83,
+  "sa_applied": 50,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 2.8749282845668382,
+  "lat_Q_unpruned_max": 5.0120481927710845,
+  "lat_Q_live_mean": 1.7490390131956393,
+  "lat_b_mean": 0.3825394750990562,
+  "lat_n_edges": 7.36144578313253,
+  "bracket_f1": 0.021052631578947368,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06921824104234528,
+    "uas_covered_subset": 0.05925925925925926
+   },
+   "right_branching": {
+    "uas_all": 0.3802931596091205,
+    "uas_covered_subset": 0.42592592592592593
+   },
+   "random_tree": {
+    "uas_all": 0.1723127035830619,
+    "uas_all_std": 0.01101728633569235,
+    "uas_covered_subset": 0.2088888888888889,
+    "uas_covered_subset_std": 0.02666666666666667
+   }
+  },
+  "variant": "SA",
+  "atoms": "B",
+  "max_len": 8,
+  "lex_words": 500,
+  "lex_entries": 1790
+ },
+ {
+  "n_sent": 289,
+  "coverage": 0.21453287197231835,
+  "uas_all": 0.14425553838227717,
+  "uas_covered": 0.8805031446540881,
+  "ppl_per_word": 2.6245969449798867,
+  "n_oov_sent": 197,
+  "coverage_in_lex": 0.6739130434782609,
+  "uas_all_in_lex": 0.5522682445759369,
+  "n_in_lex": 92,
+  "sa_applied": 55,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 2.637478433402347,
+  "lat_Q_unpruned_max": 4.380434782608695,
+  "lat_Q_live_mean": 1.6881038647342996,
+  "lat_b_mean": 0.39881212214855194,
+  "lat_n_edges": 8.16304347826087,
+  "bracket_f1": 0.01702127659574468,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06800618238021638,
+    "uas_covered_subset": 0.06918238993710692
+   },
+   "right_branching": {
+    "uas_all": 0.36269963936115407,
+    "uas_covered_subset": 0.4025157232704403
+   },
+   "random_tree": {
+    "uas_all": 0.15352910870685216,
+    "uas_all_std": 0.012377633690217622,
+    "uas_covered_subset": 0.20314465408805032,
+    "uas_covered_subset_std": 0.02255398877615234
+   }
+  },
+  "variant": "SA",
+  "atoms": "A",
+  "max_len": 10,
+  "lex_words": 500,
+  "lex_entries": 1743
+ },
+ {
+  "n_sent": 214,
+  "coverage": 0.27102803738317754,
+  "uas_all": 0.2011400651465798,
+  "uas_covered": 0.8821428571428571,
+  "ppl_per_word": 2.587699305044354,
+  "n_oov_sent": 131,
+  "coverage_in_lex": 0.6987951807228916,
+  "uas_all_in_lex": 0.5866983372921615,
+  "n_in_lex": 83,
+  "sa_applied": 50,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 2.6492398164084916,
+  "lat_Q_unpruned_max": 4.27710843373494,
+  "lat_Q_live_mean": 1.6530550774526673,
+  "lat_b_mean": 0.4082619197897788,
+  "lat_n_edges": 7.240963855421687,
+  "bracket_f1": 0.020408163265306124,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06921824104234528,
+    "uas_covered_subset": 0.06428571428571428
+   },
+   "right_branching": {
+    "uas_all": 0.3802931596091205,
+    "uas_covered_subset": 0.41785714285714287
+   },
+   "random_tree": {
+    "uas_all": 0.1723127035830619,
+    "uas_all_std": 0.01101728633569235,
+    "uas_covered_subset": 0.20714285714285716,
+    "uas_covered_subset_std": 0.027199189663799677
+   }
+  },
+  "variant": "SA",
+  "atoms": "A",
+  "max_len": 8,
+  "lex_words": 500,
+  "lex_entries": 1743
+ },
+ {
+  "n_sent": 289,
+  "coverage": 0.22491349480968859,
+  "uas_all": 0.15971148892323545,
+  "uas_covered": 0.9281437125748503,
+  "ppl_per_word": 2.933827000184577,
+  "n_oov_sent": 197,
+  "coverage_in_lex": 0.7065217391304348,
+  "uas_all_in_lex": 0.611439842209073,
+  "n_in_lex": 92,
+  "sa_applied": 12,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 3.1686680469289157,
+  "lat_Q_unpruned_max": 5.391304347826087,
+  "lat_Q_live_mean": 1.9148852657004825,
+  "lat_b_mean": 0.3744665755731786,
+  "lat_n_edges": 10.652173913043478,
+  "bracket_f1": 0.016129032258064516,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06800618238021638,
+    "uas_covered_subset": 0.0658682634730539
+   },
+   "right_branching": {
+    "uas_all": 0.36269963936115407,
+    "uas_covered_subset": 0.4041916167664671
+   },
+   "random_tree": {
+    "uas_all": 0.15352910870685216,
+    "uas_all_std": 0.012377633690217622,
+    "uas_covered_subset": 0.20119760479041915,
+    "uas_covered_subset_std": 0.025078313283080144
+   }
+  },
+  "variant": "TR",
+  "atoms": "B",
+  "max_len": 10,
+  "lex_words": 500,
+  "lex_entries": 1990
+ },
+ {
+  "n_sent": 214,
+  "coverage": 0.2850467289719626,
+  "uas_all": 0.22394136807817588,
+  "uas_covered": 0.9290540540540541,
+  "ppl_per_word": 2.8980123109431637,
+  "n_oov_sent": 131,
+  "coverage_in_lex": 0.7349397590361446,
+  "uas_all_in_lex": 0.6532066508313539,
+  "n_in_lex": 83,
+  "sa_applied": 8,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 3.1820998278829604,
+  "lat_Q_unpruned_max": 5.289156626506024,
+  "lat_Q_live_mean": 1.8448795180722892,
+  "lat_b_mean": 0.3856886988222581,
+  "lat_n_edges": 9.843373493975903,
+  "bracket_f1": 0.019138755980861243,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06921824104234528,
+    "uas_covered_subset": 0.060810810810810814
+   },
+   "right_branching": {
+    "uas_all": 0.3802931596091205,
+    "uas_covered_subset": 0.4189189189189189
+   },
+   "random_tree": {
+    "uas_all": 0.1723127035830619,
+    "uas_all_std": 0.01101728633569235,
+    "uas_covered_subset": 0.19932432432432434,
+    "uas_covered_subset_std": 0.027446075691337706
+   }
+  },
+  "variant": "TR",
+  "atoms": "B",
+  "max_len": 8,
+  "lex_words": 500,
+  "lex_entries": 1990
+ },
+ {
+  "n_sent": 289,
+  "coverage": 0.23183391003460208,
+  "uas_all": 0.1566202988150438,
+  "uas_covered": 0.8837209302325582,
+  "ppl_per_word": 2.782144697634867,
+  "n_oov_sent": 197,
+  "coverage_in_lex": 0.7282608695652174,
+  "uas_all_in_lex": 0.5996055226824457,
+  "n_in_lex": 92,
+  "sa_applied": 11,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 2.9393029675638376,
+  "lat_Q_unpruned_max": 4.663043478260869,
+  "lat_Q_live_mean": 1.8056331953071079,
+  "lat_b_mean": 0.3946961795664015,
+  "lat_n_edges": 10.76086956521739,
+  "bracket_f1": 0.015748031496062992,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06800618238021638,
+    "uas_covered_subset": 0.06976744186046512
+   },
+   "right_branching": {
+    "uas_all": 0.36269963936115407,
+    "uas_covered_subset": 0.39825581395348836
+   },
+   "random_tree": {
+    "uas_all": 0.15352910870685216,
+    "uas_all_std": 0.012377633690217622,
+    "uas_covered_subset": 0.1994186046511628,
+    "uas_covered_subset_std": 0.023730618176695986
+   }
+  },
+  "variant": "TR",
+  "atoms": "A",
+  "max_len": 10,
+  "lex_words": 500,
+  "lex_entries": 1943
+ },
+ {
+  "n_sent": 214,
+  "coverage": 0.29439252336448596,
+  "uas_all": 0.22068403908794787,
+  "uas_covered": 0.8856209150326797,
+  "ppl_per_word": 2.7491922874955037,
+  "n_oov_sent": 131,
+  "coverage_in_lex": 0.7590361445783133,
+  "uas_all_in_lex": 0.6437054631828979,
+  "n_in_lex": 83,
+  "sa_applied": 7,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 2.9449368904188185,
+  "lat_Q_unpruned_max": 4.554216867469879,
+  "lat_Q_live_mean": 1.753628800917958,
+  "lat_b_mean": 0.4057179004428388,
+  "lat_n_edges": 9.674698795180722,
+  "bracket_f1": 0.0186046511627907,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06921824104234528,
+    "uas_covered_subset": 0.06535947712418301
+   },
+   "right_branching": {
+    "uas_all": 0.3802931596091205,
+    "uas_covered_subset": 0.4117647058823529
+   },
+   "random_tree": {
+    "uas_all": 0.1723127035830619,
+    "uas_all_std": 0.01101728633569235,
+    "uas_covered_subset": 0.19803921568627453,
+    "uas_covered_subset_std": 0.027074921800271868
+   }
+  },
+  "variant": "TR",
+  "atoms": "A",
+  "max_len": 8,
+  "lex_words": 500,
+  "lex_entries": 1943
+ }
+]
