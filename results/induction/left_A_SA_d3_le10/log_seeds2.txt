@@ -1,0 +1,59 @@
+config left_A_SA_d3_le10: 2012 train sentences, 289 dev sentences, atoms=['S', 'N', 'NP'], rules={'SA': True, 'forbid_TR': True, 'standard_slots': True}
+seed 2: 2012 sentences, 1167 keys (24 cluster keys), pool=7914 init_pool=192 init entries=4668 model=generative (3.0s)
+-- stage 0: max_len=3 active=196/2012
+round 0: L(M)=66014 L(D|M)=13030 total=79045 parsed=6/196 cats=192 entries=4668 avg/word=4.00 |Q|=2.2 b=0.25 t=0s
+   ops: prune=3501 split=0 fail_add=62 merge=0 rename=0
+round 1: L(M)=17837 L(D|M)=8976 total=26813 parsed=82/196 cats=174 entries=1229 avg/word=1.05 |Q|=1.7 b=0.43 t=7s
+   ops: prune=39 split=2 fail_add=64 merge=4 rename=0
+round 2: L(M)=17934 L(D|M)=4722 total=22656 parsed=154/196 cats=183 entries=1254 avg/word=1.07 |Q|=2.4 b=0.46 t=10s
+   ops: prune=40 split=0 fail_add=24 merge=0 rename=0
+round 3: L(M)=17721 L(D|M)=3395 total=21117 parsed=179/196 cats=187 entries=1238 avg/word=1.06 |Q|=2.6 b=0.44 t=12s
+   ops: prune=8 split=0 fail_add=16 merge=0 rename=0
+round 4: L(M)=17972 L(D|M)=2506 total=20478 parsed=196/196 cats=189 entries=1259 avg/word=1.08 |Q|=2.8 b=0.44 t=15s
+   ops: prune=21 split=0 fail_add=0 merge=0 rename=0
+round 5: L(M)=17667 L(D|M)=2507 total=20174 parsed=196/196 cats=189 entries=1238 avg/word=1.06 |Q|=2.8 b=0.44 t=17s
+-- stage 1: max_len=5 active=673/2012
+round 5: L(M)=17667 L(D|M)=53507 total=71174 parsed=211/673 cats=189 entries=1238 avg/word=1.06 |Q|=1.9 b=0.42 t=17s
+   ops: prune=0 split=9 fail_add=182 merge=3 rename=0
+round 6: L(M)=20540 L(D|M)=37608 total=58148 parsed=409/673 cats=247 entries=1429 avg/word=1.22 |Q|=2.9 b=0.33 t=29s
+   ops: prune=84 split=5 fail_add=99 merge=5 rename=0
+round 7: L(M)=20856 L(D|M)=29510 total=50367 parsed=508/673 cats=267 entries=1449 avg/word=1.24 |Q|=3.2 b=0.32 t=49s
+   ops: prune=53 split=7 fail_add=38 merge=4 rename=0
+round 8: L(M)=20737 L(D|M)=26628 total=47364 parsed=543/673 cats=270 entries=1441 avg/word=1.23 |Q|=3.5 b=0.32 t=74s
+   ops: prune=26 split=1 fail_add=12 merge=1 rename=0
+round 9: L(M)=20505 L(D|M)=25655 total=46161 parsed=554/673 cats=270 entries=1428 avg/word=1.22 |Q|=3.4 b=0.31 t=100s
+   ops: prune=8 split=1 fail_add=111 merge=7 rename=0
+round 10: L(M)=23448 L(D|M)=16830 total=40278 parsed=667/673 cats=316 entries=1639 avg/word=1.40 |Q|=4.9 b=0.28 t=148s
+-- stage 2: max_len=7 active=1210/2012
+round 10: L(M)=23448 L(D|M)=99298 total=122746 parsed=686/1210 cats=316 entries=1639 avg/word=1.40 |Q|=4.3 b=0.27 t=148s
+   ops: prune=99 split=27 fail_add=209 merge=5 rename=0
+round 11: L(M)=25561 L(D|M)=74398 total=99959 parsed=911/1210 cats=380 entries=1776 avg/word=1.52 |Q|=5.1 b=0.25 t=244s
+   ops: prune=79 split=10 fail_add=75 merge=1 rename=0
+round 12: L(M)=25718 L(D|M)=65963 total=91681 parsed=988/1210 cats=392 entries=1782 avg/word=1.53 |Q|=5.2 b=0.24 t=335s
+   ops: prune=33 split=3 fail_add=17 merge=2 rename=0
+round 13: L(M)=25507 L(D|M)=64188 total=89695 parsed=1004/1210 cats=388 entries=1769 avg/word=1.52 |Q|=5.2 b=0.24 t=422s
+   ops: prune=9 split=0 fail_add=181 merge=7 rename=0
+round 14: L(M)=30483 L(D|M)=45173 total=75656 parsed=1186/1210 cats=457 entries=2118 avg/word=1.81 |Q|=7.5 b=0.21 t=588s
+   ops: prune=143 split=2 fail_add=11 merge=4 rename=0
+round 15: L(M)=28723 L(D|M)=44212 total=72935 parsed=1196/1210 cats=448 entries=1995 avg/word=1.71 |Q|=7.4 b=0.21 t=711s
+-- stage 3: max_len=10 active=2012/2012
+round 15: L(M)=28723 L(D|M)=211599 total=240323 parsed=1241/2012 cats=448 entries=1995 avg/word=1.71 |Q|=6.5 b=0.22 t=712s
+   ops: prune=7 split=96 fail_add=366 merge=4 rename=0
+round 16: L(M)=35356 L(D|M)=151508 total=186864 parsed=1648/2012 cats=531 entries=2450 avg/word=2.10 |Q|=9.1 b=0.19 t=1229s
+   ops: prune=196 split=38 fail_add=93 merge=4 rename=0
+round 17: L(M)=34369 L(D|M)=137921 total=172290 parsed=1744/2012 cats=527 entries=2385 avg/word=2.04 |Q|=9.0 b=0.19 t=1634s
+   ops: prune=62 split=23 fail_add=22 merge=3 rename=0
+round 18: L(M)=34067 L(D|M)=134614 total=168681 parsed=1766/2012 cats=521 entries=2367 avg/word=2.03 |Q|=9.3 b=0.19 t=2037s
+   ops: prune=28 split=21 fail_add=8 merge=2 rename=0
+round 19: L(M)=34061 L(D|M)=133234 total=167294 parsed=1775/2012 cats=521 entries=2368 avg/word=2.03 |Q|=9.5 b=0.19 t=2412s
+   ops: prune=19 split=14 fail_add=185 merge=2 rename=0
+round 20: L(M)=39224 L(D|M)=107114 total=146338 parsed=1961/2012 cats=580 entries=2729 avg/word=2.34 |Q|=11.5 b=0.18 t=3111s
+   ops: prune=116 split=18 fail_add=18 merge=3 rename=0
+round 21: L(M)=38278 L(D|M)=104807 total=143085 parsed=1979/2012 cats=570 entries=2665 avg/word=2.28 |Q|=11.5 b=0.18 t=3642s
+   ops: prune=31 split=10 fail_add=0 merge=0 rename=0
+round 22: L(M)=37977 L(D|M)=104836 total=142813 parsed=1979/2012 cats=565 entries=2644 avg/word=2.27 |Q|=11.4 b=0.18 t=4031s
+   ops: prune=11 split=12 fail_add=0 merge=0 rename=0
+round 23: L(M)=37984 L(D|M)=104822 total=142806 parsed=1979/2012 cats=564 entries=2645 avg/word=2.27 |Q|=11.4 b=0.18 t=4355s
+   ops: prune=16 split=11 fail_add=0 merge=0 rename=0
+round 24: L(M)=37904 L(D|M)=104825 total=142729 parsed=1979/2012 cats=563 entries=2640 avg/word=2.26 |Q|=11.4 b=0.18 t=4618s
+== seed 2: total=142729 parsed=1979/2012 cats=563 entries=2640 | dev cov=0.180 cov_inlex=0.473 UAS_all=0.029 UAS_cov=0.220 ppl=168.4 (4621s)

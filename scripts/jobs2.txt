@@ -1,0 +1,19 @@
+--group A --rigid --seeds 1
+--group A --rules TR --seeds 2
+--group A --rules reorder --seeds 2
+--group B --seeds 2
+--group A --rigid --seeds 2
+--group A --anchored --seeds 1
+--group A --max_depth 3 --seeds 1
+--group A --max_depth 5 --seeds 1
+--group C --seeds 1
+--group D --seeds 1
+--group A --anchored --seeds 2
+--group A --max_depth 3 --seeds 2
+--group A --max_depth 5 --seeds 2
+--group C --seeds 2
+--group D --seeds 2
+--group A --train_max_len 8 --seeds 1
+--group A --train_max_len 8 --seeds 2
+--group A --system cky --train_max_len 8 --seeds 1
+--group A --system cky --train_max_len 8 --seeds 2

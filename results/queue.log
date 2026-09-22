@@ -1,0 +1,29 @@
+done: --group A --seeds 1
+done: --group A --seeds 4
+done: --group A --seeds 2
+done: --group A --seeds 3
+done: --group A --seeds 5
+xargs: sh: terminated by signal 15
+done: --group A --rules TR --seeds 1
+done: --group A --rules reorder --seeds 1
+done: --group B --seeds 1
+ --seeds 2
+done: --group A --rigid --seeds 2
+done: --group A --rules reorder --seeds 2
+done: --group A --anchored --seeds 1
+done: --group A --max_depth 3 --seeds 1
+xargs: sh: terminated by signal 15
+done: --group A --max_depth 5 --seeds 1
+done: --group B --seeds 2
+done: --group C --seeds 1 (rerun)
+done: --group A --anchored --seeds 2
+done: --group D --seeds 1
+done: --group A --max_depth 3 --seeds 2
+done: --group A --max_depth 5 --seeds 2
+done: cky seed 2 (manual)
+done: cky seed 1 (manual)
+Terminated
+done: --group C --seeds 2
+done: le8 seed 2 (manual)
+done: le8 seed 1 (manual)
+done: --group D --seeds 2

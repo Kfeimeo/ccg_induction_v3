@@ -1,0 +1,74 @@
+{
+ "handwritten_SA_B": {
+  "n_sent": 212,
+  "coverage": 0.05188679245283019,
+  "uas_all": 0.0316622691292876,
+  "uas_covered": 0.96,
+  "ppl_per_word": 2.992605605434209,
+  "n_oov_sent": 186,
+  "coverage_in_lex": 0.4230769230769231,
+  "uas_all_in_lex": 0.3582089552238806,
+  "n_in_lex": 26,
+  "sa_applied": 7,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 2.741025641025641,
+  "lat_Q_unpruned_max": 5.576923076923077,
+  "lat_Q_live_mean": 2.4471153846153846,
+  "lat_b_mean": 0.3879494416961464,
+  "lat_n_edges": 9.961538461538462,
+  "bracket_f1": 0.0,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06464379947229551,
+    "uas_covered_subset": 0.06
+   },
+   "right_branching": {
+    "uas_all": 0.3660949868073879,
+    "uas_covered_subset": 0.4
+   },
+   "random_tree": {
+    "uas_all": 0.14155672823218998,
+    "uas_all_std": 0.006389910838159541,
+    "uas_covered_subset": 0.20800000000000002,
+    "uas_covered_subset_std": 0.07440430095095311
+   }
+  }
+ },
+ "induced_left_A_SA_d4_le10_seed1_model.pkl": {
+  "n_sent": 212,
+  "coverage": 0.11320754716981132,
+  "uas_all": 0.03100263852242744,
+  "uas_covered": 0.3643410852713178,
+  "ppl_per_word": 182.39727720726046,
+  "n_oov_sent": 165,
+  "coverage_in_lex": 0.5106382978723404,
+  "uas_all_in_lex": 0.1760299625468165,
+  "n_in_lex": 47,
+  "sa_applied": 11,
+  "sa_ambiguous": 0,
+  "sa_ambiguous_rate": 0.0,
+  "lat_Q_unpruned_mean": 10.419528875379939,
+  "lat_Q_unpruned_max": 20.319148936170212,
+  "lat_Q_live_mean": 6.01147416413374,
+  "lat_b_mean": 0.19203464476241416,
+  "lat_n_edges": 33.319148936170215,
+  "bracket_f1": 0.0404040404040404,
+  "baselines": {
+   "left_branching": {
+    "uas_all": 0.06464379947229551,
+    "uas_covered_subset": 0.08527131782945736
+   },
+   "right_branching": {
+    "uas_all": 0.3660949868073879,
+    "uas_covered_subset": 0.3643410852713178
+   },
+   "random_tree": {
+    "uas_all": 0.14155672823218998,
+    "uas_all_std": 0.006389910838159541,
+    "uas_covered_subset": 0.16124031007751938,
+    "uas_covered_subset_std": 0.03903776220779589
+   }
+  }
+ }
+}

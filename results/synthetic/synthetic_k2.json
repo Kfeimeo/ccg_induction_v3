@@ -1,0 +1,177 @@
+{
+ "rows": [
+  {
+   "seed": 1,
+   "majority_acc": 0.4,
+   "exact_words": 4,
+   "extra_entries": 20,
+   "mapping": {
+    "N": "NP",
+    "NP": "N"
+   },
+   "parsed": 307,
+   "n_categories": 11,
+   "n_entries": 28,
+   "total_bits": 26078.874234470226,
+   "time_s": 1.48429274559021,
+   "lexicon": {
+    "a": [
+     "S\\NP"
+    ],
+    "and": [
+     "(NP\\NP)\\S",
+     "(N/(S/N))\\S"
+    ],
+    "big": [
+     "S\\S"
+    ],
+    "cat": [
+     "N\\(S\\NP)"
+    ],
+    "cats": [
+     "N",
+     "S\\(N\\NP)"
+    ],
+    "dog": [
+     "N\\(S\\NP)"
+    ],
+    "dogs": [
+     "N",
+     "S/N",
+     "S\\(N\\NP)"
+    ],
+    "in": [
+     "(S/N)\\S"
+    ],
+    "john": [
+     "N",
+     "S/N",
+     "S\\(N\\NP)"
+    ],
+    "likes": [
+     "(N\\N)\\NP"
+    ],
+    "man": [
+     "N\\(S\\NP)"
+    ],
+    "mary": [
+     "N",
+     "S/N",
+     "S\\(N\\NP)"
+    ],
+    "old": [
+     "S\\S"
+    ],
+    "quickly": [
+     "S\\S"
+    ],
+    "runs": [
+     "S\\N"
+    ],
+    "sees": [
+     "(N\\N)\\NP"
+    ],
+    "sleeps": [
+     "S\\N"
+    ],
+    "the": [
+     "S\\NP"
+    ],
+    "today": [
+     "S\\S"
+    ],
+    "with": [
+     "(S/N)\\S"
+    ]
+   },
+   "pred_majority": {
+    "a": "S\\NP",
+    "and": "(NP\\NP)\\S",
+    "big": "S\\S",
+    "cat": "N\\(S\\NP)",
+    "cats": "N",
+    "dog": "N\\(S\\NP)",
+    "dogs": "N",
+    "in": "(S/N)\\S",
+    "john": "N",
+    "likes": "(N\\N)\\NP",
+    "man": "N\\(S\\NP)",
+    "mary": "N",
+    "old": "S\\S",
+    "quickly": "S\\S",
+    "runs": "S\\N",
+    "sees": "(N\\N)\\NP",
+    "sleeps": "S\\N",
+    "the": "S\\NP",
+    "today": "S\\S",
+    "with": "(S/N)\\S"
+   }
+  }
+ ],
+ "gold": {
+  "john": [
+   "NP"
+  ],
+  "mary": [
+   "NP"
+  ],
+  "dogs": [
+   "NP"
+  ],
+  "cats": [
+   "NP"
+  ],
+  "the": [
+   "NP/N"
+  ],
+  "a": [
+   "NP/N"
+  ],
+  "dog": [
+   "N"
+  ],
+  "cat": [
+   "N"
+  ],
+  "man": [
+   "N"
+  ],
+  "sleeps": [
+   "S\\NP"
+  ],
+  "runs": [
+   "S\\NP"
+  ],
+  "sees": [
+   "(S\\NP)/NP"
+  ],
+  "likes": [
+   "(S\\NP)/NP"
+  ],
+  "big": [
+   "N/N"
+  ],
+  "old": [
+   "N/N"
+  ],
+  "quickly": [
+   "S\\S"
+  ],
+  "today": [
+   "S\\S"
+  ],
+  "with": [
+   "(S\\S)/NP",
+   "(NP\\NP)/NP"
+  ],
+  "in": [
+   "(S\\S)/NP"
+  ],
+  "and": [
+   "((S\\S)/(S\\NP))/NP"
+  ]
+ },
+ "majority_acc_mean": 0.4,
+ "majority_acc_sd": 0.0,
+ "history": []
+}

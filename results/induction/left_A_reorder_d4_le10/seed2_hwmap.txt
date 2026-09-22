@@ -1,0 +1,13 @@
+shared words 453; best mapping {'N': 'N', 'NP': 'NP'}: exact agreement 60/453 = 0.132; shape agreement 0.150; arity agreement 0.651
+  hand-written N/N            -> induced (mapped): [('S\\S', 36), ('S\\NP', 28), ('S', 22), ('N', 13), ('NP\\S', 10)]
+  hand-written NP/NP          -> induced (mapped): [('S\\S', 41), ('S', 21), ('S\\NP', 19), ('N', 15), ('NP\\S', 14)]
+  hand-written NP             -> induced (mapped): [('S\\S', 44), ('S', 19), ('S\\NP', 19), ('N', 12), ('NP\\S', 10)]
+  hand-written N              -> induced (mapped): [('S\\S', 31), ('S\\NP', 17), ('S', 16), ('N', 11), ('NP\\S', 9)]
+  hand-written N/NP           -> induced (mapped): [('S\\S', 27), ('S', 15), ('S\\NP', 13), ('N', 11), ('NP\\S', 8)]
+  hand-written (S\NP)/NP      -> induced (mapped): [('S\\S', 19), ('S', 16), ('NP\\S', 11), ('S/S', 7), ('S\\NP', 7)]
+  hand-written S\NP           -> induced (mapped): [('S\\NP', 18), ('S\\S', 17), ('S', 14), ('NP\\S', 7), ('S\\(S\\S)', 6)]
+  hand-written (S\NP)/(S\NP)  -> induced (mapped): [('S', 10), ('S\\S', 9), ('S/S', 7), ('N', 7), ('NP', 3)]
+  hand-written S/S            -> induced (mapped): [('S\\S', 14), ('S', 13), ('S/S', 6), ('N', 4), ('NP/S', 3)]
+  hand-written S\S            -> induced (mapped): [('S\\S', 16), ('S', 12), ('S/S', 6), ('S\\NP', 2), ('NP\\S', 2)]
+  hand-written (S/(S\NP))/NP  -> induced (mapped): [('S\\S', 14), ('S', 12), ('S/S', 6), ('S\\NP', 2), ('NP/S', 2)]
+  hand-written NP/N           -> induced (mapped): [('S\\S', 6), ('NP\\S', 4), ('NP/NP', 3), ('(S\\N)\\NP', 2), ('S', 2)]
