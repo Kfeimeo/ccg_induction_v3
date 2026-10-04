@@ -181,9 +181,11 @@ P(词序列, 派生) = Π_k P(c_k | σ_{k−1}) · P(w_k | c_k) · 1/n_app(σ_{k
 | 原子 D（聚类原子 C0–C2） | 0.987 | 485 | 2.06 | 0.209 | 0.550 | 0.159±0.039 | — |
 | 训练 ≤8（左分支） | 0.997 | 309 | 2.17 | 0.157（dev≤8: 0.210） | 0.529 | 0.296±0.022 | 0.173 |
 | **对照：CKY inside-outside（训练 ≤8）** | 0.973 | **211±22** | 1.86 | 0.182 | **0.610±0.017** | 0.284±0.086 | — |
+| **对照：CKY + Eisner 正规形式（训练 ≤8）** | 0.974 | 208±18 | 1.89 | 0.176 | 0.593±0.012 | 0.229±0.032 | — |
 
 读法：
 - **左到右约束的代价（CKY 对照，同一目标、同一操作、同一 ≤8 训练集）**：允许右分支派生后，学习器用 **211 个范畴、每词 1.86 个**就达到 97% 训练覆盖，词汇内 dev 覆盖 0.61 vs 左分支 ≤8 的 0.53（+8 个百分点），覆盖句 UAS 相当（0.28±0.09 vs 0.30±0.02）。左分支词库多出 ~50% 的范畴，这正是 §5 描述的"词汇化补偿"（前主语材料吃主语、S\S 后修饰语等）在归纳中的体现。注意 CKY 学习器的搜索更弱（没有双词候选），因此这个差距是**下界**。
+- **Eisner 正规形式（`cky_nf`，与 `cky` 只差正规形式约束，其它完全相同）**：每单元超边数从 4.86 降到 2.29、单元范畴数从 2.3 降到 1.6——伪歧义确实被砍掉约一半；但词库规模（208 vs 211 个范畴）、训练覆盖（97.4% vs 97.3%）和 dev 覆盖（0.176 vs 0.182）几乎不变，覆盖句 UAS 0.23±0.03 vs 0.28±0.09（两个种子的差异在后者的标准差之内）。目标值 85.7k vs 83.8k bit 不可直接比较：正规形式对更少的派生求和，P(词序列) 必然不大于无约束版本。训练时间反而更长（10.6k s vs 7.0k s），因为带产生标记的表项更多且神谕检查更多。结论：在这个学习器上，正规形式只改善了推断的紧凑性，没有改变学到的词库，也没有提高依存正确性——伪歧义不是无监督归纳失败的原因，覆盖压力才是（§7.1 的诊断）。
 - **SA vs 词汇化 TR vs 槽位重排**：三者训练覆盖相近（TR 的一个种子停在 74%），dev UAS 无显著差异（0.26–0.32，标准差 0.02–0.03）。左分支约束下这三种"让主语出现在函子左边"的机制在无监督设定下不可区分；TR 变体更不稳定（目标值标准差 27k bit）。
 - **rigid vs k-valued**：rigid 词库只能解析 15% 训练句、3% dev 句，但覆盖句 UAS 0.69——每词一个范畴时能被解析的句子只有"主语 + 不及物/及物动词 (+ 宾语)"这类，且分析基本正确。这是全部实验中唯一 UAS 明显高于右分支基线的归纳配置，代价是几乎没有覆盖。
 - **MAX_DEPTH**：3 → 4 → 5 时覆盖句 UAS 0.22 → 0.32 → 0.38，dev 覆盖 0.196 → 0.198 → 0.227，范畴数反而下降（537 → 493 → 430）。更深的状态让同一个词条在更多上下文里可用，词库更紧凑；深度 3 会切掉 ((S\NP)/NP)/NP 等必要形状。
@@ -201,7 +203,7 @@ P(词序列, 派生) = Π_k P(c_k | σ_{k−1}) · P(w_k | c_k) · 1/n_app(σ_{k
 **学习层面**
 4. 目标函数：条件式 P(c|w) 目标在数学上不能辨识词库（塌缩语法更优），生成式前缀状态模型可以（人造数据金标最优、MDL 选出的重启恢复 97% 派生依存）。
 5. 搜索：多峰，需多次重启并按 MDL 选择；真实数据上需要句长课程和双词候选才能让稀疏词库生长；这些调度选择对人造数据反而有害。
-6. 真实数据：可学到高覆盖（训练 98%）但语言学上错误的语法；UAS（0.32）低于右分支基线（覆盖子集 0.38）。消融中只有 rigid 词库（UAS 0.69，覆盖 3%）和更深的状态（MAX_DEPTH 5，UAS 0.38 ≈ 基线）改变了这一点；SA/TR/重排三种规则集不可区分；PP/S 特征/聚类原子都更差。CKY 对照用少 50% 的范畴达到更高覆盖，量化了左到右约束的词库代价。原因不在目标函数的局部偏好，而在**覆盖压力 + 左分支系统缺乏"既简洁又高覆盖"的词库**：任何高覆盖词库都必须包含大量构式专属的高 arity 词条，MDL 在没有负例的情况下更愿意用少数几个"万能"范畴（S、S\NP、N、S\S）换取覆盖。
+6. 真实数据：可学到高覆盖（训练 98%）但语言学上错误的语法；UAS（0.32）低于右分支基线（覆盖子集 0.38）。消融中只有 rigid 词库（UAS 0.69，覆盖 3%）和更深的状态（MAX_DEPTH 5，UAS 0.38 ≈ 基线）改变了这一点；SA/TR/重排三种规则集不可区分；PP/S 特征/聚类原子都更差。CKY 对照用少 50% 的范畴达到更高覆盖，量化了左到右约束的词库代价；给 CKY 加上 Eisner 正规形式后超边减半，但词库、覆盖和 UAS 都不变，说明伪歧义不是瓶颈。原因不在目标函数的局部偏好，而在**覆盖压力 + 左分支系统缺乏"既简洁又高覆盖"的词库**：任何高覆盖词库都必须包含大量构式专属的高 arity 词条，MDL 在没有负例的情况下更愿意用少数几个"万能"范畴（S、S\NP、N、S\S）换取覆盖。
 7. 由此可学/不可学的清单（本设定）：论元结构、限定词、助动词序列——**形式上可派生、依存可正确读出（手写 L3 0.6–0.7）、但未被归纳出来（归纳 L3 ≈ 0）**；VP 并列、关系化、that 多功能、嵌套小句——**形式上只能靠构式专属范畴（L4 失败）或不可派生**；Stretch 三类——不可派生。
 
 
@@ -301,6 +303,7 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | config | seeds | objective (bits) | train parsed | #cats | cats/word | |Q| | b | dev cov | dev cov in-lex | UAS all | UAS covered | ppl | dev≤8 cov | dev≤8 UAS | MDL-sel seed |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | cky_A_SA_d4_le8 | 2 | 83750±924 | 0.973±0.009 | 210.5±21.5 | 1.86±0.03 | 2.3±0.1 | 4.86±0.01 | 0.182±0.005 | 0.610±0.017 | 0.039±0.012 | 0.284±0.086 | 165.9±6.3 | n/a | n/a | 2 |
+| cky_nf_A_SA_d4_le8 | 2 | 85661±203 | 0.974±0.004 | 208.5±18.5 | 1.89±0.02 | 1.6±0.0 | 2.29±0.01 | 0.176±0.003 | 0.593±0.012 | 0.030±0.006 | 0.229±0.032 | 183.5±15.4 | n/a | n/a | 2 |
 | left_A_SA_anch_d4_le10 | 2 | 142527±854 | 0.986±0.000 | 520.5±0.5 | 2.22±0.06 | 13.4±0.3 | 0.18±0.00 | 0.202±0.002 | 0.532±0.005 | 0.047±0.011 | 0.296±0.075 | 179.7±0.2 | 0.252±0.005 | 0.066±0.012 | 1 |
 | left_A_SA_d3_le10 | 2 | 141628±1101 | 0.987±0.003 | 537.0±26.0 | 2.26±0.00 | 11.8±0.4 | 0.18±0.00 | 0.196±0.016 | 0.514±0.041 | 0.032±0.004 | 0.224±0.004 | 155.1±13.3 | 0.252±0.014 | 0.048±0.004 | 1 |
 | left_A_SA_d4_le10 | 5 | 140862±998 | 0.985±0.003 | 492.6±20.4 | 2.18±0.02 | 11.7±0.8 | 0.18±0.00 | 0.198±0.010 | 0.520±0.025 | 0.048±0.005 | 0.320±0.031 | 159.4±16.6 | 0.250±0.009 | 0.069±0.008 | 1 |
@@ -630,6 +633,64 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | 48 | `(NP\N)\NP` | 19.1 | of, service, america, year, enjambment, beautiful, floor, september, before, anyway |
 | 49 | `(N\N)\S` | 18.8 | at, in, open, hours, afraid |
 | 50 | `NP/NP` | 17.8 | my, it, 're, built |
+
+失败日志汇总（dev, 0 failures）: by UPOS/deprel of failing word: []; by word: []; by position: []
+
+
+## 高频范畴（cky_nf_A_SA_d4_le8, MDL-selected seed 2）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `N` | 1250.3 | it, that, this, i, have, he, she, <C6>, 's, like, <C1>, got, was, to, there, <C5>, my, in, know, has |
+| 2 | `S` | 601.1 | a, <C1>, <C5>, we, <C9>, it, just, no, at, go, were, the, makes, sorry, 's, <C19>, three, is, very, zero |
+| 3 | `S\S` | 597.1 | <C5>, <C1>, <C14>, <C3>, right, there, good, a, now, great, it, <C10>, be, know, for, correct, beautiful, are, me, doing |
+| 4 | `S/S` | 544.7 | and, the, oh, <C5>, i, yeah, <C1>, we, but, so, then, well, what, my, <C19>, only, thought, you, his, all |
+| 5 | `S/NP` | 504.3 | i, it, <C19>, and, there, so, she, no, like, he, yes, <C5>, in, now, 've, have, you, will, to, we |
+| 6 | `NP` | 484.3 | <C1>, do, was, the, <C7>, <C5>, did, a, said, <C4>, ’re, one, you, want, pretty, of, could, just, like, today |
+| 7 | `NP/N` | 326.7 | <C1>, and, i, also, the, never, not, can, she, long, 's, more, all, it, looking, na, still, about, we, had |
+| 8 | `S\N` | 277.1 | is, <C1>, 's, a, of, think, mean, says, the, was, 'll, hope, something, first, she, died, match, hire, nothing, you |
+| 9 | `NP/S` | 218.2 | you, was, 'm, i, <C1>, the, are, we, of, your, my, <C7>, if, ’s, 's, own, these, for, takes, studied |
+| 10 | `S/N` | 209.6 | i, that, <C1>, the, it, first, we, you, they, were, 'll, and, 're, he, how, started, ended, <C13>, to, sure |
+| 11 | `S\NP` | 207.0 | n't, <C5>, them, out, can, at, <C1>, been, too, a, to, the, two, is, from, down, said, were, home, um |
+| 12 | `NP\N` | 189.8 | <C1>, 's, one, does, say, not, was, their, are, beautiful, do, know, here, want, ball, may, 30, heard, how, call |
+| 13 | `N\S` | 173.1 | to, <C5>, i, that, you, he, it, always, little, him, with, much, more, things, ’s, love, in, this, other, joke |
+| 14 | `(S\N)/S` | 169.8 | 's, is, the, say, meal, above, traveler |
+| 15 | `NP/NP` | 154.3 | i, 's, we, they, ’s, just, are, he, is, in, to, she, 'm, that, plants, little, its |
+| 16 | `(S\NP)\N` | 144.9 | <C1>, here, you, was, water, right, <C7>, likes, 2012, sports, felt, study, results |
+| 17 | `N/S` | 135.5 | the, <C1>, <C5>, i, 's, my, <C17>, ’s, think, look, 're, her, was, each, month, their, we, otherwise, uhhh, its |
+| 18 | `(S\NP)\S` | 118.9 | <C5>, <C19>, on, with, better, <C9>, opposite, comes, another, wednesday, bird, dillard, idea, am, shape, crazy, hurt, those, achieved |
+| 19 | `N\N` | 114.2 | <C1>, a, the, some, and, super, 's, his, this, she, one, it, sleep, these, many, economically, sister, american, not, wo |
+| 20 | `(S\S)\N` | 94.8 | <C5>, me, work, choice, vlog, <C12>, lot, people, wait, remembered, away, active, months, starts, points, moment, family, year, anymore, opening |
+| 21 | `(S\S)/S` | 78.2 | to, by, as, the, a, in, <C0>, three, for, equals, they, bit, below, kids, n’t, ’re |
+| 22 | `N\NP` | 69.5 | to, n't, on, in, <C1>, is, that, <C5>, she, earth, it, age, of, feel, 4 |
+| 23 | `NP\S` | 65.9 | <C1>, all, few, <C15>, not, it, other, what, burning, beginning, 4, exact, kid, chair, getting, last |
+| 24 | `S\(NP\S)` | 64.0 | of, <C1>, it, is, started, nathan, end, vision, yours |
+| 25 | `(S\S)/NP` | 61.1 | in, need, out, because, true, betty, bigger, nice, usually, keep, carolyn, comes |
+| 26 | `NP/(S/NP)` | 54.7 | the, ’s, free, went, stood, ’ve, 've, 2, gone, woke, would |
+| 27 | `(S/N)/S` | 50.7 | i, so, are, 'll, her, here, lights |
+| 28 | `(S\N)\N` | 50.5 | <C17>, it, true, interesting, great, impossible, did, theme |
+| 29 | `S/(S/N)` | 48.1 | they, alright, turn, considered, things, <C23> |
+| 30 | `(NP\S)\N` | 48.0 | <C20>, get, <C11>, connection, tell |
+| 31 | `N/(NP/N)` | 43.8 | <C0>, 's, are, key, however, for, want |
+| 32 | `(S/S)/N` | 41.4 | he, you, mother |
+| 33 | `(S/NP)/S` | 40.3 | <C1>, okay, no, god, study, that, be, mom, seems, bear |
+| 34 | `S\(NP/S)` | 38.6 | 're, know, are, smiled |
+| 35 | `(S\S)\S` | 37.4 | <C14>, bit, of, live, fair, yellow, alright, phone |
+| 36 | `N/NP` | 34.5 | to, <C1>, that, really, know, some, i, up, church |
+| 37 | `(S\N)/NP` | 33.5 | <C23>, into, be, lived, book, help, erasmus, knows |
+| 38 | `N/N` | 31.0 | it, love, i, not, <C1>, applications, football, located, my, he |
+| 39 | `(S/N)/NP` | 30.1 | <C1>, 're, this, future, earth, country |
+| 40 | `(NP\N)\S` | 26.0 | said, her, voice, part, name, words, small, would, still |
+| 41 | `NP\NP` | 22.2 | n't, the, with, me, minute |
+| 42 | `S\(S\NP)` | 20.8 | years, event, huge, massage, know, everyone, came, than, sold, place |
+| 43 | `(S\S)\(S\N)` | 20.5 | <C2> |
+| 44 | `NP\(N/S)` | 19.0 | ca, most, invisible, headset, off, making, website, shit |
+| 45 | `(S\S)\(NP/N)` | 18.0 | time, once, 6, kidding, child |
+| 46 | `(S\S)/N` | 17.1 | does, we, look, blue, things |
+| 47 | `(NP\N)/N` | 16.2 | <C1>, <C17> |
+| 48 | `(N/NP)/N` | 14.9 | she, seen, put, rider, suspect, born |
+| 49 | `(NP\NP)\S` | 13.7 | like, lot, following, country, share, 21, tuesday |
+| 50 | `(NP\S)/N` | 13.6 | we, god, circuit, common, right |
 
 失败日志汇总（dev, 0 failures）: by UPOS/deprel of failing word: []; by word: []; by position: []
 
