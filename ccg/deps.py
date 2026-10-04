@@ -115,9 +115,17 @@ class HeadMap:
     def slot_kind(self, word: str, cat: C.Cat, i: int) -> str:
         target, slots = C.spine(cat)
         sl, a = slots[i]
-        if self.flip_cc and word in self.cc and len(slots) == 2 and slots[0][0] == C.BWD and \
-                slots[1][0] == C.FWD and slots[0][1] == slots[1][1] == target:
-            return 'cc-left' if i == 0 else 'cc-right'
+        if self.flip_cc and word in self.cc and slots and slots[0][0] == C.BWD and slots[0][1] == target:
+            # coordinator: (X\\X)/X, or the subject-taking clause coordinator ((S\\S)/(S\\NP))/NP:
+            # the left conjunct is the phrase head, the right conjunct fills the outermost forward
+            # slot whose argument targets X; any other slot is a raised argument of the right conjunct
+            right = next((j for j in range(len(slots) - 1, 0, -1)
+                          if slots[j][0] == C.FWD and C.spine(slots[j][1])[0] == target), None)
+            if right is not None:
+                if i == 0:
+                    return 'cc-left'
+                if i == right:
+                    return 'cc-right'
         if self.flip_function_words and word in POSS_CLITICS and len(slots) == 2 and \
                 slots[0] == (C.FWD, 'N') and slots[1][0] == C.BWD and target == 'NP':
             return 'poss-head' if i == 0 else 'poss'

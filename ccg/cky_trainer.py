@@ -11,8 +11,12 @@ from .lattice import lattice_stats
 
 
 class CKYTrainer(MDLTrainer):
+    @property
+    def nf(self) -> bool:
+        return bool(self.cfg.get('normal_form', False))
+
     def build(self, words, supp):
-        return Chart(words, supp, self.max_depth, self.goal)
+        return Chart(words, supp, self.max_depth, self.goal, self.nf)
 
     def Z(self, chart, model) -> float:
         return inside_outside(chart, model)[0]
@@ -62,13 +66,13 @@ class CKYTrainer(MDLTrainer):
         small = [c for c in self.pool if C.n_slashes(c) <= 2]
         for (i, k) in occurrences[:6]:
             words = self.sents[i]
-            ch = Chart(words, supp, self.max_depth, self.goal) if not self.lats[i].accepted else self.lats[i]
+            ch = Chart(words, supp, self.max_depth, self.goal, self.nf) if not self.lats[i].accepted else self.lats[i]
             neigh_L = set(); neigh_R = set()
             for (a, b), d in ch.cell.items():
                 if b == k:
-                    neigh_L.update(d.keys())
+                    neigh_L.update(nd[0] for nd in d)
                 if a == k + 1:
-                    neigh_R.update(d.keys())
+                    neigh_R.update(nd[0] for nd in d)
             cands = set()
             for L in neigh_L:
                 for c in self._combinable(L):
@@ -83,7 +87,7 @@ class CKYTrainer(MDLTrainer):
             cands.sort(key=C.size)
             for c in cands[:150]:
                 supp2 = dict(supp); supp2[key] = supp.get(key, []) + [c]
-                if Chart(words, supp2, self.max_depth, self.goal).accepted:
+                if Chart(words, supp2, self.max_depth, self.goal, self.nf).accepted:
                     score[c] = score.get(c, 0.0) + 1.0
         ranked = sorted(score.items(), key=lambda x: -(x[1] * 2.0 ** (-C.size(x[0]))))
         return [c for c, _ in ranked[:top]]

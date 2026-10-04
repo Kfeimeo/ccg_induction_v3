@@ -17,7 +17,7 @@ ap.add_argument('--rules', default='SA', choices=['SA', 'TR', 'reorder'])
 ap.add_argument('--rigid', action='store_true')
 ap.add_argument('--anchored', action='store_true')
 ap.add_argument('--max_depth', type=int, default=0)
-ap.add_argument('--system', default='left', choices=['left', 'cky'])
+ap.add_argument('--system', default='left', choices=['left', 'cky', 'cky_nf'])
 ap.add_argument('--seeds', default='1,2,3,4,5')
 ap.add_argument('--train_max_len', type=int, default=10)
 ap.add_argument('--train_limit', type=int, default=0)
@@ -77,7 +77,7 @@ def log(msg):
 log(f'config {name}: {len(tr)} train sentences, {len(dv)} dev sentences, atoms={atoms}, rules={cfg["rules"]}')
 for seed in [int(x) for x in args.seeds.split(',')]:
     t0 = time.time()
-    if args.system == 'cky':
+    if args.system in ('cky', 'cky_nf'):
         from ccg.cky_trainer import CKYTrainer
         import ccg.induce as I
         trainer, key_of, cluster_of = induce_cky = None, None, None
@@ -99,7 +99,8 @@ for seed in [int(x) for x in args.seeds.split(',')]:
         model = CKYModel(lex, dict(key_counts), lc.get('trans_beta', 1.0), lc.get('emit_gamma', 0.01), goal)
         model.init_uniform(theta0)
         tcfg = dict(mc); tcfg.update({'em_iters': lc['em_iters'], 'em_tol': lc['em_tol'], 'rigid': args.rigid, 'anchors': {},
-                                      'escape_bits_per_word': math.log2(len(pool)) + math.log2(len(keys)) + 1, 'rename_moves': False})
+                                      'escape_bits_per_word': math.log2(len(pool)) + math.log2(len(keys)) + 1, 'rename_moves': False,
+                                      'normal_form': args.system == 'cky_nf'})
         trainer = CKYTrainer(keyseqs, model, pool, tcfg, md, goal, log)
         trainer.train(mc['max_outer_iters'], True)
     else:
@@ -108,7 +109,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
     # ---- dev evaluation
     supp = dev_support(trainer.lex, key_of, dv)
     res = {}
-    if args.system == 'cky':
+    if args.system in ('cky', 'cky_nf'):
         from ccg.cky import Chart, viterbi_tree, tree_heads, inside_outside
         from ccg.evaluate import uas, summarize
         per = []
@@ -116,7 +117,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
             rec = {'sid': s.sid, 'n': s.n, 'covered': False, 'uas_correct': 0, 'uas_total': s.n, 'logprob': 0.0,
                    'in_lex': all(w in supp for w in s.words)}
             if rec['in_lex']:
-                ch = Chart([key_of.get(w, w) for w in s.words], trainer.lex.support_lists(), md, goal)
+                ch = Chart([key_of.get(w, w) for w in s.words], trainer.lex.support_lists(), md, goal, args.system == 'cky_nf')
                 if ch.accepted:
                     Z, _, _ = inside_outside(ch, trainer.model)
                     p, t = viterbi_tree(ch, trainer.model)
