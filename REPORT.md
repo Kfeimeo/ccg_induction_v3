@@ -69,7 +69,13 @@ P(词序列, 派生) = Π_k P(c_k | σ_{k−1}) · P(w_k | c_k) · 1/n_app(σ_{k
 (c) **全局重命名**（作为合并的推广）：把在词条内部出现的复杂子范畴 X 全局替换为未使用的原子（双射重标，派生不变、L(M) 下降）。
 (d) **句长课程**：轮次按句长阶段 ≤3、≤5、≤7、≤10 推进（每阶段最多 5 轮，或词库不变/目标 2 轮无改善即进入下一阶段）。真实数据上没有课程时词库在首轮剪枝后塌缩到每词 1 个范畴、随后无法生长（600 句切片：无课程 100/600 可解析 → 有课程+双词候选 589/600）。**但**人造数据（20 词、平均 4.7 词）上课程反而有害（§6），因此 §6 报告两种调度。
 
-### 3.4 失败日志
+#### 3.5 对照系统：CKY 与 Eisner 正规形式（`ccg/cky.py`, `ccg/cky_trainer.py`）
+§6 的"允许右分支派生的完整版本"用 CKY 实现：同一词库模型、同一 MDL 目标、同一剪枝/分裂/合并操作，派生为任意二叉树（FA/BA/B>/B< 作用于任意相邻成分，SA 只在右项为词时适用），EM 用 inside–outside，生成式参数为 P(规则, 左子范畴, 右子范畴 | 父范畴) 与 P(w|c)。两个变体：
+- `cky`：无正规形式，同一分析的所有伪歧义派生都计入 P(词序列)；
+- `cky_nf`：Eisner (1996) 正规形式。只用一阶组合时即两条约束：B> 的输出不能作 FA/B> 的主函子（左输入），B< 的输出不能作 BA/B< 的主函子（右输入）。实现为表项带产生标记 {O, FC, BC}，组合时检查，不回溯。单元测试（`tests/test_cky_nf.py`）验证伪歧义从 2 降到 1、需要组合的句子仍可解析、人造金标词库 200 句全部可解析且正规形式派生数 ≤ 无约束派生数。
+两个 CKY 变体的搜索比左分支学习器弱一处：没有双词候选（`pair_step`），因此它们的覆盖/目标值是下界。CKY 对照用 train ≤8。
+
+## 3.4 失败日志
 每个似然为 0 的句子记录：句子、失败位置 k、σ_{k−1} 候选集、w_k、w_k 的候选范畴（`lattice.failure_record`）；dev 上另附该词的 UPOS/deprel 用于按构式聚类（`experiment.failure_clusters`）。
 
 ## 4. 评测（`ccg/deps.py`, `ccg/evaluate.py`, `ccg/experiment.py`）
@@ -80,7 +86,7 @@ P(词序列, 派生) = Π_k P(c_k | σ_{k−1}) · P(w_k | c_k) · 1/n_app(σ_{k
 - 功能词（det/aux/cop/case/mark 词表）的**标记槽**：det/case 词取最外层前向 N/NP 论元槽（跳过"提升主语"槽；范畴呈动词形 (S\NP)... 时不标记）；aux/mark 取最外层 S 目标的前向槽；cop 同 aux、否则最外层前向槽。功能词挂到标记槽论元的短语中心，其它论元也挂到该中心（UD 内容词中心约定）。
 - 修饰语槽：论元范畴 = 该层结果范畴（X|X）；或论元与函子都以 S 为目标且函子没有主语槽（如 (S/(S\NP))/NP 的前主语副词/叹词）。论元中心成为短语中心，函子短语挂到它。动词形范畴的内层 X|X 槽（如 ((S\NP)/(S\NP))/NP 的 VP 补足语）与控制动词 (S\NP)/(S\NP) 按补足语处理（控制动词词表）。
 - 提升主语槽：在 S\NP 型小句论元外侧的第一个 NP 槽（(S/(S\NP))/NP、((S\NP)/(S\NP))/NP、((S\S)/(S\NP))/NP）中的 NP 挂到该小句中心（宾语控制动词词表除外：挂到函子）。
-- cc：(X\X)/X 形的并列词：左并列项为短语中心，右并列项挂到左（conj），并列词挂到右并列项（cc）。
+- cc：并列词（词表）且范畴有内层 X\X 槽：(X\X)/X 形，或带主语的小句并列词 ((S\S)/(S\NP))/NP（右并列项 = 最外层以 X 为目标的前向槽，其余槽为右并列项的提升论元）。左并列项为短语中心，右并列项挂到左（conj），并列词挂到右并列项（cc）。该推广是在加入 CKY 正规形式对照时补的（树形派生下人造语法的并列句暴露了双根）；用 `scripts/reeval_dev.py` 重算全部已报告模型，dev UAS 无任何变化。
 - 所有格 's：(NP/N)\NP 形，'s 挂到所有者、所有者挂到被所有名词。
 - 根 = 终态中心词的短语中心。
 这些规则以词表和范畴形状为条件，对手写和归纳词库同样适用（原子被重命名时也不受影响，因为只看结构）。`tests/test_deps.py` 覆盖了及物句、限定词、助动词链、系词+程度副词、PP 论元/附加语、句首叹词/PP 带主语、主语/宾语关系化、NP 并列、零补语 ccomp、宾语控制、句末从句、所有格、名词 PP 补足语、词汇化 TR。
@@ -215,7 +221,14 @@ P(词序列, 派生) = Π_k P(c_k | σ_{k−1}) · P(w_k | c_k) · 1/n_app(σ_{k
 - 负例变换：`phenomena.make_negative`。
 - 现象正例：dev 优先，不足 20 补 train；构造例见 `phenomena.CONSTRUCTED`。
 
-## 附录 B：未核实事项
+## 附录 B：未核实事项与已核实的文献事实
+
+**已核实（读原文 PDF）**：
+- Bisk & Hockenmaier 2012 (AAAI)："our system does not try to eliminate the spurious ambiguities" —— 不用正规形式；规则为应用 + 组合（至 B²，含交叉组合）+ 类型提升（禁止类型提升后的范畴再做应用）；输入为金标 POS 标签（词被替换为 POS）；WSJ ≤10 词；模型为 PCFG 式分解 P(exp|P)·P(H|P,exp)·P(S|P,H,exp)，比较 full EM / Viterbi EM / k-best EM。
+- Bisk & Hockenmaier 2013 (TACL, HDP)："a restricted fragment, without type-raising, that allows only basic composition … Composition introduces spurious ambiguities, which we eliminate by using Eisner (1996)'s normal form"；脚注：对该片段不需要 Hockenmaier & Bisk (2010) 的扩展正规形式。范畴由 POS 种子（名词→N、动词→S、conj）经"论元规则/修饰语规则"迭代生成，arity ≤ 2，禁 (S/N)\N；含主要动词的句子必须归约为 S；并列用 conj 范畴的三元规则。
+因此本项目的 `cky_nf` 对照与 B&H 2013 的解析器属同一类（B¹ 正规形式 CKY），但归纳算法不同：原始词形 vs POS 标签；MDL 的剪枝/分裂/合并 + 神谕候选 vs POS 种子的两条造范畴规则；无交叉组合、无 conj 专用范畴。
+
+**未核实**：
 - Evang 2020 的可配置依存抽取只按记忆参考其"按范畴槽位静态标记中心"的思路，具体论文标题/细节未核实。
 - UD GUM 版本：从 GitHub master 直接下载（2026-09-21），未固定到某个正式发布版本。
 - "Baby steps" 式句长课程（Spitkovsky 等）作为已知技巧引用，未核实出处细节。

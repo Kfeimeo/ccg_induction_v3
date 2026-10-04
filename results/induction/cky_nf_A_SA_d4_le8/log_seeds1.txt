@@ -1,0 +1,15 @@
+config cky_nf_A_SA_d4_le8: 1481 train sentences, 289 dev sentences, atoms=['S', 'N', 'NP'], rules={'SA': True, 'forbid_TR': True, 'standard_slots': True}
+-- stage 0: max_len=3 active=196/1481
+round 0: L(M)=39774 L(D|M)=11886 total=51660 parsed=22/196 cats=191 entries=2936 avg/word=4.00 |Q|=2.4 b=2.38 t=0s
+   ops: prune=2197 split=2 fail_add=73 merge=0 rename=0
+round 1: L(M)=11173 L(D|M)=7021 total=18194 parsed=113/196 cats=162 entries=814 avg/word=1.11 |Q|=1.2 b=1.26 t=18s
+   ops: prune=44 split=2 fail_add=25 merge=1 rename=0
+round 2: L(M)=10922 L(D|M)=4717 total=15639 parsed=156/196 cats=164 entries=797 avg/word=1.09 |Q|=1.0 b=1.01 t=23s
+   ops: prune=12 split=2 fail_add=15 merge=3 rename=0
+round 3: L(M)=10959 L(D|M)=3836 total=14794 parsed=175/196 cats=162 entries=802 avg/word=1.09 |Q|=0.9 b=0.96 t=29s
+   ops: prune=5 split=0 fail_add=4 merge=4 rename=0
+round 4: L(M)=10908 L(D|M)=3636 total=14544 parsed=179/196 cats=157 entries=801 avg/word=1.09 |Q|=0.9 b=0.94 t=35s
+   ops: prune=5 split=0 fail_add=0 merge=0 rename=0
+round 5: L(M)=10840 L(D|M)=3635 total=14475 parsed=179/196 cats=157 entries=796 avg/word=1.08 |Q|=0.9 b=0.94 t=40s
+-- stage 1: max_len=5 active=673/1481
+round 5: L(M)=10840 L(D|M)=53198 total=64037 parsed=195/673 cats=157 entries=796 avg/word=1.08 |Q|=0.9 b=0.95 t=40s
