@@ -13,3 +13,23 @@ round 4: L(M)=10908 L(D|M)=3636 total=14544 parsed=179/196 cats=157 entries=801 
 round 5: L(M)=10840 L(D|M)=3635 total=14475 parsed=179/196 cats=157 entries=796 avg/word=1.08 |Q|=0.9 b=0.94 t=40s
 -- stage 1: max_len=5 active=673/1481
 round 5: L(M)=10840 L(D|M)=53198 total=64037 parsed=195/673 cats=157 entries=796 avg/word=1.08 |Q|=0.9 b=0.95 t=40s
+   ops: prune=0 split=18 fail_add=211 merge=6 rename=0
+round 6: L(M)=13932 L(D|M)=33666 total=47598 parsed=451/673 cats=209 entries=1024 avg/word=1.40 |Q|=1.0 b=1.07 t=79s
+   ops: prune=126 split=25 fail_add=94 merge=6 rename=0
+round 7: L(M)=13782 L(D|M)=24828 total=38610 parsed=569/673 cats=216 entries=1017 avg/word=1.39 |Q|=0.9 b=1.00 t=135s
+   ops: prune=64 split=7 fail_add=27 merge=8 rename=0
+round 8: L(M)=13343 L(D|M)=22875 total=36217 parsed=598/673 cats=208 entries=987 avg/word=1.34 |Q|=0.9 b=0.96 t=194s
+   ops: prune=18 split=2 fail_add=5 merge=3 rename=0
+round 9: L(M)=13179 L(D|M)=22497 total=35676 parsed=603/673 cats=203 entries=976 avg/word=1.33 |Q|=0.9 b=0.96 t=248s
+   ops: prune=3 split=0 fail_add=3 merge=0 rename=0
+round 10: L(M)=13179 L(D|M)=22266 total=35445 parsed=606/673 cats=203 entries=976 avg/word=1.33 |Q|=0.9 b=0.95 t=305s
+-- stage 2: max_len=7 active=1210/1481
+round 10: L(M)=13179 L(D|M)=99130 total=112309 parsed=656/1210 cats=203 entries=976 avg/word=1.33 |Q|=1.2 b=1.26 t=305s
+   ops: prune=3 split=71 fail_add=248 merge=6 rename=0
+round 11: L(M)=17361 L(D|M)=67367 total=84728 parsed=969/1210 cats=234 entries=1292 avg/word=1.76 |Q|=1.2 b=1.39 t=564s
+   ops: prune=141 split=40 fail_add=89 merge=7 rename=0
+round 12: L(M)=17089 L(D|M)=57554 total=74643 parsed=1073/1210 cats=234 entries=1280 avg/word=1.74 |Q|=1.1 b=1.34 t=904s
+   ops: prune=77 split=21 fail_add=23 merge=6 rename=0
+round 13: L(M)=16590 L(D|M)=55072 total=71662 parsed=1099/1210 cats=226 entries=1247 avg/word=1.70 |Q|=1.2 b=1.42 t=1276s
+   ops: prune=34 split=16 fail_add=26 merge=4 rename=0
+round 14: L(M)=16716 L(D|M)=52978 total=69694 parsed=1123/1210 cats=227 entries=1255 avg/word=1.71 |Q|=1.2 b=1.45 t=1661s
