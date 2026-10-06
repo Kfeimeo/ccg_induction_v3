@@ -14,3 +14,17 @@ round 4: L(M)=17063 L(D|M)=5722 total=22785 parsed=196/196 cats=155 entries=1239
    lexicon unchanged: stage done
 -- stage 1: max_len=5 active=673/2012
 round 5: L(M)=17063 L(D|M)=57597 total=74659 parsed=201/673 cats=155 entries=1239 avg/word=1.06 |Q|=8.7 b=0.80 t=22s
+   ops: prune=0 split=0 fail_add=290 merge=0 rename=0
+round 6: L(M)=21331 L(D|M)=39609 total=60941 parsed=509/673 cats=228 entries=1529 avg/word=1.31 |Q|=37.0 b=0.72 t=130s
+   ops: prune=144 split=0 fail_add=109 merge=0 rename=0
+round 7: L(M)=20842 L(D|M)=33049 total=53891 parsed=616/673 cats=251 entries=1494 avg/word=1.28 |Q|=41.6 b=0.73 t=226s
+   ops: prune=50 split=0 fail_add=32 merge=0 rename=0
+round 8: L(M)=20578 L(D|M)=31374 total=51953 parsed=641/673 cats=254 entries=1476 avg/word=1.26 |Q|=47.1 b=0.74 t=259s
+   ops: prune=22 split=0 fail_add=20 merge=0 rename=0
+round 9: L(M)=20811 L(D|M)=30246 total=51057 parsed=661/673 cats=263 entries=1492 avg/word=1.28 |Q|=47.4 b=0.74 t=351s
+   ops: prune=28 split=0 fail_add=0 merge=0 rename=0
+round 10: L(M)=20396 L(D|M)=30221 total=50617 parsed=661/673 cats=263 entries=1464 avg/word=1.25 |Q|=47.4 b=0.74 t=408s
+-- stage 2: max_len=7 active=1210/2012
+round 10: L(M)=20396 L(D|M)=112604 total=133000 parsed=688/1210 cats=263 entries=1464 avg/word=1.25 |Q|=42.8 b=0.63 t=411s
+   ops: prune=0 split=0 fail_add=458 merge=0 rename=0
+round 11: L(M)=27110 L(D|M)=83825 total=110935 parsed=1043/1210 cats=370 entries=1922 avg/word=1.65 |Q|=137.5 b=0.57 t=1404s
