@@ -579,15 +579,18 @@ class MDLTrainer:
                      f'|Q|={rec["Q_mean"]:.1f} b={rec["b_mean"]:.2f} t={time.time()-t0:.0f}s')
             if final:
                 return True
-            n_prune = self.prune_step(counts) if not self.cfg.get('rigid', False) else 0
-            n_split = self.split_step(ctx_key, counts)
-            n_fail = self.failure_step() if use_failure_proposals else 0
-            n_pair = self.pair_step() if (use_failure_proposals and self.cfg.get('pair_proposals', True) and n_fail < 5) else 0
+            tm = {}
+            t1 = time.time(); n_prune = self.prune_step(counts) if not self.cfg.get('rigid', False) else 0; tm['prune'] = time.time() - t1
+            t1 = time.time(); n_split = self.split_step(ctx_key, counts); tm['split'] = time.time() - t1
+            t1 = time.time(); n_fail = self.failure_step() if use_failure_proposals else 0; tm['fail'] = time.time() - t1
+            t1 = time.time(); n_pair = self.pair_step() if (use_failure_proposals and self.cfg.get('pair_proposals', True) and n_fail < 5) else 0; tm['pair'] = time.time() - t1
             n_fail += n_pair
-            n_merge = self.merge_step(ctx_cat, counts)
-            n_ren = self.rename_step() if self.cfg.get('rename_moves', True) else 0
-            rec.update({'n_prune': n_prune, 'n_split': n_split, 'n_fail_add': n_fail, 'n_merge': n_merge, 'n_rename': n_ren})
-            self.log(f'   ops: prune={n_prune} split={n_split} fail_add={n_fail} merge={n_merge} rename={n_ren}')
+            t1 = time.time(); n_merge = self.merge_step(ctx_cat, counts); tm['merge'] = time.time() - t1
+            t1 = time.time(); n_ren = self.rename_step() if self.cfg.get('rename_moves', True) else 0; tm['rename'] = time.time() - t1
+            rec.update({'n_prune': n_prune, 'n_split': n_split, 'n_fail_add': n_fail, 'n_merge': n_merge, 'n_rename': n_ren,
+                        'op_seconds': {k: round(v, 1) for k, v in tm.items()}})
+            self.log(f'   ops: prune={n_prune} split={n_split} fail_add={n_fail} merge={n_merge} rename={n_ren} '
+                     f'| seconds: ' + ' '.join(f'{k}={v:.0f}' for k, v in tm.items()))
             if n_prune + n_split + n_fail + n_merge + n_ren == 0:
                 self.log('   lexicon unchanged: stage done')
                 return True
