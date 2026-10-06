@@ -2,53 +2,72 @@
  "summary": {
   "n_sent": 289,
   "coverage": 0.22837370242214533,
-  "uas_all": 0.1586810922205049,
-  "uas_covered": 0.8953488372093024,
-  "ppl_per_word": 2.861040133442728,
+  "uas_all": 0.1602266872746007,
+  "uas_covered": 0.9014492753623189,
+  "ppl_per_word": 2.666890521791517,
   "n_oov_sent": 199,
   "coverage_in_lex": 0.7333333333333333,
-  "uas_all_in_lex": 0.6172344689378757,
+  "uas_all_in_lex": 0.6232464929859719,
   "n_in_lex": 90,
-  "sa_applied": 12,
+  "sa_applied": 72,
   "sa_ambiguous": 0,
   "sa_ambiguous_rate": 0.0,
-  "lat_Q_unpruned_mean": 2.973165784832451,
-  "lat_Q_unpruned_max": 4.677777777777778,
-  "lat_Q_live_mean": 1.7916843033509695,
-  "lat_b_mean": 0.3896770575981837,
-  "lat_n_edges": 10.733333333333333,
-  "bracket_f1": 0.015503875968992248,
+  "lat_Q_unpruned_mean": 58.166230158730144,
+  "lat_Q_unpruned_max": 171.9777777777778,
+  "lat_Q_live_mean": 17.11340388007055,
+  "lat_b_mean": 0.6923894505705716,
+  "lat_n_edges": 135.12222222222223,
+  "bracket_f1": 0.015384615384615384,
   "baselines": {
    "left_branching": {
     "uas_all": 0.06800618238021638,
-    "uas_covered_subset": 0.06686046511627906
+    "uas_covered_subset": 0.06956521739130435
    },
    "right_branching": {
     "uas_all": 0.36269963936115407,
-    "uas_covered_subset": 0.39825581395348836
+    "uas_covered_subset": 0.39710144927536234
    },
    "random_tree": {
     "uas_all": 0.15352910870685216,
     "uas_all_std": 0.012377633690217622,
-    "uas_covered_subset": 0.19593023255813952,
-    "uas_covered_subset_std": 0.02422403099534844
+    "uas_covered_subset": 0.19942028985507249,
+    "uas_covered_subset_std": 0.026527678118603022
    }
   },
-  "variant": "TR",
-  "atoms": "A",
+  "variant": "SA",
+  "atoms": "B",
   "max_len": 10,
-  "system": "left",
+  "system": "stack3",
   "lex_words": 500,
-  "lex_entries": 1951
+  "lex_entries": 1796
  },
  "failures": [
   {
    "sentence": "in it norton observed",
    "fail_pos": 5,
    "sigma_prev": [
-    "S/NP"
+    "[PP N/N (S\\NP)/NP]",
+    "[PP N/PP (S\\NP)/NP]",
+    "[PP NP/NP (S\\NP)/NP]",
+    "[PP NP/PP (S\\NP)/NP]",
+    "[PP N (S\\NP)/NP]",
+    "[PP S/NP]",
+    "[S\\S NP S/NP]",
+    "[N\\N N/N (S\\NP)/NP]",
+    "[N\\N N/PP (S\\NP)/NP]",
+    "[N\\N NP/NP (S\\NP)/NP]",
+    "[N\\N NP/PP (S\\NP)/NP]",
+    "[N\\N N (S\\NP)/NP]",
+    "[N\\N S/NP]",
+    "[NP\\NP N/N (S\\NP)/NP]",
+    "[NP\\NP N/PP (S\\NP)/NP]",
+    "[NP\\NP NP/NP (S\\NP)/NP]",
+    "[NP\\NP NP/PP (S\\NP)/NP]",
+    "[NP\\NP N (S\\NP)/NP]",
+    "[NP\\NP S/NP]",
+    "[S\\S N/N (S\\NP)/NP]"
    ],
-   "n_sigma_prev": 1,
+   "n_sigma_prev": 32,
    "word": "<END>",
    "word_cats": [],
    "upos": "END",
@@ -56,87 +75,109 @@
   },
   {
    "sentence": "you guys are always in trouble",
-   "fail_pos": 5,
+   "fail_pos": 7,
    "sigma_prev": [
-    "S/(N/N)",
-    "S/(S\\NP)"
+    "[NP/N (S\\NP)/(N/N) PP/PP]",
+    "[NP/N (S\\NP)/(N/N) PP]",
+    "[NP/N (S\\NP)/(N/N) (N\\N)/PP]",
+    "[NP/N (S\\NP)/(N/N) N\\N]",
+    "[NP/N (S\\NP)/(N/N) (NP\\NP)/PP]",
+    "[NP/N (S\\NP)/(N/N) NP\\NP]",
+    "[NP/N (S\\NP)/(N/N) (S\\S)/PP]",
+    "[NP/N (S\\NP)/(N/N) S\\S]",
+    "[NP/N (S\\NP)/(N/N) ((S/(S\\NP))/NP)/PP]",
+    "[NP/N (S\\NP)/(N/N) (S/(S\\NP))/NP]",
+    "[NP/N (S\\NP)/(S\\NP) PP/PP]",
+    "[NP/N (S\\NP)/(S\\NP) PP]",
+    "[NP/N (S\\NP)/(S\\NP) (N\\N)/PP]",
+    "[NP/N (S\\NP)/(S\\NP) N\\N]",
+    "[NP/N (S\\NP)/(S\\NP) (NP\\NP)/PP]",
+    "[NP/N (S\\NP)/(S\\NP) NP\\NP]",
+    "[NP/N (S\\NP)/(S\\NP) (S\\S)/PP]",
+    "[NP/N (S\\NP)/(S\\NP) S\\S]",
+    "[NP/N (S\\NP)/(S\\NP) ((S/(S\\NP))/NP)/PP]",
+    "[NP/N (S\\NP)/(S\\NP) (S/(S\\NP))/NP]"
    ],
-   "n_sigma_prev": 2,
-   "word": "in",
-   "word_cats": [
-    "NP/NP",
-    "S\\S",
-    "(N\\N)/NP",
-    "(NP\\NP)/NP",
-    "(S\\S)/NP",
-    "((S/(S\\NP))/NP)/NP",
-    "NP"
-   ],
-   "upos": "ADP",
-   "deprel": "case",
-   "head_word": "trouble"
+   "n_sigma_prev": 338,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "you 're so stupid thinking i spent the night",
-   "fail_pos": 5,
+   "fail_pos": 10,
    "sigma_prev": [
-    "S"
+    "[S/NP N S/N]",
+    "[S/NP N S/PP]",
+    "[S/NP N S]",
+    "[S/PP N S/N]",
+    "[S/PP N S/PP]",
+    "[S/PP N S]",
+    "[S S\\NP S/N]",
+    "[S S\\NP S/PP]",
+    "[S S\\NP S]",
+    "[S S\\NP (S\\NP)/N]",
+    "[S S\\NP (S\\NP)/PP]",
+    "[S S\\NP S\\NP]",
+    "[S N S/N]",
+    "[S N S/PP]",
+    "[S N S]",
+    "[S/(S\\NP) N S/N]",
+    "[S/(S\\NP) N S/PP]",
+    "[S/(S\\NP) N S]"
    ],
-   "n_sigma_prev": 1,
-   "word": "thinking",
-   "word_cats": [
-    "S\\NP",
-    "(S\\NP)/NP",
-    "N"
-   ],
-   "upos": "VERB",
-   "deprel": "advcl",
-   "head_word": "stupid"
+   "n_sigma_prev": 18,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "we 'll do this some other weekend",
-   "fail_pos": 5,
+   "fail_pos": 8,
    "sigma_prev": [
-    "S/N"
+    "[S NP/N NP/N]",
+    "[S NP/N NP/PP]",
+    "[S NP/N NP]",
+    "[S NP/N (S\\S)/N]",
+    "[S NP/N (S\\S)/PP]",
+    "[S NP/N S\\S]",
+    "[S/N NP/N]",
+    "[S/N NP/PP]",
+    "[S/N NP/N NP/PP]",
+    "[S/N NP]",
+    "[S/N NP/N NP]",
+    "[S/N NP/PP N/N]",
+    "[S/N NP/PP N/PP]",
+    "[S/N NP/PP N]",
+    "[S/N (S\\S)/N]",
+    "[S/N (S\\S)/PP]",
+    "[S/N (S\\S)/N NP/PP]",
+    "[S/N S\\S]",
+    "[S/N (S\\S)/N NP]",
+    "[S NP NP/N]"
    ],
-   "n_sigma_prev": 1,
-   "word": "some",
-   "word_cats": [
-    "NP/N",
-    "NP/NP",
-    "(S/(S\\NP))/N",
-    "(S\\S)/N"
-   ],
-   "upos": "DET",
-   "deprel": "det",
-   "head_word": "weekend"
-  },
-  {
-   "sentence": "i 'll have melanie call you",
-   "fail_pos": 5,
-   "sigma_prev": [
-    "S/NP",
-    "S"
-   ],
-   "n_sigma_prev": 2,
-   "word": "call",
-   "word_cats": [
-    "(S\\NP)/NP",
-    "((S\\NP)/NP)/NP"
-   ],
-   "upos": "VERB",
-   "deprel": "xcomp",
-   "head_word": "have"
+   "n_sigma_prev": 43,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "yeah they are",
    "fail_pos": 4,
    "sigma_prev": [
-    "S/NP",
-    "S/(N/N)",
-    "S/(S\\NP)"
+    "[S/NP]",
+    "[S/PP]",
+    "[S/(N/N)]",
+    "[S/(S\\NP)]",
+    "[S\\S S/NP]",
+    "[S\\S S/PP]",
+    "[S\\S S/(N/N)]",
+    "[S\\S S/(S\\NP)]"
    ],
-   "n_sigma_prev": 3,
+   "n_sigma_prev": 8,
    "word": "<END>",
    "word_cats": [],
    "upos": "END",
@@ -144,30 +185,57 @@
   },
   {
    "sentence": "yeah that 's what it is a",
-   "fail_pos": 5,
+   "fail_pos": 8,
    "sigma_prev": [
-    "S/N",
-    "S"
+    "[S/S (S\\NP)/N S/N]",
+    "[S/S S\\NP S/N]",
+    "[S/S (N\\N)/N S/N]",
+    "[S/S N\\N S/N]",
+    "[S/S (NP\\NP)/N S/N]",
+    "[S/S NP\\NP S/N]",
+    "[S/N S/N]",
+    "[S/N S/NP (S\\S)/N]",
+    "[S/N S/PP NP/N]",
+    "[S/N S/PP (S\\S)/N]",
+    "[S/N S/(N/N) NP/N]",
+    "[S/N S/(N/N) (S\\S)/N]",
+    "[S/N S/(S\\NP) NP/N]",
+    "[S/N S/(S\\NP) (S\\S)/N]",
+    "[S S/N]",
+    "[S S/NP (S\\S)/N]",
+    "[S S/PP NP/N]",
+    "[S S/PP (S\\S)/N]",
+    "[S S/(N/N) NP/N]",
+    "[S S/(N/N) (S\\S)/N]"
    ],
-   "n_sigma_prev": 2,
-   "word": "it",
-   "word_cats": [
-    "S/(S\\NP)",
-    "NP"
-   ],
-   "upos": "PRON",
-   "deprel": "nsubj",
-   "head_word": "is"
+   "n_sigma_prev": 40,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "i know she 's",
    "fail_pos": 5,
    "sigma_prev": [
-    "S/NP",
-    "S/(N/N)",
-    "S/(S\\NP)"
+    "[S NP/N]",
+    "[S S/NP]",
+    "[S S/PP]",
+    "[S S/(N/N)]",
+    "[S S/(S\\NP)]",
+    "[S (NP/N)\\NP]",
+    "[S (S\\NP)/NP]",
+    "[S (S\\NP)/PP]",
+    "[S (S\\NP)/(N/N)]",
+    "[S (S\\NP)/(S\\NP)]",
+    "[S/S NP/N]",
+    "[S/NP]",
+    "[S/PP]",
+    "[S/(N/N)]",
+    "[S/(S\\NP)]",
+    "[S/(S\\NP) (NP/N)\\NP]"
    ],
-   "n_sigma_prev": 3,
+   "n_sigma_prev": 16,
    "word": "<END>",
    "word_cats": [],
    "upos": "END",
@@ -175,33 +243,61 @@
   },
   {
    "sentence": "i know what you 're doing",
-   "fail_pos": 4,
+   "fail_pos": 7,
    "sigma_prev": [
-    "S/N",
-    "S",
-    "S/(S\\NP)",
-    "(S/(S\\NP))/N"
+    "[S NP/N S]",
+    "[S NP/N S/NP]",
+    "[S NP S]",
+    "[S NP S/NP]",
+    "[S/N NP/N S\\NP]",
+    "[S/N NP/N (S\\NP)/NP]",
+    "[S/N S/NP S\\NP]",
+    "[S/N S/NP (S\\NP)/NP]",
+    "[S/N S/NP N]",
+    "[S/N S/PP S\\NP]",
+    "[S/N S/PP (S\\NP)/NP]",
+    "[S/N S/PP N]",
+    "[S/N S/(N/N) S\\NP]",
+    "[S/N S/(N/N) (S\\NP)/NP]",
+    "[S/N S/(N/N) N]",
+    "[S/N S]",
+    "[S/N S/NP]",
+    "[S/N S/(S\\NP) N]",
+    "[S NP/N S\\NP]",
+    "[S NP/N (S\\NP)/NP]"
    ],
-   "n_sigma_prev": 4,
-   "word": "you",
-   "word_cats": [
-    "NP/N",
-    "S/(S\\NP)",
-    "NP"
-   ],
-   "upos": "PRON",
-   "deprel": "nsubj",
-   "head_word": "doing"
+   "n_sigma_prev": 64,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "anyways they were not",
    "fail_pos": 5,
    "sigma_prev": [
-    "S/NP",
-    "S/(N/N)",
-    "S/(S\\NP)"
+    "[S/NP]",
+    "[S/NP PP/PP]",
+    "[S/NP S/S]",
+    "[S/NP (N/N)/(N/N)]",
+    "[S/NP (S\\NP)/(S\\NP)]",
+    "[S/PP NP/NP]",
+    "[S/PP]",
+    "[S/PP S/S]",
+    "[S/PP (N/N)/(N/N)]",
+    "[S/PP (S\\NP)/(S\\NP)]",
+    "[S/(N/N) NP/NP]",
+    "[S/(N/N) PP/PP]",
+    "[S/(N/N) S/S]",
+    "[S/(N/N)]",
+    "[S/(N/N) (S\\NP)/(S\\NP)]",
+    "[S/(S\\NP) NP/NP]",
+    "[S/(S\\NP) PP/PP]",
+    "[S/(S\\NP) S/S]",
+    "[S/(S\\NP) (N/N)/(N/N)]",
+    "[S/(S\\NP)]"
    ],
-   "n_sigma_prev": 3,
+   "n_sigma_prev": 40,
    "word": "<END>",
    "word_cats": [],
    "upos": "END",
@@ -209,29 +305,45 @@
   },
   {
    "sentence": "i mean that 's the thing i thought of too",
-   "fail_pos": 8,
+   "fail_pos": 11,
    "sigma_prev": [
-    "S"
+    "[S/N S/NP S/S]",
+    "[S/N S/NP S\\S]",
+    "[S/N S/NP (N/N)/(N/N)]",
+    "[S/N S/NP (S/S)/(S/S)]",
+    "[S/N S/NP (S/(S\\NP))/NP]",
+    "[S/N S/NP (S\\S)/(S\\S)]",
+    "[S/PP S/NP S/S]",
+    "[S/PP S/NP S\\S]",
+    "[S/PP S/NP (N/N)/(N/N)]",
+    "[S/PP S/NP (S/S)/(S/S)]",
+    "[S/PP S/NP (S/(S\\NP))/NP]",
+    "[S/PP S/NP (S\\S)/(S\\S)]",
+    "[S S/NP S/S]",
+    "[S S/NP S\\S]",
+    "[S S/NP (N/N)/(N/N)]",
+    "[S S/NP (S/S)/(S/S)]",
+    "[S S/NP (S/(S\\NP))/NP]",
+    "[S S/NP (S\\S)/(S\\S)]"
    ],
-   "n_sigma_prev": 1,
-   "word": "thought",
-   "word_cats": [
-    "(S\\NP)/NP",
-    "(S\\NP)/S",
-    "((S\\NP)/(S\\NP))/NP"
-   ],
-   "upos": "VERB",
-   "deprel": "acl",
-   "head_word": "thing"
+   "n_sigma_prev": 18,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "we need a",
    "fail_pos": 4,
    "sigma_prev": [
-    "S/N",
-    "(S/(S\\NP))/N"
+    "[S/N]",
+    "[S/NP (S\\S)/N]",
+    "[S/(S\\NP) NP/N]",
+    "[S/(S\\NP) (S\\S)/N]",
+    "[(S/(S\\NP))/N]",
+    "[(S/(S\\NP))/NP (S\\S)/N]"
    ],
-   "n_sigma_prev": 2,
+   "n_sigma_prev": 6,
    "word": "<END>",
    "word_cats": [],
    "upos": "END",
@@ -241,9 +353,28 @@
    "sentence": "see this is the little",
    "fail_pos": 6,
    "sigma_prev": [
-    "(S\\NP)/N"
+    "[(S\\NP)/N (S\\NP)/N]",
+    "[(S\\NP)/N (S\\NP)/N S\\NP]",
+    "[(S\\NP)/N (S\\NP)/NP (S\\S)/N]",
+    "[(S\\NP)/N (S\\NP)/PP NP/N]",
+    "[(S\\NP)/N (S\\NP)/PP (S\\S)/N]",
+    "[(S\\NP)/N (S\\NP)/(N/N) NP/N]",
+    "[(S\\NP)/N (S\\NP)/(N/N) (S\\S)/N]",
+    "[(S\\NP)/N (S\\NP)/(S\\NP) NP/N]",
+    "[(S\\NP)/N (S\\NP)/(S\\NP) (S\\S)/N]",
+    "[(S\\NP)/NP (S\\S)/N (S\\NP)/N]",
+    "[S\\NP (S\\NP)/N]",
+    "[S\\NP (S\\NP)/N S\\NP]",
+    "[S\\NP (S\\NP)/NP (S\\S)/N]",
+    "[S\\NP (S\\NP)/PP NP/N]",
+    "[S\\NP (S\\NP)/PP (S\\S)/N]",
+    "[S\\NP (S\\NP)/(N/N) NP/N]",
+    "[S\\NP (S\\NP)/(N/N) (S\\S)/N]",
+    "[S\\NP (S\\NP)/(S\\NP) NP/N]",
+    "[S\\NP (S\\NP)/(S\\NP) (S\\S)/N]",
+    "[(S\\NP)/S NP/N (S\\NP)/N]"
    ],
-   "n_sigma_prev": 1,
+   "n_sigma_prev": 47,
    "word": "<END>",
    "word_cats": [],
    "upos": "END",
@@ -251,123 +382,227 @@
   },
   {
    "sentence": "there you go thinking again",
-   "fail_pos": 4,
+   "fail_pos": 6,
    "sigma_prev": [
-    "S",
-    "S/NP"
+    "[S S\\NP S/S]",
+    "[S S\\NP]",
+    "[S S\\NP (S/(S\\NP))/NP]",
+    "[S (S\\NP)/NP S/S]",
+    "[S (S\\NP)/NP S\\S]",
+    "[S (S\\NP)/NP (S/(S\\NP))/NP]",
+    "[S N S/S]",
+    "[S N S\\S]",
+    "[S N (S/(S\\NP))/NP]",
+    "[S/PP S\\NP S/S]",
+    "[S/PP S\\NP]",
+    "[S/PP S\\NP (S/(S\\NP))/NP]",
+    "[S/PP (S\\NP)/NP S/S]",
+    "[S/PP (S\\NP)/NP S\\S]",
+    "[S/PP (S\\NP)/NP (S/(S\\NP))/NP]",
+    "[S/PP N S/S]",
+    "[S/PP N S\\S]",
+    "[S/PP N (S/(S\\NP))/NP]",
+    "[S\\NP S S\\NP]",
+    "[S\\NP S/PP S\\NP]"
    ],
-   "n_sigma_prev": 2,
-   "word": "thinking",
-   "word_cats": [
-    "S\\NP",
-    "(S\\NP)/NP",
-    "N"
-   ],
-   "upos": "VERB",
-   "deprel": "xcomp",
-   "head_word": "go"
+   "n_sigma_prev": 28,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "there you go thinking again again",
-   "fail_pos": 4,
+   "fail_pos": 7,
    "sigma_prev": [
-    "S",
-    "S/NP"
+    "[S S\\NP S/S]",
+    "[S S\\NP]",
+    "[S S\\NP (S/(S\\NP))/NP]",
+    "[S (S\\NP)/NP S/S]",
+    "[S (S\\NP)/NP S\\S]",
+    "[S N S/S]",
+    "[S N S\\S]",
+    "[S/PP S\\NP S/S]",
+    "[S/PP S\\NP]",
+    "[S/PP S\\NP (S/(S\\NP))/NP]",
+    "[S/PP (S\\NP)/NP S/S]",
+    "[S/PP (S\\NP)/NP S\\S]",
+    "[S/PP N S/S]",
+    "[S/PP N S\\S]",
+    "[S\\NP S S\\NP]",
+    "[S\\NP S/PP S\\NP]",
+    "[S\\S S S\\NP]",
+    "[S\\S S/PP S\\NP]",
+    "[(S/(S\\NP))/N S\\NP S\\NP]",
+    "[(S/(S\\NP))/N (S\\NP)/PP S\\NP]"
    ],
-   "n_sigma_prev": 2,
-   "word": "thinking",
-   "word_cats": [
-    "S\\NP",
-    "(S\\NP)/NP",
-    "N"
-   ],
-   "upos": "VERB",
-   "deprel": "xcomp",
-   "head_word": "go"
+   "n_sigma_prev": 24,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "there you go thinking again",
-   "fail_pos": 4,
+   "fail_pos": 6,
    "sigma_prev": [
-    "S",
-    "S/NP"
+    "[S S\\NP S/S]",
+    "[S S\\NP]",
+    "[S S\\NP (S/(S\\NP))/NP]",
+    "[S (S\\NP)/NP S/S]",
+    "[S (S\\NP)/NP S\\S]",
+    "[S (S\\NP)/NP (S/(S\\NP))/NP]",
+    "[S N S/S]",
+    "[S N S\\S]",
+    "[S N (S/(S\\NP))/NP]",
+    "[S/PP S\\NP S/S]",
+    "[S/PP S\\NP]",
+    "[S/PP S\\NP (S/(S\\NP))/NP]",
+    "[S/PP (S\\NP)/NP S/S]",
+    "[S/PP (S\\NP)/NP S\\S]",
+    "[S/PP (S\\NP)/NP (S/(S\\NP))/NP]",
+    "[S/PP N S/S]",
+    "[S/PP N S\\S]",
+    "[S/PP N (S/(S\\NP))/NP]",
+    "[S\\NP S S\\NP]",
+    "[S\\NP S/PP S\\NP]"
    ],
-   "n_sigma_prev": 2,
-   "word": "thinking",
-   "word_cats": [
-    "S\\NP",
-    "(S\\NP)/NP",
-    "N"
-   ],
-   "upos": "VERB",
-   "deprel": "xcomp",
-   "head_word": "go"
+   "n_sigma_prev": 28,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "that 's you up there too right there you know",
-   "fail_pos": 9,
+   "fail_pos": 11,
    "sigma_prev": [
-    "S"
+    "[NP/N S\\NP S]",
+    "[NP/N S\\NP S/NP]",
+    "[NP/N S\\NP S/S]",
+    "[NP/N S\\NP (S/(S\\NP))/NP]",
+    "[S/S S\\NP S]",
+    "[S/S S\\NP S/NP]",
+    "[S/S S\\NP S/S]",
+    "[S/S S\\NP (S/(S\\NP))/NP]",
+    "[(N\\N)/N S\\S S]",
+    "[(N\\N)/N S\\S S/NP]",
+    "[(N\\N)/N S\\S S/S]",
+    "[(N\\N)/N S\\S (S/(S\\NP))/NP]",
+    "[N\\N S\\S S]",
+    "[N\\N S\\S S/NP]",
+    "[N\\N S\\S S/S]",
+    "[N\\N S\\S (S/(S\\NP))/NP]",
+    "[N\\N S]",
+    "[N\\N S/NP]",
+    "[N\\N S/S]",
+    "[N\\N S/S (S/(S\\NP))/NP]"
    ],
-   "n_sigma_prev": 1,
-   "word": "you",
-   "word_cats": [
-    "NP/N",
-    "S/(S\\NP)",
-    "NP"
-   ],
-   "upos": "PRON",
-   "deprel": "nsubj",
-   "head_word": "know"
+   "n_sigma_prev": 156,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "i only have uh that many cards so",
-   "fail_pos": 4,
+   "fail_pos": 8,
    "sigma_prev": [
-    "S/NP",
-    "S/(S\\NP)"
+    "[S/NP S/S NP/N]",
+    "[S/NP S/S NP/PP]",
+    "[S/NP S/S NP]",
+    "[S/NP S/S ((NP\\NP)/((S\\NP)/NP))/N]",
+    "[S/NP S/S ((NP\\NP)/((S\\NP)/NP))/PP]",
+    "[S/NP S/S (NP\\NP)/((S\\NP)/NP)]",
+    "[S/NP S\\S ((NP\\NP)/((S\\NP)/NP))/N]",
+    "[S/NP S\\S ((NP\\NP)/((S\\NP)/NP))/PP]",
+    "[S/NP S\\S (NP\\NP)/((S\\NP)/NP)]",
+    "[S/NP (S/(S\\NP))/N NP/N]",
+    "[S/NP (S/(S\\NP))/N NP/PP]",
+    "[S/NP (S/(S\\NP))/N NP]",
+    "[S/NP (S/(S\\NP))/NP ((NP\\NP)/((S\\NP)/NP))/N]",
+    "[S/NP (S/(S\\NP))/NP ((NP\\NP)/((S\\NP)/NP))/PP]",
+    "[S/NP (S/(S\\NP))/NP (NP\\NP)/((S\\NP)/NP)]",
+    "[S/NP S/(S\\NP) NP/N]",
+    "[S/NP S/(S\\NP) NP/PP]",
+    "[S/NP S/(S\\NP) NP]",
+    "[S/(S\\NP) S/S NP/N]",
+    "[S/(S\\NP) S/S NP/PP]"
    ],
-   "n_sigma_prev": 2,
-   "word": "uh",
+   "n_sigma_prev": 36,
+   "word": "so",
    "word_cats": [
     "S/S",
     "S\\S",
-    "(S/(S\\NP))/NP"
+    "(N/N)/(N/N)",
+    "(S/S)/(S/S)",
+    "(S/(S\\NP))/NP",
+    "(S\\S)/S",
+    "(S\\S)/(S\\S)",
+    "((S/S)/(S\\NP))/NP",
+    "((S\\S)/(S\\NP))/NP"
    ],
-   "upos": "INTJ",
-   "deprel": "discourse",
+   "upos": "ADV",
+   "deprel": "parataxis",
    "head_word": "have"
   },
   {
    "sentence": "every time you take over a country you get cards",
-   "fail_pos": 9,
+   "fail_pos": 11,
    "sigma_prev": [
-    "S/N",
-    "S",
-    "(S/NP)/N",
-    "S/NP"
+    "[NP/N S/NP S/PP]",
+    "[NP/N S/NP S]",
+    "[NP/N (S/PP)/NP S/PP]",
+    "[NP/N (S/PP)/NP S]",
+    "[NP/PP S/NP S/PP]",
+    "[NP/PP S/NP S]",
+    "[NP/PP (S/PP)/NP S/PP]",
+    "[NP/PP (S/PP)/NP S]",
+    "[NP S/NP S/PP]",
+    "[NP S/NP S]",
+    "[NP (S/PP)/NP S/PP]",
+    "[NP (S/PP)/NP S]",
+    "[(S\\S)/N S/NP S/PP]",
+    "[(S\\S)/N S/NP S]",
+    "[(S\\S)/N (S/PP)/NP S/PP]",
+    "[(S\\S)/N (S/PP)/NP S]",
+    "[(S\\S)/PP S/NP S/PP]",
+    "[(S\\S)/PP S/NP S]",
+    "[(S\\S)/PP (S/PP)/NP S/PP]",
+    "[(S\\S)/PP (S/PP)/NP S]"
    ],
-   "n_sigma_prev": 4,
-   "word": "get",
-   "word_cats": [
-    "(S\\NP)/NP",
-    "(S\\NP)/(S\\NP)",
-    "((S\\NP)/NP)/NP",
-    "((S\\NP)/(S\\NP))/NP"
-   ],
-   "upos": "VERB",
-   "deprel": "root",
-   "head_word": "<root>"
+   "n_sigma_prev": 24,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "so i think that that is the",
    "fail_pos": 8,
    "sigma_prev": [
-    "S/N",
-    "(S\\S)/N",
-    "(S/S)/N"
+    "[S/N NP/N (S\\NP)/N]",
+    "[S/N S/S (S\\NP)/N]",
+    "[S/N (N\\N)/N]",
+    "[S/N (N\\N)/NP (S\\S)/N]",
+    "[S/N (N\\N)/PP NP/N]",
+    "[S/N (N\\N)/PP (S\\S)/N]",
+    "[S/N (N\\N)/(N/N) NP/N]",
+    "[S/N (N\\N)/(N/N) (S\\S)/N]",
+    "[S/N (N\\N)/(S\\NP) NP/N]",
+    "[S/N (N\\N)/(S\\NP) (S\\S)/N]",
+    "[S/N (NP\\NP)/N]",
+    "[S/N (NP\\NP)/NP (S\\S)/N]",
+    "[S/N (NP\\NP)/PP NP/N]",
+    "[S/N (NP\\NP)/PP (S\\S)/N]",
+    "[S/N (NP\\NP)/(N/N) NP/N]",
+    "[S/N (NP\\NP)/(N/N) (S\\S)/N]",
+    "[S/N (NP\\NP)/(S\\NP) NP/N]",
+    "[S/N (NP\\NP)/(S\\NP) (S\\S)/N]",
+    "[S/N (S\\S)/N (S\\NP)/N]",
+    "[S/N ((NP\\NP)/((S\\NP)/NP))/NP (S\\NP)/N]"
    ],
-   "n_sigma_prev": 3,
+   "n_sigma_prev": 704,
    "word": "<END>",
    "word_cats": [],
    "upos": "END",
@@ -375,194 +610,208 @@
   },
   {
    "sentence": "and that i say is very new",
-   "fail_pos": 5,
+   "fail_pos": 8,
    "sigma_prev": [
-    "S/NP",
-    "S/S",
-    "(S\\S)/NP",
-    "(S\\S)/S"
+    "[S/NP (S\\NP)/NP N/N]",
+    "[S/NP (S\\NP)/PP N/N]",
+    "[S/NP S\\NP]",
+    "[S/NP (S\\NP)/(N/N) S\\NP]",
+    "[S/NP (S\\NP)/(S\\NP) N/N]",
+    "[S/S (S\\NP)/NP N/N]",
+    "[S/S (S\\NP)/PP N/N]",
+    "[S/S S\\NP]",
+    "[S/S (S\\NP)/(N/N) S\\NP]",
+    "[S/S (S\\NP)/(S\\NP) N/N]",
+    "[S/S (S/(S\\NP))/NP S\\NP]",
+    "[(N\\N)/N S/NP S\\NP]",
+    "[(N\\N)/N S/S S\\NP]",
+    "[(N\\N)/N S\\NP]",
+    "[(NP\\NP)/N S/NP S\\NP]",
+    "[(NP\\NP)/N S/S S\\NP]",
+    "[(NP\\NP)/N (S/(S\\NP))/NP S\\NP]",
+    "[(NP\\NP)/NP S/NP S\\NP]",
+    "[(NP\\NP)/NP S/S S\\NP]",
+    "[(NP\\NP)/NP S\\NP]"
    ],
-   "n_sigma_prev": 4,
-   "word": "is",
-   "word_cats": [
-    "(S\\NP)/NP",
-    "(S\\NP)/(N/N)",
-    "(S\\NP)/(S\\NP)"
-   ],
-   "upos": "AUX",
-   "deprel": "cop",
-   "head_word": "new"
+   "n_sigma_prev": 52,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "i take it this is a motion to strike",
-   "fail_pos": 5,
+   "fail_pos": 10,
    "sigma_prev": [
-    "S/N",
-    "S"
+    "[S NP/N (S\\NP)/PP]",
+    "[S NP/N S\\NP]",
+    "[S/N (S\\NP)/N PP/PP]",
+    "[S/N (S\\NP)/N PP]",
+    "[S/N (S\\NP)/N (N\\N)/PP]",
+    "[S/N (S\\NP)/N N\\N]",
+    "[S/N (S\\NP)/N (NP\\NP)/PP]",
+    "[S/N (S\\NP)/N NP\\NP]",
+    "[S/N (S\\NP)/N (S\\S)/PP]",
+    "[S/N (S\\NP)/N S\\S]",
+    "[S/N (S\\NP)/N ((S/(S\\NP))/NP)/PP]",
+    "[S/N (S\\NP)/N (S/(S\\NP))/NP]",
+    "[S/N (S\\NP)/NP N/N]",
+    "[S/N (S\\NP)/NP N/PP]",
+    "[S/N (S\\NP)/PP]",
+    "[S/N (S\\NP)/NP N]",
+    "[S/N S\\NP]",
+    "[S/N (S\\NP)/PP (N\\N)/PP]",
+    "[S/N (S\\NP)/PP N\\N]",
+    "[S/N (S\\NP)/PP (NP\\NP)/PP]"
    ],
-   "n_sigma_prev": 2,
-   "word": "is",
-   "word_cats": [
-    "(S\\NP)/NP",
-    "(S\\NP)/(N/N)",
-    "(S\\NP)/(S\\NP)"
-   ],
-   "upos": "AUX",
-   "deprel": "cop",
-   "head_word": "motion"
+   "n_sigma_prev": 148,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "we met back in high school",
-   "fail_pos": 5,
+   "fail_pos": 7,
    "sigma_prev": [
-    "S/NP",
-    "S"
+    "[S/NP PP/NP N/N]",
+    "[S/NP PP/NP N/PP]",
+    "[S/NP PP/NP N]",
+    "[S/NP PP N/N]",
+    "[S/NP PP N/PP]",
+    "[S/NP PP N]",
+    "[S/NP S\\NP N/N]",
+    "[S/NP S\\NP N/PP]",
+    "[S/NP S\\NP N]",
+    "[S/NP S\\S N/N]",
+    "[S/NP S\\S N/PP]",
+    "[S/NP S\\S N]",
+    "[S/NP (S\\S)/NP N/N]",
+    "[S/NP (S\\S)/NP N/PP]",
+    "[S/NP (S\\S)/NP N]"
    ],
-   "n_sigma_prev": 2,
-   "word": "high",
-   "word_cats": [
-    "N/N",
-    "S\\NP"
-   ],
-   "upos": "ADJ",
-   "deprel": "amod",
-   "head_word": "school"
+   "n_sigma_prev": 15,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   },
   {
    "sentence": "i guess that 's what it 's called",
+   "fail_pos": 9,
+   "sigma_prev": [
+    "[S/S (S\\NP)/N S/NP]",
+    "[S/S S\\NP S/NP]",
+    "[S/S (N\\N)/N S/NP]",
+    "[S/S N\\N S/NP]",
+    "[S/S (NP\\NP)/N S/NP]",
+    "[S/S NP\\NP S/NP]",
+    "[S/N NP/N (S\\NP)/NP]",
+    "[S/N NP/N ((S\\NP)/NP)/NP]",
+    "[S/N S/NP (S\\NP)/NP]",
+    "[S/N S/NP ((S\\NP)/NP)/NP]",
+    "[S/N S/PP (S\\NP)/NP]",
+    "[S/N S/PP ((S\\NP)/NP)/NP]",
+    "[S/N S/(N/N) (S\\NP)/NP]",
+    "[S/N S/(N/N) ((S\\NP)/NP)/NP]",
+    "[S/N S/NP]",
+    "[S/N S/(S\\NP) ((S\\NP)/NP)/NP]",
+    "[S NP/N (S\\NP)/NP]",
+    "[S NP/N ((S\\NP)/NP)/NP]",
+    "[S S/NP (S\\NP)/NP]",
+    "[S S/NP ((S\\NP)/NP)/NP]"
+   ],
+   "n_sigma_prev": 38,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
+  },
+  {
+   "sentence": "alright it is day two",
    "fail_pos": 6,
    "sigma_prev": [
-    "S/N",
-    "S"
+    "[S/NP N/N]",
+    "[S/NP N/N NP/PP]",
+    "[S/NP N]",
+    "[S/NP N/N NP]",
+    "[S/NP N/PP N/N]",
+    "[S/NP N/PP NP/PP]",
+    "[S/NP N/PP N]",
+    "[S/NP N/PP NP]",
+    "[S/PP N/N]",
+    "[S/PP NP/PP]",
+    "[S/PP N]",
+    "[S/PP NP]",
+    "[S/NP N N/N]",
+    "[S/NP N NP/PP]",
+    "[S/NP N N]",
+    "[S/NP N NP]",
+    "[S N/N]",
+    "[S NP/PP]",
+    "[S N]",
+    "[S NP]"
    ],
-   "n_sigma_prev": 2,
-   "word": "it",
-   "word_cats": [
-    "S/(S\\NP)",
-    "NP"
-   ],
-   "upos": "PRON",
-   "deprel": "nsubj",
-   "head_word": "called"
+   "n_sigma_prev": 86,
+   "word": "<END>",
+   "word_cats": [],
+   "upos": "END",
+   "deprel": "END"
   }
  ],
  "failure_clusters": {
   "by_word": [
    [
     "<END>",
-    7
+    23
    ],
    [
-    "thinking",
-    4
-   ],
-   [
-    "it",
-    2
-   ],
-   [
-    "you",
-    2
-   ],
-   [
-    "is",
-    2
-   ],
-   [
-    "in",
-    1
-   ],
-   [
-    "some",
-    1
-   ],
-   [
-    "call",
-    1
-   ],
-   [
-    "thought",
-    1
-   ],
-   [
-    "uh",
-    1
-   ],
-   [
-    "get",
-    1
-   ],
-   [
-    "high",
+    "so",
     1
    ]
   ],
   "by_upos_deprel": [
    [
     "END/END",
-    7
+    23
    ],
    [
-    "VERB/xcomp",
-    4
-   ],
-   [
-    "PRON/nsubj",
-    4
-   ],
-   [
-    "AUX/cop",
-    2
-   ],
-   [
-    "ADP/case",
-    1
-   ],
-   [
-    "VERB/advcl",
-    1
-   ],
-   [
-    "DET/det",
-    1
-   ],
-   [
-    "VERB/acl",
-    1
-   ],
-   [
-    "INTJ/discourse",
-    1
-   ],
-   [
-    "VERB/root",
-    1
-   ],
-   [
-    "ADJ/amod",
+    "ADV/parataxis",
     1
    ]
   ],
   "by_position": [
    [
     4,
-    7
+    2
    ],
    [
     5,
-    11
+    3
    ],
    [
     6,
-    2
+    4
+   ],
+   [
+    7,
+    4
    ],
    [
     8,
-    2
+    5
    ],
    [
     9,
+    1
+   ],
+   [
+    10,
     2
+   ],
+   [
+    11,
+    3
    ]
   ]
  },
@@ -643,7 +892,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 8,
-   "logprob": -9.623773649733524,
+   "logprob": -9.169518377455928,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -657,7 +906,7 @@
     7
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "S\\NP",
     "S\\S",
     "(S\\S)/N",
@@ -667,8 +916,8 @@
     "NP"
    ],
    "rules": [
-    "LEX",
-    "FA",
+    "PUSH",
+    "BA",
     "BA",
     "SA",
     "FA",
@@ -746,12 +995,42 @@
   {
    "sid": "GUM_conversation_grounded-30",
    "n": 6,
-   "covered": false,
-   "uas_correct": 0,
+   "covered": true,
+   "uas_correct": 1,
    "uas_total": 6,
-   "logprob": 0.0,
+   "logprob": -4.276666119016055,
    "oov": false,
-   "in_lex": true
+   "in_lex": true,
+   "pred_heads": [
+    5,
+    5,
+    5,
+    5,
+    0,
+    5
+   ],
+   "cats": [
+    "NP",
+    "(S\\NP)/(S\\NP)",
+    "((S\\NP)/(S\\NP))/NP",
+    "NP",
+    "(S\\NP)/NP",
+    "NP"
+   ],
+   "rules": [
+    "PUSH",
+    "SA",
+    "PUSH",
+    "FA+B>",
+    "B>",
+    "FA"
+   ],
+   "uses_cs": true,
+   "br": [
+    0,
+    4,
+    1
+   ]
   },
   {
    "sid": "GUM_conversation_grounded-35",
@@ -779,7 +1058,7 @@
    "covered": true,
    "uas_correct": 8,
    "uas_total": 8,
-   "logprob": -8.460622839927844,
+   "logprob": -7.090076835776092,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -793,18 +1072,18 @@
     3
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
     "NP/N",
-    "N/NP",
-    "NP/NP",
+    "N/PP",
+    "PP/NP",
     "NP",
     "S\\S"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "B>",
@@ -835,7 +1114,7 @@
    "covered": true,
    "uas_correct": 8,
    "uas_total": 8,
-   "logprob": -8.55333223803211,
+   "logprob": -8.1886891244442,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -849,9 +1128,9 @@
     6
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
@@ -859,10 +1138,10 @@
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
-    "B>",
+    "PUSH",
+    "SA",
+    "PUSH",
+    "SA+B>",
     "B>",
     "B>",
     "B>",
@@ -881,7 +1160,7 @@
    "covered": true,
    "uas_correct": 10,
    "uas_total": 10,
-   "logprob": -10.904707495195588,
+   "logprob": -10.239959789157341,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -897,7 +1176,7 @@
     7
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
@@ -909,8 +1188,8 @@
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "FA",
@@ -933,7 +1212,7 @@
    "covered": true,
    "uas_correct": 2,
    "uas_total": 6,
-   "logprob": -7.284820912568604,
+   "logprob": -7.426549072397305,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -945,7 +1224,7 @@
     5
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/N",
     "N/N",
@@ -953,8 +1232,8 @@
     "S\\S"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "FA",
@@ -973,7 +1252,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -5.493061443340548,
+   "logprob": -5.634789603169249,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -983,14 +1262,14 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -1007,7 +1286,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -5.493061443340548,
+   "logprob": -5.634789603169249,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1017,14 +1296,14 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -1041,7 +1320,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 6,
-   "logprob": -8.237479288613633,
+   "logprob": -6.461468176353717,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1055,16 +1334,16 @@
    "cats": [
     "S/S",
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/N",
     "N"
    ],
    "rules": [
-    "LEX",
+    "PUSH",
     "B>",
-    "B>",
-    "B>",
+    "PUSH",
+    "SA+B>",
     "B>",
     "FA"
    ],
@@ -1111,7 +1390,7 @@
    "covered": true,
    "uas_correct": 7,
    "uas_total": 7,
-   "logprob": -7.67786350067821,
+   "logprob": -7.313220387090301,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1124,7 +1403,7 @@
     4
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
@@ -1133,8 +1412,8 @@
     "S\\S"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "B>",
@@ -1154,7 +1433,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 6,
-   "logprob": -5.19295685089021,
+   "logprob": -4.0943445622221,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1166,7 +1445,7 @@
     3
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
     "NP",
@@ -1174,8 +1453,8 @@
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA",
     "SA",
@@ -1234,7 +1513,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -4.499809670330265,
+   "logprob": -4.0943445622221,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1245,15 +1524,15 @@
     3
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N",
     "(S\\S)/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA",
     "SA",
     "FA"
@@ -1271,7 +1550,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 6,
-   "logprob": -6.4457198193855785,
+   "logprob": -5.703782474656201,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1291,7 +1570,7 @@
     "N"
    ],
    "rules": [
-    "LEX",
+    "PUSH",
     "FA",
     "BA",
     "BA",
@@ -1331,7 +1610,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -4.787491742782046,
+   "logprob": -4.828313737302301,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1341,14 +1620,14 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
-    "(S\\NP)/NP",
-    "NP/NP",
+    "NP",
+    "(S\\NP)/PP",
+    "PP/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -1365,7 +1644,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -2.2335922215070942,
+   "logprob": -2.3025850929940455,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1374,13 +1653,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -1394,30 +1673,30 @@
    "sid": "GUM_conversation_grounded-93",
    "n": 5,
    "covered": true,
-   "uas_correct": 4,
+   "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -5.493061443340548,
+   "logprob": -5.886104031450156,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
     2,
     0,
-    5,
+    2,
     5,
     2
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
-    "NP/NP",
-    "NP/N",
+    "NP",
+    "(S\\S)/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
-    "B>",
+    "PUSH",
+    "SA",
+    "FA",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -1443,7 +1722,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -4.1588830833596715,
+   "logprob": -4.248495242049359,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1453,14 +1732,14 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "S\\NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -1515,12 +1794,12 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "S\\NP"
    ],
    "rules": [
-    "LEX",
-    "FA"
+    "PUSH",
+    "BA"
    ],
    "uses_cs": false,
    "br": [
@@ -1543,12 +1822,12 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "S\\NP"
    ],
    "rules": [
-    "LEX",
-    "FA"
+    "PUSH",
+    "BA"
    ],
    "uses_cs": false,
    "br": [
@@ -1583,7 +1862,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -1.0986122886681098,
+   "logprob": -1.3862943611198906,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1592,13 +1871,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -1614,7 +1893,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -4.564348191467836,
+   "logprob": -3.5553480614894135,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1624,14 +1903,14 @@
     2
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -1658,7 +1937,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -4.941642422609304,
+   "logprob": -4.471638793363569,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1670,15 +1949,15 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
-    "(S\\NP)/NP",
-    "NP/NP",
-    "NP"
+    "NP",
+    "(S\\NP)/PP",
+    "PP/PP",
+    "PP"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
     "B>",
     "FA"
    ],
@@ -1705,7 +1984,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -3.5553480614894135,
+   "logprob": -3.8430301339411947,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1715,14 +1994,14 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
-    "(S\\NP)/NP",
-    "NP/NP",
-    "NP"
+    "NP",
+    "(S\\NP)/PP",
+    "PP/PP",
+    "PP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -1759,7 +2038,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -4.276666119016055,
+   "logprob": -2.890371757896165,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1771,14 +2050,14 @@
    "cats": [
     "S/S",
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "S\\NP"
    ],
    "rules": [
-    "LEX",
+    "PUSH",
     "B>",
-    "B>",
-    "FA"
+    "PUSH",
+    "BA+FA"
    ],
    "uses_cs": false,
    "br": [
@@ -1813,7 +2092,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 6,
-   "logprob": -6.664409020350408,
+   "logprob": -6.040254711277414,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1825,7 +2104,7 @@
     5
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
@@ -1833,8 +2112,8 @@
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "B>",
@@ -1853,7 +2132,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -4.718498871295094,
+   "logprob": -4.0943445622221,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1864,15 +2143,15 @@
     4
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "FA"
@@ -1890,7 +2169,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 7,
-   "logprob": -7.475339236566737,
+   "logprob": -5.934894195619588,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1905,17 +2184,17 @@
    "cats": [
     "S/S",
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP",
     "S\\S",
     "S\\S"
    ],
    "rules": [
-    "LEX",
+    "PUSH",
     "B>",
-    "B>",
-    "B>",
+    "PUSH",
+    "SA+B>",
     "FA",
     "BA",
     "BA"
@@ -1963,7 +2242,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -4.143134726391533,
+   "logprob": -4.808111029984782,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -1972,13 +2251,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -2004,7 +2283,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -4.564348191467836,
+   "logprob": -5.19295685089021,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2014,14 +2293,14 @@
     2
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -2038,7 +2317,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -2.890371757896165,
+   "logprob": -3.5553480614894135,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2047,13 +2326,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -2089,7 +2368,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 6,
-   "logprob": -7.572502985020384,
+   "logprob": -6.956545443151569,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2102,16 +2381,16 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/N",
     "N/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
     "B>",
     "B>",
     "FA"
@@ -2179,7 +2458,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 6,
-   "logprob": -7.7266536648476425,
+   "logprob": -8.391629968440892,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2191,7 +2470,7 @@
     3
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP",
     "S\\S",
@@ -2199,8 +2478,8 @@
     "S\\S"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA",
     "BA",
     "BA",
@@ -2219,7 +2498,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -2.4849066497880004,
+   "logprob": -1.6094379124341003,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2229,14 +2508,14 @@
     2
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -2263,7 +2542,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -3.4657359027997265,
+   "logprob": -3.6888794541139363,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2273,14 +2552,14 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "S\\NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -2327,7 +2606,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -5.375278407684165,
+   "logprob": -4.31748811353631,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2339,15 +2618,15 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
     "B>",
     "FA"
    ],
@@ -2364,7 +2643,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -1.5040773967762742,
+   "logprob": -2.0794415416798357,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2373,13 +2652,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -2435,7 +2714,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 6,
-   "logprob": -3.1780538303479458,
+   "logprob": -2.4849066497880004,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2447,18 +2726,18 @@
     2
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "S\\NP",
     "S\\S"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
-    "B>",
+    "PUSH",
+    "SA",
+    "PUSH",
+    "SA+B>",
     "FA",
     "BA"
    ],
@@ -2483,26 +2762,26 @@
    "sid": "GUM_conversation_risk-141",
    "n": 4,
    "covered": true,
-   "uas_correct": 4,
+   "uas_correct": 3,
    "uas_total": 4,
-   "logprob": -5.0875963352323845,
+   "logprob": -5.375278407684165,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
-    3,
+    2,
     3,
     0,
     3
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -2519,7 +2798,7 @@
    "covered": true,
    "uas_correct": 7,
    "uas_total": 7,
-   "logprob": -7.977968093128549,
+   "logprob": -7.207859871432475,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2533,7 +2812,7 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
@@ -2541,9 +2820,9 @@
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
     "B>",
     "B>",
     "B>",
@@ -2562,7 +2841,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -4.276666119016055,
+   "logprob": -4.248495242049359,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2573,15 +2852,15 @@
     4
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "FA"
@@ -2609,7 +2888,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -1.0986122886681098,
+   "logprob": -1.3862943611198906,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2618,13 +2897,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -2680,7 +2959,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -4.143134726391533,
+   "logprob": -4.808111029984782,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2689,13 +2968,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -2851,7 +3130,7 @@
    "covered": true,
    "uas_correct": 1,
    "uas_total": 3,
-   "logprob": -2.4849066497880004,
+   "logprob": -1.791759469228055,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2861,13 +3140,13 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "S\\NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "FA"
+    "PUSH",
+    "PUSH",
+    "BA+FA"
    ],
    "uses_cs": false,
    "br": [
@@ -2922,7 +3201,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 6,
-   "logprob": -7.860185057472165,
+   "logprob": -7.718685495198465,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -2934,7 +3213,7 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/NP",
     "NP/N",
@@ -2942,8 +3221,8 @@
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "B>",
@@ -3060,15 +3339,15 @@
    "sid": "GUM_essay_tools-44",
    "n": 8,
    "covered": true,
-   "uas_correct": 6,
+   "uas_correct": 8,
    "uas_total": 8,
-   "logprob": -11.569683798788837,
+   "logprob": -10.239959789157341,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
     6,
-    4,
-    4,
+    3,
+    6,
     6,
     6,
     0,
@@ -3076,9 +3355,9 @@
     6
    ],
    "cats": [
-    "(S/(S\\NP))/NP",
-    "NP/NP",
-    "NP/NP",
+    "S/S",
+    "((S/(S\\NP))/NP)/NP",
+    "NP",
     "NP",
     "(S\\NP)/(S\\NP)",
     "S\\NP",
@@ -3086,10 +3365,10 @@
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
     "FA",
+    "FA+B>",
     "B>",
     "FA",
     "SA",
@@ -3238,7 +3517,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -3.9889840465642745,
+   "logprob": -4.276666119016055,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -3248,14 +3527,14 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "(N/N)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA"
    ],
@@ -3323,15 +3602,15 @@
     2
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "S\\NP",
     "S\\S"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA",
     "BA"
@@ -3389,7 +3668,7 @@
    "covered": true,
    "uas_correct": 7,
    "uas_total": 7,
-   "logprob": -3.871201010907891,
+   "logprob": -2.0149030205422647,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -3402,19 +3681,19 @@
     5
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
     "NP/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
-    "B>",
+    "PUSH",
+    "SA",
+    "PUSH",
+    "SA+B>",
     "B>",
     "B>",
     "FA"
@@ -3542,7 +3821,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -1.3862943611198906,
+   "logprob": -1.6094379124341003,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -3551,13 +3830,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -3751,9 +4030,9 @@
    "sid": "GUM_podcast_bangladesh-31",
    "n": 8,
    "covered": true,
-   "uas_correct": 4,
+   "uas_correct": 7,
    "uas_total": 8,
-   "logprob": -9.303466349965667,
+   "logprob": -9.372459221452617,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -3761,24 +4040,24 @@
     4,
     4,
     0,
-    7,
-    7,
+    6,
     4,
+    6,
     4
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
+    "(S\\NP)/(S\\NP)",
+    "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
-    "NP/NP",
-    "NP/NP",
     "NP",
     "S\\S"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "B>",
@@ -3799,7 +4078,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -3.9889840465642745,
+   "logprob": -4.653960350157523,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -3808,13 +4087,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -3828,28 +4107,28 @@
    "sid": "GUM_podcast_bangladesh-35",
    "n": 5,
    "covered": true,
-   "uas_correct": 1,
+   "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -6.1092475827643655,
+   "logprob": -6.579251212010101,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
+    3,
+    3,
+    0,
     5,
-    5,
-    5,
-    5,
-    0
+    3
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
-    "NP/NP",
-    "NP/NP",
+    "NP/PP",
+    "PP/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "FA"
@@ -3877,7 +4156,7 @@
    "covered": true,
    "uas_correct": 7,
    "uas_total": 7,
-   "logprob": -9.559235128595953,
+   "logprob": -7.718685495198466,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -3890,21 +4169,21 @@
     0
    ],
    "cats": [
-    "(S/(S\\NP))/NP",
+    "S/S",
     "NP/N",
-    "N/NP",
-    "NP/NP",
+    "N/PP",
+    "PP/NP",
     "NP",
-    "(S\\NP)/NP",
-    "NP"
+    "(S\\NP)/PP",
+    "PP"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "PUSH",
     "B>",
     "B>",
     "FA",
-    "B>",
+    "SA+B>",
     "FA"
    ],
    "uses_cs": false,
@@ -3950,7 +4229,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -5.529429087511423,
+   "logprob": -5.2574953720277815,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -3962,15 +4241,15 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "(N/N)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
     "B>",
     "FA"
    ],
@@ -4047,7 +4326,7 @@
    "covered": true,
    "uas_correct": 8,
    "uas_total": 8,
-   "logprob": -9.623773649733524,
+   "logprob": -8.922658299524402,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4061,18 +4340,18 @@
     5
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
     "NP/NP",
     "NP/N",
-    "N/NP",
-    "NP/NP",
+    "N/PP",
+    "PP/NP",
     "NP/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "B>",
@@ -4123,7 +4402,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -3.58351893845611,
+   "logprob": -4.0943445622221,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4134,15 +4413,15 @@
     4
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(N/N)",
     "N/N",
     "S\\S"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "FA",
     "BA"
@@ -4200,7 +4479,7 @@
    "covered": true,
    "uas_correct": 6,
    "uas_total": 6,
-   "logprob": -4.276666119016055,
+   "logprob": -2.70805020110221,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4213,18 +4492,18 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
+    "PUSH",
+    "SA+B>",
     "FA"
    ],
    "uses_cs": false,
@@ -4260,7 +4539,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -2.4849066497880004,
+   "logprob": -1.791759469228055,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4270,13 +4549,13 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "S\\NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "FA"
+    "PUSH",
+    "PUSH",
+    "BA+FA"
    ],
    "uses_cs": false,
    "br": [
@@ -4321,7 +4600,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -3.8066624897703196,
+   "logprob": -3.5553480614894135,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4331,14 +4610,14 @@
     2
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "S\\NP",
     "(S\\S)/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "FA",
+    "PUSH",
+    "BA",
     "SA",
     "FA"
    ],
@@ -4585,7 +4864,7 @@
    "covered": true,
    "uas_correct": 3,
    "uas_total": 3,
-   "logprob": -2.0149030205422647,
+   "logprob": -2.4849066497880004,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4594,13 +4873,13 @@
     0
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(N/N)",
     "N/N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "FA"
    ],
    "uses_cs": false,
@@ -4616,7 +4895,7 @@
    "covered": true,
    "uas_correct": 4,
    "uas_total": 4,
-   "logprob": -3.80666248977032,
+   "logprob": -4.0943445622221,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4632,7 +4911,7 @@
     "N/N"
    ],
    "rules": [
-    "LEX",
+    "PUSH",
     "FA",
     "SA",
     "FA"
@@ -4700,7 +4979,7 @@
    "covered": true,
    "uas_correct": 5,
    "uas_total": 5,
-   "logprob": -5.0875963352323845,
+   "logprob": -4.143134726391533,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4712,15 +4991,15 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
     "B>",
     "FA"
    ],
@@ -4745,32 +5024,32 @@
    "sid": "GUM_vlog_radiology-3",
    "n": 7,
    "covered": true,
-   "uas_correct": 6,
+   "uas_correct": 2,
    "uas_total": 7,
-   "logprob": -7.154615356913663,
+   "logprob": -6.36875877824945,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
+    3,
+    3,
+    0,
     7,
     7,
     7,
-    7,
-    7,
-    7,
-    0
+    3
    ],
    "cats": [
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/NP",
-    "NP/NP",
-    "NP/NP",
+    "NP/PP",
+    "PP/NP",
     "NP/N",
     "N/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
+    "PUSH",
+    "SA",
     "B>",
     "B>",
     "B>",
@@ -4798,9 +5077,9 @@
    "sid": "GUM_vlog_radiology-11",
    "n": 9,
    "covered": true,
-   "uas_correct": 7,
+   "uas_correct": 9,
    "uas_total": 9,
-   "logprob": -10.38591370178042,
+   "logprob": -8.306472160100585,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
@@ -4808,27 +5087,27 @@
     4,
     4,
     0,
-    7,
-    7,
     4,
+    7,
+    5,
     9,
     4
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/NP",
-    "NP/NP",
-    "NP/NP",
+    "NP/PP",
+    "PP/NP",
     "NP",
     "(S\\S)/N",
     "N"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
     "B>",
     "B>",
     "B>",
@@ -4886,39 +5165,12 @@
   {
    "sid": "GUM_vlog_radiology-20",
    "n": 5,
-   "covered": true,
+   "covered": false,
    "uas_correct": 0,
    "uas_total": 5,
-   "logprob": -5.375278407684165,
+   "logprob": 0.0,
    "oov": false,
-   "in_lex": true,
-   "pred_heads": [
-    5,
-    5,
-    5,
-    5,
-    0
-   ],
-   "cats": [
-    "S/S",
-    "S/(S\\NP)",
-    "(S\\NP)/NP",
-    "NP/NP",
-    "NP"
-   ],
-   "rules": [
-    "LEX",
-    "B>",
-    "B>",
-    "B>",
-    "FA"
-   ],
-   "uses_cs": false,
-   "br": [
-    0,
-    3,
-    0
-   ]
+   "in_lex": true
   },
   {
    "sid": "GUM_vlog_radiology-21",
@@ -4954,45 +5206,45 @@
    "sid": "GUM_vlog_radiology-34",
    "n": 9,
    "covered": true,
-   "uas_correct": 8,
+   "uas_correct": 4,
    "uas_total": 9,
-   "logprob": -11.277547375987677,
+   "logprob": -10.491690797323463,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
-    4,
-    4,
-    4,
-    0,
     6,
     4,
+    2,
+    6,
+    6,
+    0,
     9,
     9,
     6
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
-    "(S\\NP)/NP",
     "NP",
-    "(S\\S)/(S\\NP)",
-    "(S\\NP)/NP",
-    "NP/NP",
-    "NP/NP",
+    "(NP/N)\\NP",
+    "N",
+    "(S\\NP)/(S\\NP)",
+    "(S\\NP)/PP",
+    "PP/PP",
+    "PP/NP",
     "NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "BA",
     "FA",
-    "SA",
+    "SA+B>",
     "B>",
     "B>",
     "B>",
     "FA"
    ],
-   "uses_cs": true,
+   "uses_cs": false,
    "br": [
     0,
     7,
@@ -5013,14 +5265,14 @@
    "sid": "GUM_vlog_radiology-39",
    "n": 10,
    "covered": true,
-   "uas_correct": 8,
+   "uas_correct": 7,
    "uas_total": 10,
-   "logprob": -11.346540247474628,
+   "logprob": -10.89228497519703,
    "oov": false,
    "in_lex": true,
    "pred_heads": [
     6,
-    6,
+    3,
     6,
     6,
     6,
@@ -5032,7 +5284,7 @@
    ],
    "cats": [
     "S/S",
-    "S/(S\\NP)",
+    "NP",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
     "(S\\NP)/(S\\NP)",
@@ -5043,9 +5295,9 @@
     "S\\NP"
    ],
    "rules": [
-    "LEX",
-    "B>",
-    "B>",
+    "PUSH",
+    "PUSH",
+    "SA+B>",
     "B>",
     "B>",
     "FA",

@@ -20,25 +20,29 @@ vc = word_counts(tr + dv)
 os.makedirs(args.out, exist_ok=True)
 md = cfg['formal_system']['max_depth']
 hm = HeadMap(**cfg['eval']['headmap'])
+from ccg.stack_lattice import make_builder, goal_state
+from ccg.deps import replay_stack
+SYSTEMS = {'left': {}, 'stack3': {'builder': make_builder(3), 'replay_fn': replay_stack, 'goal_state': goal_state('S')}}
 rows = []
-for variant in ('SA', 'TR'):
+for system, pk in SYSTEMS.items():
+  for variant in ('SA', 'TR'):
     for atoms in ('B', 'A'):
         lex = build(variant, vc, 500)
         if atoms == 'A':
             lex = to_group_A(lex)
         for maxlen in (10, 8):
             sents = [s for s in dv if s.n <= maxlen]
-            res = evaluate_lexicon(sents, lex, None, md, hm, CONSTRUCTION_SPECIFIC)
+            res = evaluate_lexicon(sents, lex, None, md, hm, CONSTRUCTION_SPECIFIC, **pk)
             summ = res['summary']
-            summ.update({'variant': variant, 'atoms': atoms, 'max_len': maxlen,
+            summ.update({'variant': variant, 'atoms': atoms, 'max_len': maxlen, 'system': system,
                          'lex_words': len(lex), 'lex_entries': sum(len(v) for v in lex.values())})
             rows.append(summ)
-            tag = f'{variant}_{atoms}_le{maxlen}'
+            tag = f'{variant}_{atoms}_le{maxlen}' + ('' if system == 'left' else f'_{system}')
             with open(os.path.join(args.out, f'{tag}.json'), 'w') as f:
                 json.dump({'summary': summ, 'failures': res['failures'],
                            'failure_clusters': failure_clusters(res['failures']),
                            'per_sent': res['per_sent']}, f, indent=1, ensure_ascii=False)
-            print(f"{tag}: cov={summ['coverage']:.3f} cov_inlex={summ['coverage_in_lex']:.3f} (n_inlex={summ['n_in_lex']}) "
+            print(f"{tag:16s}: cov={summ['coverage']:.3f} cov_inlex={summ['coverage_in_lex']:.3f} (n_inlex={summ['n_in_lex']}) "
                   f"UAS_all={summ['uas_all']:.3f} UAS_cov={summ['uas_covered']:.3f} UAS_inlex={summ['uas_all_in_lex']:.3f} "
                   f"SAamb={summ['sa_ambiguous']}/{summ['sa_applied']} |Q|={summ['lat_Q_unpruned_mean']:.1f} b={summ['lat_b_mean']:.2f} "
                   f"LB={summ['baselines']['left_branching']['uas_all']:.3f} RB={summ['baselines']['right_branching']['uas_all']:.3f} "

@@ -74,8 +74,15 @@ class MDLTrainer:
     def build(self, words, supp):
         return build_lattice(words, supp, self.max_depth, self.goal)
 
+    def successors(self, state, c):
+        """Successor states of a parser state on word category c (overridable)."""
+        return [r for r, _ in combine(state, c, self.max_depth)]
+
+    def goal_state(self):
+        return self.goal
+
     def Z(self, lat, model) -> float:
-        return forward_backward(lat, model, self.goal)[0]
+        return forward_backward(lat, model, self.goal_state())[0]
 
     def rebuild(self, idxs=None):
         supp = self.lex.support_lists()
@@ -205,7 +212,7 @@ class MDLTrainer:
                         for s1 in (C.FWD, C.BWD):
                             for s2 in (C.FWD, C.BWD):
                                 out.add((((x, C.BWD, sigma), s1, y), s2, z))
-        res = [c for c in out if c in self.pool_set and combine(sigma, c, self.max_depth)]
+        res = [c for c in out if c in self.pool_set and self.successors(sigma, c)]
         self._comb_cache[sigma] = res
         return res
 
@@ -216,8 +223,7 @@ class MDLTrainer:
             nxt = set()
             for st in states:
                 for c in supp.get(words[k], ()):
-                    for r, _ in combine(st, c, self.max_depth):
-                        nxt.add(r)
+                    nxt.update(self.successors(st, c))
             states = nxt
             if not states:
                 break
@@ -229,12 +235,11 @@ class MDLTrainer:
             nxt = set()
             for st in states:
                 for c in supp.get(words[j], ()):
-                    for r, _ in combine(st, c, self.max_depth):
-                        nxt.add(r)
+                    nxt.update(self.successors(st, c))
             states = nxt
             if not states:
                 return False
-        return self.goal in states
+        return self.goal_state() in states
 
     def oracle_proposals(self, key: str, occurrences: List[Tuple[int, int]], top: int,
                          state_filter: Optional[Set[C.Cat]] = None) -> List[C.Cat]:
@@ -260,8 +265,7 @@ class MDLTrainer:
                     tried.add(c)
                     starts = set()
                     for s2 in F:
-                        for r, _ in combine(s2, c, self.max_depth):
-                            starts.add(r)
+                        starts.update(self.successors(s2, c))
                     if self.suffix_completes(words, starts, k + 1, supp):
                         score[c] = score.get(c, 0.0) + 1.0
         ranked = sorted(score.items(), key=lambda x: -(x[1] * 2.0 ** (-C.size(x[0]))))
@@ -379,8 +383,7 @@ class MDLTrainer:
                                     continue
                                 starts = set()
                                 for s2 in F2:
-                                    for r, _ in combine(s2, c2, self.max_depth):
-                                        starts.add(r)
+                                    starts.update(self.successors(s2, c2))
                                 if self.suffix_completes(words, starts, j2, supp1):
                                     found = c2
                                     break

@@ -23,7 +23,7 @@ def make_keys(train: List[List[str]], min_freq: int, cluster_of: Dict[str, int])
 
 def induce(train_words: List[List[str]], atoms: List[str], cfg: dict, seed: int, log=print,
            max_depth: int = 4, goal: str = 'S', pool: Optional[List[C.Cat]] = None,
-           atom_boost=None) -> Tuple[MDLTrainer, Dict[str, str], Dict[str, int]]:
+           atom_boost=None, trainer_cls=MDLTrainer) -> Tuple[MDLTrainer, Dict[str, str], Dict[str, int]]:
     lc, mc, cs = cfg['learning'], cfg['mdl'], cfg['category_space']
     t0 = time.time()
     cluster_of, counts = cluster_words(train_words, lc['n_clusters'], seed)
@@ -67,7 +67,8 @@ def induce(train_words: List[List[str]], atoms: List[str], cfg: dict, seed: int,
     tcfg['rename_moves'] = mc.get('rename_moves', True)
     tcfg['curriculum'] = mc.get('curriculum')
     tcfg['rounds_per_stage'] = mc.get('rounds_per_stage', 4)
-    trainer = MDLTrainer(keyseqs, model, pool, tcfg, max_depth, goal, log)
+    tcfg['max_stack'] = mc.get('max_stack', 3)
+    trainer = trainer_cls(keyseqs, model, pool, tcfg, max_depth, goal, log)
     trainer.train(mc['max_outer_iters'], mc.get('failure_proposals', True))
     return trainer, key_of, cluster_of
 

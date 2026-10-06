@@ -17,7 +17,8 @@ ap.add_argument('--rules', default='SA', choices=['SA', 'TR', 'reorder'])
 ap.add_argument('--rigid', action='store_true')
 ap.add_argument('--anchored', action='store_true')
 ap.add_argument('--max_depth', type=int, default=0)
-ap.add_argument('--system', default='left', choices=['left', 'cky', 'cky_nf'])
+ap.add_argument('--system', default='left', choices=['left', 'cky', 'cky_nf', 'stack'])
+ap.add_argument('--max_stack', type=int, default=3)
 ap.add_argument('--seeds', default='1,2,3,4,5')
 ap.add_argument('--train_max_len', type=int, default=10)
 ap.add_argument('--train_limit', type=int, default=0)
@@ -54,7 +55,7 @@ if args.group == 'C':
 md = cfg['formal_system']['max_depth']
 goal = 'S' if 'S' in atoms else next(a for a in atoms if a.startswith('S'))   # group C: S[dcl]
 cfg['formal_system']['goal'] = goal
-name = f'{args.system}_{args.group}_{args.rules}{"_rigid" if args.rigid else ""}{"_anch" if args.anchored else ""}_d{md}_le{args.train_max_len}{args.tag}'
+name = f'{args.system}{args.max_stack if args.system == "stack" else ""}_{args.group}_{args.rules}{"_rigid" if args.rigid else ""}{"_anch" if args.anchored else ""}_d{md}_le{args.train_max_len}{args.tag}'
 out = os.path.join(args.out, name)
 os.makedirs(out, exist_ok=True)
 hm = HeadMap(**cfg['eval']['headmap'])
@@ -103,6 +104,11 @@ for seed in [int(x) for x in args.seeds.split(',')]:
                                       'normal_form': args.system == 'cky_nf'})
         trainer = CKYTrainer(keyseqs, model, pool, tcfg, md, goal, log)
         trainer.train(mc['max_outer_iters'], True)
+    elif args.system == 'stack':
+        from ccg.stack_trainer import StackTrainer
+        cfg['mdl']['max_stack'] = args.max_stack
+        trainer, key_of, cluster_of = induce(train_words, atoms, cfg, seed, log=log, max_depth=md, goal=goal, atom_boost=atom_boost,
+                                             trainer_cls=StackTrainer)
     else:
         trainer, key_of, cluster_of = induce(train_words, atoms, cfg, seed, log=log, max_depth=md, goal=goal, atom_boost=atom_boost)
     train_time = time.time() - t0
@@ -132,11 +138,16 @@ for seed in [int(x) for x in args.seeds.split(',')]:
         summ['n_in_lex'] = len(inlex)
         res = {'summary': summ, 'failures': [], 'per_sent': per}
     else:
-        res = evaluate_lexicon(dv, supp, DevModel(trainer.model, key_of), md, hm, goal=goal)
+        pk = {}
+        if args.system == 'stack':
+            from ccg.stack_lattice import make_builder, goal_state as gs
+            from ccg.deps import replay_stack
+            pk = {'builder': make_builder(args.max_stack), 'replay_fn': replay_stack, 'goal_state': gs(goal)}
+        res = evaluate_lexicon(dv, supp, DevModel(trainer.model, key_of), md, hm, goal=goal, **pk)
     res8 = None
     dv8 = [s for s in dv if s.n <= 8]
-    if args.system == 'left':
-        res8 = evaluate_lexicon(dv8, supp, DevModel(trainer.model, key_of), md, hm, goal=goal)
+    if args.system in ('left', 'stack'):
+        res8 = evaluate_lexicon(dv8, supp, DevModel(trainer.model, key_of), md, hm, goal=goal, **pk)
     h = trainer.history[-1]
     # ---- top categories table
     n_cw = trainer.model.n_cw if args.system == 'left' else trainer.model.base.n_cw
@@ -152,7 +163,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
     with open(os.path.join(out, f'seed{seed}.json'), 'w') as f:
         json.dump({**row, 'dev_per_sent': res['per_sent'], 'dev_failures': res['failures']}, f, indent=1, ensure_ascii=False)
     with open(os.path.join(out, f'seed{seed}_model.pkl'), 'wb') as f:
-        pickle.dump({'model': trainer.model, 'key_of': key_of, 'system': args.system, 'max_depth': md}, f)
+        pickle.dump({'model': trainer.model, 'key_of': key_of, 'system': args.system, 'max_depth': md, 'max_stack': args.max_stack}, f)
     s_ = res['summary']
     log(f'== seed {seed}: total={h["total"]:.0f} parsed={h["parsed"]}/{h["n_sent"]} cats={h["n_categories"]} entries={h["n_entries"]} '
         f'| dev cov={s_["coverage"]:.3f} cov_inlex={s_["coverage_in_lex"]:.3f} UAS_all={s_["uas_all"]:.3f} UAS_cov={s_["uas_covered"]:.3f} '
