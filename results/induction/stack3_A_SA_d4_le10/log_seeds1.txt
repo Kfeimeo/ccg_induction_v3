@@ -34,3 +34,17 @@ round 12: L(M)=22172 L(D|M)=96294 total=118466 parsed=863/1210 cats=229 entries=
 round 13: L(M)=22115 L(D|M)=93693 total=115808 parsed=893/1210 cats=227 entries=1574 avg/word=1.35 |Q|=42.8 b=0.60 t=240s
    ops: prune=17 split=0 fail_add=10 merge=0 rename=0 | seconds: prune=2 split=0 fail=10 pair=0 merge=0 rename=0
 round 14: L(M)=22011 L(D|M)=92739 total=114750 parsed=904/1210 cats=228 entries=1567 avg/word=1.34 |Q|=43.0 b=0.59 t=252s
+   ops: prune=2 split=0 fail_add=21 merge=0 rename=0 | seconds: prune=2 split=0 fail=11 pair=835 merge=0 rename=0
+round 15: L(M)=22590 L(D|M)=91121 total=113710 parsed=926/1210 cats=242 entries=1605 avg/word=1.38 |Q|=43.7 b=0.59 t=1100s
+-- stage 3: max_len=10 active=2012/2012
+round 15: L(M)=22590 L(D|M)=262398 total=284988 parsed=952/2012 cats=242 entries=1605 avg/word=1.38 |Q|=39.4 b=0.52 t=1103s
+   ops: prune=17 split=0 fail_add=227 merge=0 rename=0 | seconds: prune=3 split=0 fail=86 pair=0 merge=0 rename=0
+round 16: L(M)=25481 L(D|M)=239698 total=265179 parsed=1164/2012 cats=253 entries=1815 avg/word=1.56 |Q|=53.2 b=0.51 t=1192s
+   ops: prune=107 split=0 fail_add=93 merge=0 rename=0 | seconds: prune=5 split=0 fail=42 pair=0 merge=0 rename=0
+round 17: L(M)=25278 L(D|M)=230556 total=255834 parsed=1252/2012 cats=255 entries=1801 avg/word=1.54 |Q|=54.1 b=0.51 t=1239s
+   ops: prune=44 split=0 fail_add=27 merge=0 rename=0 | seconds: prune=5 split=0 fail=43 pair=0 merge=0 rename=0
+round 18: L(M)=25034 L(D|M)=227792 total=252826 parsed=1279/2012 cats=259 entries=1784 avg/word=1.53 |Q|=54.9 b=0.50 t=1287s
+   ops: prune=10 split=0 fail_add=12 merge=0 rename=0 | seconds: prune=4 split=0 fail=41 pair=0 merge=0 rename=0
+round 19: L(M)=25049 L(D|M)=226565 total=251613 parsed=1291/2012 cats=259 entries=1786 avg/word=1.53 |Q|=55.2 b=0.50 t=1333s
+   ops: prune=2 split=0 fail_add=5 merge=0 rename=0 | seconds: prune=5 split=0 fail=35 pair=0 merge=0 rename=0
+round 20: L(M)=25096 L(D|M)=226075 total=251171 parsed=1296/2012 cats=260 entries=1789 avg/word=1.53 |Q|=55.4 b=0.50 t=1372s
