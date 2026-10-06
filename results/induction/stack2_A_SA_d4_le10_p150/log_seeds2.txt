@@ -32,3 +32,17 @@ round 11: L(M)=25498 L(D|M)=93685 total=119183 parsed=913/1210 cats=308 entries=
 round 12: L(M)=24163 L(D|M)=88060 total=112223 parsed=978/1210 cats=299 entries=1700 avg/word=1.46 |Q|=29.4 b=0.39 t=236s
    ops: prune=37 split=0 fail_add=22 merge=0 rename=0 | seconds: prune=4 split=0 fail=8 pair=0 merge=0 rename=0
 round 13: L(M)=23935 L(D|M)=86252 total=110186 parsed=999/1210 cats=297 entries=1685 avg/word=1.44 |Q|=29.4 b=0.39 t=248s
+   ops: prune=10 split=0 fail_add=119 merge=0 rename=0 | seconds: prune=4 split=0 fail=6 pair=1003 merge=0 rename=0
+round 14: L(M)=27226 L(D|M)=76769 total=103995 parsed=1123/1210 cats=364 entries=1910 avg/word=1.64 |Q|=39.2 b=0.37 t=1260s
+   ops: prune=114 split=0 fail_add=27 merge=0 rename=0 | seconds: prune=5 split=0 fail=15 pair=0 merge=0 rename=0
+round 15: L(M)=25947 L(D|M)=74728 total=100675 parsed=1144/1210 cats=355 entries=1823 avg/word=1.56 |Q|=39.9 b=0.37 t=1280s
+-- stage 3: max_len=10 active=2012/2012
+round 15: L(M)=25947 L(D|M)=241356 total=267303 parsed=1210/2012 cats=355 entries=1823 avg/word=1.56 |Q|=34.5 b=0.34 t=1283s
+   ops: prune=18 split=0 fail_add=386 merge=0 rename=0 | seconds: prune=5 split=0 fail=128 pair=0 merge=0 rename=0
+round 16: L(M)=30926 L(D|M)=207650 total=238577 parsed=1519/2012 cats=364 entries=2191 avg/word=1.88 |Q|=45.7 b=0.32 t=1416s
+   ops: prune=217 split=0 fail_add=132 merge=0 rename=0 | seconds: prune=10 split=0 fail=49 pair=0 merge=0 rename=0
+round 17: L(M)=29717 L(D|M)=196145 total=225862 parsed=1621/2012 cats=361 entries=2106 avg/word=1.80 |Q|=46.5 b=0.32 t=1475s
+   ops: prune=73 split=0 fail_add=51 merge=0 rename=0 | seconds: prune=10 split=0 fail=35 pair=0 merge=0 rename=0
+round 18: L(M)=29365 L(D|M)=191399 total=220764 parsed=1666/2012 cats=360 entries=2084 avg/word=1.79 |Q|=46.4 b=0.32 t=1520s
+   ops: prune=20 split=0 fail_add=17 merge=0 rename=0 | seconds: prune=10 split=0 fail=22 pair=0 merge=0 rename=0
+round 19: L(M)=29303 L(D|M)=189848 total=219152 parsed=1680/2012 cats=360 entries=2081 avg/word=1.78 |Q|=46.4 b=0.32 t=1552s
