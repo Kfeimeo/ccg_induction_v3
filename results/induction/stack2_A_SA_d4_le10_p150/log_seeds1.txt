@@ -50,3 +50,10 @@ round 19: L(M)=27373 L(D|M)=209505 total=236878 parsed=1487/2012 cats=348 entrie
 round 20: L(M)=27356 L(D|M)=208758 total=236114 parsed=1494/2012 cats=348 entries=1942 avg/word=1.67 |Q|=37.0 b=0.33 t=785s
    ops: prune=2 split=0 fail_add=6 merge=0 rename=0 | seconds: prune=7 split=0 fail=19 pair=0 merge=0 rename=0
 round 21: L(M)=27403 L(D|M)=208148 total=235551 parsed=1500/2012 cats=348 entries=1946 avg/word=1.67 |Q|=37.1 b=0.33 t=811s
+   ops: prune=3 split=0 fail_add=106 merge=0 rename=0 | seconds: prune=7 split=0 fail=20 pair=2187 merge=0 rename=0
+round 22: L(M)=30440 L(D|M)=196784 total=227224 parsed=1617/2012 cats=414 entries=2154 avg/word=1.85 |Q|=46.6 b=0.31 t=3025s
+   ops: prune=92 split=0 fail_add=119 merge=0 rename=0 | seconds: prune=10 split=0 fail=50 pair=0 merge=0 rename=0
+round 23: L(M)=30768 L(D|M)=187066 total=217834 parsed=1713/2012 cats=411 entries=2181 avg/word=1.87 |Q|=50.0 b=0.31 t=3085s
+   ops: prune=63 split=0 fail_add=32 merge=0 rename=0 | seconds: prune=11 split=0 fail=30 pair=0 merge=0 rename=0
+round 24: L(M)=30293 L(D|M)=184141 total=214433 parsed=1741/2012 cats=406 entries=2150 avg/word=1.84 |Q|=50.0 b=0.31 t=3126s
+== seed 1: total=214433 parsed=1741/2012 cats=406 entries=2150 | dev cov=0.163 cov_inlex=0.427 UAS_all=0.029 UAS_cov=0.258 ppl=3013.9 (3130s)
