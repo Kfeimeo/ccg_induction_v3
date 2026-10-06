@@ -1,1 +1,8 @@
 config stack3_A_SA_d4_le10: 2012 train sentences, 289 dev sentences, atoms=['S', 'N', 'NP'], rules={'SA': True, 'forbid_TR': True, 'standard_slots': True}
+seed 2: 2012 sentences, 1167 keys (24 cluster keys), pool=7914 init_pool=192 init entries=4668 model=generative (4.4s)
+-- stage 0: max_len=3 active=196/2012
+round 0: L(M)=65790 L(D|M)=13086 total=78876 parsed=12/196 cats=192 entries=4668 avg/word=4.00 |Q|=25.2 b=1.00 t=0s
+   ops: prune=3499 split=0 fail_add=35 merge=0 rename=0
+round 1: L(M)=17407 L(D|M)=11537 total=28944 parsed=52/196 cats=166 entries=1204 avg/word=1.03 |Q|=13.3 b=1.00 t=9s
+   ops: prune=25 split=0 fail_add=15 merge=0 rename=0
+round 2: L(M)=17247 L(D|M)=10885 total=28132 parsed=69/196 cats=166 entries=1194 avg/word=1.02 |Q|=11.0 b=1.00 t=10s
