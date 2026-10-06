@@ -132,7 +132,7 @@ class MDLTrainer:
     # ----------------------------------------------------------------- EM
     def run_em(self):
         hist, stats = em(self.active_lats, self.model, self.cfg.get('em_iters', 20), self.cfg.get('em_tol', 1e-3),
-                         self.goal, log=None, mode=self.cfg.get('em_mode', 'soft'), anneal_max=self.cfg.get('anneal_max', 2.0))
+                         self.goal_state(), log=None, mode=self.cfg.get('em_mode', 'soft'), anneal_max=self.cfg.get('anneal_max', 2.0))
         return hist, stats
 
     # ----------------------------------------------------------------- operations

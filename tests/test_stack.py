@@ -79,3 +79,22 @@ def test_step_is_deterministic_push_or_reduce():
     assert [r for _, r in succ] == [('PUSH',)]
     succ = step(Stack((P('S/S'), P('NP'))), P('S\\NP'), 4, 3)
     assert [r for _, r in succ] == [('BA', 'FA')] and [show(st[0]) for st, _ in succ] == ['S']
+
+
+def test_stack_trainer_em_collects_counts():
+    """Regression: the inner EM must use the stack goal state, otherwise no counts are collected."""
+    import collections, math
+    from ccg.model import Lexicon, Model
+    from ccg.stack_trainer import StackTrainer
+    from ccg.category import enumerate_categories, filter_pool
+    sents = generate(60, 5)
+    gl = gold_lexicon()
+    lex = Lexicon({w: set(cs) for w, cs in gl.items()}, math.log2(20))
+    m = Model(lex, 'generative', collections.Counter(w for s in sents for w in s)); m.init_uniform()
+    pool = filter_pool(enumerate_categories(['S', 'N', 'NP'], 3, 3, 4, 1))
+    tr = StackTrainer(sents, m, pool, {'em_iters': 3, 'em_tol': 1e-3, 'max_stack': 3, 'max_outer_iters': 0}, 4, 'S', log=lambda *_: None)
+    tr.rebuild()
+    hist, stats = tr.run_em()
+    assert stats['parsed'] == len(sents)
+    assert sum(sum(d.values()) for d in tr.model.n_cw.values()) > 0
+    assert len(tr.model.theta) > 0
