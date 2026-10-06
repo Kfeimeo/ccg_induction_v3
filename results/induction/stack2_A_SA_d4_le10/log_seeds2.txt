@@ -1,1 +1,16 @@
 config stack2_A_SA_d4_le10: 2012 train sentences, 289 dev sentences, atoms=['S', 'N', 'NP'], rules={'SA': True, 'forbid_TR': True, 'standard_slots': True}
+seed 2: 2012 sentences, 1167 keys (24 cluster keys), pool=7914 init_pool=192 init entries=4668 model=generative (4.1s)
+-- stage 0: max_len=3 active=196/2012
+round 0: L(M)=65894 L(D|M)=12090 total=77984 parsed=22/196 cats=192 entries=4668 avg/word=4.00 |Q|=10.5 b=0.48 t=0s
+   ops: prune=3497 split=2 fail_add=107 merge=1 rename=0 | seconds: prune=7 split=0 fail=2 pair=0 merge=0 rename=0
+round 1: L(M)=16889 L(D|M)=4576 total=21465 parsed=159/196 cats=129 entries=1280 avg/word=1.10 |Q|=7.0 b=0.72 t=9s
+   ops: prune=59 split=2 fail_add=23 merge=3 rename=0 | seconds: prune=0 split=0 fail=1 pair=0 merge=0 rename=0
+round 2: L(M)=16391 L(D|M)=3412 total=19803 parsed=183/196 cats=124 entries=1246 avg/word=1.07 |Q|=6.9 b=0.75 t=11s
+   ops: prune=17 split=1 fail_add=11 merge=0 rename=0 | seconds: prune=0 split=0 fail=0 pair=1 merge=0 rename=0
+round 3: L(M)=16446 L(D|M)=2737 total=19183 parsed=196/196 cats=128 entries=1250 avg/word=1.07 |Q|=7.5 b=0.76 t=13s
+   ops: prune=14 split=0 fail_add=0 merge=0 rename=0 | seconds: prune=0 split=0 fail=0 pair=0 merge=0 rename=0
+round 4: L(M)=16255 L(D|M)=2737 total=18992 parsed=196/196 cats=128 entries=1236 avg/word=1.06 |Q|=7.5 b=0.76 t=14s
+   ops: prune=0 split=0 fail_add=0 merge=0 rename=0 | seconds: prune=0 split=0 fail=0 pair=0 merge=0 rename=0
+   lexicon unchanged: stage done
+-- stage 1: max_len=5 active=673/2012
+round 5: L(M)=16255 L(D|M)=52773 total=69028 parsed=223/673 cats=128 entries=1236 avg/word=1.06 |Q|=4.7 b=0.63 t=15s
