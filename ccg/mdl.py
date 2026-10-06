@@ -179,7 +179,7 @@ class MDLTrainer:
 
     _comb_cache: Dict = {}
 
-    def _combinable(self, sigma) -> List[C.Cat]:
+    def _combinable(self, sigma, use_state: bool = True) -> List[C.Cat]:
         """Pool categories c such that combine(sigma, c) is non-empty (constructed, then filtered)."""
         if sigma in self._comb_cache:
             return self._comb_cache[sigma]
@@ -212,7 +212,8 @@ class MDLTrainer:
                         for s1 in (C.FWD, C.BWD):
                             for s2 in (C.FWD, C.BWD):
                                 out.add((((x, C.BWD, sigma), s1, y), s2, z))
-        res = [c for c in out if c in self.pool_set and self.successors(sigma, c)]
+        ok = (lambda c: self.successors(sigma, c)) if use_state else (lambda c: combine(sigma, c, self.max_depth))
+        res = [c for c in out if c in self.pool_set and ok(c)]
         self._comb_cache[sigma] = res
         return res
 

@@ -31,7 +31,7 @@ class StackTrainer(MDLTrainer):
         if key in self._comb_cache:
             return self._comb_cache[key]
         top = sigma[-1] if sigma else None
-        cands: Set[C.Cat] = set(MDLTrainer._combinable(self, top))
+        cands: Set[C.Cat] = set(MDLTrainer._combinable(self, top, use_state=False))
         if sigma is None or len(sigma) < self.max_stack:
             cands.update(c for c in self.pool if C.n_slashes(c) <= 2)
         res = [c for c in cands if self.successors(sigma, c)]

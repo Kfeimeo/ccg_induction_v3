@@ -150,7 +150,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
         res8 = evaluate_lexicon(dv8, supp, DevModel(trainer.model, key_of), md, hm, goal=goal, **pk)
     h = trainer.history[-1]
     # ---- top categories table
-    n_cw = trainer.model.n_cw if args.system == 'left' else trainer.model.base.n_cw
+    n_cw = trainer.model.n_cw if args.system in ('left', 'stack') else trainer.model.base.n_cw
     cat_tot = sorted(((sum(d.values()), c) for c, d in n_cw.items() if c in trainer.lex.categories()), key=lambda x: -x[0])
     top_cats = [{'category': C.show(c), 'count': round(t, 1),
                  'words': [w for w, _ in sorted(n_cw[c].items(), key=lambda x: -x[1])[:20]]} for t, c in cat_tot[:50]]
