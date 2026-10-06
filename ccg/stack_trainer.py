@@ -7,6 +7,14 @@ from .stack_lattice import build_stack_lattice, step, Stack, goal_state
 
 
 class StackTrainer(MDLTrainer):
+    """Stack states are ~30x larger than left-branching ones, so the two-word proposal step is
+    capped (pair_max_sents / pair_cands) unless the config overrides it."""
+
+    def __init__(self, *a, **k):
+        super().__init__(*a, **k)
+        self.cfg.setdefault('pair_max_sents', 40)
+        self.cfg.setdefault('pair_cands', 6)
+
     @property
     def max_stack(self) -> int:
         return int(self.cfg.get('max_stack', 3))

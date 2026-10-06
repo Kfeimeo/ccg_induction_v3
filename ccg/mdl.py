@@ -363,7 +363,7 @@ class MDLTrainer:
                     for c in self._combinable(sigma):
                         if c not in self.lex.support.get(key1, set()):
                             cands1[c] = cands1.get(c, 0.0) + 1.0
-                cands1 = sorted(cands1, key=lambda c: C.size(c))[:12]
+                cands1 = sorted(cands1, key=lambda c: C.size(c))[: int(self.cfg.get('pair_cands', 12))]
                 for c1 in cands1:
                     supp1 = dict(supp0); supp1[key1] = supp0.get(key1, []) + [c1]
                     lat1 = self.build(words, supp1)
@@ -583,7 +583,7 @@ class MDLTrainer:
             t1 = time.time(); n_prune = self.prune_step(counts) if not self.cfg.get('rigid', False) else 0; tm['prune'] = time.time() - t1
             t1 = time.time(); n_split = self.split_step(ctx_key, counts); tm['split'] = time.time() - t1
             t1 = time.time(); n_fail = self.failure_step() if use_failure_proposals else 0; tm['fail'] = time.time() - t1
-            t1 = time.time(); n_pair = self.pair_step() if (use_failure_proposals and self.cfg.get('pair_proposals', True) and n_fail < 5) else 0; tm['pair'] = time.time() - t1
+            t1 = time.time(); n_pair = self.pair_step(int(self.cfg.get('pair_max_sents', 300))) if (use_failure_proposals and self.cfg.get('pair_proposals', True) and n_fail < 5) else 0; tm['pair'] = time.time() - t1
             n_fail += n_pair
             t1 = time.time(); n_merge = self.merge_step(ctx_cat, counts); tm['merge'] = time.time() - t1
             t1 = time.time(); n_ren = self.rename_step() if self.cfg.get('rename_moves', True) else 0; tm['rename'] = time.time() - t1
