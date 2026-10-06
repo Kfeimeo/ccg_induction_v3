@@ -2,14 +2,22 @@
 
 | variant | atoms | len | words | entries | cov(all) | cov(in-lex) | n in-lex | UAS all | UAS covered | UAS in-lex | SA amb/applied | |Q| | b | LB | RB | RB(cov) | rand |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| SA | B | ≤10 | 500 | 1796 | 0.204 | 0.656 | 90 | 0.146 | 0.928 | 0.567 | 0/54 | 2.9 | 0.37 | 0.068 | 0.363 | 0.407 | 0.154 |
-| SA | B | ≤8 | 500 | 1796 | 0.257 | 0.679 | 81 | 0.202 | 0.929 | 0.600 | 0/49 | 2.9 | 0.38 | 0.069 | 0.380 | 0.423 | 0.172 |
-| SA | A | ≤10 | 500 | 1749 | 0.211 | 0.678 | 90 | 0.146 | 0.890 | 0.567 | 0/54 | 2.7 | 0.39 | 0.068 | 0.363 | 0.403 | 0.154 |
-| SA | A | ≤8 | 500 | 1749 | 0.266 | 0.704 | 81 | 0.204 | 0.893 | 0.605 | 0/49 | 2.7 | 0.40 | 0.069 | 0.380 | 0.418 | 0.172 |
-| TR | B | ≤10 | 500 | 1998 | 0.221 | 0.711 | 90 | 0.158 | 0.927 | 0.615 | 0/12 | 3.2 | 0.37 | 0.068 | 0.363 | 0.402 | 0.154 |
-| TR | B | ≤8 | 500 | 1998 | 0.280 | 0.741 | 81 | 0.221 | 0.928 | 0.659 | 0/8 | 3.2 | 0.38 | 0.069 | 0.380 | 0.416 | 0.172 |
-| TR | A | ≤10 | 500 | 1951 | 0.228 | 0.733 | 90 | 0.158 | 0.892 | 0.615 | 0/12 | 3.0 | 0.39 | 0.068 | 0.363 | 0.398 | 0.154 |
-| TR | A | ≤8 | 500 | 1951 | 0.290 | 0.765 | 81 | 0.223 | 0.895 | 0.663 | 0/8 | 3.0 | 0.40 | 0.069 | 0.380 | 0.412 | 0.172 |
+| SA | B | ≤10 | 500 | 1796 | 0.204 | 0.656 | 90 | 0.146 | 0.931 | 0.569 | 0/54 | 2.9 | 0.37 | 0.068 | 0.363 | 0.407 | 0.154 |
+| SA | B | ≤8 | 500 | 1796 | 0.257 | 0.679 | 81 | 0.203 | 0.933 | 0.603 | 0/49 | 2.9 | 0.38 | 0.069 | 0.380 | 0.423 | 0.172 |
+| SA | A | ≤10 | 500 | 1749 | 0.211 | 0.678 | 90 | 0.146 | 0.893 | 0.569 | 0/54 | 2.7 | 0.39 | 0.068 | 0.363 | 0.403 | 0.154 |
+| SA | A | ≤8 | 500 | 1749 | 0.266 | 0.704 | 81 | 0.204 | 0.896 | 0.608 | 0/49 | 2.7 | 0.40 | 0.069 | 0.380 | 0.418 | 0.172 |
+| TR | B | ≤10 | 500 | 1998 | 0.221 | 0.711 | 90 | 0.159 | 0.931 | 0.617 | 0/12 | 3.2 | 0.37 | 0.068 | 0.363 | 0.402 | 0.154 |
+| TR | B | ≤8 | 500 | 1998 | 0.280 | 0.741 | 81 | 0.222 | 0.932 | 0.661 | 0/8 | 3.2 | 0.38 | 0.069 | 0.380 | 0.416 | 0.172 |
+| TR | A | ≤10 | 500 | 1951 | 0.228 | 0.733 | 90 | 0.159 | 0.895 | 0.617 | 0/12 | 3.0 | 0.39 | 0.068 | 0.363 | 0.398 | 0.154 |
+| TR | A | ≤8 | 500 | 1951 | 0.290 | 0.765 | 81 | 0.224 | 0.899 | 0.666 | 0/8 | 3.0 | 0.40 | 0.069 | 0.380 | 0.412 | 0.172 |
+| SA | B | ≤10 | 500 | 1796 | 0.228 | 0.733 | 90 | 0.160 | 0.901 | 0.623 | 0/72 | 58.2 | 0.69 | 0.068 | 0.363 | 0.397 | 0.154 |
+| SA | B | ≤8 | 500 | 1796 | 0.290 | 0.765 | 81 | 0.229 | 0.915 | 0.680 | 0/65 | 49.9 | 0.73 | 0.069 | 0.380 | 0.410 | 0.172 |
+| SA | A | ≤10 | 500 | 1749 | 0.232 | 0.744 | 90 | 0.156 | 0.863 | 0.605 | 0/73 | 49.9 | 0.71 | 0.068 | 0.363 | 0.394 | 0.154 |
+| SA | A | ≤8 | 500 | 1749 | 0.294 | 0.778 | 81 | 0.223 | 0.878 | 0.663 | 0/66 | 39.7 | 0.75 | 0.069 | 0.380 | 0.407 | 0.172 |
+| TR | B | ≤10 | 500 | 1998 | 0.228 | 0.733 | 90 | 0.163 | 0.919 | 0.635 | 0/14 | 81.9 | 0.65 | 0.068 | 0.363 | 0.397 | 0.154 |
+| TR | B | ≤8 | 500 | 1998 | 0.290 | 0.765 | 81 | 0.230 | 0.919 | 0.683 | 0/10 | 70.5 | 0.68 | 0.069 | 0.380 | 0.410 | 0.172 |
+| TR | A | ≤10 | 500 | 1951 | 0.232 | 0.744 | 90 | 0.159 | 0.880 | 0.617 | 0/14 | 71.6 | 0.66 | 0.068 | 0.363 | 0.394 | 0.154 |
+| TR | A | ≤8 | 500 | 1951 | 0.294 | 0.778 | 81 | 0.224 | 0.881 | 0.666 | 0/10 | 56.8 | 0.70 | 0.069 | 0.380 | 0.407 | 0.172 |
 
 ## 人造数据 条件式目标（S1 调度） (synthetic_conditional.json)
 
@@ -73,6 +81,7 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | left_B_SA_d4_le10 | 2 | 145455±740 | 0.975±0.000 | 807.5±16.5 | 2.38±0.03 | 12.9±1.7 | 0.16±0.00 | 0.152±0.017 | 0.400±0.045 | 0.030±0.009 | 0.277±0.042 | 132.4±4.1 | 0.199±0.021 | 0.044±0.011 | 1 |
 | left_C_SA_d4_le10 | 2 | 279796±1257 | 0.467±0.006 | 698.0±32.0 | 1.30±0.01 | 3.0±0.2 | 0.34±0.02 | 0.093±0.028 | 0.245±0.073 | 0.012±0.008 | 0.206±0.069 | 60.5±17.1 | 0.126±0.037 | 0.020±0.012 | 2 |
 | left_D_SA_d4_le10 | 2 | 135280±798 | 0.987±0.005 | 484.5±55.5 | 2.06±0.05 | 14.8±0.6 | 0.19±0.00 | 0.209±0.019 | 0.550±0.050 | 0.025±0.004 | 0.159±0.039 | 147.3±19.6 | 0.262±0.028 | 0.035±0.003 | 1 |
+| stack2_A_SA_d4_le10 | 1 | 136131±0 | 0.975±0.000 | 283.0±0.0 | 1.85±0.00 | 88.4±0.0 | 0.34±0.00 | 0.239±0.000 | 0.627±0.000 | 0.070±0.000 | 0.353±0.000 | 176.5±0.0 | 0.290±0.000 | 0.094±0.000 | 1 |
 
 ## 现象测试集
 
@@ -1089,3 +1098,61 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | 50 | `C0/C1` | 29.4 | <C0>, get, 2, key, word, large, enter |
 
 失败日志汇总（dev, 44 failures）: by UPOS/deprel of failing word: [['END/END', 16], ['ADV/advmod', 4], ['VERB/advcl', 2], ['NOUN/obl', 2], ['NUM/nummod', 2], ['VERB/root', 2], ['ADJ/amod', 1], ['DET/det', 1], ['PRON/obl', 1], ['PART/root', 1], ['PRON/obj', 1], ['PRON/expl', 1], ['NOUN/obj', 1], ['VERB/ccomp', 1], ['AUX/cop', 1]]; by word: [['<END>', 16], ['there', 4], ['last', 1], ['works', 1], ['any', 1], ['something', 1], ['morning', 1], ['not', 1], ['anything', 1], ['move', 1], ['15', 1], ['throat', 1], ['turn', 1], ['school', 1], ["'re", 1]]; by position: [[2, 2], [3, 5], [4, 5], [5, 12], [6, 5], [7, 4], [8, 5], [9, 3], [10, 2], [11, 1]]
+
+
+## 高频范畴（stack2_A_SA_d4_le10, MDL-selected seed 1）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `S\S` | 1660.5 | <C1>, <C3>, it, that, the, to, n't, <C10>, is, not, this, now, like, in, one, and, out, there, get, really |
+| 2 | `S\N` | 1396.0 | <C3>, do, know, have, <C4>, are, did, think, from, had, like, want, to, see, said, <C18>, is, <C11>, got, 'm |
+| 3 | `N` | 1350.3 | i, you, we, they, <C3>, of, 's, she, was, is, he, ’s, <C1>, n’t, my, this, are, many, to, her |
+| 4 | `N/N` | 969.0 | it, that, and, he, this, there, yeah, but, so, <C9>, she, <C3>, no, i, then, well, yes, one, 's, here |
+| 5 | `S` | 772.3 | <C2>, i, <C1>, this, the, be, well, a, oh, she, we, and, for, so, yeah, some, just, same, if, way |
+| 6 | `N\S` | 664.0 | i, n't, you, and, <C3>, in, the, we, an, our, for, a, he, like, to, she, of, my, your, they |
+| 7 | `S\NP` | 557.0 | <C3>, <C14>, <C16>, <C10>, me, about, <C1>, the, was, beautiful, over, uh, good, his, correct, once, some, at, <C7>, no |
+| 8 | `N\N` | 445.9 | 're, to, just, <C3>, <C1>, 'm, a, he, have, really, 've, even, 'll, was, not, put, and, can, <C12>, very |
+| 9 | `NP\N` | 326.5 | her, my, the, not, at, also, his, like, is, were, with, their, a, <C4>, or, own, and, talking, any, 're |
+| 10 | `NP` | 289.4 | it, <C19>, she, the, this, <C1>, <C6>, these, on, no, that, is, <C3>, 've, into, for, of, so, and, last |
+| 11 | `NP\S` | 268.5 | in, a, of, is, <C3>, and, by, be, 's, i, at, two, all, are, from, it, your, to, us, made |
+| 12 | `S\(N/N)` | 251.4 | 's, is, was, ’s, does, that, use, impossible, anything, twelve, hate |
+| 13 | `(S\N)\S` | 180.0 | me, in, <C18>, fun, are, <C1>, years, <C16>, work, part, right, makes, mother, your, took, guess, bird, three, year, moreau |
+| 14 | `N\NP` | 176.2 | <C3>, was, <C7>, my, those, more, at, so, with, all, good, quartiles, who, in, lot, getting, take, asking, needs, gone |
+| 15 | `(S\N)/S` | 144.4 | the, to, 're, more, were, your, under, them, little |
+| 16 | `(NP\N)\S` | 142.5 | a, <C3>, in, of, much, his, go, wait, use, bathtub |
+| 17 | `(S\S)/S` | 128.3 | the, would, at, is, looks, example, em, holding, lipstick, below, fully, older, ginny |
+| 18 | `N\(S\S)` | 124.7 | <C3>, n't, is, for, was, as, 's, like, lack, duel |
+| 19 | `N/S` | 120.7 | the, 's, and, looks, will, was, also, me, came, 'll, far, takes, nonna, basil, so, robert, <C21>, long |
+| 20 | `NP\(N/N)` | 120.1 | 's, is |
+| 21 | `(S\NP)/S` | 116.5 | the, a, going, of, long, love, wo, yesterday |
+| 22 | `S\(NP\N)` | 116.0 | <C7>, name, up, letter, hand, tea, eyes, leave, joke, question, most, possible, painting, size, sister, dream, movie, now, best, feature |
+| 23 | `NP\NP` | 109.5 | a, for, city, <C3>, give, very, our, and, you, bit, by, mr., experience, just, invisible, strong, thing, 2:25, andrew, middle |
+| 24 | `S\(S\N)` | 108.4 | <C1>, <C16>, come, time, has, vlog, to, n't, two, old, keep, ago, oh, published, applied, attended, everywhere, worse, minutes, magicians |
+| 25 | `(S\N)\NP` | 94.4 | <C10>, can, said, hope, long, nice, where, a, more, 20, questions, buy, sure, few, toss, guessed, triumph, responsibility, survive, hear |
+| 26 | `S\(S\S)` | 84.6 | <C1>, them, world, it, trying, that, guy, yet, seen, rights, trouble, unimportant, nervous, arrogance, yesterday, long, thought, zealand |
+| 27 | `(S\S)/N` | 84.1 | that, all, it, for, going, a, called, one, today, most, wait, mrs., bad |
+| 28 | `(N\S)/N` | 83.1 | it, what, because, <C15>, okay, doing, carolyn, say, demonstrate, child, look, explorer |
+| 29 | `(S\S)\S` | 82.5 | one, things, pretty, be, of, it, earth, easy, moment, teacher, modernity, mom, yoga, ways, major, 18, color, connection, aged, dna |
+| 30 | `S\(N\S)` | 82.2 | 'm, will, <C4>, understand, get, sense, loved, knew, words, santa, more, federal, problems, team, shock, times, len, bar |
+| 31 | `(S\NP)\S` | 73.3 | to, down, its, brother, effect, our, vision, mandatory, idea, remembered, ninety-nine, betty, guests, thursday, wikinews, watching, off, remarks, robert, class |
+| 32 | `S/NP` | 72.7 | oh, so, alright, almost, much, not, <C15>, traveler, do, all, kinda, however, image, quarters, two, concerned, gomez, short |
+| 33 | `(N\N)\S` | 69.5 | of, <C12>, from, which, done, he, you, make, chicken, use, service, stood, millions, practical |
+| 34 | `NP/NP` | 60.7 | <C0>, gon, a, usually, five, call, no, all, depends, human, ended, real, worked, taste, run |
+| 35 | `S\(S\NP)` | 60.4 | not, though, do, so, may, take, help, wednesday, hair, appeared, yellow, front, jobs, wrapped, beer, who, go, say, pizza, chair |
+| 36 | `NP/N` | 58.6 | <C5>, the, man, out, 's, book |
+| 37 | `N\(S\N)` | 58.0 | are, i, up, that, <C13>, not, public, interviews, things, march, or, culture |
+| 38 | `S/N` | 56.3 | <C3>, so, kind, as, first, long, more, half, hey, after, back, came |
+| 39 | `S/S` | 47.2 | to, art, real, told, ordered, 25, question, video |
+| 40 | `(S\N)/N` | 46.8 | has, went, thank, wanted, 've, refused, thinking, recording, changing, gave, strange, built, absolutely, few, somewhere, 21, d.c., gambling, rental, blinking |
+| 41 | `N/NP` | 45.4 | in, then, been, affected, also, still, dislike |
+| 42 | `(S\(N/N))/S` | 45.3 | 's, that |
+| 43 | `S\(N\N)` | 41.3 | <C3>, died, prolific, wishes, off, would, another, child, pack, wear |
+| 44 | `NP\(N\S)` | 36.1 | to, 'll, the, at, al, 2006 |
+| 45 | `(S\NP)\N` | 33.9 | enough, these, been, possession, change, coming, hung, grown, become, consultation, ’ve, ferries |
+| 46 | `(S\(NP/N))\S` | 33.0 | of |
+| 47 | `(NP\N)\N` | 32.1 | a, largest, 'll, most, ever, have |
+| 48 | `NP\(S/S)` | 31.9 | <C13>, until |
+| 49 | `(S\(N/NP))\S` | 29.0 | <C8> |
+| 50 | `(S\N)/NP` | 28.6 | thought, came, believe, held, feel, making, posted, grew, how, flights |
+
+失败日志汇总（dev, 41 failures）: by UPOS/deprel of failing word: [['END/END', 29], ['ADV/advmod', 2], ['ADJ/amod', 1], ['NOUN/obj', 1], ['PROPN/obj', 1], ['ADV/reparandum', 1], ['VERB/advcl', 1], ['NOUN/obl', 1], ['INTJ/discourse', 1], ['ADP/case', 1], ['NOUN/nmod', 1], ['VERB/xcomp', 1]]; by word: [['<END>', 29], ['again', 3], ['last', 1], ['number', 1], ['america', 1], ['looking', 1], ['school', 1], ['yeah', 1], ['ta', 1], ['nation', 1], ['doing', 1]]; by position: [[3, 1], [4, 8], [5, 8], [6, 8], [7, 6], [8, 6], [10, 2], [11, 2]]
