@@ -15,7 +15,8 @@ ap.add_argument('--config', default='configs/default.yaml')
 ap.add_argument('--group', default='A')
 ap.add_argument('--rules', default='SA', choices=['SA', 'TR', 'reorder'])
 ap.add_argument('--rigid', action='store_true')
-ap.add_argument('--anchored', action='store_true')
+ap.add_argument('--anchored', action='store_true', help='same as --anchors the')
+ap.add_argument('--anchors', default='none', choices=['none', 'the', 'closed', 'hw1'], help='seed lexicon (ccg/seeds.py)')
 ap.add_argument('--max_depth', type=int, default=0)
 ap.add_argument('--system', default='left', choices=['left', 'cky', 'cky_nf', 'stack'])
 ap.add_argument('--max_stack', type=int, default=3)
@@ -48,14 +49,20 @@ if args.outer:
 cfg['learning']['rigid'] = args.rigid
 cfg['rules'] = {'SA': args.rules == 'SA', 'forbid_TR': args.rules != 'TR', 'standard_slots': args.rules != 'reorder'}
 if args.anchored:
-    cfg['anchors'] = {'the': ['NP/N']}
+    args.anchors = 'the'
+if args.anchors != 'none':
+    from ccg import seeds
+    cfg['anchors'] = seeds.get(args.anchors, word_counts(tr))
+    print(f'anchors ({args.anchors}): {len(cfg["anchors"])} words, '
+          f'{sum(word_counts(tr).get(w, 0) for w in cfg["anchors"]) / sum(s.n for s in tr):.3f} of train tokens')
+ANCH_TAG = {'none': '', 'the': '_anch', 'closed': '_seedC', 'hw1': '_seedH'}[args.anchors]
 atoms = cfg['atoms'][args.group]
 if args.group == 'C':
     cfg['category_space']['max_slashes'] = 3     # 7 atoms: bound the pool (documented)
 md = cfg['formal_system']['max_depth']
 goal = 'S' if 'S' in atoms else next(a for a in atoms if a.startswith('S'))   # group C: S[dcl]
 cfg['formal_system']['goal'] = goal
-name = f'{args.system}{args.max_stack if args.system == "stack" else ""}_{args.group}_{args.rules}{"_rigid" if args.rigid else ""}{"_anch" if args.anchored else ""}_d{md}_le{args.train_max_len}{args.tag}'
+name = f'{args.system}{args.max_stack if args.system == "stack" else ""}_{args.group}_{args.rules}{"_rigid" if args.rigid else ""}{ANCH_TAG}_d{md}_le{args.train_max_len}{args.tag}'
 out = os.path.join(args.out, name)
 os.makedirs(out, exist_ok=True)
 hm = HeadMap(**cfg['eval']['headmap'])
@@ -155,6 +162,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
     top_cats = [{'category': C.show(c), 'count': round(t, 1),
                  'words': [w for w, _ in sorted(n_cw[c].items(), key=lambda x: -x[1])[:20]]} for t, c in cat_tot[:50]]
     row = {'seed': seed, 'train_time_s': train_time, 'final': h, 'history': trainer.history,
+           'anchors': args.anchors, 'n_anchor_words': len(cfg.get('anchors', {})),
            'dev': res['summary'], 'dev_le8': res8['summary'] if res8 else None,
            'dev_failure_clusters': failure_clusters(res['failures']), 'n_dev_failures': len(res['failures']),
            'train_failures': trainer.failure_log()[:200], 'top_categories': top_cats,

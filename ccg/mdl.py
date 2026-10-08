@@ -115,10 +115,15 @@ class MDLTrainer:
         Z = self.Z(lat, model)
         return -math.log2(Z) if Z > 0 else lat.n * self.escape
 
+    def anchor_categories(self) -> Set[C.Cat]:
+        return {C.parse(x) for xs in self.cfg.get('anchors', {}).values() for x in xs}
+
     def delta_data_bits(self, idxs: List[int], new_model: Model, rebuild: bool) -> Tuple[float, Dict[int, Lattice]]:
         """ΔL(D|M) over sentences idxs when switching to new_model; returns new lattices if rebuilt."""
         supp = new_model.lex.support_lists() if rebuild else None
         delta, new_lats = 0.0, {}
+        self.n_evals = getattr(self, 'n_evals', 0) + 1
+        self.n_eval_sents = getattr(self, 'n_eval_sents', 0) + len(idxs)
         for i in idxs:
             old = self.sentence_bits(i, self.model)
             if rebuild:
@@ -289,8 +294,11 @@ class MDLTrainer:
         """§3.3 split: words with high H(c|w) whose occurrences separate into two groups by
         prefix state; a new entry for the minority group is proposed and kept iff ΔMDL < 0."""
         ent_min = self.cfg.get('split_entropy_min', 0.5)
+        anchors = self.cfg.get('anchors', {})
         cands = []
         for key in self.lex.support:
+            if key in anchors:
+                continue
             h = self.model.entropy(key)
             if h < ent_min:
                 continue
@@ -320,6 +328,7 @@ class MDLTrainer:
         propose categories for the failing word that combine with σ_{k-1}; accept iff ΔMDL < 0."""
         by_key: Dict[str, Dict[C.Cat, float]] = {}
         back = self.cfg.get('failure_lookback', 3)
+        anchors = self.cfg.get('anchors', {})
         for lat in self.active_lats:
             if lat.accepted:
                 continue
@@ -328,6 +337,8 @@ class MDLTrainer:
             # earlier word, e.g. a pre-subject adverb that must take the subject)
             for j in range(max(1, k - back), k + 1):
                 key = lat.words[j - 1]
+                if key in anchors:
+                    continue
                 d = by_key.setdefault(key, {})
                 d['_'] = d.get('_', 0.0) + (1.0 if j == k else 0.5)
         cands = sorted(by_key.items(), key=lambda x: -sum(x[1].values()))[: self.cfg.get('max_candidates_per_op', 40)]
@@ -340,6 +351,7 @@ class MDLTrainer:
         word before the failure point one of its top single candidates, then run the oracle for the
         remaining failure; the pair is added jointly iff ΔMDL < 0."""
         supp0 = self.lex.support_lists()
+        anchors = self.cfg.get('anchors', {})
         failed = [i for i in self.active if not self.lats[i].accepted]
         if len(failed) > max_sents:
             step = len(failed) / max_sents
@@ -357,6 +369,8 @@ class MDLTrainer:
                 if done:
                     break
                 key1 = words[j - 1]
+                if key1 in anchors:
+                    continue
                 F = self.forward_states(words, j - 1, supp0)
                 cands1: Dict[C.Cat, float] = {}
                 for sigma in F:
@@ -374,6 +388,8 @@ class MDLTrainer:
                         continue
                     for j2 in range(max(j + 1, k2 - 1), k2 + 1):
                         key2 = words[j2 - 1]
+                        if key2 in anchors:
+                            continue
                         F2 = self.forward_states(words, j2 - 1, supp1)
                         found = None
                         for sigma in F2:
@@ -455,6 +471,8 @@ class MDLTrainer:
         """Merge move, global variant: a complex category X that occurs (also as a sub-part of other
         categories) is renamed to an atom that no lexical category currently uses.  This is a
         bijective relabelling, so derivations are preserved and L(M) drops; accepted iff ΔMDL < 0."""
+        if self.cfg.get('anchors'):
+            return 0
         used_atoms = {a for c in self.lex.categories() for a in C.atoms_of(c)}
         atoms = sorted({a for c in self.pool for a in C.atoms_of(c)})
         free = [a for a in atoms if a not in used_atoms and a != self.goal]
@@ -519,8 +537,9 @@ class MDLTrainer:
         pairs = pairs[: self.cfg.get('max_candidates_per_op', 40)]
         accepted = 0
         merged: Set[C.Cat] = set()
+        anchor_cats = self.anchor_categories()
         for js, c1, c2 in pairs:
-            if c1 in merged or c2 in merged or c1 not in self.lex.categories():
+            if c1 in merged or c2 in merged or c1 not in self.lex.categories() or c1 in anchor_cats:
                 continue
             new = self.model.copy()
             keys = [k for k, cs in new.lex.support.items() if c1 in cs]
@@ -573,6 +592,8 @@ class MDLTrainer:
             counts = {(w, c): v for w, d in stats['theta_counts'].items() for c, v in d.items()}
             ctx_cat, ctx_key = stats['ctx_cat'], stats['ctx_key']
             rec = self.structure_record(rnd, lm, ld, parsed, em_hist)
+            rec.update({'n_evals': getattr(self, 'n_evals', 0), 'n_eval_sents': getattr(self, 'n_eval_sents', 0),
+                        'elapsed_s': round(time.time() - t0, 1)})
             self.history.append(rec)
             self.log(f'round {rnd}: L(M)={lm:.0f} L(D|M)={ld:.0f} total={lm+ld:.0f} parsed={parsed}/{len(self.active)} '
                      f'cats={rec["n_categories"]} entries={rec["n_entries"]} avg/word={rec["avg_cats_per_word"]:.2f} '
