@@ -43,3 +43,36 @@ def test_anchors_fixed_through_training():
         th = trainer.model.theta[w]
         assert abs(sum(th.values()) - 1.0) < 1e-6 and set(th) == set(trainer.lex.support[w])
     assert trainer.history[-1]['n_evals'] > 0
+
+
+def test_anchors_fixed_cky_nf_and_stack():
+    """The Eisner-normal-form CKY trainer and the stack trainer honour anchors too."""
+    from ccg.cky_trainer import induce_cky
+    from ccg.stack_trainer import StackTrainer
+    sents = generate(40, seed=0, max_len=5)
+    words = [s.words if hasattr(s, 'words') else s for s in sents]
+    counts = {}
+    for s in words:
+        for w in s:
+            counts[w] = counts.get(w, 0) + 1
+    common = sorted(counts, key=lambda w: -counts[w])[:2]
+    cfg = _cfg()
+    cfg['mdl']['max_outer_iters'] = 2
+    cfg['anchors'] = {common[0]: ['NP'], common[1]: ['N']}
+    cfg['rules'] = {'SA': True, 'forbid_TR': True, 'standard_slots': True}
+    quiet = lambda *a, **k: None
+    cky = induce_cky(words, ['S', 'N', 'NP'], cfg, 1, log=quiet, max_depth=4, normal_form=True)[0]
+    cfg_stack = dict(cfg, mdl=dict(cfg['mdl'], max_stack=2))
+    stack = induce(words, ['S', 'N', 'NP'], cfg_stack, 1, log=quiet, max_depth=4, trainer_cls=StackTrainer)[0]
+    for trainer in (cky, stack):
+        for w, cats in cfg['anchors'].items():
+            assert trainer.lex.support[w] == {C.parse(x) for x in cats}, (w, trainer.lex.support[w])
+
+
+def test_supertag_seed_sets():
+    for name in ('stNP', 'stNPN'):
+        s = seeds.get(name)
+        assert s['i'] == ['NP'] and s['it'] == ['NP']
+        for w, cats in s.items():
+            assert len(cats) == 1 and cats[0] in ('NP', 'N')
+    assert seeds.get('stNPN')['day'] == ['N'] and 'day' not in seeds.get('stNP')

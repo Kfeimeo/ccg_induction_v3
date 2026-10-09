@@ -12,8 +12,12 @@ Sets
           modals and clitic auxiliaries -> (S\\NP)/(S\\NP)
   hw1     every hand-written word (group-A atoms) with exactly one category and
           train count >= 5 (adds a few single-category verbs to `closed`)
+  stNP    supertagger-derived (Hol-CCG, scripts/supertag_gum.py + build_supertag_seeds.py):
+          words whose top-1 supertag reads as NP in >= 90% of their train occurrences -> NP
+  stNPN   stNP plus the words whose top-1 supertag reads as N -> N
 """
 from __future__ import annotations
+import json, os
 from typing import Dict, List
 
 PRONOUNS = "i it we he they she me them us him you".split()
@@ -41,7 +45,17 @@ def hw_single(word_counts: Dict[str, int], min_count: int = 5, max_words: int = 
     return out
 
 
+SUPERTAG_SEEDS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'supertags', 'seed_sets.json')
+
+
+def supertag_set(name: str, path: str = SUPERTAG_SEEDS) -> Dict[str, List[str]]:
+    """stNP / stNPN from data/supertags/seed_sets.json (scripts/build_supertag_seeds.py)."""
+    return dict(json.load(open(path, encoding='utf-8'))['sets'][name])
+
+
 def get(name: str, word_counts: Dict[str, int] = None) -> Dict[str, List[str]]:
     if name == 'hw1':
         return hw_single(word_counts or {})
+    if name in ('stNP', 'stNPN'):
+        return supertag_set(name)
     return dict(SETS[name])
