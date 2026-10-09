@@ -1,0 +1,4 @@
+config left_A_SA_seedNPN_d4_le10: 2012 train sentences, 289 dev sentences, atoms=['S', 'N', 'NP'], rules={'SA': True, 'forbid_TR': True, 'standard_slots': True}
+seed 1: 2012 sentences, 1166 keys (23 cluster keys), pool=7914 init_pool=192 init entries=3926 model=generative (6.2s)
+-- stage 0: max_len=3 active=196/2012
+round 0: L(M)=55440 L(D|M)=13351 total=68791 parsed=1/196 cats=191 entries=3926 avg/word=3.37 |Q|=1.3 b=0.30 t=0s

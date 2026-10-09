@@ -34,3 +34,19 @@ round 12: L(M)=23337 L(D|M)=56791 total=80128 parsed=1105/1210 cats=220 entries=
 round 13: L(M)=23003 L(D|M)=55714 total=78716 parsed=1118/1210 cats=220 entries=1673 avg/word=1.43 |Q|=0.9 b=1.07 t=1314s
    ops: prune=15 split=6 fail_add=1 merge=1 rename=0 | seconds: prune=11 split=189 fail=27 pair=0 merge=93 rename=0
 round 14: L(M)=22885 L(D|M)=55609 total=78494 parsed=1119/1210 cats=219 entries=1665 avg/word=1.43 |Q|=0.9 b=1.08 t=1635s
+   ops: prune=6 split=6 fail_add=0 merge=0 rename=0 | seconds: prune=11 split=179 fail=29 pair=0 merge=102 rename=0
+round 15: L(M)=22885 L(D|M)=55608 total=78493 parsed=1119/1210 cats=219 entries=1665 avg/word=1.43 |Q|=0.9 b=1.08 t=1957s
+-- stage 3: max_len=10 active=2012/2012
+round 15: L(M)=22885 L(D|M)=213080 total=235965 parsed=1232/2012 cats=219 entries=1665 avg/word=1.43 |Q|=1.6 b=1.91 t=1959s
+   ops: prune=3 split=140 fail_add=380 merge=15 rename=0 | seconds: prune=15 split=424 fail=1003 pair=0 merge=854 rename=0
+round 16: L(M)=29862 L(D|M)=141529 total=171392 parsed=1745/2012 cats=240 entries=2181 avg/word=1.87 |Q|=1.5 b=1.90 t=4257s
+   ops: prune=261 split=78 fail_add=123 merge=9 rename=0 | seconds: prune=46 split=1180 fail=445 pair=0 merge=1112 rename=0
+round 17: L(M)=29005 L(D|M)=124233 total=153238 parsed=1884/2012 cats=241 entries=2121 avg/word=1.82 |Q|=1.4 b=1.91 t=7042s
+   ops: prune=94 split=56 fail_add=37 merge=6 rename=0 | seconds: prune=55 split=1633 fail=206 pair=0 merge=1165 rename=0
+round 18: L(M)=28954 L(D|M)=119334 total=148288 parsed=1923/2012 cats=239 entries=2120 avg/word=1.82 |Q|=1.4 b=2.06 t=10104s
+   ops: prune=78 split=46 fail_add=6 merge=3 rename=0 | seconds: prune=60 split=1638 fail=120 pair=0 merge=1194 rename=0
+round 19: L(M)=28577 L(D|M)=118676 total=147253 parsed=1929/2012 cats=233 entries=2094 avg/word=1.79 |Q|=1.4 b=2.07 t=13118s
+   ops: prune=46 split=42 fail_add=2 merge=2 rename=0 | seconds: prune=68 split=1806 fail=101 pair=0 merge=1119 rename=0
+round 20: L(M)=28541 L(D|M)=118468 total=147008 parsed=1931/2012 cats=230 entries=2092 avg/word=1.79 |Q|=1.4 b=2.09 t=16214s
+   ops: prune=42 split=39 fail_add=0 merge=1 rename=0 | seconds: prune=60 split=1741 fail=92 pair=0 merge=1074 rename=0
+round 21: L(M)=28489 L(D|M)=118493 total=146982 parsed=1931/2012 cats=227 entries=2089 avg/word=1.79 |Q|=1.4 b=2.06 t=19182s
