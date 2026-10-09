@@ -258,6 +258,25 @@ P(词序列, 派生) = Π_k P(c_k | σ_{k−1}) · P(w_k | c_k) · 1/n_app(σ_{k
 
 结论：**人工锚定几十个高频单范畴功能词是一个低成本、有效的约束**——搜索便宜一半、词库从退化变成可读、依存超过右分支——但它不是免费的：它暴露了形式系统（无类型提升、深度 4）本身解析不了的句子。锚定数量不必多，关键是覆盖最高频的功能词（the, a, i, it, you…）。
 
+### 7.5 超标注器种子词典：用 Hol-CCG 的 NP / N 标注锚定（`--anchors stNP|stNPN`，`scripts/supertag_gum.py`, `scripts/build_supertag_seeds.py`，应用户要求加入）
+
+问题：§7.4 的种子集是人工写的。能否用一个现成的有监督超标注器自动产生种子集，只取在各 CCG 体系间相对稳定的范畴（NP，其次 N），进一步缩小搜索范围？两个种子集 × 两个解析器（栈 2 左到右系统 §3.6；Eisner 正规形式 CKY §3.5）。
+
+**超标注器**：Hol-CCG（Yamaki, Taniguchi & Mochihashi, ACL 2023；`../hol-ccg`，`ryosuke-yamaki/hol-ccg-roberta-large` 检查点，CCGbank 02-21 训练，WSJ 23 超标注准确率 96.6%）。对 GUM train/dev/test（≤10 词，原始大小写的词形）取词级分类器的 softmax 前 5 名（`data/supertags/gum_*_le10_stags.jsonl`）；同时记录完整 CKY 解析的叶范畴作核对：dev 上 top-1 超标注与解析叶范畴一致率 98.4%，train 2012 句中 2002 句完整解析成功。
+
+**从 CCGbank 范畴到本项目范畴的读法**（`build_supertag_seeds.py`）：去掉特征（`NP[nb]`→NP，`S[dcl]`→S）；Hol-CCG 的词级标签含一元链（`N-->NP` 光杆名词短语、`NP-->S/(S\NP)` 类型提升的 NP）。本项目的形式系统没有一元规则和类型提升，这样的词必须自身带 NP，所以**链中含 NP 的标签读作 NP**；单独的 `N`（限定词之下的名词、复合词成分）读作 N；其余取链首的词汇范畴。词级决策：一个词有自己的键（训练频次 ≥2 = `learning.min_freq`，更稀疏的词共享簇键、无法锚定）且 top-1 读法在其 ≥90% 的训练出现中相同，才被锚定为该范畴（τ=0.9；τ=1.0 会丢掉 i/it/you/we 等代词，τ=0.8 多加 5 个 NP 词和 15 个 N 词）。
+
+| 种子集 | 词数 | 占训练词次 | 组成（按 UPOS 多数） | 与手写词库一致（共有词） |
+|---|---|---|---|---|
+| `stNP` | 75 | 13.7% | 专名 30、代词 20（i, it, you, we, he, they, she, me, them, him…）、普通名词 20（earth, death, humans, places…）、数词 3、其它 2 | 22/22 |
+| `stNPN` = stNP + N | 246 | 17.4% | 以上 + N 171（普通名词 147：day, way, name, lot, bit, years…；专名 19；数词 5） | 62/63（唯一分歧 half：手写 NP/N, NP/NP） |
+
+与 §7.4 的 `closed`（38 词，21.5% 词次）相比：`stNP` 词次更少（没有限定词和情态词——它们在超标注器里是 NP/N 和 (S\NP)/(S\NP)，不在"NP 稳定"的假设之内），但词更多；超标注器对 `closed` 集的 38 个词给出的 top-1 读法与人工范畴**全部一致**（纯度 0.43–1.0，仅 may/every/could 低于 0.8），即人工种子集本可由超标注器重现。锚定词次上超标注器 top-1 的平均概率 0.985（<0.5 者 0.5%）。被 NP 多数但纯度不足 0.9 排除的高频词是 that（NP 170 / NP/N 20 / S/S 19…）、this（NP 103 / NP/N 46）、there（NP 56 / S\NP 11…）、all、both——正是多范畴词，排除是对的。
+
+**锚定机制**与 §7.4 相同（词在整个 MDL 训练中保持唯一范畴，其它词、发射与转移照常学习）；本实验把锚定接入了 CKY 训练器（`ccg/cky_trainer.py: induce_cky`，此前 CKY 路径不读 `anchors`），并让现象测试脚本能评测 CKY 模型（Viterbi 树 + `cky.tree_heads`）。所有运行 train ≤10、A 组原子、SA、MAX_DEPTH 4、与 §7.1/§7.3/§7.4 同预算；栈系统用当前代码的候选封顶（双词候选 ≤40 句）。对照：栈 2 无锚定（§7.3，种子 1）、Eisner 无锚定（§7.2 的 `cky_nf` 是 train ≤8，本节补跑一个 train ≤10 的种子 1）、左梳 `closed`（§7.4），另跑左梳 + stNP / stNPN 各一个种子以便与 `closed` 同解析器比较。
+
+__RESULTS_7_5__
+
 ## 12. 一页结论：在严格左到右约束下什么可学、什么不可学、代价在哪
 
 **形式系统层面（手写上界，与学习器无关）**

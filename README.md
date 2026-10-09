@@ -12,6 +12,9 @@ python3 scripts/run_synthetic.py --seeds 1,2,3,4,5,6,7,8 --init_support 4 --oute
 python3 scripts/run_induction.py --group A --seeds 1   # 一个配置的一个种子（其它参数见 scripts/jobs*.txt）
 python3 scripts/run_induction.py --anchors closed --seeds 1,2,3   # 种子词典：锚定 38 个高频单范畴功能词（ccg/seeds.py；--anchors the|closed|hw1）
 python3 scripts/compare_anchors.py   # 锚定 vs 基线：搜索复杂度与结果对比表
+E:/anaconda3/envs/ccg/python.exe scripts/supertag_gum.py --splits train,dev,test   # Hol-CCG 超标注（../hol-ccg，conda env ccg）-> data/supertags/
+python3 scripts/build_supertag_seeds.py          # 超标注器种子集 stNP / stNPN -> data/supertags/seed_sets.json
+python3 scripts/run_induction.py --system stack --max_stack 2 --anchors stNP --seeds 1,2   # 超标注器种子集 x 栈系统 / --system cky_nf（Eisner 正规形式）
 python3 scripts/aggregate.py results/induction/left_A_SA_d4_le10
 python3 scripts/run_phenomena.py --models 'results/induction/*/seed1_model.pkl'
 python3 scripts/run_test.py --model results/induction/left_A_SA_d4_le10/seed1_model.pkl
