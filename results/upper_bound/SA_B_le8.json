@@ -2,12 +2,12 @@
  "summary": {
   "n_sent": 214,
   "coverage": 0.2570093457943925,
-  "uas_all": 0.20195439739413681,
-  "uas_covered": 0.9288389513108615,
+  "uas_all": 0.20276872964169382,
+  "uas_covered": 0.9325842696629213,
   "ppl_per_word": 2.7843883018460445,
   "n_oov_sent": 133,
   "coverage_in_lex": 0.6790123456790124,
-  "uas_all_in_lex": 0.6004842615012107,
+  "uas_all_in_lex": 0.6029055690072639,
   "n_in_lex": 81,
   "sa_applied": 49,
   "sa_ambiguous": 0,
@@ -37,6 +37,7 @@
   "variant": "SA",
   "atoms": "B",
   "max_len": 8,
+  "system": "left",
   "lex_words": 500,
   "lex_entries": 1796
  },
@@ -643,7 +644,7 @@
    "sid": "GUM_conversation_grounded-11",
    "n": 8,
    "covered": true,
-   "uas_correct": 5,
+   "uas_correct": 6,
    "uas_total": 8,
    "logprob": -9.169518377455928,
    "oov": false,
@@ -655,7 +656,7 @@
     2,
     4,
     7,
-    0,
+    2,
     7
    ],
    "cats": [

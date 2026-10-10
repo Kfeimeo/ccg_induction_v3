@@ -209,6 +209,18 @@ def viterbi(lat: Lattice, model, goal: C.Cat = GOAL):
     return path, p * model.final_weight()
 
 
+def show_state(s) -> str:
+    """Printable form of a parser state: a category, or a stack of categories."""
+    if s is None:
+        return 'ε'
+    if hasattr(s, '__slots__') and isinstance(s, tuple) and not C.is_atom(s) and (len(s) != 3 or s[1] not in (C.FWD, C.BWD)):
+        return '[' + ' '.join(C.show(c) for c in s) + ']'
+    try:
+        return C.show(s)
+    except TypeError:
+        return '[' + ' '.join(C.show(c) for c in s) + ']'
+
+
 def failure_record(lat: Lattice, support: Dict[str, List[C.Cat]]) -> Optional[dict]:
     """§3.4 failure log entry for a sentence with zero likelihood."""
     if lat.accepted:
@@ -218,7 +230,7 @@ def failure_record(lat: Lattice, support: Dict[str, List[C.Cat]]) -> Optional[di
     rec = {
         'sentence': ' '.join(lat.words),
         'fail_pos': k,
-        'sigma_prev': [C.show(s) for s in lat.fail_states][:20],
+        'sigma_prev': [show_state(s) for s in lat.fail_states][:20],
         'n_sigma_prev': len(lat.fail_states),
     }
     if k <= n:

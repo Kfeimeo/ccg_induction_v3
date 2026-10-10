@@ -115,9 +115,17 @@ class HeadMap:
     def slot_kind(self, word: str, cat: C.Cat, i: int) -> str:
         target, slots = C.spine(cat)
         sl, a = slots[i]
-        if self.flip_cc and word in self.cc and len(slots) == 2 and slots[0][0] == C.BWD and \
-                slots[1][0] == C.FWD and slots[0][1] == slots[1][1] == target:
-            return 'cc-left' if i == 0 else 'cc-right'
+        if self.flip_cc and word in self.cc and slots and slots[0][0] == C.BWD and slots[0][1] == target:
+            # coordinator: (X\\X)/X, or the subject-taking clause coordinator ((S\\S)/(S\\NP))/NP:
+            # the left conjunct is the phrase head, the right conjunct fills the outermost forward
+            # slot whose argument targets X; any other slot is a raised argument of the right conjunct
+            right = next((j for j in range(len(slots) - 1, 0, -1)
+                          if slots[j][0] == C.FWD and C.spine(slots[j][1])[0] == target), None)
+            if right is not None:
+                if i == 0:
+                    return 'cc-left'
+                if i == right:
+                    return 'cc-right'
         if self.flip_function_words and word in POSS_CLITICS and len(slots) == 2 and \
                 slots[0] == (C.FWD, 'N') and slots[1][0] == C.BWD and target == 'NP':
             return 'poss-head' if i == 0 else 'poss'
@@ -139,46 +147,65 @@ class HeadMap:
 DEFAULT_HEADMAP = HeadMap()
 
 
+def _lex_item(k: int, c: C.Cat):
+    return (c, k, tuple((k, i) for i in range(C.arity(c))))
+
+
+def _apply(rule: str, left, right, events, lexical_right: bool, prev_cat=None):
+    """Apply one rule between two annotated constituents (cat, head, owners) and record the
+    (functor word, slot, argument head) event.  Returns the result item."""
+    from .combine import sa_matches
+    lc, lh, lo = left
+    rc, rh, ro = right
+    if rule == 'FA':
+        f, i = lo[-1]; events.append((f, i, rh)); return (lc[0], lh, lo[:-1])
+    if rule == 'BA':
+        f, i = ro[-1]; events.append((f, i, lh)); return (rc[0], rh, ro[:-1])
+    if rule == 'B>':
+        f, i = lo[-1]; events.append((f, i, rh)); return ((lc[0], C.FWD, rc[2]), lh, lo[:-1] + (ro[-1],))
+    if rule == 'B<':
+        f, i = ro[-1]; events.append((f, i, lh)); return ((rc[0], C.BWD, lc[2]), rh, ro[:-1] + (lo[-1],))
+    if rule == 'SA':
+        target, slots = C.spine(rc)
+        m = [j for j in sa_matches(lc, rc) if j < len(slots) - 1]
+        j = m[-1]
+        events.append((rh, j, lh))
+        return (C.build(target, slots[:j] + slots[j + 1:]), rh, tuple(o for o in ro if o[1] != j))
+    raise ValueError(rule)
+
+
 def replay(words: List[str], path, headmap: HeadMap = DEFAULT_HEADMAP) -> Tuple[List[int], List[Tuple[int, int, int]]]:
-    """Given a Viterbi path [(prev_state, cat, next_state, rule)], return (heads, events).
+    """Strict left-branching derivation [(prev_state, cat, next_state, rule)] -> (heads, events).
 
     heads: 1-based head per word (0 = root).  events: (f, slot, a) with 0-based word indices.
     """
-    from .combine import sa_matches
-    n = len(words)
     lexcat = [p[1] for p in path]
-    head = None
-    owners: Tuple[Tuple[int, int], ...] = ()
+    item = None
     events: List[Tuple[int, int, int]] = []
     for k, (prev, c, nxt, rule) in enumerate(path):
-        ar = C.arity(c)
-        if rule == 'LEX':
-            head, owners = k, tuple((k, i) for i in range(ar))
-        elif rule == 'FA':
-            f, i = owners[-1]
-            events.append((f, i, k))
-            owners = owners[:-1]
-        elif rule == 'BA':
-            events.append((k, ar - 1, head))
-            head, owners = k, tuple((k, i) for i in range(ar - 1))
-        elif rule == 'B>':
-            f, i = owners[-1]
-            events.append((f, i, k))
-            owners = owners[:-1] + ((k, ar - 1),)
-        elif rule == 'B<':
-            events.append((k, ar - 1, head))
-            head = k
-            owners = tuple((k, i) for i in range(ar - 1)) + (owners[-1],)
-        elif rule == 'SA':
-            _, slots = C.spine(c)
-            m = [j for j in sa_matches(prev, c) if j < len(slots) - 1]
-            j = m[-1]
-            events.append((k, j, head))
-            head = k
-            owners = tuple((k, i) for i in range(ar) if i != j)
-        else:
-            raise ValueError(rule)
-    heads = resolve_heads(words, lexcat, events, head, headmap)
+        new = _lex_item(k, c)
+        item = new if rule == 'LEX' else _apply(rule, item, new, events, True)
+    heads = resolve_heads(words, lexcat, events, item[1], headmap)
+    return heads, events
+
+
+def replay_stack(words: List[str], path, headmap: HeadMap = DEFAULT_HEADMAP) -> Tuple[List[int], List[Tuple[int, int, int]]]:
+    """Stack derivation: Edge.rule is ('PUSH',) or (rule, cascade_rule, ...)."""
+    lexcat = [p[1] for p in path]
+    stack = []
+    events: List[Tuple[int, int, int]] = []
+    for k, (prev, c, nxt, rules) in enumerate(path):
+        new = _lex_item(k, c)
+        if rules[0] == 'PUSH':
+            stack.append(new)
+            continue
+        top = stack.pop()
+        item = _apply(rules[0], top, new, events, True)
+        for r in rules[1:]:
+            below = stack.pop()
+            item = _apply(r, below, item, events, False)
+        stack.append(item)
+    heads = resolve_heads(words, lexcat, events, stack[-1][1], headmap)
     return heads, events
 
 

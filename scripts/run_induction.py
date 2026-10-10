@@ -15,9 +15,11 @@ ap.add_argument('--config', default='configs/default.yaml')
 ap.add_argument('--group', default='A')
 ap.add_argument('--rules', default='SA', choices=['SA', 'TR', 'reorder'])
 ap.add_argument('--rigid', action='store_true')
-ap.add_argument('--anchored', action='store_true')
+ap.add_argument('--anchored', action='store_true', help='same as --anchors the')
+ap.add_argument('--anchors', default='none', choices=['none', 'the', 'closed', 'hw1', 'stNP', 'stNPN'], help='seed lexicon (ccg/seeds.py)')
 ap.add_argument('--max_depth', type=int, default=0)
-ap.add_argument('--system', default='left', choices=['left', 'cky'])
+ap.add_argument('--system', default='left', choices=['left', 'cky', 'cky_nf', 'stack'])
+ap.add_argument('--max_stack', type=int, default=3)
 ap.add_argument('--seeds', default='1,2,3,4,5')
 ap.add_argument('--train_max_len', type=int, default=10)
 ap.add_argument('--train_limit', type=int, default=0)
@@ -47,14 +49,20 @@ if args.outer:
 cfg['learning']['rigid'] = args.rigid
 cfg['rules'] = {'SA': args.rules == 'SA', 'forbid_TR': args.rules != 'TR', 'standard_slots': args.rules != 'reorder'}
 if args.anchored:
-    cfg['anchors'] = {'the': ['NP/N']}
+    args.anchors = 'the'
+if args.anchors != 'none':
+    from ccg import seeds
+    cfg['anchors'] = seeds.get(args.anchors, word_counts(tr))
+    print(f'anchors ({args.anchors}): {len(cfg["anchors"])} words, '
+          f'{sum(word_counts(tr).get(w, 0) for w in cfg["anchors"]) / sum(s.n for s in tr):.3f} of train tokens')
+ANCH_TAG = {'none': '', 'the': '_anch', 'closed': '_seedC', 'hw1': '_seedH', 'stNP': '_seedNP', 'stNPN': '_seedNPN'}[args.anchors]
 atoms = cfg['atoms'][args.group]
 if args.group == 'C':
     cfg['category_space']['max_slashes'] = 3     # 7 atoms: bound the pool (documented)
 md = cfg['formal_system']['max_depth']
 goal = 'S' if 'S' in atoms else next(a for a in atoms if a.startswith('S'))   # group C: S[dcl]
 cfg['formal_system']['goal'] = goal
-name = f'{args.system}_{args.group}_{args.rules}{"_rigid" if args.rigid else ""}{"_anch" if args.anchored else ""}_d{md}_le{args.train_max_len}{args.tag}'
+name = f'{args.system}{args.max_stack if args.system == "stack" else ""}_{args.group}_{args.rules}{"_rigid" if args.rigid else ""}{ANCH_TAG}_d{md}_le{args.train_max_len}{args.tag}'
 out = os.path.join(args.out, name)
 os.makedirs(out, exist_ok=True)
 hm = HeadMap(**cfg['eval']['headmap'])
@@ -77,38 +85,22 @@ def log(msg):
 log(f'config {name}: {len(tr)} train sentences, {len(dv)} dev sentences, atoms={atoms}, rules={cfg["rules"]}')
 for seed in [int(x) for x in args.seeds.split(',')]:
     t0 = time.time()
-    if args.system == 'cky':
-        from ccg.cky_trainer import CKYTrainer
-        import ccg.induce as I
-        trainer, key_of, cluster_of = induce_cky = None, None, None
-        # reuse induce() machinery with the CKY trainer/model
-        from ccg.cky import CKYModel
-        from ccg.model import Lexicon, sample_initial_support
-        from ccg.induce import make_keys
-        lc, mc, cs = cfg['learning'], cfg['mdl'], cfg['category_space']
-        cluster_of, counts = cluster_words(train_words, lc['n_clusters'], seed)
-        key_of, keyseqs = make_keys(train_words, lc['min_freq'], cluster_of)
-        keys = sorted(set(k for s in keyseqs for k in s))
-        pool = C.filter_pool(C.enumerate_categories(atoms, cs['max_arity'], cs['max_depth'], cs['max_slashes'], cs['max_complex_args']),
-                             cfg['rules']['forbid_TR'], cfg['rules']['standard_slots'])
-        init_pool = [c for c in pool if C.n_slashes(c) <= lc.get('init_max_slashes', 2)]
-        cluster_key = {k: (cluster_of.get(k, -1) if not k.startswith('<C') else int(k[2:-1])) for k in keys}
-        support, theta0 = sample_initial_support(keys, cluster_key, init_pool, lc['init_support'], seed, lc['noise_scale'], atom_boost)
-        lex = Lexicon(support, math.log2(len(keys)))
-        key_counts = collections.Counter(k for s in keyseqs for k in s)
-        model = CKYModel(lex, dict(key_counts), lc.get('trans_beta', 1.0), lc.get('emit_gamma', 0.01), goal)
-        model.init_uniform(theta0)
-        tcfg = dict(mc); tcfg.update({'em_iters': lc['em_iters'], 'em_tol': lc['em_tol'], 'rigid': args.rigid, 'anchors': {},
-                                      'escape_bits_per_word': math.log2(len(pool)) + math.log2(len(keys)) + 1, 'rename_moves': False})
-        trainer = CKYTrainer(keyseqs, model, pool, tcfg, md, goal, log)
-        trainer.train(mc['max_outer_iters'], True)
+    if args.system in ('cky', 'cky_nf'):
+        from ccg.cky_trainer import induce_cky
+        trainer, key_of, cluster_of = induce_cky(train_words, atoms, cfg, seed, log=log, max_depth=md, goal=goal,
+                                                 atom_boost=atom_boost, normal_form=args.system == 'cky_nf')
+    elif args.system == 'stack':
+        from ccg.stack_trainer import StackTrainer
+        cfg['mdl']['max_stack'] = args.max_stack
+        trainer, key_of, cluster_of = induce(train_words, atoms, cfg, seed, log=log, max_depth=md, goal=goal, atom_boost=atom_boost,
+                                             trainer_cls=StackTrainer)
     else:
         trainer, key_of, cluster_of = induce(train_words, atoms, cfg, seed, log=log, max_depth=md, goal=goal, atom_boost=atom_boost)
     train_time = time.time() - t0
     # ---- dev evaluation
     supp = dev_support(trainer.lex, key_of, dv)
     res = {}
-    if args.system == 'cky':
+    if args.system in ('cky', 'cky_nf'):
         from ccg.cky import Chart, viterbi_tree, tree_heads, inside_outside
         from ccg.evaluate import uas, summarize
         per = []
@@ -116,7 +108,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
             rec = {'sid': s.sid, 'n': s.n, 'covered': False, 'uas_correct': 0, 'uas_total': s.n, 'logprob': 0.0,
                    'in_lex': all(w in supp for w in s.words)}
             if rec['in_lex']:
-                ch = Chart([key_of.get(w, w) for w in s.words], trainer.lex.support_lists(), md, goal)
+                ch = Chart([key_of.get(w, w) for w in s.words], trainer.lex.support_lists(), md, goal, args.system == 'cky_nf')
                 if ch.accepted:
                     Z, _, _ = inside_outside(ch, trainer.model)
                     p, t = viterbi_tree(ch, trainer.model)
@@ -131,18 +123,24 @@ for seed in [int(x) for x in args.seeds.split(',')]:
         summ['n_in_lex'] = len(inlex)
         res = {'summary': summ, 'failures': [], 'per_sent': per}
     else:
-        res = evaluate_lexicon(dv, supp, DevModel(trainer.model, key_of), md, hm, goal=goal)
+        pk = {}
+        if args.system == 'stack':
+            from ccg.stack_lattice import make_builder, goal_state as gs
+            from ccg.deps import replay_stack
+            pk = {'builder': make_builder(args.max_stack), 'replay_fn': replay_stack, 'goal_state': gs(goal)}
+        res = evaluate_lexicon(dv, supp, DevModel(trainer.model, key_of), md, hm, goal=goal, **pk)
     res8 = None
     dv8 = [s for s in dv if s.n <= 8]
-    if args.system == 'left':
-        res8 = evaluate_lexicon(dv8, supp, DevModel(trainer.model, key_of), md, hm, goal=goal)
+    if args.system in ('left', 'stack'):
+        res8 = evaluate_lexicon(dv8, supp, DevModel(trainer.model, key_of), md, hm, goal=goal, **pk)
     h = trainer.history[-1]
     # ---- top categories table
-    n_cw = trainer.model.n_cw if args.system == 'left' else trainer.model.base.n_cw
+    n_cw = trainer.model.n_cw if args.system in ('left', 'stack') else trainer.model.base.n_cw
     cat_tot = sorted(((sum(d.values()), c) for c, d in n_cw.items() if c in trainer.lex.categories()), key=lambda x: -x[0])
     top_cats = [{'category': C.show(c), 'count': round(t, 1),
                  'words': [w for w, _ in sorted(n_cw[c].items(), key=lambda x: -x[1])[:20]]} for t, c in cat_tot[:50]]
     row = {'seed': seed, 'train_time_s': train_time, 'final': h, 'history': trainer.history,
+           'anchors': args.anchors, 'n_anchor_words': len(cfg.get('anchors', {})),
            'dev': res['summary'], 'dev_le8': res8['summary'] if res8 else None,
            'dev_failure_clusters': failure_clusters(res['failures']), 'n_dev_failures': len(res['failures']),
            'train_failures': trainer.failure_log()[:200], 'top_categories': top_cats,
@@ -151,7 +149,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
     with open(os.path.join(out, f'seed{seed}.json'), 'w') as f:
         json.dump({**row, 'dev_per_sent': res['per_sent'], 'dev_failures': res['failures']}, f, indent=1, ensure_ascii=False)
     with open(os.path.join(out, f'seed{seed}_model.pkl'), 'wb') as f:
-        pickle.dump({'model': trainer.model, 'key_of': key_of, 'system': args.system, 'max_depth': md}, f)
+        pickle.dump({'model': trainer.model, 'key_of': key_of, 'system': args.system, 'max_depth': md, 'max_stack': args.max_stack}, f)
     s_ = res['summary']
     log(f'== seed {seed}: total={h["total"]:.0f} parsed={h["parsed"]}/{h["n_sent"]} cats={h["n_categories"]} entries={h["n_entries"]} '
         f'| dev cov={s_["coverage"]:.3f} cov_inlex={s_["coverage_in_lex"]:.3f} UAS_all={s_["uas_all"]:.3f} UAS_cov={s_["uas_covered"]:.3f} '

@@ -10,6 +10,7 @@ from .deps import replay, HeadMap, DEFAULT_HEADMAP
 from .evaluate import uas, summarize, yields, bracket_prf, left_comb_spans
 from .baselines import left_branching, right_branching, random_tree
 from .data import Sentence
+from .stack_lattice import Stack
 
 
 class UniformModel:
@@ -28,8 +29,14 @@ class UniformModel:
 
 def evaluate_lexicon(sents: List[Sentence], support: Dict[str, List[C.Cat]],
                      model=None, max_depth: int = 4, headmap: HeadMap = DEFAULT_HEADMAP,
-                     construction_specific: Optional[set] = None, goal='S') -> dict:
+                     construction_specific: Optional[set] = None, goal='S',
+                     builder=None, replay_fn=None, goal_state=None) -> dict:
+    """builder / replay_fn / goal_state select the parser: default strict left-branching
+    (build_lattice, deps.replay, goal); the stack system passes its own."""
     model = model or UniformModel(support)
+    builder = builder or build_lattice
+    replay_fn = replay_fn or replay
+    goal_state = goal_state if goal_state is not None else goal
     per_sent, failures, oov_sents = [], [], 0
     sa_applied = sa_ambig = 0
     stats_acc = collections.defaultdict(float)
@@ -43,7 +50,7 @@ def evaluate_lexicon(sents: List[Sentence], support: Dict[str, List[C.Cat]],
             oov_sents += 1
             per_sent.append(rec)
             continue
-        lat = build_lattice(s.words, support, max_depth, goal)
+        lat = builder(s.words, support, max_depth, goal)
         st = lattice_stats(lat)
         for k, v in st.items():
             stats_acc[k] += v
@@ -61,21 +68,23 @@ def evaluate_lexicon(sents: List[Sentence], support: Dict[str, List[C.Cat]],
             failures.append(fr)
             per_sent.append(rec)
             continue
-        Z, _, _ = forward_backward(lat, model, goal)
-        path, p = viterbi(lat, model, goal)
+        Z, _, _ = forward_backward(lat, model, goal_state)
+        path, p = viterbi(lat, model, goal_state)
         import math
         rec['covered'] = True
         rec['logprob'] = math.log(Z) if Z > 0 else 0.0
-        heads, events = replay(s.words, path, headmap)
+        heads, events = replay_fn(s.words, path, headmap)
         c_, t_ = uas(heads, s.heads)
         rec['uas_correct'], rec['uas_total'] = c_, t_
         rec['pred_heads'] = heads
         rec['cats'] = [C.show(e[1]) for e in path]
-        rec['rules'] = [e[3] for e in path]
+        rec['rules'] = [e[3] if isinstance(e[3], str) else '+'.join(e[3]) for e in path]
         for prev, c, nxt, rule in path:
-            if rule == 'SA':
+            rules = rule if isinstance(rule, tuple) else (rule,)
+            if rules[0] == 'SA':
                 sa_applied += 1
-                if len(sa_matches(prev, c)) > 1:
+                sig = prev[-1] if isinstance(prev, Stack) else prev
+                if len(sa_matches(sig, c)) > 1:
                     sa_ambig += 1
         if construction_specific is not None:
             rec['uses_cs'] = any(e[1] in construction_specific for e in path)
