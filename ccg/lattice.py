@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 from . import category as C
 from .combine import combine
+from . import native as _nat
 
 GOAL = 'S'
 
@@ -43,7 +44,16 @@ class Lattice:
 
 
 def build_lattice(words: List[str], support: Dict[str, List[C.Cat]], max_depth: int = 4,
-                  goal: C.Cat = GOAL, beam: int = 0) -> Lattice:
+                  goal: C.Cat = GOAL, beam: int = 0):
+    """Native (C++) lattice when ccg._ccg_native is available, else the Python Lattice below.
+    Both expose words, n, accepted, fail_pos, fail_states, unpruned_sizes, branch_counts."""
+    if _nat.available and not beam:
+        return _nat.build_lattice(words, support, max_depth, goal)
+    return build_lattice_py(words, support, max_depth, goal, beam)
+
+
+def build_lattice_py(words: List[str], support: Dict[str, List[C.Cat]], max_depth: int = 4,
+                     goal: C.Cat = GOAL, beam: int = 0) -> Lattice:
     """Forward expansion then backward pruning to accepting states.
 
     support[w] = candidate categories of word w (must be non-empty for all words).
@@ -121,12 +131,26 @@ def _diversity_beam(layer, beam):
     return {s: layer[s] for s in layer if s in keep}
 
 
-def forward_backward(lat: Lattice, model, goal: C.Cat = GOAL):
+def forward_backward(lat, model, goal: C.Cat = GOAL):
     """Return (Z, expected counts {(k, cat): posterior}, edge posteriors [(k, edge, post)]).
 
     Edge weight = model.w(prev, cat, word) / n_app; the final state S carries model.final_weight().
     Z = P(words) (generative) or P(accept | words) (conditional).
     """
+    if _nat.is_native_lattice(lat):
+        Zv, counts, edges = _nat.forward_backward(lat, model, goal)
+        return Zv, counts, [(k, Edge(*e), post) for k, e, post in edges]
+    return forward_backward_py(lat, model, goal)
+
+
+def Z(lat, model, goal: C.Cat = GOAL) -> float:
+    """P(words) / P(accept | words) only (no posteriors)."""
+    if _nat.is_native_lattice(lat):
+        return _nat.Z(lat, model, goal)
+    return forward_backward_py(lat, model, goal)[0]
+
+
+def forward_backward_py(lat: Lattice, model, goal: C.Cat = GOAL):
     if not lat.accepted:
         return 0.0, {}, []
     n = lat.n
@@ -174,8 +198,14 @@ def forward_backward(lat: Lattice, model, goal: C.Cat = GOAL):
     return Z, counts, edge_post
 
 
-def viterbi(lat: Lattice, model, goal: C.Cat = GOAL):
+def viterbi(lat, model, goal: C.Cat = GOAL):
     """Best derivation: list of (prev_state, cat, next_state, rule) per position, and its prob."""
+    if _nat.is_native_lattice(lat):
+        return _nat.viterbi(lat, model, goal)
+    return viterbi_py(lat, model, goal)
+
+
+def viterbi_py(lat: Lattice, model, goal: C.Cat = GOAL):
     if not lat.accepted:
         return None, 0.0
     n = lat.n
@@ -242,12 +272,17 @@ def failure_record(lat: Lattice, support: Dict[str, List[C.Cat]]) -> Optional[di
     return rec
 
 
-def lattice_stats(lat: Lattice) -> dict:
-    live = [len(l) for l in lat.states if l]
+def lattice_stats(lat) -> dict:
+    if _nat.is_native_lattice(lat):
+        live, n_edges = lat.live_sizes(), lat.n_edges()
+    else:
+        live = [len(l) for l in lat.states if l]
+        n_edges = sum(len(es) for l in lat.states for es in l.values())
+    unpruned, branch = lat.unpruned_sizes, lat.branch_counts
     return {
-        'Q_unpruned_mean': (sum(lat.unpruned_sizes) / len(lat.unpruned_sizes)) if lat.unpruned_sizes else 0.0,
-        'Q_unpruned_max': max(lat.unpruned_sizes) if lat.unpruned_sizes else 0,
+        'Q_unpruned_mean': (sum(unpruned) / len(unpruned)) if unpruned else 0.0,
+        'Q_unpruned_max': max(unpruned) if unpruned else 0,
         'Q_live_mean': (sum(live) / len(live)) if live else 0.0,
-        'b_mean': (sum(lat.branch_counts) / len(lat.branch_counts)) if lat.branch_counts else 0.0,
-        'n_edges': sum(len(es) for l in lat.states for es in l.values()),
+        'b_mean': (sum(branch) / len(branch)) if branch else 0.0,
+        'n_edges': n_edges,
     }

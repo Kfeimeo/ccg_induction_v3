@@ -15,6 +15,7 @@ from typing import Dict, List, Optional, Tuple
 from . import category as C
 from .combine import combine, _combine_cached, RULES_ON
 from .lattice import Lattice, Edge, GOAL
+from . import native as _nat
 
 
 class Stack(tuple):
@@ -23,6 +24,9 @@ class Stack(tuple):
 
     def __repr__(self):
         return '[' + ' '.join(C.show(c) for c in self) + ']'
+
+
+_nat.register_stack_class(Stack)   # native stack states are returned as Stack instances
 
 
 def step(stack: Optional[Stack], c: C.Cat, max_depth: int = 4, max_stack: int = 3,
@@ -66,7 +70,15 @@ def _cascade(stack: Stack, rules: tuple, max_depth: int) -> List[Tuple[Stack, tu
 
 
 def build_stack_lattice(words: List[str], support: Dict[str, List[C.Cat]], max_depth: int = 4,
-                        goal: C.Cat = GOAL, max_stack: int = 3, cascade: bool = True, beam: int = 0) -> Lattice:
+                        goal: C.Cat = GOAL, max_stack: int = 3, cascade: bool = True, beam: int = 0):
+    """Native (C++) lattice when ccg._ccg_native is available, else the Python Lattice below."""
+    if _nat.available and not beam:
+        return _nat.build_stack_lattice(words, support, max_depth, goal, max_stack, cascade)
+    return build_stack_lattice_py(words, support, max_depth, goal, max_stack, cascade, beam)
+
+
+def build_stack_lattice_py(words: List[str], support: Dict[str, List[C.Cat]], max_depth: int = 4,
+                           goal: C.Cat = GOAL, max_stack: int = 3, cascade: bool = True, beam: int = 0) -> Lattice:
     n = len(words)
     layers: List[Dict[Stack, List[Edge]]] = []
     prev_states: List[Optional[Stack]] = [None]

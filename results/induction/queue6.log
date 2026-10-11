@@ -1,0 +1,9 @@
+job 5 exit=0 elapsed=936s :: python scripts/run_induction.py --system stack --max_stack 2 --anchors stNP  --seeds 2
+job 7 exit=0 elapsed=1603s :: python scripts/run_induction.py --anchors stNP  --seeds 1
+job 8 exit=0 elapsed=1808s :: python scripts/run_induction.py --anchors stNPN --seeds 1
+job 6 exit=1 elapsed=1878s :: python scripts/run_induction.py --system stack --max_stack 2 --anchors stNPN --seeds 2
+job 3 exit=0 elapsed=3782s :: python scripts/run_induction.py --system cky_nf --anchors stNPN --seeds 2
+job 2 exit=0 elapsed=3898s :: python scripts/run_induction.py --system cky_nf --anchors stNP  --seeds 2
+job 1 exit=0 elapsed=4168s :: python scripts/run_induction.py --system cky_nf --anchors stNPN --seeds 1
+job 4 exit=0 elapsed=4359s :: python scripts/run_induction.py --system cky_nf --seeds 1
+queue6 done

@@ -75,6 +75,8 @@ class Lexicon:
 class Model:
     """Parameters + sufficient statistics.  Everything is re-derived from counts by fit()."""
 
+    _v = 0   # parameter version: bumped by every (partial) re-fit; ccg.native caches its scorer tables per version
+
     def __init__(self, lex: Lexicon, kind: str = 'generative', word_counts: Optional[Dict[str, float]] = None,
                  trans_beta: float = 1.0, emit_gamma: float = 0.01, cond_smooth: float = 0.01, goal: str = 'S'):
         self.lex = lex
@@ -139,6 +141,7 @@ class Model:
             d = self.n_cw.get(c, {})
             tot = sum(d.get(w, 0.0) for w in ws) + self.emit_gamma * len(ws)
             self.emit[c] = {w: (d.get(w, 0.0) + self.emit_gamma) / tot for w in ws}
+        self._v += 1
 
     def fit_backoff(self):
         lex = self.lex
@@ -150,6 +153,7 @@ class Model:
             n_c[c] = sum(d.get(w, 0.0) for w in lex.words_with(c))
         z = sum(n_c[c] + kappa * 2.0 ** (-C.size(c)) for c in cats)
         self.bo = {c: (n_c[c] + kappa * 2.0 ** (-C.size(c))) / z for c in cats}
+        self._v += 1
 
     def fit_transitions(self):
         cats = self.lex.categories()
@@ -162,6 +166,7 @@ class Model:
             self.trans[s] = {c: v / n for c, v in d2.items()}
             self.lam[s] = n / (n + self.trans_beta)
         self.stop_p = (self.n_stop + 0.5) / (self.n_stop + self.n_cont_S + 1.0)
+        self._v += 1
 
     def fit(self):
         self.fit_emissions()
@@ -176,6 +181,7 @@ class Model:
                 th = self.theta.get(w, {})
                 tot = sum(th.get(c, 0.0) + self.cond_smooth for c in cs)
                 self.theta[w] = {c: (th.get(c, 0.0) + self.cond_smooth) / tot for c in cs}
+        self._v += 1
 
     def trans_p(self, prev: Optional[C.Cat], c: C.Cat) -> float:
         lam = self.lam.get(prev, 0.0)

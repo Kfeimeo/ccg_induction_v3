@@ -4,10 +4,11 @@ from __future__ import annotations
 import math
 from typing import Dict, List, Optional, Set, Tuple
 from . import category as C
-from .cky import Chart, CKYModel, inside_outside, combine_pair
+from .cky import Chart, CKYModel, inside_outside, combine_pair, cky_Z
 from .combine import combine
 from .mdl import MDLTrainer
 from .lattice import lattice_stats
+from . import native as _nat
 
 
 class CKYTrainer(MDLTrainer):
@@ -19,7 +20,7 @@ class CKYTrainer(MDLTrainer):
         return Chart(words, supp, self.max_depth, self.goal, self.nf)
 
     def Z(self, chart, model) -> float:
-        return inside_outside(chart, model)[0]
+        return cky_Z(chart, model)
 
     def run_em(self):
         iters, tol = self.cfg.get('em_iters', 20), self.cfg.get('em_tol', 1e-3)
@@ -36,6 +37,9 @@ class CKYTrainer(MDLTrainer):
         return hist, stats
 
     def e_step(self):
+        charts = self.active_lats
+        if charts and all(_nat.is_native_chart(ch) for ch in charts):
+            return _nat.cky_e_step(charts, self.model)
         n_pe: Dict = {}; n_lex: Dict = {}; n_cw: Dict = {}; theta_counts: Dict = {}
         ctx_cat: Dict = {}; ctx_key: Dict = {}
         ll, parsed = 0.0, 0
@@ -67,12 +71,8 @@ class CKYTrainer(MDLTrainer):
         for (i, k) in occurrences[:6]:
             words = self.sents[i]
             ch = Chart(words, supp, self.max_depth, self.goal, self.nf) if not self.lats[i].accepted else self.lats[i]
-            neigh_L = set(); neigh_R = set()
-            for (a, b), d in ch.cell.items():
-                if b == k:
-                    neigh_L.update(nd[0] for nd in d)
-                if a == k + 1:
-                    neigh_R.update(nd[0] for nd in d)
+            neigh_L = set(ch.cats_ending_at(k))
+            neigh_R = set(ch.cats_starting_at(k + 1))
             cands = set()
             for L in neigh_L:
                 for c in self._combinable(L):
@@ -109,13 +109,13 @@ class CKYTrainer(MDLTrainer):
 
     def structure_record(self, rnd, lm, ld, parsed, em_hist) -> dict:
         n = len(self.active_lats)
-        cells = [len(d) for ch in self.active_lats for d in ch.cell.values()]
+        cells = [s for ch in self.active_lats for s in ch.cell_sizes()]
         return {
             'round': rnd, 'L_M': lm, 'L_D': ld, 'total': lm + ld, 'parsed': parsed, 'n_sent': len(self.sents),
             'n_categories': len(self.lex.categories()), 'n_entries': self.lex.n_entries(),
             'avg_cats_per_word': self.lex.n_entries() / max(1, len(self.lex.support)),
             'Q_mean': sum(cells) / len(cells) if cells else 0, 'Q_max': max(cells) if cells else 0,
-            'b_mean': sum(ch.n_edges() for ch in self.active_lats) / max(1, sum(len(ch.cell) for ch in self.active_lats)),
+            'b_mean': sum(ch.n_edges() for ch in self.active_lats) / max(1, sum(ch.n_cells for ch in self.active_lats)),
             'em_ll': em_hist[-1] if em_hist else None, 'em_iters': len(em_hist),
         }
 

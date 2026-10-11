@@ -20,6 +20,7 @@ from __future__ import annotations
 from functools import lru_cache
 from typing import List, Optional, Tuple
 from . import category as C
+from . import native as _nat
 
 RULES = ('LEX', 'FA', 'BA', 'B>', 'B<', 'SA')
 
@@ -32,6 +33,7 @@ RULES_ON = {'SA': True}
 def set_rules(sa: bool = True):
     RULES_ON['SA'] = sa
     _combine_cached.cache_clear()
+    _nat.set_rules(sa)
 
 
 def reset_stats():

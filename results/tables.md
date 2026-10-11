@@ -69,7 +69,10 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | config | seeds | objective (bits) | train parsed | #cats | cats/word | |Q| | b | dev cov | dev cov in-lex | UAS all | UAS covered | ppl | dev≤8 cov | dev≤8 UAS | MDL-sel seed |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | cky_A_SA_d4_le8 | 2 | 83750±924 | 0.973±0.009 | 210.5±21.5 | 1.86±0.03 | 2.3±0.1 | 4.86±0.01 | 0.182±0.005 | 0.610±0.017 | 0.039±0.012 | 0.284±0.086 | 165.9±6.3 | n/a | n/a | 2 |
+| cky_nf_A_SA_d4_le10 | 1 | 141777±0 | 0.979±0.000 | 234.0±0.0 | 1.80±0.00 | 2.1±0.0 | 3.46±0.00 | 0.263±0.000 | 0.691±0.000 | 0.063±0.000 | 0.282±0.000 | 235.6±0.0 | n/a | n/a | 1 |
 | cky_nf_A_SA_d4_le8 | 2 | 85661±203 | 0.974±0.004 | 208.5±18.5 | 1.89±0.02 | 1.6±0.0 | 2.29±0.01 | 0.176±0.003 | 0.593±0.012 | 0.030±0.006 | 0.229±0.032 | 183.5±15.4 | n/a | n/a | 2 |
+| cky_nf_A_SA_seedNPN_d4_le10 | 2 | 144974±1641 | 0.964±0.003 | 251.0±19.0 | 1.82±0.02 | 1.5±0.0 | 2.26±0.07 | 0.215±0.003 | 0.564±0.009 | 0.062±0.004 | 0.353±0.036 | 214.8±14.6 | n/a | n/a | 1 |
+| cky_nf_A_SA_seedNP_d4_le10 | 2 | 151723±811 | 0.939±0.004 | 274.5±2.5 | 1.79±0.00 | 1.5±0.0 | 2.13±0.01 | 0.185±0.016 | 0.486±0.041 | 0.060±0.002 | 0.412±0.030 | 199.6±5.5 | n/a | n/a | 2 |
 | left_A_SA_anch_d4_le10 | 2 | 142527±854 | 0.986±0.000 | 520.5±0.5 | 2.22±0.06 | 13.4±0.3 | 0.18±0.00 | 0.202±0.002 | 0.532±0.005 | 0.047±0.011 | 0.296±0.075 | 179.7±0.2 | 0.252±0.005 | 0.066±0.012 | 1 |
 | left_A_SA_d3_le10 | 2 | 141628±1101 | 0.987±0.003 | 537.0±26.0 | 2.26±0.00 | 11.8±0.4 | 0.18±0.00 | 0.196±0.016 | 0.514±0.041 | 0.032±0.004 | 0.224±0.004 | 155.1±13.3 | 0.252±0.014 | 0.048±0.004 | 1 |
 | left_A_SA_d4_le10 | 5 | 140862±998 | 0.985±0.003 | 492.6±20.4 | 2.18±0.02 | 11.7±0.8 | 0.18±0.00 | 0.198±0.010 | 0.520±0.025 | 0.048±0.005 | 0.320±0.031 | 159.4±16.6 | 0.250±0.009 | 0.069±0.008 | 1 |
@@ -79,12 +82,16 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | left_A_SA_rigid_d4_le10 | 2 | 315198±1832 | 0.151±0.012 | 181.0±5.0 | 1.00±0.00 | 0.6±0.0 | 0.64±0.01 | 0.028±0.000 | 0.073±0.000 | 0.009±0.001 | 0.692±0.100 | 15.4±6.4 | 0.037±0.000 | 0.014±0.001 | 2 |
 | left_A_SA_seedC_d4_le10 | 3 | 145479±1028 | 0.948±0.001 | 445.7±20.1 | 2.11±0.05 | 5.9±0.1 | 0.27±0.01 | 0.156±0.016 | 0.409±0.041 | 0.056±0.009 | 0.502±0.006 | 121.7±7.5 | 0.201±0.021 | 0.083±0.015 | 3 |
 | left_A_SA_seedH_d4_le10 | 2 | 144747±1577 | 0.955±0.006 | 450.0±14.0 | 2.09±0.04 | 7.5±0.5 | 0.24±0.01 | 0.192±0.009 | 0.505±0.023 | 0.049±0.002 | 0.339±0.012 | 146.4±19.8 | 0.245±0.007 | 0.071±0.003 | 1 |
+| left_A_SA_seedNPN_d4_le10 | 1 | 139396±0 | 0.979±0.000 | 484.0±0.0 | 2.20±0.00 | 7.6±0.0 | 0.22±0.00 | 0.163±0.000 | 0.427±0.000 | 0.050±0.000 | 0.408±0.000 | 104.8±0.0 | 0.215±0.000 | 0.074±0.000 | 1 |
+| left_A_SA_seedNP_d4_le10 | 1 | 140999±0 | 0.973±0.000 | 489.0±0.0 | 2.16±0.00 | 7.0±0.0 | 0.22±0.00 | 0.197±0.000 | 0.518±0.000 | 0.041±0.000 | 0.280±0.000 | 127.0±0.0 | 0.248±0.000 | 0.063±0.000 | 1 |
 | left_A_TR_d4_le10 | 2 | 168581±27087 | 0.857±0.115 | 362.5±11.5 | 1.97±0.17 | 10.3±2.6 | 0.20±0.01 | 0.168±0.040 | 0.441±0.105 | 0.033±0.011 | 0.264±0.019 | 128.7±13.6 | 0.215±0.047 | 0.048±0.013 | 1 |
 | left_A_reorder_d4_le10 | 2 | 142604±57 | 0.984±0.003 | 546.0±58.0 | 2.24±0.04 | 11.3±0.1 | 0.18±0.00 | 0.190±0.021 | 0.500±0.055 | 0.044±0.004 | 0.300±0.026 | 169.7±46.6 | 0.241±0.021 | 0.065±0.007 | 2 |
 | left_B_SA_d4_le10 | 2 | 145455±740 | 0.975±0.000 | 807.5±16.5 | 2.38±0.03 | 12.9±1.7 | 0.16±0.00 | 0.152±0.017 | 0.400±0.045 | 0.030±0.009 | 0.277±0.042 | 132.4±4.1 | 0.199±0.021 | 0.044±0.011 | 1 |
 | left_C_SA_d4_le10 | 2 | 279796±1257 | 0.467±0.006 | 698.0±32.0 | 1.30±0.01 | 3.0±0.2 | 0.34±0.02 | 0.093±0.028 | 0.245±0.073 | 0.012±0.008 | 0.206±0.069 | 60.5±17.1 | 0.126±0.037 | 0.020±0.012 | 2 |
 | left_D_SA_d4_le10 | 2 | 135280±798 | 0.987±0.005 | 484.5±55.5 | 2.06±0.05 | 14.8±0.6 | 0.19±0.00 | 0.209±0.019 | 0.550±0.050 | 0.025±0.004 | 0.159±0.039 | 147.3±19.6 | 0.262±0.028 | 0.035±0.003 | 1 |
 | stack2_A_SA_d4_le10 | 1 | 136131±0 | 0.975±0.000 | 283.0±0.0 | 1.85±0.00 | 88.4±0.0 | 0.34±0.00 | 0.239±0.000 | 0.627±0.000 | 0.070±0.000 | 0.353±0.000 | 176.5±0.0 | 0.290±0.000 | 0.094±0.000 | 1 |
+| stack2_A_SA_seedNPN_d4_le10 | 2 | 154748±2768 | 0.892±0.011 | 223.5±3.5 | 1.76±0.01 | 42.3±4.1 | 0.40±0.01 | 0.183±0.007 | 0.482±0.018 | 0.053±0.006 | 0.368±0.040 | 141.1±11.6 | 0.224±0.014 | 0.077±0.010 | 1 |
+| stack2_A_SA_seedNP_d4_le10 | 2 | 168917±16294 | 0.833±0.073 | 266.5±9.5 | 1.70±0.10 | 29.7±13.2 | 0.42±0.03 | 0.154±0.016 | 0.405±0.041 | 0.043±0.009 | 0.375±0.034 | 112.9±15.8 | 0.194±0.021 | 0.061±0.013 | 1 |
 
 ## 现象测试集
 
@@ -449,6 +456,206 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
 | comparative | stretch | 18 (1/12/5) | 0.67 | 0.39 | 0.28 | 0.67 | 0.06 | 13 | 0.92 | 0.38 |
 
+### induction_cky_nf_A_SA_seedNPN_d4_le10_seed1
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.07 | 0.93 | 0.02 | 0.07 | 0.03 | 25 | 0.28 | 0.08 |
+| modifiers | gate | 142 (142/0/0) | 0.18 | 0.83 | 0.04 | 0.18 | 0.04 | 50 | 0.52 | 0.10 |
+| determiners | gate | 115 (115/0/0) | 0.17 | 0.87 | 0.10 | 0.17 | 0.06 | 32 | 0.59 | 0.38 |
+| aux_sequence | gate | 155 (155/0/0) | 0.23 | 0.85 | 0.08 | 0.23 | 0.09 | 62 | 0.58 | 0.19 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.80 | 0.40 | 0.05 | 0.05 | 0.20 | 17 | 0.94 | 0.06 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.00 | 0.60 | 0.00 | 0.00 | 0.00 | 2 | 0.00 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.00 | 0.60 | 0.00 | 0.00 | 0.00 | 3 | 0.00 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.94 | 0.33 | 0.11 | 0.61 | 0.28 | 17 | 1.00 | 0.12 |
+| object_relative | discriminating | 20 (7/13/0) | 0.80 | 0.45 | 0.10 | 0.60 | 0.25 | 16 | 1.00 | 0.12 |
+| valency_eat | discriminating | 3 (0/3/0) | 1.00 | 0.00 | 0.00 | 1.00 | 0.00 | 3 | 1.00 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.47 | 0.59 | 0.24 | 0.29 | 0.09 | 19 | 0.84 | 0.42 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.09 | 0.91 | 0.00 | 0.09 | 0.00 | 15 | 0.20 | 0.00 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.33 | 0.67 | 0.00 | 0.33 | 0.00 | 1 | 1.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.61 | 0.39 | 0.06 | 0.61 | 0.06 | 13 | 0.85 | 0.08 |
+
+### induction_cky_nf_A_SA_seedNPN_d4_le10_seed2
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.13 | 0.96 | 0.02 | 0.13 | 0.08 | 25 | 0.48 | 0.08 |
+| modifiers | gate | 142 (142/0/0) | 0.20 | 0.82 | 0.08 | 0.20 | 0.04 | 50 | 0.58 | 0.24 |
+| determiners | gate | 115 (115/0/0) | 0.15 | 0.90 | 0.06 | 0.15 | 0.07 | 32 | 0.53 | 0.22 |
+| aux_sequence | gate | 155 (155/0/0) | 0.21 | 0.87 | 0.05 | 0.21 | 0.10 | 62 | 0.53 | 0.11 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.80 | 0.70 | 0.05 | 0.30 | 0.50 | 17 | 0.94 | 0.06 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.20 | 0.60 | 0.00 | 0.00 | 0.00 | 2 | 0.50 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.20 | 0.80 | 0.00 | 0.00 | 0.00 | 3 | 0.33 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.94 | 0.56 | 0.00 | 0.61 | 0.50 | 17 | 1.00 | 0.00 |
+| object_relative | discriminating | 20 (7/13/0) | 0.75 | 0.50 | 0.05 | 0.60 | 0.25 | 16 | 0.94 | 0.06 |
+| valency_eat | discriminating | 3 (0/3/0) | 1.00 | 0.33 | 0.00 | 1.00 | 0.33 | 3 | 1.00 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.47 | 0.62 | 0.15 | 0.29 | 0.09 | 19 | 0.84 | 0.26 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.22 | 0.94 | 0.03 | 0.22 | 0.16 | 15 | 0.47 | 0.07 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.33 | 0.67 | 0.00 | 0.33 | 0.00 | 1 | 1.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.67 | 0.39 | 0.33 | 0.67 | 0.06 | 13 | 0.92 | 0.46 |
+
+### induction_cky_nf_A_SA_seedNP_d4_le10_seed1
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.13 | 0.95 | 0.04 | 0.13 | 0.07 | 25 | 0.48 | 0.16 |
+| modifiers | gate | 142 (142/0/0) | 0.18 | 0.82 | 0.04 | 0.18 | 0.03 | 50 | 0.50 | 0.12 |
+| determiners | gate | 115 (115/0/0) | 0.15 | 0.88 | 0.03 | 0.15 | 0.04 | 32 | 0.53 | 0.09 |
+| aux_sequence | gate | 155 (155/0/0) | 0.21 | 0.89 | 0.08 | 0.21 | 0.10 | 62 | 0.52 | 0.21 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.75 | 0.65 | 0.00 | 0.05 | 0.40 | 17 | 0.88 | 0.00 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.00 | 0.80 | 0.00 | 0.00 | 0.00 | 2 | 0.00 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 3 | 0.00 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.89 | 0.33 | 0.06 | 0.44 | 0.22 | 17 | 0.94 | 0.06 |
+| object_relative | discriminating | 20 (7/13/0) | 0.75 | 0.65 | 0.10 | 0.55 | 0.40 | 16 | 0.94 | 0.12 |
+| valency_eat | discriminating | 3 (0/3/0) | 1.00 | 0.00 | 0.00 | 1.00 | 0.00 | 3 | 1.00 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.44 | 0.65 | 0.18 | 0.18 | 0.09 | 19 | 0.79 | 0.32 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.12 | 0.91 | 0.00 | 0.12 | 0.06 | 15 | 0.27 | 0.00 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.00 | 0.67 | 0.00 | 0.00 | 0.00 | 1 | 0.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.61 | 0.39 | 0.06 | 0.61 | 0.00 | 13 | 0.85 | 0.08 |
+
+### induction_cky_nf_A_SA_seedNP_d4_le10_seed2
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.07 | 0.98 | 0.02 | 0.07 | 0.06 | 25 | 0.28 | 0.08 |
+| modifiers | gate | 142 (142/0/0) | 0.17 | 0.83 | 0.05 | 0.17 | 0.03 | 50 | 0.48 | 0.14 |
+| determiners | gate | 115 (115/0/0) | 0.11 | 0.88 | 0.04 | 0.11 | 0.02 | 32 | 0.41 | 0.16 |
+| aux_sequence | gate | 155 (155/0/0) | 0.19 | 0.88 | 0.08 | 0.19 | 0.10 | 62 | 0.48 | 0.21 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.75 | 0.35 | 0.00 | 0.05 | 0.10 | 17 | 0.88 | 0.00 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.20 | 0.80 | 0.00 | 0.00 | 0.00 | 2 | 0.50 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 3 | 0.00 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.94 | 0.39 | 0.06 | 0.56 | 0.33 | 17 | 1.00 | 0.06 |
+| object_relative | discriminating | 20 (7/13/0) | 0.70 | 0.65 | 0.05 | 0.50 | 0.35 | 16 | 0.88 | 0.06 |
+| valency_eat | discriminating | 3 (0/3/0) | 1.00 | 0.00 | 0.00 | 1.00 | 0.00 | 3 | 1.00 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.41 | 0.71 | 0.21 | 0.24 | 0.15 | 19 | 0.74 | 0.37 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.09 | 0.84 | 0.03 | 0.09 | 0.00 | 15 | 0.20 | 0.07 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.33 | 0.67 | 0.00 | 0.33 | 0.00 | 1 | 1.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.61 | 0.39 | 0.00 | 0.61 | 0.00 | 13 | 0.85 | 0.00 |
+
+### induction_left_A_SA_seedNPN_d4_le10_seed1
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.06 | 0.97 | 0.01 | 0.06 | 0.04 | 25 | 0.24 | 0.04 |
+| modifiers | gate | 142 (142/0/0) | 0.13 | 0.92 | 0.04 | 0.13 | 0.06 | 50 | 0.38 | 0.10 |
+| determiners | gate | 115 (115/0/0) | 0.10 | 0.93 | 0.05 | 0.10 | 0.04 | 32 | 0.38 | 0.19 |
+| aux_sequence | gate | 155 (155/0/0) | 0.16 | 0.94 | 0.06 | 0.16 | 0.12 | 62 | 0.40 | 0.15 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.80 | 0.60 | 0.00 | 0.10 | 0.40 | 17 | 0.94 | 0.00 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.00 | 0.80 | 0.00 | 0.00 | 0.00 | 2 | 0.00 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.00 | 0.80 | 0.00 | 0.00 | 0.00 | 3 | 0.00 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.89 | 0.44 | 0.00 | 0.72 | 0.39 | 17 | 0.94 | 0.00 |
+| object_relative | discriminating | 20 (7/13/0) | 0.70 | 0.75 | 0.00 | 0.55 | 0.45 | 16 | 0.88 | 0.00 |
+| valency_eat | discriminating | 3 (0/3/0) | 0.67 | 0.67 | 0.00 | 0.67 | 0.33 | 3 | 0.67 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.41 | 0.71 | 0.24 | 0.21 | 0.12 | 19 | 0.74 | 0.42 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.03 | 0.97 | 0.03 | 0.03 | 0.00 | 15 | 0.07 | 0.07 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.33 | 0.67 | 0.00 | 0.33 | 0.00 | 1 | 1.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.72 | 0.44 | 0.06 | 0.72 | 0.17 | 13 | 1.00 | 0.08 |
+
+### induction_left_A_SA_seedNP_d4_le10_seed1
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.07 | 0.97 | 0.03 | 0.07 | 0.05 | 25 | 0.28 | 0.12 |
+| modifiers | gate | 142 (142/0/0) | 0.15 | 0.89 | 0.02 | 0.15 | 0.05 | 50 | 0.44 | 0.06 |
+| determiners | gate | 115 (115/0/0) | 0.15 | 0.90 | 0.01 | 0.15 | 0.05 | 32 | 0.53 | 0.03 |
+| aux_sequence | gate | 155 (155/0/0) | 0.23 | 0.92 | 0.06 | 0.23 | 0.17 | 62 | 0.56 | 0.15 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.80 | 0.65 | 0.05 | 0.10 | 0.45 | 17 | 0.94 | 0.06 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 2 | 0.00 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.20 | 1.00 | 0.00 | 0.00 | 0.20 | 3 | 0.33 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.83 | 0.61 | 0.00 | 0.56 | 0.44 | 17 | 0.88 | 0.00 |
+| object_relative | discriminating | 20 (7/13/0) | 0.75 | 0.65 | 0.00 | 0.60 | 0.40 | 16 | 0.94 | 0.00 |
+| valency_eat | discriminating | 3 (0/3/0) | 1.00 | 0.33 | 0.00 | 1.00 | 0.33 | 3 | 1.00 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.35 | 0.74 | 0.09 | 0.26 | 0.09 | 19 | 0.63 | 0.16 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.09 | 0.94 | 0.03 | 0.09 | 0.06 | 15 | 0.20 | 0.07 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.33 | 0.67 | 0.00 | 0.33 | 0.00 | 1 | 1.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.50 | 0.61 | 0.06 | 0.50 | 0.11 | 13 | 0.69 | 0.08 |
+
+### induction_stack2_A_SA_seedNPN_d4_le10_seed1
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.09 | 0.94 | 0.04 | 0.09 | 0.04 | 25 | 0.36 | 0.16 |
+| modifiers | gate | 142 (142/0/0) | 0.15 | 0.87 | 0.01 | 0.15 | 0.04 | 50 | 0.42 | 0.04 |
+| determiners | gate | 115 (115/0/0) | 0.13 | 0.91 | 0.06 | 0.13 | 0.05 | 32 | 0.47 | 0.22 |
+| aux_sequence | gate | 155 (155/0/0) | 0.17 | 0.91 | 0.02 | 0.17 | 0.11 | 62 | 0.44 | 0.05 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.70 | 0.60 | 0.00 | 0.05 | 0.30 | 17 | 0.82 | 0.00 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.20 | 0.60 | 0.00 | 0.00 | 0.00 | 2 | 0.50 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.20 | 0.80 | 0.00 | 0.00 | 0.00 | 3 | 0.33 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.89 | 0.39 | 0.06 | 0.61 | 0.28 | 17 | 0.94 | 0.06 |
+| object_relative | discriminating | 20 (7/13/0) | 0.70 | 0.65 | 0.00 | 0.65 | 0.35 | 16 | 0.88 | 0.00 |
+| valency_eat | discriminating | 3 (0/3/0) | 0.67 | 0.33 | 0.00 | 0.67 | 0.00 | 3 | 0.67 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.38 | 0.79 | 0.12 | 0.24 | 0.18 | 19 | 0.68 | 0.21 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.16 | 0.84 | 0.00 | 0.16 | 0.00 | 15 | 0.33 | 0.00 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 1 | 0.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.56 | 0.50 | 0.22 | 0.56 | 0.06 | 13 | 0.77 | 0.31 |
+
+### induction_stack2_A_SA_seedNPN_d4_le10_seed2
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.07 | 0.95 | 0.02 | 0.07 | 0.03 | 25 | 0.28 | 0.08 |
+| modifiers | gate | 142 (142/0/0) | 0.15 | 0.87 | 0.06 | 0.15 | 0.04 | 50 | 0.42 | 0.16 |
+| determiners | gate | 115 (115/0/0) | 0.11 | 0.91 | 0.08 | 0.11 | 0.05 | 32 | 0.41 | 0.28 |
+| aux_sequence | gate | 155 (155/0/0) | 0.20 | 0.90 | 0.06 | 0.20 | 0.11 | 62 | 0.50 | 0.15 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.65 | 0.80 | 0.10 | 0.65 | 0.45 | 17 | 0.76 | 0.12 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.20 | 0.60 | 0.00 | 0.20 | 0.00 | 2 | 0.50 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 3 | 0.00 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.94 | 0.61 | 0.06 | 0.44 | 0.56 | 17 | 1.00 | 0.06 |
+| object_relative | discriminating | 20 (7/13/0) | 0.70 | 0.80 | 0.00 | 0.55 | 0.50 | 16 | 0.88 | 0.00 |
+| valency_eat | discriminating | 3 (0/3/0) | 1.00 | 0.33 | 0.33 | 1.00 | 0.33 | 3 | 1.00 | 0.33 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.38 | 0.79 | 0.15 | 0.21 | 0.18 | 19 | 0.68 | 0.26 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.19 | 0.94 | 0.03 | 0.19 | 0.12 | 15 | 0.40 | 0.07 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.00 | 0.67 | 0.00 | 0.00 | 0.00 | 1 | 0.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.44 | 0.67 | 0.22 | 0.44 | 0.11 | 13 | 0.62 | 0.31 |
+
+### induction_stack2_A_SA_seedNP_d4_le10_seed1
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.03 | 0.99 | 0.01 | 0.03 | 0.02 | 25 | 0.12 | 0.04 |
+| modifiers | gate | 142 (142/0/0) | 0.13 | 0.89 | 0.04 | 0.13 | 0.05 | 50 | 0.38 | 0.12 |
+| determiners | gate | 115 (115/0/0) | 0.10 | 0.94 | 0.07 | 0.10 | 0.03 | 32 | 0.34 | 0.25 |
+| aux_sequence | gate | 155 (155/0/0) | 0.17 | 0.91 | 0.08 | 0.17 | 0.10 | 62 | 0.44 | 0.21 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.65 | 0.60 | 0.05 | 0.05 | 0.25 | 17 | 0.76 | 0.06 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.20 | 1.00 | 0.00 | 0.20 | 0.20 | 2 | 0.50 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 3 | 0.00 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.83 | 0.56 | 0.00 | 0.72 | 0.39 | 17 | 0.88 | 0.00 |
+| object_relative | discriminating | 20 (7/13/0) | 0.75 | 0.65 | 0.05 | 0.55 | 0.40 | 16 | 0.94 | 0.06 |
+| valency_eat | discriminating | 3 (0/3/0) | 1.00 | 0.67 | 0.00 | 1.00 | 0.67 | 3 | 1.00 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.44 | 0.65 | 0.12 | 0.32 | 0.09 | 19 | 0.79 | 0.21 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.12 | 1.00 | 0.00 | 0.12 | 0.12 | 15 | 0.27 | 0.00 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.33 | 0.67 | 0.00 | 0.33 | 0.00 | 1 | 1.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.56 | 0.50 | 0.00 | 0.56 | 0.06 | 13 | 0.77 | 0.00 |
+
+### induction_stack2_A_SA_seedNP_d4_le10_seed2
+
+| phenomenon | group | n (dev/train/constructed) | L1 accept | L2 reject neg | L3 pred-arg | L4 no CS | pair acc | in-lex n | L1 in-lex | L3 in-lex |
+|---|---|---|---|---|---|---|---|---|---|---|
+| argument_structure | gate | 95 (95/0/0) | 0.03 | 0.97 | 0.01 | 0.03 | 0.02 | 25 | 0.12 | 0.04 |
+| modifiers | gate | 142 (142/0/0) | 0.08 | 0.94 | 0.03 | 0.08 | 0.04 | 50 | 0.24 | 0.08 |
+| determiners | gate | 115 (115/0/0) | 0.08 | 0.97 | 0.05 | 0.08 | 0.07 | 32 | 0.28 | 0.19 |
+| aux_sequence | gate | 155 (155/0/0) | 0.16 | 0.97 | 0.05 | 0.16 | 0.14 | 62 | 0.40 | 0.11 |
+| vp_coordination | discriminating | 20 (4/16/0) | 0.40 | 0.95 | 0.00 | 0.05 | 0.35 | 17 | 0.47 | 0.00 |
+| right_node_raising | discriminating | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 2 | 0.00 | 0.00 |
+| nonconstituent_coordination | discriminating | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 3 | 0.00 | 0.00 |
+| subject_relative | discriminating | 18 (1/17/0) | 0.72 | 0.61 | 0.00 | 0.50 | 0.33 | 17 | 0.76 | 0.00 |
+| object_relative | discriminating | 20 (7/13/0) | 0.70 | 0.60 | 0.00 | 0.60 | 0.30 | 16 | 0.88 | 0.00 |
+| valency_eat | discriminating | 3 (0/3/0) | 0.33 | 1.00 | 0.00 | 0.33 | 0.33 | 3 | 0.33 | 0.00 |
+| multifunction_that | discriminating | 34 (34/0/0) | 0.29 | 0.79 | 0.06 | 0.24 | 0.09 | 19 | 0.53 | 0.11 |
+| nested_clause | discriminating | 32 (32/0/0) | 0.12 | 0.88 | 0.06 | 0.12 | 0.00 | 15 | 0.27 | 0.13 |
+| parasitic_gap | stretch | 3 (0/0/3) | 0.33 | 1.00 | 0.00 | 0.33 | 0.33 | 1 | 1.00 | 0.00 |
+| gapping | stretch | 5 (0/0/5) | 0.00 | 1.00 | 0.00 | 0.00 | 0.00 | 0 | n/a | n/a |
+| comparative | stretch | 18 (1/12/5) | 0.33 | 0.72 | 0.11 | 0.33 | 0.11 | 13 | 0.46 | 0.15 |
+
 ## 高频范畴（cky_A_SA_d4_le8, MDL-selected seed 2）
 
 | # | category | expected count | 20 words |
@@ -507,6 +714,64 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 失败日志汇总（dev, 0 failures）: by UPOS/deprel of failing word: []; by word: []; by position: []
 
 
+## 高频范畴（cky_nf_A_SA_d4_le10, MDL-selected seed 1）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `N` | 1842.2 | <C3>, do, 's, was, i, <C4>, is, have, <C16>, she, ’s, did, 're, for, at, to, know, <C0>, are, a |
+| 2 | `S/N` | 1066.7 | i, it, that, he, you, they, we, she, this, there, not, and, the, <C1>, actually, <C9>, people, <C3>, um, here |
+| 3 | `NP` | 1064.5 | the, a, <C1>, all, are, not, <C14>, is, my, like, <C3>, <C10>, our, this, some, got, of, been, good, an |
+| 4 | `NP\N` | 658.5 | the, a, <C3>, of, to, going, be, doing, her, as, bit, super, this, ’s, than, in, get, been, that, sense |
+| 5 | `S\N` | 623.0 | <C3>, <C8>, <C1>, say, do, said, was, see, could, did, <C4>, started, two, one, be, will, into, there, does, you |
+| 6 | `N/NP` | 562.5 | 's, is, have, <C3>, was, a, are, i, know, 've, <C9>, got, 're, you, in, 'll, one, 'm, felt, put |
+| 7 | `S\S` | 552.2 | <C1>, <C3>, it, n't, <C18>, them, with, great, three, that, now, right, up, from, know, too, out, <C10>, today, use |
+| 8 | `S/S` | 479.4 | and, so, yeah, oh, i, <C3>, but, <C1>, no, we, my, like, that, <C11>, then, now, okay, where, there, second |
+| 9 | `N\N` | 473.3 | <C3>, to, never, a, my, very, on, one, it, like, really, <C1>, not, big, at, his, bad, up, so, own |
+| 10 | `S\NP` | 460.7 | <C3>, <C2>, <C1>, way, it, <C7>, and, day, people, <C10>, long, called, sorry, well, down, yes, you, us, of, texas |
+| 11 | `N\NP` | 340.9 | a, <C3>, <C2>, in, over, and, <C10>, of, pretty, from, <C1>, fun, to, <C7>, world, with, last, letter, hand, point |
+| 12 | `N\S` | 339.3 | <C3>, in, n't, i, to, <C1>, a, like, as, and, on, she, about, na, with, at, their, he, the, that |
+| 13 | `NP/N` | 319.7 | it, is, <C3>, that, i, to, we, <C1>, they, you, any, my, one, the, she, and, there, a, this, can |
+| 14 | `N/N` | 314.2 | is, 's, <C3>, it, how, really, also, just, was, we, can, i, 'm, were, you, are, name, to, history, and |
+| 15 | `N/S` | 307.5 | 's, <C3>, think, know, is, ’s, just, 'm, uh, what, mean, thought, then, so, understand, was, all, are, 're, 'll |
+| 16 | `S` | 259.7 | <C1>, <C3>, mother, ca, many, here, these, gon, feel, 's, no, do, i, ’m, of, yeah, that, was, data, did |
+| 17 | `(S\N)\S` | 194.2 | <C1>, me, it, work, said, there, now, four, tell, choice, asked, but, were, successful, stuff, idea, pack, yours, her, still |
+| 18 | `NP/S` | 191.0 | <C7>, little, what, i, good, ever, lemon, long, <C3>, and, percentiles, told, problem, it, ’s, my, enemy, president, theme, that |
+| 19 | `NP\S` | 153.5 | <C3>, a, him, <C1>, the, 'd, out, by, new, few, this, that, to, will, other, are, of, fine, language, percentiles |
+| 20 | `NP\NP` | 143.4 | a, the, <C3>, of, <C1>, mom, real, in, black, your, both, every, <C22>, thursday, country, following, national, <C7>, unprecedented, rider |
+| 21 | `(S\S)/N` | 126.6 | n't, and, the, <C1>, from, for, sending, want, said, removed, carolyn, meant |
+| 22 | `(S/S)/NP` | 107.9 | <C5>, and, this, i, robert, ten, after, yeah, first, says, ways, every, forms, flight, nonna |
+| 23 | `(S/NP)/N` | 92.0 | it, you, this, there, as, local, everything, days, simply, quinoa, general, question, era |
+| 24 | `(S/S)/S` | 91.9 | i, well, but, because, al, goldsmith, cultures, anyways, back, lot, stood |
+| 25 | `NP\(NP\N)` | 86.1 | <C2>, <C10>, bear, two |
+| 26 | `(S\N)/NP` | 79.6 | of, for, like, <C11>, wrote, saw, ready, forgot, october, southeast, different, more, finished, feet |
+| 27 | `S/NP` | 78.6 | <C3>, when, in, i, this, quartiles, we, <C1>, there, jenna, <C9>, that, today, america, winking, bigger, little, us, alone |
+| 28 | `(S/N)/N` | 73.4 | the, she, our, her, mr., no, things, rate, he, bill, pete |
+| 29 | `(S\N)\NP` | 73.0 | <C10>, looking, their, event, face, later, would, scared, anymore, stand, six, here, roll, mandatory, hands, trouble, honor, lights, mistakes, trillion |
+| 30 | `(S\S)\NP` | 71.6 | same, time, though, you, interest, paper, back, writes, because, pretty, there, poetry, dreams, customers, zero, arrogance, 20, basil, exam |
+| 31 | `(S\N)\N` | 68.9 | to, things, help, can, excited, already, ask, making, fit, others, thanks, structures, 25, bill, thought, collecting, shape, head, fourth |
+| 32 | `(NP\NP)\N` | 66.9 | of, on, very, minute, eyes, buildings, largest, applications, become, works |
+| 33 | `NP/(NP/S)` | 65.8 | a |
+| 34 | `S\(S\N)` | 56.7 | <C13>, he, are, not, happen, that, make, red, come, after, chair, feet, hours, 100, peoples, short, together |
+| 35 | `(S\N)/N` | 56.7 | the, are, was, with, your, made, test, woke, twice, or, because, website |
+| 36 | `(N\N)\NP` | 52.2 | in, best, <C13>, future, came, united, take |
+| 37 | `(N\S)/NP` | 47.5 | <C3>, knew, wan, than, says, <C4>, this, myself, school, hate, local, currently |
+| 38 | `(S\NP)\(NP\N)` | 47.3 | <C3>, obeys, of |
+| 39 | `S/(N/S)` | 46.2 | you, i, they, nothing, makes |
+| 40 | `(NP\N)/NP` | 41.3 | <C12>, get, –, ’s, third, animals |
+| 41 | `(NP\NP)\S` | 38.3 | and, middle, accept, covenants, industry, crisp, off, took, asks |
+| 42 | `(N\NP)\((S/S)/NP)` | 38.0 | of |
+| 43 | `(N\NP)/N` | 36.1 | <C3>, <C19>, you, long, everything, ants, looks |
+| 44 | `N\(S\NP)` | 32.8 | <C1>, i, he, of, come, carolyn |
+| 45 | `(S\(NP/NP))/NP` | 32.0 | to |
+| 46 | `((S\S)\N)/N` | 31.0 | to, people, did, off |
+| 47 | `(N\N)\N` | 30.0 | by, work, run, strong, traveler, eight, achievements, lost, month, all, grab |
+| 48 | `(S\S)/NP` | 26.6 | n’t, at, exciting |
+| 49 | `(NP\NP)\NP` | 25.1 | kind, received, pizza, family, around, achieved, 's |
+| 50 | `(N\NP)\S` | 23.9 | wikinews, part, break, watching, football, finding, whole, checks |
+
+失败日志汇总（dev, 0 failures）: by UPOS/deprel of failing word: []; by word: []; by position: []
+
+
 ## 高频范畴（cky_nf_A_SA_d4_le8, MDL-selected seed 2）
 
 | # | category | expected count | 20 words |
@@ -561,6 +826,122 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | 48 | `(N/NP)/N` | 14.9 | she, seen, put, rider, suspect, born |
 | 49 | `(NP\NP)\S` | 13.7 | like, lot, following, country, share, 21, tuesday |
 | 50 | `(NP\S)/N` | 13.6 | we, god, circuit, common, right |
+
+失败日志汇总（dev, 0 failures）: by UPOS/deprel of failing word: []; by word: []; by position: []
+
+
+## 高频范畴（cky_nf_A_SA_seedNPN_d4_le10, MDL-selected seed 1）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `NP` | 3158.8 | i, it, you, we, he, she, they, that, <C3>, <C1>, there, this, me, <C16>, a, <C9>, on, all, n't, to |
+| 2 | `N` | 968.3 | <C3>, <C7>, <C5>, is, one, <C12>, 's, other, mother, way, day, name, lot, those, bit, <C10>, into, the, years, of |
+| 3 | `(S\NP)/NP` | 658.7 | is, 's, was, have, like, 're, <C4>, did, do, know, get, does, by, at, on, <C13>, made, thought, got, started |
+| 4 | `NP\NP` | 625.5 | <C3>, 's, ’s, be, are, just, have, was, and, has, do, will, put, love, this, says, out, know, 'm, can |
+| 5 | `NP/NP` | 492.7 | n't, 's, <C0>, <C3>, the, from, how, <C1>, in, so, then, no, have, well, to, when, that, okay, is, what |
+| 6 | `NP/N` | 478.4 | the, a, this, my, <C3>, not, are, like, his, her, that, two, no, last, some, one, many, so, say, part |
+| 7 | `S\NP` | 424.6 | <C3>, know, <C1>, 's, is, up, am, the, was, <C4>, did, are, 'll, think, will, <C13>, ’s, true, see, a |
+| 8 | `S\S` | 393.8 | <C1>, <C3>, right, now, that, here, too, time, great, good, two, correct, <C10>, again, yeah, dad, in, low, further, student |
+| 9 | `NP\N` | 368.2 | to, of, and, more, a, all, 're, from, <C13>, our, never, today, at, was, is, while, robert, my, any, wait |
+| 10 | `N/NP` | 300.5 | <C3>, is, there, with, in, like, only, but, to, ca, got, so, been, are, not, has, <C2>, and, hole, common |
+| 11 | `NP\S` | 293.0 | <C3>, in, of, <C1>, and, to, n't, <C5>, same, kind, that, getting, who, up, <C9>, problem, than, <C7>, what, kinda |
+| 12 | `S/S` | 269.9 | and, oh, yeah, so, well, <C1>, the, <C11>, <C3>, this, copy, where, scientology, greek, up, stop, some, to, more, fourth |
+| 13 | `N\NP` | 264.1 | <C3>, was, <C12>, 's, are, of, want, is, <C13>, a, <C4>, the, just, <C5>, to, <C1>, have, 'll, in, will |
+| 14 | `(S\S)\NP` | 237.4 | <C3>, <C1>, said, back, about, hand, like, at, once, people, already, could, does, forever, bird, help, okay, 's, something, war |
+| 15 | `S/N` | 214.5 | the, <C1>, so, first, no, their, today, a, medicating, on, meal |
+| 16 | `S` | 210.9 | <C1>, no, three, the, that, city, yeah, to, public, so, eyes, <C3>, <C10>, <C2>, his, a, guy, <C21>, contains, human |
+| 17 | `(S\NP)/N` | 202.1 | a, had, 've, 'm, my, 's, <C1>, good, feel, her, only, still, ’re, goes, <C4>, twelve, seen, age, driving, hot |
+| 18 | `S\N` | 188.4 | are, go, out, is, looking, or, of, <C1>, better, with, and, <C10>, one, enough, happen, leave, though, see, match, enjambment |
+| 19 | `(S\NP)\NP` | 155.6 | <C3>, say, <C10>, pretty, work, that, hope, things, beautiful, water, bear, <C8>, thing, started, funny, <C2>, choice, 20, wo, 18 |
+| 20 | `N/N` | 155.2 | <C3>, <C2>, <C7>, a, the, and, just, makes, little, were, really, real, has, rental, air, longer, ball, is, median, white |
+| 21 | `(S\S)/NP` | 148.0 | in, for, with, at, <C1>, behind, very, 1, was, never |
+| 22 | `NP/S` | 131.8 | <C3>, but, what, of, a, all, the, <C18>, and, did, those, this, important, another, 's, are, andrew, beginning, your, people |
+| 23 | `S/NP` | 130.6 | to, that, yes, because, and, no, as, back, well, here, my, n't, <C1>, in, are, first, what, moreau, usually, quartiles |
+| 24 | `N\S` | 123.4 | <C3>, <C1>, to, with, as, <C12>, in, out, of, thing, small, live, number, close, ’s, recording, encabalgamiento, less, serious, along |
+| 25 | `(S/NP)/N` | 121.1 | that, the, this, his, internet, eventually, hurt, therefore, done, lack, laughing |
+| 26 | `(S\S)\N` | 97.1 | <C1>, <C10>, in, on, science, <C7>, old, fine, quidditch, change, <C18>, longer, job, gram, place, call, men, image, tried, given |
+| 27 | `(NP\N)\NP` | 91.5 | <C3>, can, want, need, is, really, yesterday, only, kid, family, interviewed, since, practical, girls, chicken, spencer, possibilities, enjoyed |
+| 28 | `NP\(S/N)` | 84.3 | <C2>, never, blue, to, an, students |
+| 29 | `(N\NP)/NP` | 77.7 | was, 's, ’m, know, said, can, call, its, heard, hold, provide, afraid, met, <C16>, meal, tiny, anymore, began |
+| 30 | `(NP\NP)/NP` | 66.8 | 's, mean, were, really, make, guess, gave, worked |
+| 31 | `(N\NP)\S` | 64.6 | gon, minute, hear, start, as, make, brother, to, study, badly, time, scba, top, possesses, among, 7, together, former, would, who |
+| 32 | `(S\NP)\N` | 61.0 | <C1>, three, 're, happy, huge, liked, successful, ginny, global, wonderful, month, <C20>, headset |
+| 33 | `(S\NP)/S` | 60.2 | think, called, won, bad, below, ahead, wo, changed, yield, demonstrate, rights, off, hung, pete, making, drank |
+| 34 | `(S/NP)/NP` | 55.6 | and, yeah, people, that, now, watch, services |
+| 35 | `N/S` | 53.4 | the, <C3>, and, these, <C7>, alright, or, little, offer, collecting, talked, anyways, hard, leave, nick, sore, fill |
+| 36 | `((S\NP)\NP)/NP` | 50.4 | of, <C4>, thought |
+| 37 | `(NP\NP)/(NP/NP)` | 50.4 | do |
+| 38 | `N\N` | 48.4 | to, of, <C1>, older, and, had, ended, mermaid, about, still, na, basil |
+| 39 | `(S\N)/NP` | 45.3 | from, about, going, test, study, 2, likes, course, run, questions, hate, asked |
+| 40 | `(S\S)\(S/N)` | 43.1 | <C2>, telling |
+| 41 | `S\((S/NP)/N)` | 40.2 | 's, is |
+| 42 | `(S/N)/N` | 38.0 | this, for, each, tulsa, then, from, alright |
+| 43 | `(NP/N)/NP` | 35.9 | a, my, man, studying, like, something, watching, always, moved, successful |
+| 44 | `(S\(NP/NP))\NP` | 30.3 | <C14>, here, perfect, cheaper, delicious, wo |
+| 45 | `(N\NP)\N` | 29.0 | another, into, coming, concerned, thus, often, shrunk, <C20> |
+| 46 | `(S/N)/NP` | 27.8 | but, president, uhhh, ramon, north, new, by, below |
+| 47 | `(S\(NP\N))\NP` | 27.6 | <C3>, allowed, doing, <C7>, bringing, right |
+| 48 | `(NP/S)/NP` | 26.6 | and, sorry, no, took, give, said, remember, stand, forgot, bear, having |
+| 49 | `N/(NP\S)` | 25.6 | the, a, major, active |
+| 50 | `(S\S)/N` | 24.5 | three, different, not, every, either, try, under, both, can, sure, problem, accidentally |
+
+失败日志汇总（dev, 0 failures）: by UPOS/deprel of failing word: []; by word: []; by position: []
+
+
+## 高频范畴（cky_nf_A_SA_seedNP_d4_le10, MDL-selected seed 2）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `NP` | 2698.4 | i, it, you, we, he, they, she, that, <C10>, do, the, my, a, me, there, to, <C2>, <C1>, this, them |
+| 2 | `S` | 1029.1 | the, <C10>, is, <C2>, good, <C7>, <C6>, <C17>, as, great, some, three, in, <C1>, not, these, at, mother, first, and |
+| 3 | `S\NP` | 731.1 | <C10>, <C2>, know, was, are, will, is, <C20>, 's, beautiful, the, <C12>, <C9>, too, more, think, ’re, 'll, see, has |
+| 4 | `S/S` | 610.7 | this, and, yeah, but, well, so, like, is, not, for, the, a, then, <C2>, no, all, <C10>, what, yes, now |
+| 5 | `NP\NP` | 595.7 | 's, was, 'm, <C10>, have, 've, a, am, in, did, up, could, does, n't, just, to, really, looks, is, love |
+| 6 | `(S\NP)/S` | 532.3 | 's, was, 're, are, ’s, 'm, know, were, just, did, thought, quite, seems, put, hope, floor, make, alone, bad, <C9> |
+| 7 | `NP\S` | 499.6 | <C10>, be, that, on, <C2>, and, the, much, <C16>, things, to, like, of, into, going, my, a, not, <C1>, <C14> |
+| 8 | `S\S` | 485.7 | <C2>, <C10>, <C16>, now, one, go, right, <C1>, to, here, two, down, us, that, of, world, this, get, an, way |
+| 9 | `N` | 473.6 | that, the, a, <C10>, to, there, <C4>, <C2>, over, this, with, her, on, an, their, other, one, answer, hair, into |
+| 10 | `S/NP` | 345.4 | and, <C18>, in, to, a, is, the, about, <C2>, but, <C10>, all, at, there, so, probably, have, that, almost, of |
+| 11 | `(S\NP)/NP` | 281.9 | have, <C19>, with, like, want, get, got, do, think, 'll, made, gon, need, really, understand, started, so, goes, enjambment, loved |
+| 12 | `NP/NP` | 224.7 | <C16>, to, oh, her, <C0>, so, what, like, <C2>, same, if, our, which, help, of, are, enough, car, scientology, moreau |
+| 13 | `S\N` | 202.4 | <C3>, <C2>, <C16>, 's, <C10>, is, <C1>, the, see, not, important, problems, asked, yeah, want, telling, 2012, changing, brown, conventions |
+| 14 | `NP/S` | 181.6 | the, <C3>, <C10>, of, your, <C2>, all, a, have, under, data, still, coming, my, well, <C13>, one, to, lemon, sure |
+| 15 | `(S\NP)\S` | 165.1 | <C2>, of, said, fun, today, back, event, hand, know, think, human, um, middle, biological, cultural, better, student, guessed, must, award |
+| 16 | `(S\S)\S` | 160.8 | <C2>, <C16>, people, good, day, like, excited, last, applied, fully, eleven, easy, build, fit, wrong, deal, following, structures, tried, eating |
+| 17 | `N\S` | 155.1 | a, the, <C2>, no, also, had, yes, of, to, square, blue, turn, touch, original, high, water, that, until, article, community |
+| 18 | `N\NP` | 147.9 | can, a, <C10>, is, real, 'll, wo, and, <C2>, would, name, joke, year, <C16>, know, to, <C4>, need, nathan, party |
+| 19 | `NP\N` | 147.9 | <C21>, <C16>, the, <C3>, n't, a, <C1>, <C10>, dad, her, that, be, half, robert, 5, 's, sports, plants, after, follows |
+| 20 | `(S\S)/NP` | 104.9 | on, for, at, was, your, down, tell, may, say, buy, age, show, <C19>, quartiles, or, does, behind, possibilities, student, shoes |
+| 21 | `(S\NP)\NP` | 103.4 | the, out, say, n't, but, her, service, down, started, crowd, bird, training, guy, everywhere, collapse, 30, sorry, girls, vision |
+| 22 | `S/N` | 98.1 | that, by, the, not, god, example, those, our, family, bill, study, says, my, ground, andrew, strange, better, writes, country, has |
+| 23 | `(S\S)/S` | 92.2 | of, is, <C12>, had, work, thousands |
+| 24 | `(NP\NP)\NP` | 91.6 | n't, n’t, other, 've, feet, headset, doing, successful, magic, job, <C11>, asked, duel, through, 3 |
+| 25 | `NP/N` | 83.9 | <C1>, <C2>, to, <C10>, so, our, how, back, well, were, easy, this, sh-, backed, montana |
+| 26 | `(NP\S)\NP` | 75.6 | in, so, most, still, times, throat, whatsoever, up, aged, points, n't, been, spot |
+| 27 | `(S\NP)/N` | 65.4 | has, got, know, long, and, interviews, went, n’t, two, contains, balance, gone, @, team, follows |
+| 28 | `S\(NP\NP)` | 62.0 | <C13>, pretty, badly, provides, case, connection, happy, d.c., tomorrow, guests, downtown, matter, lipstick, instead, vlog, nine, met, waiting, catch, moved |
+| 29 | `((S\NP)\S)/NP` | 59.1 | from, at, all, hear, find, funny, not, tells |
+| 30 | `N/S` | 55.9 | the, <C14>, an, to, than, face, one, renata |
+| 31 | `(S/NP)/NP` | 52.9 | so, <C8>, uh, can, will, <C20>, if, way, every, adds, guys, hopefully, pretty, yeah, into, drank, cold |
+| 32 | `S/(NP/NP)` | 45.4 | the, big, there, no, also, fun, <C4> |
+| 33 | `(S/S)/S` | 43.1 | and, these, making, totally, absolutely, watching, england, look, very, shit, anyways, nation |
+| 34 | `(N\S)/NP` | 41.4 | a, what, <C18>, <C0>, buildings, mean, wear, 19 |
+| 35 | `N/NP` | 39.6 | <C2>, a, <C10>, maybe, no, runs, see, point, application, gross, grew |
+| 36 | `NP\(N\S)` | 38.7 | little, name, run, will, letter, take, details, root, covenants, feature, those, share |
+| 37 | `(S\S)\(S/NP)` | 37.4 | <C11>, smiled |
+| 38 | `S\(N\N)` | 37.3 | is, use, said, us, end, <C3>, over, walk, 18, remarks |
+| 39 | `(NP\N)\S` | 36.7 | <C10>, voice, match, before, long, harder, be, just, yoga |
+| 40 | `S\(S\NP)` | 36.5 | <C6>, <C2>, though, services, mukalla, five, local, pizza, bowl, 2015, given, necessity |
+| 41 | `(S\(N/S))/NP` | 34.0 | in |
+| 42 | `N\N` | 31.8 | <C4>, <C3>, the, brother, commercial |
+| 43 | `(N\NP)\S` | 30.8 | ca, <C2>, at, with, same, morning, practical, father, ask, dislike |
+| 44 | `S/(S/S)` | 29.1 | oh, now, saw, tonight, visited |
+| 45 | `(S\N)/NP` | 28.5 | 's, ’s, an |
+| 46 | `(S\NP)\(NP\S)` | 28.2 | <C10>, up, kidding |
+| 47 | `(S/NP)/S` | 27.9 | one, <C4>, course, shape, doing, <C16> |
+| 48 | `(S\NP)\(S/NP)` | 27.8 | to |
+| 49 | `(N\N)/NP` | 27.5 | <C23>, copy, oh, hundred, whole, holding, infected, hotel, got, drank, live |
+| 50 | `(S\N)/(NP\N)` | 27.0 | is |
 
 失败日志汇总（dev, 0 failures）: by UPOS/deprel of failing word: []; by word: []; by position: []
 
@@ -1087,6 +1468,122 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 失败日志汇总（dev, 57 failures）: by UPOS/deprel of failing word: [['END/END', 13], ['VERB/root', 7], ['PRON/nsubj', 3], ['PRON/obj', 3], ['PRON/nmod', 3], ['ADV/advmod', 3], ['NOUN/obj', 2], ['NOUN/obl', 2], ['AUX/cop', 2], ['VERB/ccomp', 2], ['ADJ/root', 2], ['NOUN/nsubj', 2], ['AUX/aux', 1], ['DET/det', 1], ['NUM/compound', 1]]; by word: [['<END>', 13], ['i', 2], ['it', 2], ['stop', 2], ['his', 2], ['joke', 2], ['came', 1], ['would', 1], ['hold', 1], ['number', 1], ['any', 1], ['morning', 1], ['thirty', 1], ['were', 1], ['touch', 1]]; by position: [[2, 4], [3, 12], [4, 6], [5, 8], [6, 10], [7, 9], [8, 3], [9, 3], [10, 1], [11, 1]]
 
 
+## 高频范畴（left_A_SA_seedNPN_d4_le10, MDL-selected seed 1）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `NP` | 2693.5 | i, it, you, we, he, they, she, that, this, there, <C3>, <C1>, me, the, <C8>, them, here, one, him, of |
+| 2 | `N` | 1052.4 | <C2>, <C3>, <C7>, <C9>, <C1>, and, mother, day, way, name, lot, bit, same, by, the, years, world, long, into, people |
+| 3 | `NP/NP` | 714.9 | and, so, <C3>, yeah, but, oh, well, no, like, to, this, now, then, a, <C1>, if, these, what, yes, are |
+| 4 | `S\S` | 611.1 | <C1>, <C3>, to, said, that, now, and, today, up, out, from, as, says, once, by, time, too, one, had, for |
+| 5 | `S\NP` | 597.6 | <C3>, know, <C10>, was, is, have, <C1>, are, <C4>, 's, 'll, down, think, see, ca, will, do, were, am, does |
+| 6 | `NP\NP` | 528.5 | of, <C3>, 's, <C16>, just, all, really, 'm, 've, one, <C1>, <C6>, hand, had, and, is, has, the, 'll, was |
+| 7 | `NP/N` | 423.8 | the, a, my, this, <C1>, her, no, some, many, little, how, our, two, <C8>, 2, real, for, from, its, these |
+| 8 | `N\NP` | 380.1 | do, was, 're, did, is, ’s, are, <C3>, want, 's, <C1>, does, 'm, have, were, also, only, more, came, what |
+| 9 | `(S\NP)/NP` | 376.2 | of, <C4>, have, like, <C3>, 's, at, ’s, get, in, want, be, know, made, got, 'll, after, for, will, understand |
+| 10 | `S` | 338.7 | <C3>, <C1>, the, of, her, work, well, in, for, but, much, this, his, texas, my, only, dad, study, shoes, robert |
+| 11 | `N/N` | 318.9 | a, <C14>, <C1>, the, and, beautiful, <C2>, long, few, true, big, like, nice, just, <C7>, to, trying, his, okay, each |
+| 12 | `(S\S)/N` | 241.0 | <C3>, the, a, of, good, three, 's, their, my, go, really, have, too, 20, other, twelve, stay, white, n't, saw |
+| 13 | `S\N` | 221.2 | <C3>, n't, right, <C18>, not, great, <C1>, good, <C16>, <C21>, one, all, out, called, are, opposite, funny, us, was, easy |
+| 14 | `(NP\NP)/NP` | 202.3 | <C3>, is, know, was, think, a, 're, mean, said, thought, 's, put, <C14>, make, called, did, 'm, guess, just, seen |
+| 15 | `S/NP` | 180.0 | <C1>, and, <C3>, <C13>, say, before, maybe, go, do, god, or, <C11>, second, back, later, then, okay, a, yes, even |
+| 16 | `NP/S` | 170.0 | the, <C1>, like, our, <C5>, my, with, are, on, lemon, your, first, these, also, other, well, yeah, magicians, free, real |
+| 17 | `N\N` | 169.1 | <C3>, pretty, very, correct, say, much, said, even, their, getting, while, forever, 6, says, done, clear, badly, yoga, montana, so |
+| 18 | `NP\N` | 145.7 | n't, <C1>, to, <C3>, n’t, with, her, <C9>, very, a, another, were, 19, eight, medical, covered, jenna, runs, will, contains |
+| 19 | `(S\S)/NP` | 139.2 | in, into, that, to, make, about, do, was, over, really, look, love, leave, more, very, n’t, via, successful, tells, above |
+| 20 | `NP\S` | 138.2 | <C5>, be, <C3>, more, <C9>, is, are, part, all, both, looking, nature, face, that, at, two, to, n’t, can, test |
+| 21 | `N\S` | 127.6 | is, <C12>, <C3>, a, at, for, than, received, percentiles, equals, try, but, were, said, visited, 2015, fill, buy, contact, gets |
+| 22 | `N/NP` | 124.6 | <C2>, with, all, for, like, <C1>, at, <C16>, <C7>, blue, as, so, q, us, sure, in, thinking, year, $, behind |
+| 23 | `(S\NP)/(N/N)` | 111.3 | 's, 'm, are, looks, took, put, ended, before, bears |
+| 24 | `(S\NP)/(NP\NP)` | 88.2 | is, 're, in, ever |
+| 25 | `S/N` | 84.5 | <C3>, the, my, of, words, <C12>, open, often, public, <C1>, first, her, affected, six, middle, iqr, 2, last |
+| 26 | `N/S` | 70.6 | to, <C2>, my, little, <C1>, watch, so, dillard, symmetry, last, 's, flight, important, fatal, strong, fled |
+| 27 | `(N\N)/NP` | 69.2 | to, says, makes, times, sending, encabalgamiento, hear, surprised, bring |
+| 28 | `S/((S\N)\S)` | 59.0 | that |
+| 29 | `(N/N)/NP` | 58.5 | on, just, in, not, over, even, to, enough, <C3> |
+| 30 | `((S\NP)/NP)/NP` | 57.5 | 's, is, are, those, these, one, any, whatever, touch |
+| 31 | `(NP\S)/NP` | 57.2 | as, that, and, what, put, is, sleep, any, than, seem, hope, questions, away, meant, drank |
+| 32 | `(S\N)/N` | 52.9 | the, an, his, this, right, for, saturday, change, after, washington, back |
+| 33 | `(S\NP)/N` | 52.6 | was, 's, the, through, its, interviews, need, for, everywhere, use, enjoyed |
+| 34 | `(S/NP)/N` | 52.5 | the, my, so, longer, american, jenna, concerts |
+| 35 | `(S\S)/S` | 50.1 | n't, from, are, of, or, copy, exist, just, yes, six, probably, 21 |
+| 36 | `(N\NP)/S` | 49.3 | <C10>, are, ’re, <C8> |
+| 37 | `(S/NP)/NP` | 48.3 | and, oh, today, <C3>, but, part, uh, twice, take, buy |
+| 38 | `(NP/NP)/NP` | 48.0 | <C7>, yeah, may, month, bear, rights, up, broad |
+| 39 | `(N\NP)/N` | 46.9 | is, have, a, <C4>, internet, by, chair, am, started, –, heard |
+| 40 | `S/S` | 45.6 | <C1>, <C3>, <C11>, of, a, end, oh, living, large |
+| 41 | `(S\N)/NP` | 45.3 | from, not, work, <C16>, than, glad, towards, bringing, thought, yesterday |
+| 42 | `((S\S)/NP)/NP` | 40.0 | <C3>, all, n't, came, started, five, big, doing |
+| 43 | `(S\NP)/(N\N)` | 36.4 | <C12>, of, always, will, did, love, bad, n’t, broad |
+| 44 | `NP/(N/N)` | 32.3 | is, <C0>, not, really, what |
+| 45 | `((S\NP)/N)/NP` | 30.8 | 's, in, <C11>, not |
+| 46 | `(S\S)/(S/NP)` | 30.2 | to, for, the, till |
+| 47 | `(NP\N)/NP` | 28.5 | do, had, <C3>, n’t, no, so, ago, afraid |
+| 48 | `NP/(S\NP)` | 26.8 | an, that, us, arrested, until |
+| 49 | `(S\N)/(N\N)` | 26.7 | not, so, with, around, people, left |
+| 50 | `(S\(N/S))/NP` | 26.4 | in, thank |
+
+失败日志汇总（dev, 63 failures）: by UPOS/deprel of failing word: [['END/END', 21], ['ADV/advmod', 8], ['VERB/root', 5], ['VERB/advcl', 3], ['VERB/xcomp', 3], ['NOUN/root', 2], ['VERB/ccomp', 2], ['NOUN/obj', 2], ['PRON/obj', 2], ['ADV/root', 2], ['ADP/case', 2], ['AUX/aux', 2], ['ADJ/amod', 2], ['ADJ/root', 1], ['NUM/compound', 1]]; by word: [['<END>', 21], ['thinking', 3], ['home', 2], ['it', 2], ['here', 2], ['trouble', 1], ['spent', 1], ['works', 1], ['number', 1], ['though', 1], ['tired', 1], ['church', 1], ['thirty', 1], ['too', 1], ['america', 1]]; by position: [[2, 4], [3, 5], [4, 14], [5, 7], [6, 15], [7, 7], [8, 4], [9, 4], [10, 3]]
+
+
+## 高频范畴（left_A_SA_seedNP_d4_le10, MDL-selected seed 1）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `NP` | 2595.9 | i, it, you, we, he, that, she, they, this, <C3>, there, me, <C9>, <C1>, them, him, the, to, <C19>, a |
+| 2 | `S` | 1131.1 | <C2>, <C3>, <C1>, to, of, <C8>, is, a, not, <C18>, are, been, into, one, be, three, like, at, first, same |
+| 3 | `S\S` | 980.1 | <C1>, <C3>, <C14>, out, not, for, a, now, up, great, down, here, people, are, more, good, <C11>, so, long, too |
+| 4 | `S\NP` | 771.9 | 's, is, was, <C3>, know, <C4>, said, ’s, <C1>, 'm, think, see, will, go, one, work, looks, are, ’re, and |
+| 5 | `NP/NP` | 717.7 | <C3>, and, so, the, yeah, <C1>, oh, but, well, then, no, my, okay, now, her, on, if, when, like, because |
+| 6 | `S\N` | 343.2 | <C7>, <C1>, the, <C3>, like, says, two, be, of, do, okay, our, problem, real, part, interest, bear, would, easily, <C22> |
+| 7 | `NP/S` | 306.3 | the, a, my, <C1>, your, on, <C12>, very, of, our, other, at, most, as, no, both, internet, lipstick, list, five |
+| 8 | `N\NP` | 289.8 | <C3>, 's, are, was, ca, 'll, had, ’m, one, just, will, really, also, not, wo, 'd, does, did, na, the |
+| 9 | `(S\NP)/NP` | 288.1 | is, <C4>, 's, like, have, get, ’s, in, was, for, <C5>, started, seems, always, made, got, did, at, thought, understand |
+| 10 | `NP\NP` | 281.1 | 's, <C16>, are, have, just, 'll, can, all, did, that, were, <C3>, never, still, in, even, kind, whatsoever, goes, actually |
+| 11 | `S/S` | 257.2 | the, <C3>, <C1>, all, <C9>, <C12>, never, really, to, a, long, my, like, was, not, below, blood, team, members, country |
+| 12 | `S/NP` | 236.4 | <C3>, of, to, <C2>, with, like, are, for, at, about, <C0>, makes, city, over, its, no, break, car, way, love |
+| 13 | `(S\NP)/S` | 233.7 | 's, was, have, 'm, <C12>, ’s, 're, <C3>, had, were, got, only, put, alone, all, mr., somehow, black, will, could |
+| 14 | `NP\S` | 208.4 | <C3>, the, of, to, an, that, <C19>, who, no, other, my, be, us, bit, her, ’s, hear, mrs., culture, in |
+| 15 | `N\S` | 207.8 | a, <C1>, the, <C3>, and, as, in, my, can, like, getting, <C16>, of, words, so, meant, guests, day, have, no |
+| 16 | `N\N` | 196.3 | n't, a, <C3>, to, us, these, make, seen, got, <C1>, <C2>, things, too, yoga, were, her, q, buildings, pack, ants |
+| 17 | `(S\S)/S` | 189.5 | the, in, and, a, going, by, looking, <C5>, tulsa, big, is, different, exist, until, checks, winning, cultures, means, broad, water |
+| 18 | `NP\N` | 152.1 | <C3>, n't, little, a, much, <C1>, like, this, hand, probably, renata, girls, go, n’t, every, deal, start, turn, will, three |
+| 19 | `(NP\NP)/NP` | 111.8 | do, know, think, all, mean, <C14>, called, where, say, to, just, that, as, guess, again, felt, saw, if, any, seen |
+| 20 | `(N\NP)\S` | 99.4 | that, 're, my, even, twelve, offer, happy, wiped, medical, equipment, third, greek, hours, turning, climate |
+| 21 | `S\(N\S)` | 94.3 | <C3>, right, time, 20, doing, allowed, letter, water, that, moreau, tea, could, federal, laughing, rained, massage, feature, economically, 30, different |
+| 22 | `(S\S)/NP` | 89.2 | with, was, that, the, about, doing, but, three, kind, love, work, michael, sending, just, look, then, above, precise, guessed, 1 |
+| 23 | `N` | 83.7 | in, the, these, his, those, for, use, over, dad, a, right, application, ramon, collapse, some, robert, people, look, purpose, minute |
+| 24 | `(NP\NP)/(N\N)` | 71.3 | do, did, 'm |
+| 25 | `S\(S\NP)` | 71.1 | that, here, year, wine, with, kid, come, <C18>, name, encabalgamiento, sister, nathan, minutes, lights, academic, together, area, across, refused, shows |
+| 26 | `(NP\S)/NP` | 63.9 | what, and, that, a, course, well, otherwise, last, when, almost, movies, joined, gross, open, making, whatever |
+| 27 | `N/S` | 61.9 | in, the, each, robert, this, 6, local, <C3>, letter, for, mandatory, practical |
+| 28 | `((S\NP)/S)/NP` | 58.4 | is, was, want, has, said, its, thought, had, cold, built, come, history |
+| 29 | `(S\NP)/(NP\NP)` | 56.2 | is, 'm, 're |
+| 30 | `(N\NP)/NP` | 56.2 | 're, not, <C20>, of, thought, make, put, showed, left, call, why, focused, am, drank, 've, tried, show, hope, gone, told |
+| 31 | `(N\N)/S` | 52.0 | n't, n’t, bad, <C21> |
+| 32 | `(N\N)\NP` | 48.2 | <C10>, died, could, 'm, only |
+| 33 | `(S/N)/N` | 48.0 | <C13>, sleep, buy, watch, new, clear |
+| 34 | `(S\N)/NP` | 47.6 | <C7>, at, in, after, show, give, want, this, one, till, happy, drank, hire, students, stand |
+| 35 | `(N\S)/NP` | 45.7 | and, on, here |
+| 36 | `(S/NP)/NP` | 44.7 | of, behind, states, nations, took, exact, achieved |
+| 37 | `N\(S/NP)` | 44.2 | a, very, lemon, get |
+| 38 | `(N\S)\NP` | 41.1 | is, just, have, was, make, 'll, commercial |
+| 39 | `(S\N)/S` | 40.5 | good, one, <C5>, great, writing, nature, second, this, her, watching, funny, 18, given, built |
+| 40 | `S\(S\S)` | 38.6 | us, yes, pretty, <C10>, day, in, lemon, later, obama, irrelevant, crazy, vlog, up, mom, live, daily |
+| 41 | `(S/S)/S` | 38.1 | the, apart, american, two |
+| 42 | `(S\S)\NP` | 37.7 | <C0>, in, the, out, honor, kill, white, demonstrate, trail |
+| 43 | `S\(NP/S)` | 37.5 | know, nation, trouble, black, plant, said, brain |
+| 44 | `S\(N/NP)` | 37.2 | <C3>, smiled, 30, tulsa |
+| 45 | `(S\(S\NP))/NP` | 36.2 | on, to, course, either |
+| 46 | `(NP\N)/NP` | 35.9 | out, the, up, 's, sorry, sleep, hate, beautiful, tells, does, glad, question, today, while |
+| 47 | `((S\S)/S)/NP` | 35.8 | at, what, that, <C1>, stories, world, did, asking, week |
+| 48 | `(NP\NP)/S` | 35.6 | in, his, or, experience, how, thursday, chicken, feel, usually |
+| 49 | `S\((N\NP)\S)` | 34.4 | 's |
+| 50 | `(NP\N)/S` | 33.8 | <C3>, this, a, idiot, gone, 5, waiting |
+
+失败日志汇总（dev, 53 failures）: by UPOS/deprel of failing word: [['END/END', 17], ['ADV/advmod', 9], ['VERB/root', 5], ['NOUN/obj', 4], ['VERB/advcl', 2], ['ADP/case', 2], ['PRON/nsubj', 2], ['AUX/aux', 1], ['DET/det', 1], ['PROPN/compound', 1], ['ADJ/root', 1], ['VERB/acl', 1], ['SYM/nsubj', 1], ['NOUN/nmod', 1], ['NUM/flat', 1]]; by word: [['<END>', 17], ['home', 2], ['this', 2], ['right', 2], ['always', 1], ['would', 1], ['works', 1], ['number', 1], ['into', 1], ['touch', 1], ['north', 1], ['too', 1], ['yet', 1], ['new', 1], ['eat', 1]]; by position: [[2, 5], [3, 4], [4, 11], [5, 10], [6, 6], [7, 9], [8, 3], [9, 2], [10, 2], [11, 1]]
+
+
 ## 高频范畴（left_A_TR_d4_le10, MDL-selected seed 1）
 
 | # | category | expected count | 20 words |
@@ -1433,3 +1930,119 @@ mean±sd: majority acc 0.331±0.194; derivation recovery 0.683±0.180; MDL-selec
 | 50 | `(S\N)/NP` | 28.6 | thought, came, believe, held, feel, making, posted, grew, how, flights |
 
 失败日志汇总（dev, 41 failures）: by UPOS/deprel of failing word: [['END/END', 29], ['ADV/advmod', 2], ['ADJ/amod', 1], ['NOUN/obj', 1], ['PROPN/obj', 1], ['ADV/reparandum', 1], ['VERB/advcl', 1], ['NOUN/obl', 1], ['INTJ/discourse', 1], ['ADP/case', 1], ['NOUN/nmod', 1], ['VERB/xcomp', 1]]; by word: [['<END>', 29], ['again', 3], ['last', 1], ['number', 1], ['america', 1], ['looking', 1], ['school', 1], ['yeah', 1], ['ta', 1], ['nation', 1], ['doing', 1]]; by position: [[3, 1], [4, 8], [5, 8], [6, 8], [7, 6], [8, 6], [10, 2], [11, 2]]
+
+
+## 高频范畴（stack2_A_SA_seedNPN_d4_le10, MDL-selected seed 1）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `NP` | 3013.5 | i, it, you, that, we, he, they, the, <C3>, she, this, do, there, me, not, to, <C13>, them, <C1>, people |
+| 2 | `S\S` | 913.2 | <C1>, <C3>, and, out, <C14>, <C18>, right, good, not, like, <C12>, now, more, a, for, that, one, be, <C16>, great |
+| 3 | `N` | 855.2 | <C2>, <C3>, <C7>, that, <C5>, <C10>, to, down, 's, mother, day, lot, way, name, <C9>, years, <C1>, bit, looks, letter |
+| 4 | `S\NP` | 765.8 | 's, was, <C3>, is, are, know, <C1>, <C10>, 'll, will, can, think, go, see, want, <C4>, said, always, look, get |
+| 5 | `NP/NP` | 493.0 | so, <C3>, and, to, yeah, for, but, like, with, well, all, then, about, the, from, still, what, this, of, when |
+| 6 | `(S\NP)/NP` | 456.1 | is, have, of, 're, ’s, <C4>, 'm, like, got, had, love, get, really, know, felt, came, on, ’m, took, understand |
+| 7 | `NP/N` | 386.1 | the, a, my, <C3>, that, his, this, an, and, two, her, each, all, <C16>, mrs., ordered, sorry, second, middle, hot |
+| 8 | `(S\NP)\S` | 380.1 | <C3>, <C1>, said, a, in, 's, there, long, up, are, <C12>, <C2>, down, all, going, today, like, will, really, want |
+| 9 | `(S\S)/NP` | 370.2 | to, in, at, of, on, from, like, as, so, go, did, <C11>, than, more, say, even, may, nice, get, thought |
+| 10 | `N/NP` | 356.3 | and, <C3>, yeah, well, no, but, <C1>, oh, yes, my, um, because, <C11>, now, first, little, talking, montana, many, <C2> |
+| 11 | `NP\NP` | 254.6 | 's, of, did, <C3>, just, all, 'm, <C19>, am, also, <C9>, were, has, will, had, does, do, and, even, n’t |
+| 12 | `(S\S)/N` | 245.2 | a, the, your, his, three, my, her, hand, says, internet, definitely, leave, popularity, above, demonstrate, problem, nine |
+| 13 | `S` | 241.3 | <C1>, <C5>, the, have, says, are, on, into, even, a, no, city, great, us, very, pete, seems, <C12>, also, ’m |
+| 14 | `S\N` | 188.2 | is, was, in, said, are, <C3>, know, 's, <C4>, ’s, means, did, does, say, bad, sleep, run, have, am, could |
+| 15 | `NP\S` | 157.1 | of, are, very, be, kind, all, for, <C9>, really, from, make, who, can, <C5>, thinking, nature, number, this, follow, absolutely |
+| 16 | `(S\NP)\NP` | 150.6 | is, not, n't, say, says, us, <C12>, interest, back, <C20>, this, part, month, september, started, so, trump, removed, broad, unambiguous |
+| 17 | `S/S` | 134.4 | <C1>, oh, and, if, was, <C12>, her, man, child, eyes, work, another, there, brother, year, image, academic, regular, provides, afraid |
+| 18 | `(S\NP)/N` | 125.6 | the, 've, <C6>, never, ca, 'd, <C20>, just, one, could, keep, <C4>, last, after, then, some, visited, business, front, open |
+| 19 | `S/NP` | 100.0 | <C3>, and, a, to, now, ended, comes, uh, work, big, start, again, today, after, observed, hour, part, even, ’re, accidentally |
+| 20 | `NP/S` | 94.2 | <C1>, <C3>, there, out, getting, usually, history, five, try, bringing, jenna, student, literally, totally, 2, professor, limited |
+| 21 | `N/N` | 92.3 | <C7>, little, a, long, other, good, original, eventually, next, great, won, sore, andrew, washington, basil, white, many, public, bos, perfect |
+| 22 | `(N\NP)/NP` | 92.2 | 's, was, 're, do, think, <C12>, went, pretty, into, waiting, working, history, why |
+| 23 | `(NP\NP)/NP` | 91.7 | are, know, has, thought, mean, at, think, feel, ’s, here, where, beautiful, not, down, gon, tell, infected, flight, hold, either |
+| 24 | `N\NP` | 91.7 | <C10>, <C1>, ’re, 's, called, ’s, is, really, ca, like, gets, michael, year, school, may, church, guys, call, allowed, do |
+| 25 | `S\(S\NP)` | 90.9 | <C16>, on, forever, also, us, time, happy, hear, peace, biological, watch, big, librarian, exact, small, mom, science, sometime, economically, cultural |
+| 26 | `(S\N)\NP` | 87.5 | <C3>, same, beautiful, nice, seen, just, back, american, yet, winning, are, up, <C16>, people, these, obeys, trying, shoes, nathan, delicious |
+| 27 | `(NP\NP)\NP` | 72.8 | n't, n’t, makes, up, fill, worked, looks |
+| 28 | `S/N` | 69.0 | so, this, no, my, her, and, arrested, great, power, robert, lay, studied, accept |
+| 29 | `N\S` | 65.9 | <C3>, that, process, had, looking, what, again, their, beautiful, published, mexico, plastic, federal, changing, possibilities, four, words, any, real, tiny |
+| 30 | `(S\N)/NP` | 62.2 | 's, 'm, think, against, sending, longer, likes, wrote, first, 'll, stand, follow, problems |
+| 31 | `N/S` | 54.4 | <C3>, n't, <C1>, mom, second, or, learned, common, head, come, climate |
+| 32 | `NP\N` | 45.7 | has, this, two, one, were, a.m., good, had, achievements, cultures, highly, use, country, will, jenna, reach |
+| 33 | `(NP\NP)\S` | 44.8 | to, that, than, just, most, only, rate, members, <C4>, sort |
+| 34 | `NP\(N/NP)` | 44.2 | that, <C3>, there, dad, <C19>, about, medical |
+| 35 | `(NP\N)\NP` | 43.8 | n't, <C1>, really, enjambment, crowd, came, write |
+| 36 | `(S\NP)/S` | 41.7 | <C2>, were, meant, have, september, carry, united, studied |
+| 37 | `NP/(S\NP)` | 41.0 | the |
+| 38 | `(NP\S)/N` | 40.6 | in, the, this, its, some, black, new, because, <C23> |
+| 39 | `(S\N)\S` | 39.3 | get, could, here, quidditch, ago, um, behind, everywhere, fine, break, gone, tomorrow, part, words, kidding, students, change, enjoyed, feel |
+| 40 | `(N\S)/NP` | 34.4 | what, about, never, often, under, asking, break, movies |
+| 41 | `(NP\NP)/S` | 30.5 | is, alone, said |
+| 42 | `(NP\N)/N` | 27.3 | in, would, or, did |
+| 43 | `S\(S\N)` | 26.9 | <C8>, for, sense, before, thus, remembered, apart, encabalgamiento, pizza, talking, rules, nation |
+| 44 | `(NP\NP)/N` | 25.3 | the, <C11>, internet, come |
+| 45 | `S\(NP/N)` | 24.2 | <C8>, did, made |
+| 46 | `(S\N)/N` | 23.5 | <C2>, real, only, 21, new, am, long, but, different, ta, covered |
+| 47 | `(NP\N)/S` | 21.9 | <C0>, a, depends, should |
+| 48 | `(S\S)\S` | 19.9 | much, leave, has, again, later, define, <C7> |
+| 49 | `S/(NP\NP)` | 19.4 | this, north |
+| 50 | `(S\N)\N` | 18.5 | <C13>, further, old, alright, looking, won, top, needs |
+
+失败日志汇总（dev, 59 failures）: by UPOS/deprel of failing word: [['END/END', 42], ['ADV/advmod', 2], ['PRON/nmod', 2], ['ADJ/amod', 1], ['DET/det', 1], ['PRON/obj', 1], ['PROPN/obj', 1], ['VERB/advcl', 1], ['NOUN/obl', 1], ['NOUN/nmod', 1], ['PRON/nsubj', 1], ['NUM/nummod', 1], ['NOUN/obj', 1], ['VERB/root', 1], ['ADP/case', 1]]; by word: [['<END>', 42], ['last', 1], ['any', 1], ['it', 1], ['america', 1], ['there', 1], ['move', 1], ['them', 1], ['door', 1], ['paper', 1], ['his', 1], ['back', 1], ['i', 1], ['twelve', 1], ['lot', 1]]; by position: [[3, 3], [4, 10], [5, 9], [6, 15], [7, 7], [8, 6], [9, 5], [10, 2], [11, 2]]
+
+
+## 高频范畴（stack2_A_SA_seedNP_d4_le10, MDL-selected seed 1）
+
+| # | category | expected count | 20 words |
+|---|---|---|---|
+| 1 | `NP` | 2525.7 | i, it, you, that, we, he, they, she, this, <C3>, there, me, my, the, a, them, all, <C9>, some, <C1> |
+| 2 | `N` | 1144.7 | <C2>, 's, the, <C1>, <C13>, on, a, was, be, <C3>, ’s, are, is, one, been, that, over, very, more, like |
+| 3 | `S\S` | 811.7 | <C3>, <C1>, and, was, <C10>, this, out, of, with, two, right, here, good, now, today, from, that, true, around, to |
+| 4 | `S\NP` | 524.6 | <C3>, know, 's, are, is, the, will, was, 'll, see, <C4>, have, think, am, <C10>, even, what, mean, ca, died |
+| 5 | `NP/NP` | 500.5 | and, so, yeah, but, <C3>, oh, to, well, no, has, then, what, for, <C1>, my, her, now, like, as, are |
+| 6 | `S` | 428.2 | <C7>, the, of, <C16>, <C8>, so, <C1>, not, your, his, <C3>, yeah, no, want, really, an, lot, only, are, need |
+| 7 | `(S\NP)/N` | 331.9 | 's, is, was, are, 're, have, put, said, ’re, took, been, <C4>, only, seen, see, seems, still, things, both, in |
+| 8 | `S\N` | 302.1 | <C1>, <C3>, said, <C18>, to, my, are, first, with, long, right, like, many, local, below, most, his, from, does, runs |
+| 9 | `N/N` | 275.7 | the, <C3>, <C9>, one, is, just, this, her, also, second, little, um, really, by, there, a, and, same, much, <C14> |
+| 10 | `N\NP` | 274.4 | 're, 'm, 's, was, did, had, felt, could, <C12>, or, wait, called, <C4>, <C20>, alone, came, ended, open, happy, should |
+| 11 | `(S\NP)\S` | 261.2 | do, <C1>, did, does, that, time, would, pretty, people, months, trump, in, think, letter, yet, points, too, ’s, know, excited |
+| 12 | `S/N` | 234.9 | the, and, that, <C0>, this, gon, something, people, for, of, n't, alright, 'm, its, texas, usually, <C15>, worn, saw, connection |
+| 13 | `(S\N)\NP` | 233.1 | <C14>, not, up, beautiful, for, says, down, just, great, good, sorry, work, nice, about, be, process, huge, trying, two, there |
+| 14 | `(S\NP)/NP` | 232.9 | of, like, <C4>, and, get, have, got, do, think, understand, are, made, thought, ’re, tell, knew, guess, loved, just, study |
+| 15 | `N/NP` | 230.3 | in, <C3>, no, the, 's, a, of, to, yes, on, because, okay, from, also, funny, ’s, thought, <C13>, sending, when |
+| 16 | `(S\S)/N` | 212.6 | the, <C1>, to, for, have, is, all, because, really, mr., come, this, much, wait, match, kid, make, ta, nine, says |
+| 17 | `N\S` | 182.2 | <C3>, <C12>, the, so, that, of, like, world, a, is, looking, questions, close, fine, wine, part, exist, writing, lack, thursday |
+| 18 | `NP\NP` | 178.6 | 's, <C3>, 've, just, can, ’s, really, my, all, <C12>, <C1>, common, three, mother, always, still, only, this, suspect, watch |
+| 19 | `NP\S` | 158.3 | <C3>, to, n't, <C10>, be, will, <C11>, an, n’t, through, blood, next, best, how, into, that, considered, problem, itself, yet |
+| 20 | `N/S` | 148.6 | a, is, <C5>, with, new, another, almost, coming, somehow, probably, both, free, dreams, north, southeast, us, here, root, real, certainly |
+| 21 | `(S\N)\S` | 140.3 | <C1>, one, day, there, like, words, way, different, mayor, doing, highly, whatsoever, war, yoga, cool, nephew, mermaid, cultural, how, glad |
+| 22 | `NP/N` | 133.8 | the, this, for, <C1>, first, that, our, <C15>, <C7>, internet, there, if, 'll, like, here, am, each, okay, how, after |
+| 23 | `(S\S)/NP` | 124.3 | <C3>, at, what, to, show, his, thought, key, language, days, depends |
+| 24 | `(S\NP)/S` | 109.6 | is, <C5>, do, have, were, love, hope, are, feel, still, even |
+| 25 | `(S\N)/N` | 91.8 | to, of, not, <C10>, then, concerned, minute, affected, divided, lemon |
+| 26 | `(S\S)/S` | 90.1 | in, a, there, airlines |
+| 27 | `NP\N` | 89.4 | <C2>, <C3>, both, other, makes, more, ’s, under, guy, paper, from, anymore, part, like, this, alone, square, eleven, tonight, 7 |
+| 28 | `NP\(S\S)` | 75.6 | n't, have, <C9>, 's, 17 |
+| 29 | `NP/S` | 65.6 | a, and, these, of, kind, like, higher, sense, lost, very, call, too |
+| 30 | `S/NP` | 61.7 | <C3>, well, <C11>, that, bit, us, yes, gave, beginning, ’m, way, hundred |
+| 31 | `(NP\NP)/NP` | 59.7 | have, had, ’s, think, mean, god, new, good, does, 'll, divide, hold, clear, @, reasons |
+| 32 | `(S\N)/NP` | 57.4 | with, to, from, is, <C4>, bad |
+| 33 | `(NP\N)\NP` | 55.9 | and, very, all, big, face, even, did, keep, like, her, want, long, patrons, find, hurt |
+| 34 | `(N\NP)/N` | 46.2 | to, in, father, other, enter |
+| 35 | `S\(S\N)` | 45.9 | <C1>, people, but, ways, public, remembered, opposite, party, door, guests, us, september, particular, stated |
+| 36 | `S/S` | 44.7 | a, <C11>, oh, scared, thursday, large, eating, our, <C16>, judge, less, feet, collecting |
+| 37 | `(S\NP)\NP` | 44.0 | say, was, go, started, seen, commercial, have, sense, equipment, sector, us, family, hours, generation |
+| 38 | `N\N` | 40.7 | not, <C18>, no, comes, may, that, go, back, bringing, hey, work, bit, third |
+| 39 | `(S\NP)\(S/N)` | 40.2 | <C2>, trying, ninety-nine, nervous, together |
+| 40 | `S\(S\S)` | 38.2 | n't, came, ago, three, fled, reason, run, other, man, guessed |
+| 41 | `(S\S)\S` | 37.2 | out, now, fun, while, back, alright, honor, shape, girls, name, bears, peoples, everywhere |
+| 42 | `(NP\NP)/N` | 35.8 | ’s, went, 'd, a, got, ’ve, result, says |
+| 43 | `(S\N)\N` | 35.1 | her, bear, ahead, fully, fire, covenant, central, drank, claus, student, still, take, further, wine, knows |
+| 44 | `(NP\NP)\S` | 33.7 | can, for, our, much, vlog, professor, quartiles, working, build |
+| 45 | `(N\N)\NP` | 30.1 | was, his, are, with, <C12>, part, wonderful, owner, here |
+| 46 | `N\(S\NP)` | 27.1 | my, <C3>, deal, use, name, times, currently, dinner, remarks |
+| 47 | `(N\S)/NP` | 26.5 | all, love, hand, way, demonstrate, thank, football, gross, following |
+| 48 | `(N\NP)/NP` | 25.0 | was, to, <C14>, but, kids, super, wrote, movies, above, fair |
+| 49 | `((S\N)\NP)/N` | 24.5 | a, good |
+| 50 | `(S\N)/S` | 22.6 | my, when, 21, states, changing, top, catch, colleges, following |
+
+失败日志汇总（dev, 61 failures）: by UPOS/deprel of failing word: [['END/END', 36], ['NOUN/obj', 4], ['PRON/obj', 4], ['AUX/aux', 2], ['PRON/nmod', 2], ['ADP/case', 2], ['AUX/cop', 1], ['VERB/advcl', 1], ['ADJ/amod', 1], ['VERB/xcomp', 1], ['ADV/advmod', 1], ['NUM/nummod', 1], ['ADP/compound', 1], ['VERB/root', 1], ['ADJ/obj', 1]]; by word: [['<END>', 36], ['it', 2], ['are', 1], ['thinking', 1], ['last', 1], ['would', 1], ['her', 1], ['have', 1], ['people', 1], ['too', 1], ['me', 1], ['them', 1], ['throat', 1], ['head', 1], ['in', 1]]; by position: [[3, 3], [4, 10], [5, 10], [6, 12], [7, 11], [8, 7], [9, 5], [10, 3]]

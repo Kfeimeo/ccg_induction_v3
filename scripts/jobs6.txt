@@ -1,0 +1,8 @@
+python scripts/run_induction.py --system cky_nf --anchors stNPN --seeds 1
+python scripts/run_induction.py --system cky_nf --anchors stNP  --seeds 2
+python scripts/run_induction.py --system cky_nf --anchors stNPN --seeds 2
+python scripts/run_induction.py --system cky_nf --seeds 1
+python scripts/run_induction.py --system stack --max_stack 2 --anchors stNP  --seeds 2
+python scripts/run_induction.py --system stack --max_stack 2 --anchors stNPN --seeds 2
+python scripts/run_induction.py --anchors stNP  --seeds 1
+python scripts/run_induction.py --anchors stNPN --seeds 1

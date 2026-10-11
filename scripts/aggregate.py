@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ccg.evaluate import mean_std
 
 out = sys.argv[1].rstrip('/')
-rows = [json.load(open(p)) for p in sorted(glob.glob(os.path.join(out, 'seed*.json')))]
+rows = [json.load(open(p, encoding='utf-8')) for p in sorted(glob.glob(os.path.join(out, 'seed*.json')))]
 rows = [r for r in rows if 'final' in r]
 if not rows:
     sys.exit(0)
@@ -34,6 +34,6 @@ summary = {
     'mdl_selected_seed': min(rows, key=lambda r: r['final']['total'])['seed'],
     'baselines': rows[0]['dev'].get('baselines'),
 }
-json.dump(summary, open(os.path.join(out, 'summary.json'), 'w'), indent=1)
+json.dump(summary, open(os.path.join(out, 'summary.json'), 'w', encoding='utf-8'), indent=1)
 print(os.path.basename(out), 'seeds', summary['seeds'], 'obj', round(summary['objective']['mean']), 'dev cov', round(summary['dev_coverage']['mean'], 3),
       'UAS all', round(summary['dev_uas_all']['mean'], 3), 'UAS cov', round(summary['dev_uas_covered']['mean'], 3))

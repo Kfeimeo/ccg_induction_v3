@@ -12,9 +12,10 @@ import time
 from typing import Dict, List, Optional, Set, Tuple
 from . import category as C
 from .combine import combine
-from .lattice import Lattice, build_lattice, forward_backward, failure_record
+from .lattice import Lattice, build_lattice, forward_backward, failure_record, Z as lattice_Z
 from .model import Lexicon, Model
 from .em import data_bits, em
+from . import native as _nat
 
 
 def js_divergence(p: Dict, q: Dict) -> float:
@@ -74,15 +75,21 @@ class MDLTrainer:
     def build(self, words, supp):
         return build_lattice(words, supp, self.max_depth, self.goal)
 
+    def _sys(self):
+        """(kind, max_depth, max_stack, cascade) of the parser for the native search helpers."""
+        return (_nat.LEFT, self.max_depth, 1, True)
+
     def successors(self, state, c):
         """Successor states of a parser state on word category c (overridable)."""
+        if _nat.available:
+            return _nat.successors(state, c, *self._sys())
         return [r for r, _ in combine(state, c, self.max_depth)]
 
     def goal_state(self):
         return self.goal
 
     def Z(self, lat, model) -> float:
-        return forward_backward(lat, model, self.goal_state())[0]
+        return lattice_Z(lat, model, self.goal_state())
 
     def rebuild(self, idxs=None):
         supp = self.lex.support_lists()
@@ -184,15 +191,25 @@ class MDLTrainer:
 
     _comb_cache: Dict = {}
 
+    def _pool_lists(self):
+        """(atoms, <=2-slash, <=1-slash, <=3-slash categories) of the pool, computed once."""
+        pl = getattr(self, '_pool_lists_cache', None)
+        if pl is None:
+            atoms = sorted({a for c in self.pool for a in C.atoms_of(c)})
+            small = [c for c in self.pool if C.n_slashes(c) <= 2]
+            one = [c for c in self.pool if C.n_slashes(c) <= 1]
+            upto3 = [c for c in self.pool if C.n_slashes(c) <= 3]
+            self._pool_lists_cache = pl = (atoms, small, one, upto3)
+        return pl
+
     def _combinable(self, sigma, use_state: bool = True) -> List[C.Cat]:
         """Pool categories c such that combine(sigma, c) is non-empty (constructed, then filtered)."""
         if sigma in self._comb_cache:
             return self._comb_cache[sigma]
         out: Set[C.Cat] = set()
-        atoms = sorted({a for c in self.pool for a in C.atoms_of(c)})
-        small = [c for c in self.pool if C.n_slashes(c) <= 2]
+        atoms, small, one, upto3 = self._pool_lists()
         if sigma is None:
-            out = set(c for c in self.pool if C.n_slashes(c) <= 3)
+            out = set(upto3)
         else:
             # FA: c = arg(sigma); BA: X\sigma; B>: arg(sigma)/Z; B<: X\res(sigma); SA: inner \sigma
             if not C.is_atom(sigma) and sigma[1] == C.FWD:
@@ -204,7 +221,6 @@ class MDLTrainer:
             if not C.is_atom(sigma) and sigma[1] == C.BWD:
                 for x in small:
                     out.add((x, C.BWD, sigma[0]))
-            one = [c for c in self.pool if C.n_slashes(c) <= 1]
             for x in small:
                 # SA: (X\sigma)|Y
                 for y in one:
@@ -224,6 +240,8 @@ class MDLTrainer:
 
     def forward_states(self, words: List[str], upto: int, supp) -> Set[Optional[C.Cat]]:
         """Unpruned prefix states after words[:upto] under support supp."""
+        if _nat.available:
+            return _nat.forward_states(words, upto, supp, *self._sys())
         states: Set[Optional[C.Cat]] = {None}
         for k in range(upto):
             nxt = set()
@@ -236,6 +254,8 @@ class MDLTrainer:
         return states
 
     def suffix_completes(self, words: List[str], start_states: Set[C.Cat], k: int, supp) -> bool:
+        if _nat.available:
+            return _nat.suffix_completes(words, start_states, k, supp, self.goal, *self._sys())
         states = set(start_states)
         for j in range(k, len(words)):
             nxt = set()
@@ -246,6 +266,28 @@ class MDLTrainer:
             if not states:
                 return False
         return self.goal_state() in states
+
+    def oracle_check(self, words: List[str], F, c: C.Cat, k: int, supp) -> bool:
+        """Give the word at position k-1 the category c in every prefix state of F: does the
+        suffix words[k:] still reach the goal?  (successors of F on c, then suffix_completes)"""
+        if _nat.available:
+            return _nat.oracle_check(words, F, c, k, supp, self.goal, *self._sys())
+        starts = set()
+        for s2 in F:
+            starts.update(self.successors(s2, c))
+        return bool(starts) and self.suffix_completes(words, starts, k, supp)
+
+    def oracle_filter(self, words: List[str], F, cands: List[C.Cat], k: int, supp, first_only: bool = False) -> List[C.Cat]:
+        """The candidates (in order) that pass oracle_check; first_only stops at the first hit."""
+        if _nat.available:
+            return _nat.oracle_filter(words, F, cands, k, supp, self.goal, *self._sys(), first_only=first_only)
+        out = []
+        for c in cands:
+            if self.oracle_check(words, F, c, k, supp):
+                out.append(c)
+                if first_only:
+                    break
+        return out
 
     def oracle_proposals(self, key: str, occurrences: List[Tuple[int, int]], top: int,
                          state_filter: Optional[Set[C.Cat]] = None) -> List[C.Cat]:
@@ -264,16 +306,15 @@ class MDLTrainer:
             if not F:
                 continue
             tried: Set[C.Cat] = set()
+            cands: List[C.Cat] = []
             for sigma in F:
                 for c in self._combinable(sigma):
                     if c in have or c in tried:
                         continue
                     tried.add(c)
-                    starts = set()
-                    for s2 in F:
-                        starts.update(self.successors(s2, c))
-                    if self.suffix_completes(words, starts, k + 1, supp):
-                        score[c] = score.get(c, 0.0) + 1.0
+                    cands.append(c)
+            for c in self.oracle_filter(words, F, cands, k + 1, supp):
+                score[c] = score.get(c, 0.0) + 1.0
         ranked = sorted(score.items(), key=lambda x: -(x[1] * 2.0 ** (-C.size(x[0]))))
         return [c for c, _ in ranked[:top]]
 
@@ -391,21 +432,18 @@ class MDLTrainer:
                         if key2 in anchors:
                             continue
                         F2 = self.forward_states(words, j2 - 1, supp1)
-                        found = None
+                        cands2: List[C.Cat] = []
+                        seen2: Set[C.Cat] = set()
                         for sigma in F2:
                             for c2 in self._combinable(sigma):
                                 if c2 in self.lex.support.get(key2, set()) and key2 != key1:
                                     continue
-                                if (key1, c1, key2, c2) in tried_pairs:
+                                if (key1, c1, key2, c2) in tried_pairs or c2 in seen2:
                                     continue
-                                starts = set()
-                                for s2 in F2:
-                                    starts.update(self.successors(s2, c2))
-                                if self.suffix_completes(words, starts, j2, supp1):
-                                    found = c2
-                                    break
-                            if found:
-                                break
+                                seen2.add(c2)
+                                cands2.append(c2)
+                        hits = self.oracle_filter(words, F2, cands2, j2, supp1, first_only=True)
+                        found = hits[0] if hits else None
                         if not found:
                             continue
                         tried_pairs.add((key1, c1, key2, found))

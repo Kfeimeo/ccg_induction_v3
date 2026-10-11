@@ -5,7 +5,7 @@ import random
 from typing import Dict, List, Optional
 from . import category as C
 from .combine import STATS, reset_stats, sa_matches
-from .lattice import build_lattice, viterbi, failure_record, lattice_stats, forward_backward
+from .lattice import build_lattice, viterbi, failure_record, lattice_stats, Z as lattice_Z
 from .deps import replay, HeadMap, DEFAULT_HEADMAP
 from .evaluate import uas, summarize, yields, bracket_prf, left_comb_spans
 from .baselines import left_branching, right_branching, random_tree
@@ -16,6 +16,7 @@ from .stack_lattice import Stack
 class UniformModel:
     """Conditional model with P(c|w) uniform over the support (hand-written lexicon evaluation)."""
     kind = 'conditional'
+    _v = 0   # immutable parameters: constant version (ccg.native scorer cache)
 
     def __init__(self, support):
         self.theta = {w: {c: 1.0 / len(cs) for c in cs} for w, cs in support.items()}
@@ -68,7 +69,7 @@ def evaluate_lexicon(sents: List[Sentence], support: Dict[str, List[C.Cat]],
             failures.append(fr)
             per_sent.append(rec)
             continue
-        Z, _, _ = forward_backward(lat, model, goal_state)
+        Z = lattice_Z(lat, model, goal_state)
         path, p = viterbi(lat, model, goal_state)
         import math
         rec['covered'] = True

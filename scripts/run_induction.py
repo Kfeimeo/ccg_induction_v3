@@ -75,7 +75,7 @@ if args.group == 'D':
     # cluster ids of group-D atoms are given by the coarse clustering (see induce: cluster_of)
     cfg['learning']['n_clusters'] = k_atoms
 rows = []
-log_f = open(os.path.join(out, f'log_seeds{args.seeds.replace(",", "-")}.txt'), 'w')
+log_f = open(os.path.join(out, f'log_seeds{args.seeds.replace(",", "-")}.txt'), 'w', encoding='utf-8')
 
 
 def log(msg):
@@ -146,7 +146,7 @@ for seed in [int(x) for x in args.seeds.split(',')]:
            'train_failures': trainer.failure_log()[:200], 'top_categories': top_cats,
            'lexicon_size': {'keys': len(trainer.lex.support), 'entries': trainer.lex.n_entries(), 'categories': len(trainer.lex.categories())}}
     rows.append(row)
-    with open(os.path.join(out, f'seed{seed}.json'), 'w') as f:
+    with open(os.path.join(out, f'seed{seed}.json'), 'w', encoding='utf-8') as f:
         json.dump({**row, 'dev_per_sent': res['per_sent'], 'dev_failures': res['failures']}, f, indent=1, ensure_ascii=False)
     with open(os.path.join(out, f'seed{seed}_model.pkl'), 'wb') as f:
         pickle.dump({'model': trainer.model, 'key_of': key_of, 'system': args.system, 'max_depth': md, 'max_stack': args.max_stack}, f)

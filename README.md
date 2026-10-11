@@ -1,6 +1,7 @@
 # ccg_induction_v3 — 严格增量 CCG 的无监督范畴归纳
 
 报告：`REPORT.md`（方法、偏离说明、默认值、全部结果表、结论）。汇总表：`results/tables.md`。
+最新实验：§7.5 超标注器种子词典（Hol-CCG 的 NP / N 标注作锚定，栈 2 与 Eisner 正规形式两种解析器）；对比表 `python scripts/compare_anchors.py`。
 
 ```
 pip install numpy pyyaml pytest
@@ -21,4 +22,16 @@ python3 scripts/run_test.py --model results/induction/left_A_SA_d4_le10/seed1_mo
 python3 scripts/make_tables.py
 ```
 
-目录：`ccg/`（category, combine, lattice, deps, model, em, mdl, cky, phenomena…）、`scripts/`、`tests/`、`configs/default.yaml`、`results/`。
+目录：`ccg/`（category, combine, lattice, deps, model, em, mdl, cky, phenomena…）、`scripts/`、`tests/`、`configs/default.yaml`、`results/`、`native/`（C++ 扩展）。
+
+## C++ 扩展（left / stack / cky 三个解析系统的原生实现）
+
+`native/` 用 nanobind 重写了三个解析系统的热点：格构造（`build_lattice`、`build_stack_lattice`）、CKY 图（`Chart`，含 Eisner 正规形式）、前向后向 / 内外算法、Viterbi、E 步统计量，以及提议步骤用到的无剪枝状态集搜索（`forward_states`、`suffix_completes`、`oracle_check`）。范畴仍以项目原有的 Python 对象（嵌套元组、`Stack`）跨越边界；模型参数从 Python `Model` / `CKYModel` 复制到原生打分表，按 `Model._v` 版本号缓存。纯 Python 实现保留为参考实现（`*_py` 函数），`ccg/native.py` 是桥接层；扩展可导入时各模块自动转发，`CCG_NATIVE=0` 可关闭。
+
+```
+# Windows + MSVC（VS 2022+，含 C++ 工具集与 CMake/Ninja 组件）+ vcpkg（vcpkg install nanobind）+ 运行项目的 Python
+powershell -ExecutionPolicy Bypass -File scripts/build_native.ps1 [-Python E:\anaconda3\python.exe] [-Vcpkg E:\vcpkg]
+python -m pytest tests/test_native.py -q      # 与 Python 参考实现逐项对比（格结构、Z、后验、Viterbi、E 步）
+```
+
+构建产物 `ccg/_ccg_native.cp3XX-win_amd64.pyd` 与解释器版本绑定（已在 .gitignore 中）；换 Python 需重新构建。构建脚本不使用 vcpkg 工具链文件（其 FindPython 包装会强制使用 vcpkg 自带的 Python 头文件），而是把 vcpkg 安装前缀加入 `CMAKE_PREFIX_PATH`。目前仅支持 Windows。

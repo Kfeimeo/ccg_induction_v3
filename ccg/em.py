@@ -3,8 +3,9 @@ from __future__ import annotations
 import math
 from typing import Dict, List, Optional, Tuple
 from . import category as C
-from .lattice import Lattice, Edge, build_lattice, forward_backward, viterbi
+from .lattice import Lattice, Edge, build_lattice, forward_backward, viterbi, Z as lattice_Z
 from .model import Model
+from . import native as _nat
 
 
 def data_bits(lats: List[Lattice], model: Model, escape_bits_per_word: float, goal='S') -> Tuple[float, int, float]:
@@ -12,7 +13,7 @@ def data_bits(lats: List[Lattice], model: Model, escape_bits_per_word: float, go
     Unparsed sentences cost n · escape_bits_per_word (explicit coding), keeping MDL finite."""
     total, parsed, ll = 0.0, 0, 0.0
     for lat in lats:
-        Z, _, _ = forward_backward(lat, model, goal)
+        Z = lattice_Z(lat, model, goal)
         if Z > 0:
             total += -math.log2(Z)
             ll += math.log(Z)
@@ -39,6 +40,12 @@ class PowerModel:
 def e_step(lats: List[Lattice], model: Model, goal='S', beta: float = 1.0, hard: bool = False):
     """Expected counts.  beta != 1 tempers the posteriors (edge weights ^ beta); hard=True uses
     the Viterbi derivation (counts 0/1)."""
+    if lats and all(_nat.is_native_lattice(l) for l in lats):
+        return _nat.e_step(lats, model, goal, beta, hard)
+    return e_step_py(lats, model, goal, beta, hard)
+
+
+def e_step_py(lats: List[Lattice], model: Model, goal='S', beta: float = 1.0, hard: bool = False):
     scorer = model if beta == 1.0 else PowerModel(model, beta)
     n_sc: Dict = {}
     n_cw: Dict = {}

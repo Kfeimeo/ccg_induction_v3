@@ -17,6 +17,7 @@ from typing import Dict, List, Optional, Set, Tuple
 from . import category as C
 from .combine import combine, sa_matches
 from .model import Lexicon, Model
+from . import native as _nat
 
 
 TAG_OF_RULE = {'B>': 'FC', 'B<': 'BC'}
@@ -52,7 +53,16 @@ def combine_pair(left: C.Cat, right: C.Cat, right_lexical: bool, max_depth: int,
     return out
 
 
-class Chart:
+def Chart(words, support, max_depth=4, goal='S', nf=False):
+    """Chart factory: the native (C++) chart when ccg._ccg_native is available, else ChartPy.
+    Both expose words, n, nf, accepted, roots, n_cells, n_edges(), cell_sizes(), cats_ending_at(k),
+    cats_starting_at(k)."""
+    if _nat.available:
+        return _nat.Chart(words, support, max_depth, goal, nf)
+    return ChartPy(words, support, max_depth, goal, nf)
+
+
+class ChartPy:
     """Hypergraph of all derivations of a sentence under a support."""
 
     def __init__(self, words, support, max_depth=4, goal='S', nf=False):
@@ -113,9 +123,25 @@ class Chart:
     def n_edges(self):
         return sum(len(es) for d in self.cell.values() for es in d.values())
 
+    @property
+    def n_cells(self):
+        return len(self.cell)
+
+    def cell_sizes(self):
+        return [len(d) for d in self.cell.values()]
+
+    def cats_ending_at(self, k):
+        """Categories of constituents spanning (a, k) for some a (neighbours to the left of word k)."""
+        return list({nd[0] for (a, b), d in self.cell.items() if b == k for nd in d})
+
+    def cats_starting_at(self, k):
+        return list({nd[0] for (a, b), d in self.cell.items() if a == k for nd in d})
+
 
 class CKYModel:
     """P(expansion | parent) with Witten-Bell smoothing over the parent's expansions; P(w|c) as Model."""
+
+    _v = 0   # parameter version (see Model._v)
 
     def __init__(self, lex: Lexicon, word_counts, beta=1.0, emit_gamma=0.01, goal='S'):
         self.base = Model(lex, 'generative', word_counts, beta, emit_gamma, 0.01, goal)
@@ -141,6 +167,7 @@ class CKYModel:
             self.pe[p] = {e: v / n for e, v in d.items()}
             self.plex[p] = self.n_lex.get(p, 0.0) / n
             self.lam[p] = n / (n + self.beta)
+        self._v += 1
 
     def exp_p(self, parent, exp) -> float:
         lam = self.lam.get(parent, 0.0)
@@ -187,8 +214,21 @@ class CKYModel:
         return self.base.word_counts
 
 
-def inside_outside(chart: Chart, model: CKYModel):
+def inside_outside(chart, model: CKYModel):
     """Return Z, expansion posteriors [(parent, exp, post)], leaf posteriors [(k, cat, post)]."""
+    if _nat.is_native_chart(chart):
+        return _nat.inside_outside(chart, model)
+    return inside_outside_py(chart, model)
+
+
+def cky_Z(chart, model: CKYModel) -> float:
+    """P(words) only (inside pass)."""
+    if _nat.is_native_chart(chart):
+        return _nat.cky_Z(chart, model)
+    return inside_outside_py(chart, model)[0]
+
+
+def inside_outside_py(chart: ChartPy, model: CKYModel):
     if not chart.accepted:
         return 0.0, [], []
     n = chart.n
@@ -237,8 +277,14 @@ def inside_outside(chart: Chart, model: CKYModel):
     return Z, exp_post, leaf_post
 
 
-def viterbi_tree(chart: Chart, model: CKYModel):
+def viterbi_tree(chart, model: CKYModel):
     """Best tree: returns (prob, tree) with tree = (cat, i, j, rule, left, right) or (cat, i, word)."""
+    if _nat.is_native_chart(chart):
+        return _nat.viterbi_tree(chart, model)
+    return viterbi_tree_py(chart, model)
+
+
+def viterbi_tree_py(chart: ChartPy, model: CKYModel):
     if not chart.accepted:
         return 0.0, None
     n = chart.n
@@ -315,8 +361,14 @@ def tree_spans(tree) -> set:
     return out
 
 
-def count_derivations(chart: Chart) -> int:
+def count_derivations(chart) -> int:
     """Number of derivations of the goal (for spurious-ambiguity tests)."""
+    if _nat.is_native_chart(chart):
+        return _nat.count_derivations(chart)
+    return count_derivations_py(chart)
+
+
+def count_derivations_py(chart: ChartPy) -> int:
     if not chart.accepted:
         return 0
     n = chart.n

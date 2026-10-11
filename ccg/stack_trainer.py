@@ -4,6 +4,7 @@ from typing import List, Set
 from . import category as C
 from .mdl import MDLTrainer
 from .stack_lattice import build_stack_lattice, step, Stack, goal_state
+from . import native as _nat
 
 
 class StackTrainer(MDLTrainer):
@@ -26,7 +27,12 @@ class StackTrainer(MDLTrainer):
     def build(self, words, supp):
         return build_stack_lattice(words, supp, self.max_depth, self.goal, self.max_stack, self.cascade)
 
+    def _sys(self):
+        return (_nat.STACK, self.max_depth, self.max_stack, self.cascade)
+
     def successors(self, state, c):
+        if _nat.available:
+            return _nat.successors(state, c, *self._sys())
         return [st for st, _ in step(state, c, self.max_depth, self.max_stack, self.cascade)]
 
     def goal_state(self):
@@ -58,12 +64,8 @@ class StackTrainer(MDLTrainer):
                 cands.update(push_pool)
             cands = [c for c in cands if c not in have]
             cands.sort(key=lambda c: (C.size(c), C.show(c)))
-            for c in cands[:max_cands]:
-                starts = set()
-                for s2 in F:
-                    starts.update(self.successors(s2, c))
-                if starts and self.suffix_completes(words, starts, k + 1, supp):
-                    score[c] = score.get(c, 0.0) + 1.0
+            for c in self.oracle_filter(words, F, cands[:max_cands], k + 1, supp):
+                score[c] = score.get(c, 0.0) + 1.0
         ranked = sorted(score.items(), key=lambda x: -(x[1] * 2.0 ** (-C.size(x[0]))))
         return [c for c, _ in ranked[:top]]
 
